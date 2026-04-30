@@ -35,7 +35,7 @@ export default async function WorksPage({
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end">
               <div
-                className={`work-image-wrap relative overflow-hidden bg-[#1a1a1a] aspect-[4/3] ${
+                className={`work-image-wrap relative overflow-hidden bg-black aspect-[4/3] ${
                   i % 2 === 0
                     ? "lg:col-span-8 lg:col-start-1"
                     : "lg:col-span-8 lg:col-start-5"
@@ -77,7 +77,7 @@ export default async function WorksPage({
           <span className="block text-[11px] tracking-[0.2em] text-muted uppercase mb-8">
             Appendix
           </span>
-          <div className="relative overflow-hidden bg-[#1a1a1a] aspect-[21/9]">
+          <div className="relative overflow-hidden bg-black aspect-[21/9]">
             <Image
               src={appendixWork.thumbImage}
               alt={appendixWork.title}

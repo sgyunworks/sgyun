@@ -33,7 +33,7 @@ export function WorksGrid({ locale, t }: { locale: Locale; t: Dict }) {
             href={`/${locale}/works/${work.slug}`}
             className={`group block ${layout[i]}`}
           >
-            <div className="work-image-wrap relative overflow-hidden bg-[#1a1a1a] aspect-[4/3]">
+            <div className="work-image-wrap relative overflow-hidden bg-black aspect-[4/3]">
               <Image
                 src={work.thumbImage}
                 alt={work.title}
@@ -64,7 +64,7 @@ export function WorksGrid({ locale, t }: { locale: Locale; t: Dict }) {
         {/* Appendix — full width */}
         <div className="lg:col-span-12 mt-2">
           <div className="block">
-            <div className="relative overflow-hidden bg-[#1a1a1a] aspect-[21/9]">
+            <div className="relative overflow-hidden bg-black aspect-[21/9]">
               <Image
                 src={appendixWork.thumbImage}
                 alt={appendixWork.title}

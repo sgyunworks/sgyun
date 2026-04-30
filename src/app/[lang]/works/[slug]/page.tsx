@@ -97,7 +97,7 @@ export default async function WorkDetailPage({
       </section>
 
       {/* Hero 이미지 */}
-      <div className="relative w-full h-[60vh] md:h-[90vh] bg-[#1a1a1a] overflow-hidden">
+      <div className="relative w-full h-[60vh] md:h-[90vh] bg-black overflow-hidden">
         <Image
           src={work.heroImage}
           alt={work.title}
@@ -143,7 +143,7 @@ export default async function WorkDetailPage({
             {work.gallery.map((item, i) => (
               <div
                 key={i}
-                className={`relative overflow-hidden bg-[#1a1a1a] ${aspectClass[item.aspect]}`}
+                className={`relative overflow-hidden bg-black ${aspectClass[item.aspect]}`}
               >
                 <Image
                   src={item.src}
@@ -174,7 +174,7 @@ export default async function WorkDetailPage({
               href={work.video.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block relative aspect-video bg-[#1a1a1a] border border-line overflow-hidden"
+              className="group block relative aspect-video bg-black border border-line overflow-hidden"
             >
               <Image
                 src={work.video.thumb}
