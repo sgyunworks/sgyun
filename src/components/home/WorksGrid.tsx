@@ -39,7 +39,7 @@ export function WorksGrid({ locale, t }: { locale: Locale; t: Dict }) {
                 alt={work.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-all duration-700"
+                className="object-contain transition-all duration-700"
               />
             </div>
             <div className="flex justify-between items-baseline pt-5 pb-1 px-1 border-t border-line mt-4">
@@ -70,7 +70,7 @@ export function WorksGrid({ locale, t }: { locale: Locale; t: Dict }) {
                 alt={appendixWork.title}
                 fill
                 sizes="100vw"
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <div className="flex justify-between items-baseline pt-5 pb-1 px-1 border-t border-line mt-4">

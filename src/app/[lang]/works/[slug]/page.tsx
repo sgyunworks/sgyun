@@ -104,7 +104,7 @@ export default async function WorkDetailPage({
           fill
           sizes="100vw"
           priority
-          className="object-cover"
+          className="object-contain"
         />
       </div>
 
@@ -150,7 +150,7 @@ export default async function WorkDetailPage({
                   alt=""
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
             ))}
@@ -181,7 +181,7 @@ export default async function WorkDetailPage({
                 alt={work.title}
                 fill
                 sizes="100vw"
-                className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700"
+                className="object-contain opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700"
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-bg/30 group-hover:bg-bg/10 transition-colors">
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-fg/80 flex items-center justify-center bg-bg/40 backdrop-blur-sm group-hover:scale-110 transition-transform">

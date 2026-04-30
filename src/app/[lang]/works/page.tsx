@@ -46,7 +46,7 @@ export default async function WorksPage({
                   alt={work.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 60vw"
-                  className="object-cover transition-all duration-700"
+                  className="object-contain transition-all duration-700"
                 />
               </div>
 
@@ -83,7 +83,7 @@ export default async function WorksPage({
               alt={appendixWork.title}
               fill
               sizes="100vw"
-              className="object-cover"
+              className="object-contain"
             />
           </div>
           <div className="mt-5 flex flex-col md:flex-row justify-between items-baseline gap-2">
