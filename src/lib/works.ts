@@ -41,10 +41,11 @@ export const works: Work[] = [
       en: "Stainless Steel, Wire",
     },
     role: {
-      ko: "단독 작업 — 디자인 및 제작",
-      en: "Solo — Design & Fabrication",
+      ko: "스툴 파트 담당 (디자인 및 제작)",
+      en: "Stool Part Lead (Design & Fabrication)",
     },
     type: { ko: "가구 (스툴)", en: "Furniture — Stool" },
+    team: { ko: "팀 프로젝트", en: "Team Project" },
     conceptHeadline: { ko: "제작의 혁신.", en: "Reinventing assembly." },
     conceptHeadlineSub: {
       ko: "조인트를 단 하나의 와이어로.",
