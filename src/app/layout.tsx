@@ -1,16 +1,31 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Geist_Mono, Poppins } from "next/font/google";
+import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Engineering Art`,
-    template: `%s — ${siteConfig.name}`,
+    default: `${siteConfig.name} | Engineering Art`,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description.ko,
   openGraph: {
-    title: `${siteConfig.name} — Engineering Art`,
+    title: `${siteConfig.name} | Engineering Art`,
     description: siteConfig.description.ko,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -18,12 +33,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Engineering Art`,
+    title: `${siteConfig.name} | Engineering Art`,
     description: siteConfig.description.ko,
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#08090b",
 };
 
 export default function RootLayout({
@@ -32,20 +48,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>{children}</body>
+    <html lang="ko" data-scroll-behavior="smooth">
+      <body className={`${poppins.variable} ${geistMono.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }

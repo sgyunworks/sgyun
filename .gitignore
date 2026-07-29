@@ -10,6 +10,10 @@
 
 # testing
 /coverage
+/qa/
+
+# local design research captures
+/references/
 
 # next.js
 /.next/

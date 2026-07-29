@@ -1,0 +1,337 @@
+.page {
+  min-height: 100svh;
+  overflow: clip;
+  padding: 100px clamp(18px, 5vw, 86px) clamp(130px, 16vw, 240px);
+  background:
+    radial-gradient(circle at 78% 14%, rgba(49, 87, 137, 0.18), transparent 27%),
+    #08090b;
+  color: #f5f5f0;
+}
+
+.shell {
+  width: min(1540px, 100%);
+  margin: 0 auto;
+}
+
+.sectionLabel {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.46);
+  font: 520 9px/1 var(--font-mono), monospace;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.hero {
+  min-height: 78svh;
+  padding-top: 20px;
+}
+
+.hero h1 {
+  max-width: 8ch;
+  margin: clamp(130px, 21vh, 220px) 0 0;
+  font-size: clamp(92px, 16vw, 260px);
+  font-weight: 300;
+  line-height: 0.86;
+  letter-spacing: var(--tracking-display-latin);
+  text-wrap: balance;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.58fr) minmax(0, 1.42fr);
+  gap: clamp(60px, 12vw, 200px);
+  align-items: start;
+  padding: clamp(100px, 14vw, 210px) 0;
+}
+
+.panel {
+  padding: 0;
+}
+
+.identityName {
+  margin: 48px 0 0;
+  font-family: var(--font-display), var(--font-korean), sans-serif;
+  font-size: clamp(36px, 4.4vw, 70px);
+  font-weight: 300;
+  line-height: var(--leading-display-ko);
+  letter-spacing: var(--tracking-display-ko);
+}
+
+.identityName span {
+  display: inline-block;
+  margin-top: 0.08em;
+  color: rgba(255, 255, 255, 0.36);
+  font-family: var(--font-display), sans-serif;
+  line-height: 0.96;
+  letter-spacing: var(--tracking-display-latin);
+}
+
+.alias {
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, 0.4);
+  font: 500 10px/1 var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+}
+
+.bodyCopy {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--type-body);
+  line-height: var(--leading-body-relaxed);
+  word-break: keep-all;
+}
+
+.bodyCopy p {
+  max-width: 59ch;
+  margin: 22px 0 0;
+  text-wrap: pretty;
+}
+
+.bodyCopy p:first-child {
+  max-width: 31ch;
+  margin-top: 0;
+  color: #f1f1ed;
+  font-size: clamp(30px, 3.3vw, 52px);
+  font-weight: 460;
+  line-height: 1.24;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+:global([lang="ko"]) .bodyCopy p:first-child {
+  letter-spacing: var(--tracking-display-ko);
+}
+
+.widePanel {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.48fr) minmax(0, 1.52fr);
+  gap: clamp(60px, 12vw, 200px);
+  align-items: start;
+  padding: clamp(110px, 15vw, 220px) 0 0;
+}
+
+.panelHeading {
+  margin: 34px 0 0;
+  font-size: clamp(39px, 5vw, 80px);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+:global([lang="ko"]) .panelHeading {
+  line-height: var(--leading-display-ko);
+  letter-spacing: var(--tracking-display-ko);
+  word-break: keep-all;
+}
+
+.educationList {
+  padding-top: 41px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(16px, 1.5vw, 23px);
+  line-height: 1.62;
+}
+
+.educationList p {
+  margin: 0 0 18px;
+}
+
+.skillGrid {
+  display: grid;
+  margin: 0;
+  padding: 34px 0 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 32px;
+  list-style: none;
+}
+
+.skillGrid li {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(16px, 1.7vw, 27px);
+  font-weight: 450;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.contactHero {
+  display: flex;
+  min-height: 82svh;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.contactHero h1 {
+  max-width: 11ch;
+  margin: auto 0 clamp(50px, 8vh, 88px);
+  font-size: clamp(64px, 10.5vw, 174px);
+  font-weight: 300;
+  line-height: 0.89;
+  letter-spacing: -0.052em;
+  word-break: keep-all;
+}
+
+:global([lang="ko"]) .contactHero h1 {
+  line-height: var(--leading-display-ko);
+  letter-spacing: var(--tracking-display-ko);
+}
+
+.contactAction {
+  position: relative;
+  color: #70b6ff;
+  transition: color 220ms ease;
+}
+
+.contactAction::after {
+  position: absolute;
+  right: 0.03em;
+  bottom: 0.03em;
+  left: 0.03em;
+  height: 0.045em;
+  border-radius: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0.24);
+  transform-origin: left;
+  transition: transform 520ms var(--ease-fluid);
+}
+
+.contactAction:hover {
+  color: #c7e4ff;
+}
+
+.contactAction:hover::after {
+  transform: scaleX(1);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(28px, 4vw, 70px);
+  padding: clamp(80px, 11vw, 150px) 0 0;
+}
+
+.contactBlock {
+  min-width: 0;
+}
+
+.contactBlock > span:first-child {
+  display: block;
+  margin-bottom: 28px;
+  color: rgba(255, 255, 255, 0.35);
+  font: 500 9px/1 var(--font-mono), monospace;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.contactBlock > span:last-child {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(14px, 1.35vw, 20px);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.contactBlock a {
+  transition: color 200ms ease;
+}
+
+.contactBlock a:hover {
+  color: #70b6ff;
+}
+
+@media (max-width: 900px) {
+  .aboutGrid,
+  .widePanel {
+    grid-template-columns: 1fr;
+    gap: 70px;
+  }
+
+  .bodyCopy {
+    margin-left: 20vw;
+  }
+
+  .skillGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contactGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 70px 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 84px 16px 140px;
+  }
+
+  .hero {
+    min-height: 83svh;
+  }
+
+  .hero h1 {
+    margin-top: 27vh;
+    font-size: clamp(76px, 26vw, 120px);
+  }
+
+  .aboutGrid {
+    gap: 82px;
+    padding: 110px 0;
+  }
+
+  .identityName {
+    font-size: 46px;
+  }
+
+  .bodyCopy {
+    margin-left: 0;
+  }
+
+  .bodyCopy p:first-child {
+    font-size: 31px;
+  }
+
+  .widePanel {
+    gap: 44px;
+    padding-top: 120px;
+  }
+
+  .panelHeading {
+    font-size: 48px;
+  }
+
+  .educationList {
+    padding-top: 0;
+  }
+
+  .skillGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 12px;
+    padding-top: 0;
+  }
+
+  .skillGrid li {
+    font-size: 16px;
+  }
+
+  .contactHero {
+    min-height: 86svh;
+  }
+
+  .contactHero h1 {
+    margin-bottom: 48px;
+    font-size: clamp(52px, 15.5vw, 80px);
+  }
+
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 52px;
+    padding-top: 100px;
+  }
+
+  .contactBlock > span:first-child {
+    margin-bottom: 13px;
+  }
+
+  .contactBlock > span:last-child {
+    font-size: 18px;
+  }
+}

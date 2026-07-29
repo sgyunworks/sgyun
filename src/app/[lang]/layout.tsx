@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { locales, type Locale, getDict } from "@/lib/i18n";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { VaultTransition } from "@/components/VaultTransition";
 import { siteConfig } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -19,7 +20,7 @@ export async function generateMetadata({
     ? (lang as Locale)
     : "ko";
   return {
-    title: `${siteConfig.name} — ${
+    title: `${siteConfig.name} | ${
       validLang === "ko" ? "Engineering Art" : "Engineering Art"
     }`,
     description: siteConfig.description[validLang],
@@ -48,6 +49,7 @@ export default async function LangLayout({
   return (
     <div lang={validLang}>
       <Nav locale={validLang} t={t} />
+      <VaultTransition />
       <main className={validLang === "ko" ? "body-text" : ""}>{children}</main>
       <Footer t={t} />
     </div>
