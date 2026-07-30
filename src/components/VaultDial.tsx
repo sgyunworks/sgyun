@@ -13,7 +13,8 @@ const TICK_COUNT = 60;
 const ARCHIVE_DIAL_STEP = 15;
 const PAGE_DIAL_ARC = 72;
 const PAGE_DIAL_STEP_MAX = 30;
-const DRAG_PX_PER_STEP = 68;
+const DRAG_PX_PER_STEP_MOUSE = 170;
+const DRAG_PX_PER_STEP_TOUCH = 300;
 
 type DialStyle = CSSProperties & {
   "--vault-dial-angle": string;
@@ -83,6 +84,7 @@ export function VaultDial({
   const dragRef = useRef<{
     currentIndex: number;
     pointerId: number;
+    pointerType: string;
     startIndex: number;
     startY: number;
   } | null>(null);
@@ -185,6 +187,7 @@ export function VaultDial({
     dragRef.current = {
       currentIndex: startIndex,
       pointerId: event.pointerId,
+      pointerType: event.pointerType,
       startIndex,
       startY: event.clientY,
     };
@@ -195,8 +198,12 @@ export function VaultDial({
   const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
     const drag = dragRef.current;
     if (!drag || drag.pointerId !== event.pointerId) return;
+    const pixelsPerStep =
+      drag.pointerType === "mouse"
+        ? DRAG_PX_PER_STEP_MOUSE
+        : DRAG_PX_PER_STEP_TOUCH;
     const nextIndex = clampIndex(
-      drag.startIndex + (drag.startY - event.clientY) / DRAG_PX_PER_STEP
+      drag.startIndex + (drag.startY - event.clientY) / pixelsPerStep
     );
     drag.currentIndex = nextIndex;
     onScrub?.(nextIndex);
@@ -264,7 +271,7 @@ export function VaultDial({
       </nav>
 
       <div
-        className={styles.control}
+        className={styles.controlHitArea}
         role="slider"
         tabIndex={0}
         aria-label={ariaLabel}
@@ -296,35 +303,37 @@ export function VaultDial({
           }
         }}
       >
-        <div className={styles.track} aria-hidden="true">
-          {Array.from({ length: TICK_COUNT }).map((_, index) => (
-            <i
-              className={styles.tick}
-              key={index}
-              style={{ "--vault-tick-index": index } as TickStyle}
-            />
-          ))}
-          {items.map((item, index) => {
-            const angle = -90 + index * dialStep;
-            return (
-              <span
-                key={item.id}
-                className={`${styles.marker} ${
-                  index === activeIndex ? styles.activeMarker : ""
-                }`}
-                style={
-                  {
-                    "--vault-marker-angle": `${angle}deg`,
-                    "--vault-counter-angle": `${-angle}deg`,
-                  } as MarkerStyle
-                }
-              >
-                <b>{item.number}</b>
-              </span>
-            );
-          })}
+        <div className={styles.control} aria-hidden="true">
+          <div className={styles.track}>
+            {Array.from({ length: TICK_COUNT }).map((_, index) => (
+              <i
+                className={styles.tick}
+                key={index}
+                style={{ "--vault-tick-index": index } as TickStyle}
+              />
+            ))}
+            {items.map((item, index) => {
+              const angle = -90 + index * dialStep;
+              return (
+                <span
+                  key={item.id}
+                  className={`${styles.marker} ${
+                    index === activeIndex ? styles.activeMarker : ""
+                  }`}
+                  style={
+                    {
+                      "--vault-marker-angle": `${angle}deg`,
+                      "--vault-counter-angle": `${-angle}deg`,
+                    } as MarkerStyle
+                  }
+                >
+                  <b>{item.number}</b>
+                </span>
+              );
+            })}
+          </div>
+          <span className={styles.datum} />
         </div>
-        <span className={styles.datum} aria-hidden="true" />
       </div>
 
       <div className={styles.readout} aria-hidden="true">

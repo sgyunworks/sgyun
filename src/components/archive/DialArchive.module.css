@@ -111,7 +111,7 @@
 
 .mediaTelemetry {
   display: grid;
-  grid-template-columns: auto minmax(36px, 1fr) auto auto;
+  grid-template-columns: auto minmax(36px, 1fr) auto;
   gap: 12px;
   align-items: center;
   color: rgba(255, 255, 255, 0.5);
@@ -130,17 +130,6 @@
 .mediaIdentity b {
   color: rgba(255, 255, 255, 0.9);
   font-weight: 620;
-}
-
-.mediaIdentity span {
-  overflow: hidden;
-  color: rgba(255, 255, 255, 0.58);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.mediaRatio {
-  white-space: nowrap;
 }
 
 .mediaOverview {
@@ -265,14 +254,6 @@
   width: 100%;
   min-width: 0;
   pointer-events: none;
-}
-
-.identitySignal {
-  display: block;
-  margin-bottom: 12px;
-  color: rgba(255, 255, 255, 0.4);
-  font: 510 7px/1 var(--font-mono), monospace;
-  letter-spacing: 0.13em;
 }
 
 .infoTopline {
@@ -1033,7 +1014,7 @@
 
 .sectionDatum {
   display: grid;
-  grid-template-columns: auto minmax(40px, 1fr) auto;
+  grid-template-columns: auto minmax(40px, 1fr);
   gap: 14px;
   align-items: center;
   color: rgba(17, 18, 22, 0.54);
@@ -1080,44 +1061,6 @@
   background: rgba(255, 255, 255, 0.16);
 }
 
-.practiceIntro {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.55fr);
-  gap: clamp(60px, 10vw, 170px);
-  align-items: end;
-  margin: clamp(72px, 9vw, 138px) 0 clamp(80px, 10vw, 150px);
-}
-
-.practiceIntro h2 {
-  max-width: 13ch;
-  margin: 0;
-  font-size: clamp(54px, 6.4vw, 104px);
-  font-weight: 300;
-  line-height: 0.98;
-  letter-spacing: -0.046em;
-  text-wrap: balance;
-}
-
-:global([lang="ko"]) .practiceIntro h2 {
-  max-width: 12ch;
-  line-height: 1.08;
-  letter-spacing: var(--tracking-display-ko);
-  word-break: keep-all;
-}
-
-.practiceIntro p {
-  max-width: 41ch;
-  margin: 0 0 6px;
-  color: rgba(17, 18, 22, 0.66);
-  font-size: var(--type-body);
-  line-height: var(--leading-body-relaxed);
-  text-wrap: pretty;
-}
-
-:global([lang="ko"]) .practiceIntro p {
-  word-break: keep-all;
-}
-
 .practiceRows {
   border-top: 1px solid rgba(17, 18, 22, 0.2);
 }
@@ -1125,7 +1068,7 @@
 .practiceRow {
   display: grid;
   min-height: 142px;
-  grid-template-columns: minmax(210px, 0.7fr) minmax(280px, 1.3fr) 70px 46px;
+  grid-template-columns: minmax(210px, 0.7fr) minmax(280px, 1.3fr) 46px;
   gap: clamp(22px, 4vw, 72px);
   align-items: center;
   padding: 25px 0;
@@ -1141,8 +1084,7 @@
   align-items: baseline;
 }
 
-.practiceIdentity small,
-.practiceCount small {
+.practiceIdentity small {
   color: rgba(17, 18, 22, 0.5);
   font: 520 8px/1 var(--font-mono), monospace;
   letter-spacing: 0.1em;
@@ -1168,16 +1110,6 @@
 
 :global([lang="ko"]) .practiceRow > p {
   word-break: keep-all;
-}
-
-.practiceCount {
-  display: grid;
-  gap: 8px;
-  justify-items: end;
-}
-
-.practiceCount b {
-  font: 300 25px/1 var(--font-display), sans-serif;
 }
 
 .practiceLatch {
@@ -1346,7 +1278,7 @@
 
 .appendixReserve {
   display: grid;
-  grid-template-columns: minmax(150px, 0.34fr) minmax(320px, 1fr) auto;
+  grid-template-columns: minmax(150px, 1fr) auto;
   gap: clamp(30px, 6vw, 100px);
   align-items: center;
   min-height: 132px;
@@ -1366,15 +1298,6 @@
 
 .appendixReserve > span {
   color: rgba(255, 255, 255, 0.4);
-}
-
-.appendixReserve p {
-  max-width: 56ch;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: var(--type-body-small);
-  line-height: var(--leading-body);
-  word-break: keep-all;
 }
 
 .appendixReserve > b {
@@ -1557,17 +1480,12 @@
     width: clamp(240px, 36vw, 300px);
   }
 
-  .practiceIntro,
   .evidenceGrid {
     grid-template-columns: 1fr;
   }
 
-  .practiceIntro p {
-    margin-left: 30vw;
-  }
-
   .practiceRow {
-    grid-template-columns: minmax(180px, 0.8fr) minmax(220px, 1.2fr) 58px 42px;
+    grid-template-columns: minmax(180px, 0.8fr) minmax(220px, 1.2fr) 42px;
     gap: 22px;
   }
 
@@ -1581,13 +1499,6 @@
     gap: 34px;
   }
 
-  .appendixReserve {
-    grid-template-columns: minmax(130px, 0.3fr) minmax(0, 1fr);
-  }
-
-  .appendixReserve > b {
-    grid-column: 2;
-  }
 }
 
 @media (max-width: 760px) {
@@ -1634,10 +1545,6 @@
     gap: 8px;
   }
 
-  .mediaRatio {
-    display: none;
-  }
-
   .mediaStage {
     border-radius: 2px;
   }
@@ -1653,11 +1560,6 @@
   .infoTopline {
     margin-bottom: 10px;
     font-size: 8px;
-  }
-
-  .identitySignal {
-    margin-bottom: 8px;
-    font-size: 6px;
   }
 
   .title {
@@ -1893,20 +1795,6 @@
     font-size: 7px;
   }
 
-  .practiceIntro {
-    display: block;
-    margin: 72px 0 78px;
-  }
-
-  .practiceIntro h2 {
-    max-width: 12ch;
-    font-size: clamp(42px, 12vw, 58px);
-  }
-
-  .practiceIntro p {
-    margin: 30px 0 0;
-  }
-
   .practiceRow {
     min-height: 0;
     grid-template-columns: minmax(0, 1fr) 44px;
@@ -1921,11 +1809,6 @@
   .practiceRow > p {
     grid-column: 1;
     padding-left: 36px;
-  }
-
-  .practiceCount {
-    grid-row: 1;
-    grid-column: 2;
   }
 
   .practiceLatch {
@@ -1967,10 +1850,6 @@
     display: block;
     min-height: 0;
     padding: 28px 0;
-  }
-
-  .appendixReserve p {
-    margin-top: 24px;
   }
 
   .appendixReserve > b {

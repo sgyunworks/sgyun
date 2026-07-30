@@ -13,7 +13,7 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 
 ## 이후 개발 단계
 
-1. 배포 환경에 Studio 인증과 최소 권한 GitHub 토큰을 설정하고 draft→published 동기화를 실제 배포에서 검증한다.
+1. 이번 quiet portfolio·dial interaction pass를 커밋·푸시하고 `https://sgyun.kr` production 응답을 확인한다.
 2. Studio에 상세 미디어 배열 편집, 게시 전 미리보기와 Git 이력 기반 rollback 안내를 추가한다.
 3. 실제 장치에서 라쳇 음량과 vibration 지원 여부·강도를 브라우저별로 검증한다.
 4. 최종 이미지 등록 뒤 배포 preview에서 Web Vitals와 이미지 캐시를 측정한다.

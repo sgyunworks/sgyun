@@ -2,7 +2,7 @@
 
 ## 현재 판정
 
-2026-07-30 콘텐츠 시스템 개편 기준으로 1차 대표작 구조와 소유자 게시 흐름은 **구현·로컬 검증 통과**다. 최종 이미지 선별과 운영 환경 연결 전이므로 공개 배포 완료 상태는 아니다.
+2026-07-30 콘텐츠 시스템·조용한 정보 구조·다이얼 조작성 개편 기준으로 1차 대표작 구조와 소유자 게시 흐름은 **구현·로컬 검증 통과**다. 이번 변경은 커밋·푸시 후 production 배포를 진행한다.
 
 ## 구현된 범위
 
@@ -17,6 +17,9 @@
 - 라쳇 Web Audio, 지원 기기 drag haptic
 - 12시 축의 가는 datum과 동일한 graphite face anatomy를 공유하는 소형 rotary latch family
 - reduced-motion, 키보드 slider, archive dialog
+- 홈의 장식 문구·중복 상태·카운트를 덜어낸 quiet portfolio hierarchy
+- 다이얼 전체 hit area, 마우스·터치 감도 분리, 직접 드래그 시 자동 snap 제거
+- 상세 Summary·Description·Process·Evidence의 읽기 폭·자간·행간·한국어 줄바꿈 규칙
 - 404·runtime error·미디어 실패 상태
 - locale별 canonical, 상세 Open Graph 메타데이터, 공통 Open Graph 이미지
 - 비밀번호 인증, draft/published, 순서·분류·문구·미디어 편집을 제공하는 `/studio`
@@ -53,7 +56,17 @@
 
 ## 작업 경계
 
-커밋과 푸시는 이번 감사 작업이 재검증을 통과하고 사용자가 요청할 때만 진행한다.
+이번 변경은 사용자의 요청에 따라 재검증 후 커밋·푸시·production 배포한다.
+
+## Quiet portfolio and dial interaction pass — 2026-07-30
+
+- [x] 홈의 identity signal, 중복 작품 상태·비율·기록 수·검증 문구·Practice 선언문·Appendix 설명을 제거해 필요한 정보만 남겼다.
+- [x] 홈 Practice/Profile을 작품 분류, 프로필, 수상·활동 기록 중심으로 재구성하고 실제 문구를 덮지 않도록 전용 여백을 유지했다.
+- [x] Vault Dial의 시각 요소와 입력 영역을 분리해 보이는 원판 전체를 드래그 hit area로 사용한다.
+- [x] 마우스 170px/단계, 터치·펜 300px/단계로 감도를 분리하고 드래그 직후 페이지가 정수 작품으로 튀는 ScrollTrigger snap을 제거했다.
+- [x] 상세 본문에 reading type token, 45–75자 수준의 읽기 폭, 1.7/1.78 행간, 한국어 keep-all과 완화된 tracking을 적용했다.
+- [x] 1440·390px 홈/상세에서 HTTP 200, overflow 0, console/page error 0과 다이얼 drag 반응을 확인했다.
+- [x] `npm run typecheck`, `npm run build`, `git diff --check`를 통과했다.
 
 ## VESA detail copy and hierarchy pass — 2026-07-30
 

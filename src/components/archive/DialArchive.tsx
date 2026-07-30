@@ -92,7 +92,6 @@ export function DialArchive({ locale }: { locale: Locale }) {
       archiveCategoryOrder.map((category) => ({
         id: category,
         ...archiveCategories[category],
-        count: projects.filter((project) => project.category === category).length,
       })),
     [projects]
   );
@@ -420,12 +419,6 @@ export function DialArchive({ locale }: { locale: Locale }) {
           start: "top top",
           end: "bottom bottom",
           invalidateOnRefresh: true,
-          snap: {
-            snapTo: 1 / (projects.length - 1),
-            duration: { min: 0.16, max: 0.34 },
-            delay: 0.07,
-            ease: "power2.out",
-          },
           onUpdate: (self) => {
             applyCursor(self.progress * (projects.length - 1));
           },
@@ -553,11 +546,9 @@ export function DialArchive({ locale }: { locale: Locale }) {
 
           <div className={styles.stageFrame}>
             <div className={styles.projectInfo} key={active.id} aria-live="polite">
-              <span className={styles.identitySignal}>SGYUN / DESIGNER + BUILDER</span>
               <div className={styles.infoTopline}>
                 <span>{active.categoryText}</span>
                 <span>{active.year}</span>
-                <span>{active.statusCode}</span>
               </div>
               <h1
                 className={`${styles.title}${
@@ -585,12 +576,8 @@ export function DialArchive({ locale }: { locale: Locale }) {
                 <div className={styles.mediaTelemetry}>
                   <span className={styles.mediaIdentity}>
                     <b>{active.number}</b>
-                    <span>{active.title}</span>
                   </span>
                   <i />
-                  <span className={styles.mediaRatio}>
-                    RATIO {active.heroAspectRatio.toFixed(3)}
-                  </span>
                   <button
                     ref={indexTriggerRef}
                     className={styles.mediaOverview}
@@ -599,8 +586,7 @@ export function DialArchive({ locale }: { locale: Locale }) {
                     aria-controls="archive-index"
                     onClick={() => setIndexOpen(true)}
                   >
-                    {locale === "ko" ? "전체" : "All"}{" "}
-                    {String(projects.length).padStart(2, "0")}
+                    INDEX
                   </button>
                 </div>
                 <div className={styles.mediaStage}>
@@ -688,21 +674,14 @@ export function DialArchive({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section ref={practiceRef} className={styles.practiceField} aria-labelledby="practice-field-title">
+      <section
+        ref={practiceRef}
+        className={styles.practiceField}
+        aria-label={locale === "ko" ? "작업 방식" : "Practice"}
+      >
         <div className={styles.sectionDatum} aria-hidden="true">
-          <span>PRACTICE LEDGER</span>
+          <span>PRACTICE</span>
           <i />
-          <b>{String(projects.length).padStart(2, "0")} RECORDS</b>
-        </div>
-        <div className={styles.practiceIntro}>
-          <h2 id="practice-field-title">
-            {locale === "ko" ? "형태보다 먼저, 작동의 구조를 설계한다." : "Design the structure of how it works."}
-          </h2>
-          <p>
-            {locale === "ko"
-              ? "물리적 제품, 디지털 인터페이스, 서비스 시스템을 서로 다른 장르가 아니라 같은 설계 태도의 결과로 다룹니다."
-              : "Physical products, digital interfaces, and service systems are outcomes of the same design attitude, not separate genres."}
-          </p>
         </div>
 
         <div className={styles.practiceRows}>
@@ -717,10 +696,6 @@ export function DialArchive({ locale }: { locale: Locale }) {
                 <strong>{category.title[locale]}</strong>
               </span>
               <p>{category.description[locale]}</p>
-              <span className={styles.practiceCount}>
-                <small>{locale === "ko" ? "기록" : "Records"}</small>
-                <b>{String(category.count).padStart(2, "0")}</b>
-              </span>
               <span className={styles.practiceLatch} aria-hidden="true">
                 <i />
               </span>
@@ -731,9 +706,8 @@ export function DialArchive({ locale }: { locale: Locale }) {
 
       <section ref={evidenceRef} className={styles.evidenceField} aria-labelledby="profile-ledger-title">
         <div className={styles.sectionDatum} aria-hidden="true">
-          <span>PROFILE LEDGER</span>
+          <span>PROFILE</span>
           <i />
-          <b>VERIFIED / 2026</b>
         </div>
 
         <div className={styles.evidenceGrid}>
@@ -759,7 +733,6 @@ export function DialArchive({ locale }: { locale: Locale }) {
             <section className={styles.evidenceGroup} aria-labelledby="recognition-title">
               <header>
                 <h3 id="recognition-title">{locale === "ko" ? "수상·선정" : "Recognition"}</h3>
-                <span>{String(portfolioProfile.recognitions.length).padStart(2, "0")}</span>
               </header>
               <ol>
                 {portfolioProfile.recognitions.map((item) => (
@@ -777,7 +750,6 @@ export function DialArchive({ locale }: { locale: Locale }) {
             <section className={styles.evidenceGroup} aria-labelledby="activity-title">
               <header>
                 <h3 id="activity-title">{locale === "ko" ? "활동" : "Activities"}</h3>
-                <span>{String(portfolioProfile.activities.length).padStart(2, "0")}</span>
               </header>
               <ol>
                 {portfolioProfile.activities.map((item) => (
@@ -795,13 +767,8 @@ export function DialArchive({ locale }: { locale: Locale }) {
         </div>
 
         <Link className={styles.appendixReserve} href={`/${locale}/appendix`}>
-          <span>APPENDIX / RESERVED</span>
-          <p>
-            {locale === "ko"
-              ? "보류된 실험과 보조 기록을 위한 빈 공간입니다. 현재 공개 항목은 없습니다."
-              : "A reserved space for held experiments and supporting records. No public entries yet."}
-          </p>
-          <b>{locale === "ko" ? "빈 페이지 보기" : "View empty appendix"}</b>
+          <span>APPENDIX</span>
+          <b>{locale === "ko" ? "열기" : "Open"}</b>
         </Link>
       </section>
     </div>

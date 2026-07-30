@@ -16,13 +16,18 @@
   --weight-display: 300;
   --type-body: clamp(16px, 1.1vw, 17px);
   --type-body-small: clamp(14px, 1.05vw, 15px);
+  --type-reading: clamp(15px, 1.05vw, 16px);
   --leading-body: 1.64;
   --leading-body-relaxed: 1.68;
+  --leading-reading: 1.7;
+  --leading-reading-ko: 1.78;
   --leading-display-latin: 0.88;
   --leading-display-ko: 1.07;
   --tracking-display-latin: -0.052em;
   --tracking-display-ko: -0.018em;
   --tracking-body: -0.012em;
+  --tracking-reading: -0.008em;
+  --tracking-reading-ko: -0.018em;
   --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
