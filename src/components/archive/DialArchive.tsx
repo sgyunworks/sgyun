@@ -530,6 +530,7 @@ export function DialArchive({ locale }: { locale: Locale }) {
         onScrubEnd={(index) => scrollToHomeCursor(Math.round(index))}
         sound={false}
         stepDegrees={homeDialStep}
+        touchMode="page-scroll"
         visualAngle="var(--archive-vault-angle, 0deg)"
         variant="archive"
       />

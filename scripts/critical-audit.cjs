@@ -26,6 +26,7 @@ const routes = [
   { name: "contact", path: "/ko/contact" },
   { name: "appendix", path: "/ko/appendix" },
   { name: "calibration", path: "/ko/calibration" },
+  { name: "vault", path: "/ko/vault" },
   { name: "home-en", path: "/en" },
 ];
 
@@ -645,13 +646,20 @@ async function dispatchVerticalTouch(context, page, element, distance = 150) {
   const box = await element.boundingBox();
   if (!box) return null;
   const viewport = page.viewportSize() || { width: 390, height: 844 };
-  const x = Math.min(viewport.width - 18, Math.max(18, box.x + box.width * 0.28));
+  const x = Math.min(
+    viewport.width - 20,
+    Math.max(18, box.x + Math.min(36, box.width * 0.14))
+  );
   const startY = Math.min(viewport.height - 70, Math.max(120, box.y + box.height * 0.56));
   const cdp = await context.newCDPSession(page);
   await cdp.send("Input.dispatchTouchEvent", {
     type: "touchStart",
     touchPoints: [{ x, y: startY }],
   });
+  await page.waitForTimeout(70);
+  const shell = element.locator("xpath=ancestor::*[@data-vault-dial][1]");
+  const activeDuring = await shell.getAttribute("data-interacting");
+  const scaleDuring = await shell.evaluate((node) => getComputedStyle(node).scale);
   for (let step = 1; step <= 8; step += 1) {
     await cdp.send("Input.dispatchTouchEvent", {
       type: "touchMove",
@@ -664,7 +672,14 @@ async function dispatchVerticalTouch(context, page, element, distance = 150) {
     touchPoints: [],
   });
   await page.waitForTimeout(520);
-  return { x: Math.round(x), startY: Math.round(startY), distance };
+  return {
+    x: Math.round(x),
+    startY: Math.round(startY),
+    distance,
+    activeDuring,
+    scaleDuring,
+    activeAfter: await shell.getAttribute("data-interacting"),
+  };
 }
 
 async function inspectMobileDialTouch(browser) {
@@ -690,6 +705,9 @@ async function inspectMobileDialTouch(browser) {
       after,
       delta: after - before,
       dialValue: await slider.getAttribute("aria-valuenow"),
+      scrubFlagAfter: await page.evaluate(
+        () => document.documentElement.dataset.vaultDialScrubbing || null
+      ),
       gesture,
     });
     await context.close();
@@ -730,6 +748,89 @@ async function inspectMobileDialTouch(browser) {
   };
   await context.close();
   return { scrollLinked: results, calibration };
+}
+
+async function inspectDialGuide(browser) {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+  });
+  const page = await context.newPage();
+  await page.goto(`${baseUrl}/ko`, { waitUntil: "domcontentloaded" });
+  await page.evaluate(() => localStorage.removeItem("sgyun:vault-dial-guide:v1"));
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await settle(page);
+  const guide = page.locator('[data-dial-guide="true"]');
+  const firstVisitVisible = await guide.isVisible();
+  const stored = await page.evaluate(() =>
+    localStorage.getItem("sgyun:vault-dial-guide:v1")
+  );
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await settle(page);
+  const repeatVisitCount = await page.locator('[data-dial-guide="true"]').count();
+  await context.close();
+  return { firstVisitVisible, stored, repeatVisitCount };
+}
+
+async function inspectVaultGame(browser) {
+  const lockedContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const lockedPage = await lockedContext.newPage();
+  await lockedPage.goto(`${baseUrl}/ko/vault`, { waitUntil: "domcontentloaded" });
+  await settle(lockedPage);
+  const directAccess = {
+    locked: await lockedPage.getByText("FIELD NOT CALIBRATED").isVisible(),
+    dialGuideCount: await lockedPage.locator('[data-dial-guide="true"]').count(),
+  };
+  await lockedContext.close();
+
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+  });
+  const page = await context.newPage();
+  await page.addInitScript(() => {
+    localStorage.setItem("sgyun:field-calibrated:v1", "unlocked");
+  });
+  await page.goto(`${baseUrl}/ko/vault`, { waitUntil: "domcontentloaded" });
+  await settle(page);
+  const next = page.getByRole("button", { name: "다음 숫자" });
+  const previous = page.getByRole("button", { name: "이전 숫자" });
+  const set = page.getByRole("button", { name: "현재 값 확정" });
+  for (let index = 0; index < 6; index += 1) await next.click();
+  await set.click();
+  for (let index = 0; index < 5; index += 1) await previous.click();
+  await set.click();
+  for (let index = 0; index < 7; index += 1) await next.click();
+  await set.click();
+  await page.waitForTimeout(900);
+  const completion = {
+    open: (await page.locator("[data-vault-open]").getAttribute("data-vault-open")) === "true",
+    stage: Number(await page.locator("[data-vault-stage]").getAttribute("data-vault-stage")),
+    returnLink: await page.getByRole("link", { name: "RETURN TO ARCHIVE" }).isVisible(),
+    horizontalOverflow: await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+    ),
+  };
+  await context.close();
+
+  const reducedContext = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce",
+  });
+  const reducedPage = await reducedContext.newPage();
+  await reducedPage.addInitScript(() => {
+    localStorage.setItem("sgyun:field-calibrated:v1", "unlocked");
+  });
+  await reducedPage.goto(`${baseUrl}/ko/vault`, { waitUntil: "domcontentloaded" });
+  await settle(reducedPage);
+  const reducedMotion = await reducedPage.evaluate(() =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+  await reducedContext.close();
+
+  return { directAccess, completion, reducedMotion };
 }
 
 async function inspectPerformance(browser) {
@@ -836,6 +937,8 @@ async function main() {
   const interactionStress = await inspectInteractionStress(browser);
   const dialContinuity = await inspectDialContinuity(browser);
   const mobileDialTouch = await inspectMobileDialTouch(browser);
+  const dialGuide = await inspectDialGuide(browser);
+  const vaultGame = await inspectVaultGame(browser);
   const performance = await inspectPerformance(browser);
   await browser.close();
 
@@ -852,6 +955,8 @@ async function main() {
     interactionStress,
     dialContinuity,
     mobileDialTouch,
+    dialGuide,
+    vaultGame,
     performance,
   };
   fs.writeFileSync(
@@ -888,6 +993,7 @@ async function main() {
         interactionStress,
         dialContinuity,
         mobileDialTouch,
+        dialGuide,
         performance,
       },
       null,

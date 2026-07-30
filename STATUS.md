@@ -2,7 +2,7 @@
 
 ## 현재 판정
 
-2026-07-31 콘텐츠 시스템·조용한 정보 구조 기준의 공개본은 production 검증을 통과했다. 이후 추가한 모바일 native-scroll 다이얼 보정과 `FIELD_00` 캘리브레이션 토이는 **로컬 production build·브라우저 검증 통과, 아직 production 미배포** 상태다. 현재 `sgyun.kr`에 연결된 최신 production 배포는 `dpl_2YanXhVuMpf8MDwFkm499KeVsDco`다.
+2026-07-31 콘텐츠 시스템·조용한 정보 구조, `FIELD_00` 캘리브레이션 토이는 production 검증을 통과했다. 현재 `sgyun.kr`에 연결된 production 배포는 `dpl_4isFrY1g7TAk4JoT1TeUrJbtz3LD` / commit `ac56d92`다. 이후 추가한 전역 저이득 page scrub·조작 중 확대·최초 1회 다이얼 가이드는 **로컬 production build·브라우저 검증 통과, 아직 production 미배포** 상태다.
 
 ## 구현된 범위
 
@@ -18,7 +18,8 @@
 - 12시 축의 가는 datum과 동일한 graphite face anatomy를 공유하는 소형 rotary latch family
 - reduced-motion, 키보드 slider, archive dialog
 - 홈의 장식 문구·중복 상태·카운트를 덜어낸 quiet portfolio hierarchy
-- 다이얼 전체 hit area, 모바일 native vertical pan, 마우스·펜 직접 scrub, release 시 단일 settle
+- 다이얼 visible half hit area, 모바일·데스크톱 저이득 page scrub, 일반 스크롤 동기화, 조작 중 확대와 edge guard
+- 첫 다이얼 화면에서만 일반 스크롤·직접 drag를 설명하는 2단계 반투명 가이드와 브라우저별 1회 노출 저장
 - `03→08→05` detent를 맞추는 한·영 `FIELD_00` 캘리브레이션 토이와 touch·mouse·rail·키보드 대체 입력
 - 상세 Summary·Description·Process·Evidence의 읽기 폭·자간·행간·한국어 줄바꿈 규칙
 - 404·runtime error·미디어 실패 상태
@@ -42,7 +43,7 @@
 - VESA 공개 문구·이미지 순서·캡션의 사용자 최종 승인
 - V-CADO의 세부 기여 범위와 변동 가능한 수상 결과의 후속 근거
 - 실제 모바일 기기의 사운드 크기·햅틱 강도
-- 실제 iOS Safari·Android Chrome에서 다이얼 위 native pan과 `FIELD_00` scrub의 손가락 체감
+- 실제 iOS Safari·Android Chrome에서 전역 page scrub의 확대·저이득 이동·edge guard와 `FIELD_00` 숫자 scrub의 손가락 체감
 - 배포 환경의 LCP·CLS·INP와 캐시 정책
 - 운영 환경 Studio 비밀번호·세션 비밀·최소 권한 GitHub 토큰 설정과 실제 배포 동기화
 - 게시 이력 rollback·미리보기는 후속 기능
@@ -54,6 +55,9 @@
 - 전역 half dial의 5개 화면 폭 고정 위치, 페이지별 section rail, 홈 wheel `01→08→01`, Ledger `07/08`, 모바일 drag `01→03`, 키보드 `End→08` 동기화 통과
 - dialog keyboard trap·focus restore, wheel 정·역방향, dial drag, reduced motion, JavaScript-off, media failure, branded 404 통과
 - production build: 정적 페이지 29개
+- 전역 page scrub: 390px touch 120px drag에서 `scrollY 0→130`, About 포함 150px 표준 시나리오에서 `0→162`; 1440px mouse 120px drag에서 `0→139`. 조작 중 확대와 release/cancel 복구가 모두 동작했다.
+- 최초 방문 가이드: 첫 노출 `visible`, 저장값 `seen`, 같은 브라우저 reload 후 노출 0건. 320px에서 프로젝트 CTA와 교차 0px이며 404에서는 다이얼·가이드를 모두 숨겼다.
+- 회귀 감사: 5개 화면 폭 × 11개 경로 55개 렌더에서 HTTP 200, overflow 0, 깨진 이미지 0, console/page error 0. `FIELD_00`의 touch 숫자 scrub과 `LOCKED` 완료를 유지했다.
 - VESA 파일 순서 수정 뒤 느린 3G 로컬 합성: LCP 1.040s, CLS 0, 초기 전송 771KB. 첫 화면에는 최적화한 hero 1개만 요청되며 YouTube는 재생 전 요청 0건이다.
 
 ## 작업 경계

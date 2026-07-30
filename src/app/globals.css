@@ -57,6 +57,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html[data-vault-dial-scrubbing="true"] {
+  scroll-behavior: auto !important;
+}
+
 body {
   --font-display: var(--font-poppins);
   --font-mono: var(--font-geist-mono);

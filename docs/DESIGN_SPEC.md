@@ -68,7 +68,10 @@
 
 - 다이얼 face는 실제 스크롤·drag 진행률을 소수 cursor로 연속 추종한다. rail 강조·번호·라쳇·햅틱은 cursor가 정수 사이의 중간 detent를 통과할 때만 변경한다. 홈과 직접 drag는 손을 놓으면 가장 가까운 정수 detent로 160–340ms 안에 정렬하고, 긴 편집 페이지의 일반 스크롤은 독자의 읽기 위치를 강제로 snap하지 않는다.
 - 홈 다이얼은 문서 전체의 스크롤 진행과 01–06 프로젝트·07 Practice·08 Profile 인덱스를 연결한다. 내부 페이지 다이얼은 section anchor 사이의 실제 scroll progress를 보간해 face를 연속 회전시키고, rail 선택·키보드 입력은 해당 anchor로 이동한다. drag 중에는 `auto`로 즉시 추종하고 release에서만 가까운 section으로 smooth settle한다.
-- 모바일의 홈·내부 페이지 다이얼은 `touch-action: pan-y pinch-zoom`을 사용한다. touch pointer를 capture하거나 매 move마다 `scrollTo`를 호출하지 않고 native vertical scroll이 먼저 동작하며, 다이얼은 passive scroll sync로 따라간다. mouse·pen drag와 rail·키보드 조작은 기존 직접 scrub을 유지한다.
+- 홈·내부 페이지의 visible half dial에는 전용 `page-scroll` 입력 모드를 사용한다. pointer down에서 face를 데스크톱 4.5%, 모바일 8% 확대하고, 12px 세로 의도 임계값 이후 touch는 `1.08×`, mouse·pen은 `1.16×`의 저이득으로 문서 scrollY를 직접 갱신한다. drag 중에만 document smooth scroll을 해제하고 release·cancel·capture loss에서 즉시 복구한다.
+- page-scroll hit zone은 보이는 half dial 안쪽으로 제한한다. 모바일은 상하 10%, 화면 오른쪽 끝 12px를 비활성 안전띠로 남기며, 데스크톱·태블릿도 10px edge guard를 유지한다. rail·keyboard는 같은 section anchor를 사용하되 page drag release에서 강제 section snap은 만들지 않는다.
+- 다이얼 밖의 일반 touch scroll·wheel·trackpad 입력은 passive scroll sync로 face의 소수 cursor를 계속 갱신한다.
+- 최초 방문 가이드는 dial 왼쪽 또는 모바일 하단 안전영역에 배치한 72–78% 불투명 graphite panel이다. 한 번에 한 문장만 보여 주고 `01/02 → 02/02`로 전환하며 5초 안에 사라진다. 모바일에서 작품명·CTA를 덮지 않고, reduced motion에서는 이동 애니메이션을 제거한다.
 - 화면 오른쪽 반원 배치는 비율 기반 `translate(50%)`로 유지하며, 진입 모션이 해당 x축 transform을 픽셀값으로 덮어쓰지 않게 한다.
 - 콘텐츠 전환은 opacity, translate, 짧은 scale로 제한한다.
 - Vault CTA는 hover/focus에서 rotary latch가 짧게 회전하고 datum rail이 발광 없이 확장된다. 반응은 180–320ms 안에 끝나며 전체 버튼은 눌릴 때만 0.985 scale로 압축한다.
@@ -125,6 +128,13 @@
 - 목표 숫자는 한 번에 하나씩 분명히 표시한다. 사용자는 다이얼을 돌린 뒤 손을 놓거나 숫자 rail을 선택해 detent를 확정한다.
 - 틀린 값은 진행을 잃게 하지 않고 현재 목표를 유지한다. 세 값을 모두 맞추면 400–600ms의 짧은 lock sequence와 `CALIBRATED` 상태를 보여 준다.
 - touch 전용 페이지이므로 다이얼만 `touch-action: none`인 scrub mode를 사용한다. 방향키·Home·End·rail button을 완전한 대체 입력으로 제공하고 reduced motion에서는 lock sequence를 즉시 축약한다.
+
+## VAULT_01 aperture
+
+- 전역 다이얼 scrim은 `50% 50%` 중심의 원형 gradient다. 외곽은 다이얼 반지름 약 1.2배 안에서 투명해져 밝은 surface에 직사각형 또는 타원 경계가 남지 않는다.
+- `VAULT_01`은 Calibration의 graphite 계기판 문법을 재사용하되 중앙 장면을 동심원 door, 8개 shutter blade, 내부 aperture의 세 깊이로 구성한다.
+- 3단 register는 숫자·방향·상태만 표시한다. 성공 시 shutter가 회전·확대하며 사라지고 내부 aperture가 나타난다. 실패는 짧은 displacement와 상태 문구로만 알린다.
+- 모바일은 오른쪽 다이얼을 위한 108px 안전 열을 유지하고 중앙 door를 300px 이하로 축소한다. `prefers-reduced-motion: reduce`에서는 aperture transition을 제거한다.
 
 ## 콘텐츠 상태와 실패 상태
 

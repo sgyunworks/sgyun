@@ -219,6 +219,39 @@
   min-width: 70px;
 }
 
+.completeActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.completeActions a {
+  position: relative;
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: #f5f5f1;
+  text-decoration: none;
+}
+
+.completeActions a::after {
+  position: absolute;
+  right: 0;
+  bottom: 9px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0.26);
+  transform-origin: left;
+  transition: transform 320ms var(--ease-fluid);
+}
+
+.completeActions a:hover::after,
+.completeActions a:focus-visible::after {
+  transform: scaleX(1);
+}
+
 .stepper {
   display: grid;
   grid-template-columns: 44px 54px 44px;
@@ -342,6 +375,10 @@
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-right: 0;
     border-left: 0;
+  }
+
+  .completeActions {
+    gap: 12px;
   }
 
   .dial {

@@ -32,13 +32,14 @@ function getRouteItems(pathname: string, locale: Locale): RouteDialItem[] {
     const project = archiveProjects.find(
       (item) => pathname === `${root}/works/${item.slug}`
     );
+    if (!project) return [];
     const detailItems: Array<Omit<RouteDialItem, "number">> = [
       { id: "project-overview", label: "OVERVIEW", target: "project-overview" },
       { id: "project-premise", label: "PREMISE", target: "project-premise" },
       { id: "project-process", label: "PROCESS", target: "project-process" },
       { id: "project-next", label: "NEXT", target: "project-next" },
     ];
-    if (project?.evidence) {
+    if (project.evidence) {
       detailItems.splice(3, 0, {
         id: "project-evidence",
         label: "EVIDENCE",
@@ -223,6 +224,7 @@ export function RouteVaultDial({ locale }: { locale: Locale }) {
         scrollToCursor(index, "auto");
       }}
       onScrubEnd={(index) => select(Math.round(index))}
+      touchMode="page-scroll"
       visualIndex={visualIndex}
       variant="page"
     />

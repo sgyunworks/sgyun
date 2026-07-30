@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { VaultTransition } from "@/components/VaultTransition";
 import { DocumentLanguage } from "@/components/DocumentLanguage";
 import { RouteVaultDial } from "@/components/RouteVaultDial";
+import { DialGuide } from "@/components/DialGuide";
 import { siteConfig } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -59,6 +60,7 @@ export default async function LangLayout({
       <Nav locale={validLang} t={t} />
       <VaultTransition />
       <RouteVaultDial locale={validLang} />
+      <DialGuide locale={validLang} />
       <main className={validLang === "ko" ? "body-text" : ""}>{children}</main>
       <Footer t={t} />
     </div>

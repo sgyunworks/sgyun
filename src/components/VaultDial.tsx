@@ -6,6 +6,7 @@ import {
   useCallback,
   useEffect,
   useRef,
+  useState,
 } from "react";
 import styles from "./VaultDial.module.css";
 
@@ -15,6 +16,9 @@ const PAGE_DIAL_ARC = 72;
 const PAGE_DIAL_STEP_MAX = 30;
 const DRAG_PX_PER_STEP_MOUSE = 170;
 const DRAG_PX_PER_STEP_TOUCH = 300;
+const PAGE_SCROLL_GAIN_MOUSE = 1.16;
+const PAGE_SCROLL_GAIN_TOUCH = 1.08;
+const PAGE_SCROLL_INTENT_PX = 12;
 
 type DialStyle = CSSProperties & {
   "--vault-dial-angle": string;
@@ -49,7 +53,7 @@ type VaultDialProps = {
   onSelect: (index: number) => void;
   sound?: boolean;
   stepDegrees?: number;
-  touchMode?: "native-scroll" | "scrub";
+  touchMode?: "native-scroll" | "page-scroll" | "scrub";
   touchPixelsPerStep?: number;
   visualAngle?: string;
   visualIndex?: number;
@@ -88,11 +92,14 @@ export function VaultDial({
     Math.round((visualIndex ?? activeIndex) * 4)
   );
   const lastSettledHapticRef = useRef(activeIndex);
+  const [isInteracting, setIsInteracting] = useState(false);
   const dragRef = useRef<{
+    activated: boolean;
     currentIndex: number;
     pointerId: number;
     pointerType: string;
     startIndex: number;
+    startScrollY: number;
     startY: number;
   } | null>(null);
 
@@ -157,7 +164,7 @@ export function VaultDial({
 
   useEffect(() => {
     if (
-      touchMode !== "native-scroll" ||
+      touchMode === "scrub" ||
       !audioArmedRef.current ||
       lastSettledHapticRef.current === activeIndex
     ) {
@@ -192,6 +199,7 @@ export function VaultDial({
 
   useEffect(
     () => () => {
+      delete document.documentElement.dataset.vaultDialScrubbing;
       const context = audioContextRef.current;
       if (context && context.state !== "closed") void context.close();
     },
@@ -205,6 +213,9 @@ export function VaultDial({
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     armAudio();
+    if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) {
+      return;
+    }
     if (event.pointerType === "touch" && touchMode === "native-scroll") {
       return;
     }
@@ -212,12 +223,18 @@ export function VaultDial({
       getScrubStartIndex?.() ?? visualIndex ?? activeIndex
     );
     dragRef.current = {
+      activated: touchMode !== "page-scroll",
       currentIndex: startIndex,
       pointerId: event.pointerId,
       pointerType: event.pointerType,
       startIndex,
+      startScrollY: window.scrollY,
       startY: event.clientY,
     };
+    if (touchMode === "page-scroll") {
+      document.documentElement.dataset.vaultDialScrubbing = "true";
+    }
+    setIsInteracting(true);
     lastHapticStepRef.current = Math.round(startIndex * 4);
     event.currentTarget.setPointerCapture(event.pointerId);
   };
@@ -225,6 +242,21 @@ export function VaultDial({
   const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
     const drag = dragRef.current;
     if (!drag || drag.pointerId !== event.pointerId) return;
+    if (touchMode === "page-scroll") {
+      const deltaY = drag.startY - event.clientY;
+      if (!drag.activated && Math.abs(deltaY) < PAGE_SCROLL_INTENT_PX) return;
+      drag.activated = true;
+      if (event.cancelable) event.preventDefault();
+      const gain =
+        drag.pointerType === "touch"
+          ? PAGE_SCROLL_GAIN_TOUCH
+          : PAGE_SCROLL_GAIN_MOUSE;
+      window.scrollTo({
+        top: Math.max(0, drag.startScrollY + deltaY * gain),
+        behavior: "auto",
+      });
+      return;
+    }
     const pixelsPerStep =
       drag.pointerType === "mouse"
         ? mousePixelsPerStep
@@ -248,11 +280,21 @@ export function VaultDial({
     const drag = dragRef.current;
     if (drag?.pointerId !== event.pointerId) return;
     dragRef.current = null;
+    delete document.documentElement.dataset.vaultDialScrubbing;
+    setIsInteracting(false);
     if (typeof navigator.vibrate === "function") navigator.vibrate(0);
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId);
     }
-    onScrubEnd?.(drag.currentIndex);
+    if (touchMode !== "page-scroll") onScrubEnd?.(drag.currentIndex);
+  };
+
+  const losePointer = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (dragRef.current?.pointerId !== event.pointerId) return;
+    dragRef.current = null;
+    delete document.documentElement.dataset.vaultDialScrubbing;
+    setIsInteracting(false);
+    if (typeof navigator.vibrate === "function") navigator.vibrate(0);
   };
 
   const activeItem = items[activeIndex] ?? items[0];
@@ -272,6 +314,7 @@ export function VaultDial({
     <aside
       className={`${styles.shell} ${styles[variant]}${className ? ` ${className}` : ""}`}
       data-vault-dial={variant}
+      data-interacting={isInteracting ? "true" : "false"}
       style={
         {
           "--vault-dial-angle": resolvedVisualAngle,
@@ -312,6 +355,7 @@ export function VaultDial({
         onPointerMove={onPointerMove}
         onPointerUp={endPointer}
         onPointerCancel={endPointer}
+        onLostPointerCapture={losePointer}
         onKeyDown={(event) => {
           armAudio();
           if (["ArrowDown", "ArrowRight", "PageDown"].includes(event.key)) {

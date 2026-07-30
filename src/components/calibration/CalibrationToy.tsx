@@ -1,12 +1,14 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import Link from "next/link";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { VaultDial } from "@/components/VaultDial";
 import type { Locale } from "@/lib/i18n";
 import styles from "./CalibrationToy.module.css";
 
 const TARGETS = [2, 7, 4] as const;
 const POSITION_COUNT = 10;
+const CALIBRATION_STORAGE_KEY = "sgyun:field-calibrated:v1";
 
 function clampPosition(value: number) {
   return Math.min(POSITION_COUNT - 1, Math.max(0, value));
@@ -27,6 +29,15 @@ export function CalibrationToy({ locale }: { locale: Locale }) {
   const [stage, setStage] = useState(0);
   const [attempt, setAttempt] = useState(0);
   const complete = stage >= TARGETS.length;
+
+  useEffect(() => {
+    if (!complete) return;
+    try {
+      window.localStorage.setItem(CALIBRATION_STORAGE_KEY, "unlocked");
+    } catch {
+      // Storage can be blocked; the in-session link still remains available.
+    }
+  }, [complete]);
 
   const scrub = useCallback((value: number) => {
     const clamped = clampPosition(value);
@@ -150,9 +161,12 @@ export function CalibrationToy({ locale }: { locale: Locale }) {
             </button>
           </div>
           {complete ? (
-            <button type="button" onClick={reset}>
-              RESET
-            </button>
+            <div className={styles.completeActions}>
+              <Link href={`/${locale}/vault`}>OPEN VAULT</Link>
+              <button type="button" onClick={reset}>
+                RESET
+              </button>
+            </div>
           ) : (
             <span key={attempt}>ATTEMPT&nbsp;&nbsp;{String(attempt + 1).padStart(2, "0")}</span>
           )}

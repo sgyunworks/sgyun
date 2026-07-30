@@ -7,7 +7,12 @@
   aspect-ratio: 1;
   filter: drop-shadow(0 34px 54px rgba(0, 0, 0, 0.48));
   pointer-events: none;
+  scale: 1;
   transform: translate(52%, -50%);
+  transform-origin: right center;
+  transition:
+    scale 190ms cubic-bezier(0.2, 0.75, 0.2, 1),
+    filter 190ms var(--ease-standard);
 }
 
 .archive {
@@ -20,7 +25,25 @@
   width: clamp(260px, 20.5vw, 314px);
   opacity: 0.9;
   transform: translate(57%, -50%);
-  transition: opacity 420ms var(--ease-fluid);
+  transition:
+    opacity 420ms var(--ease-fluid),
+    scale 190ms cubic-bezier(0.2, 0.75, 0.2, 1),
+    filter 190ms var(--ease-standard);
+}
+
+.shell[data-interacting="true"] {
+  z-index: 36;
+  filter: drop-shadow(0 38px 64px rgba(0, 0, 0, 0.56));
+  scale: 1.045;
+}
+
+.shell[data-interacting="true"] .control {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    inset 0 0 0 8px rgba(6, 7, 9, 0.74),
+    inset 0 0 0 9px rgba(255, 255, 255, 0.064),
+    0 0 0 1px #030405,
+    0 22px 64px rgba(0, 0, 0, 0.68);
 }
 
 .page .rail {
@@ -35,21 +58,22 @@
 
 .scrim {
   position: absolute;
-  inset: -38% -10% -38% -78%;
+  inset: -20%;
   z-index: -1;
+  border-radius: 50%;
   background: radial-gradient(
-    ellipse at 88% 50%,
-    rgba(8, 9, 11, 0.94) 0 24%,
-    rgba(8, 9, 11, 0.74) 43%,
-    rgba(8, 9, 11, 0.18) 67%,
-    transparent 79%
+    circle at 50% 50%,
+    rgba(8, 9, 11, 0.42) 0 34%,
+    rgba(8, 9, 11, 0.2) 45%,
+    rgba(8, 9, 11, 0.065) 57%,
+    transparent 70%
   );
-  opacity: 0.08;
+  opacity: 0.18;
   pointer-events: none;
 }
 
 .archive .scrim {
-  opacity: 0.04;
+  opacity: 0.1;
 }
 
 .rail {
@@ -143,6 +167,11 @@
 }
 
 .controlHitArea[data-touch-mode="scrub"] {
+  touch-action: none;
+}
+
+.controlHitArea[data-touch-mode="page-scroll"] {
+  clip-path: inset(7% calc(57% + 10px) 7% 0 round 999px 0 0 999px);
   touch-action: none;
 }
 
@@ -275,6 +304,10 @@
     transform: translate(58%, -50%);
   }
 
+  .controlHitArea[data-touch-mode="page-scroll"] {
+    clip-path: inset(7% calc(58% + 10px) 7% 0 round 999px 0 0 999px);
+  }
+
   .rail {
     right: calc(100% - 5px);
     width: 110px;
@@ -299,13 +332,21 @@
     transform: translate(68%, -50%);
   }
 
+  .shell[data-interacting="true"] {
+    scale: 1.08;
+  }
+
+  .controlHitArea[data-touch-mode="page-scroll"] {
+    clip-path: inset(10% calc(68% + 12px) 10% 0 round 999px 0 0 999px);
+  }
+
   .scrim {
-    inset: -42% -8% -42% -46%;
-    opacity: 0.06;
+    inset: -18%;
+    opacity: 0.14;
   }
 
   .archive .scrim {
-    opacity: 0.03;
+    opacity: 0.08;
   }
 
   .rail {
@@ -376,6 +417,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .shell,
   .page,
   .rail button,
   .rail button::after {

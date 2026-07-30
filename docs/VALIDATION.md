@@ -187,3 +187,27 @@ ESLint는 아직 구성하지 않았다. 실행 불가능했던 `next lint` 스�
 - [x] reduced motion에서는 scan animation이 제거되고 slider의 rail·방향키·Home·End 조작이 유지된다.
 - [x] 전체 회귀 감사 55개 렌더와 `npm run typecheck`, `npm run build`, `git diff --check`가 통과했다.
 - 원시 결과와 초기 캡처: `qa/critical-audit/mobile-dial-field00/`. 최종 optical correction 캡처: `/tmp/sgyun-calibration-desktop.png`, `/tmp/sgyun-calibration-mobile.png`, `/tmp/sgyun-calibration-compact.png`.
+
+## Direct page scrub and first-visit guide — 2026-07-31
+
+- [x] 홈과 내부 페이지 slider의 computed `touch-action`은 `none`인 전용 `page-scroll` mode이며, Calibration은 기존 숫자 `scrub` mode를 유지한다. 두 모드는 같은 pointer capture를 쓰지만 전역은 문서 pixel, Calibration은 detent index를 갱신한다.
+- [x] 390×844 CDP touch에서 12px 전에는 문서가 움직이지 않고, 120px upward drag는 `scrollY 0→130`, 150px 표준 감사에서는 홈·About 모두 `0→162`로 이동했다. 이전 section 직접 변환식처럼 큰 거리를 건너뛰지 않는다.
+- [x] 1440×900 mouse 120px upward drag는 About `scrollY 0→139`로 이동했다. drag 중 `html[data-vault-dial-scrubbing=true]`가 smooth scroll을 끄고 release 뒤 속성이 제거됐다.
+- [x] pointer down에서 `data-interacting=true`, 모바일 computed scale 약 `1.07`(190ms 전환 중간값), release 뒤 `false`로 복구됐다. 390·320px document horizontal overflow는 0이다.
+- [x] 다이얼 밖 일반 `window.scrollTo(720)`에서도 홈 slider 값이 `01→02`로 바뀌어 passive scroll sync가 유지됐다.
+- [x] 최초 방문 가이드는 700ms 뒤 표시되고 `SCROLL_01→DRAG_02`로 전환한다. 노출 즉시 `sgyun:vault-dial-guide:v1=seen`을 기록하며 같은 브라우저 reload 뒤 DOM 노출은 0건이다.
+- [x] 320×720에서 모바일 가이드를 94px 높이의 하단 safe panel로 축약해 `프로젝트 열기` CTA와 수직 교차가 0px이다. Calibration과 존재하지 않는 상세 404에서는 가이드·전역 dial을 만들지 않는다.
+- [x] 5개 화면 폭 × 11개 경로 55개 렌더에서 HTTP 200, horizontal overflow 0, 깨진 이미지 0, console/page error 0을 유지했다. Calibration의 touch drag `01→03`, 대체 입력 `03→08→05`, `LOCKED` 완료가 통과했다.
+- [x] `npm run typecheck`, `npm run build`, `node --check scripts/critical-audit.cjs`, `git diff --check`가 통과했고 정적 페이지 29개를 생성했다.
+- 원시 회귀 결과와 캡처: `qa/critical-audit/dial-guide-page-scrub/`. 최종 320px 광학 보정 캡처: `/tmp/sgyun-dial-guide-320-v4.png`.
+
+## Concentric scrim and VAULT_01 — 2026-07-31
+
+- [x] 884×863 Works와 About을 같은 상태로 비교해 다이얼 배경이 원형 중심과 같은 radial falloff로 표시되고 넓은 타원 경계가 사라지는 것을 확인했다.
+- [x] Calibration 완료 시 `sgyun:field-calibrated:v1=unlocked`가 저장되고 `OPEN VAULT`가 `/ko/vault`로 연결된다.
+- [x] 저장값 없이 `/ko/vault`에 접근하면 `FIELD NOT CALIBRATED`가 표시되고 최초 방문 다이얼 가이드는 생성되지 않는다.
+- [x] `− / SET / +`로 `07 UP → 02 DOWN → 09 UP`을 입력해 `data-vault-open=true`, stage 3, archive 복귀 링크를 확인했다.
+- [x] 1440·1024·720·390·320px × 12개 경로, 총 60개 production 렌더에서 HTTP 200, horizontal overflow 0, 깨진 이미지 0, console/page error 0, actionable request failure 0이다.
+- [x] 390×844 Vault의 horizontal overflow 0과 reduced-motion 적용을 확인했다.
+- [x] `npm run typecheck`, `npm run build`, `node --check scripts/critical-audit.cjs`, `git diff --check`가 통과했고 31개 정적 페이지를 생성했다.
+- 원시 결과: `qa/critical-audit/vault-easter-egg-v2/report.json`. 비교 캡처: `/tmp/sgyun-works-concentric.png`, `/tmp/sgyun-vault-ready.png`, `/tmp/sgyun-vault-open.png`, `/tmp/sgyun-vault-mobile.png`.
