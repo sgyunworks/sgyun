@@ -2,7 +2,7 @@
 
 ## 현재 판정
 
-2026-07-30 콘텐츠 시스템·조용한 정보 구조·다이얼 조작성 개편 기준으로 1차 대표작 구조와 소유자 게시 흐름은 **구현·로컬 검증 통과**다. 이번 변경은 커밋·푸시 후 production 배포를 진행한다.
+2026-07-30 콘텐츠 시스템·조용한 정보 구조·다이얼 조작성 개편 기준으로 1차 대표작 구조와 소유자 게시 흐름은 **구현·로컬 및 production 검증 통과**다. production 배포는 `dpl_AZd3jN3aR28118HXbvHBYDJYtvCi`로 완료했다.
 
 ## 구현된 범위
 
@@ -56,7 +56,7 @@
 
 ## 작업 경계
 
-이번 변경은 사용자의 요청에 따라 재검증 후 커밋·푸시·production 배포한다.
+이번 변경은 사용자의 요청에 따라 재검증 후 커밋·푸시·production 배포를 완료했다.
 
 ## Quiet portfolio and dial interaction pass — 2026-07-30
 
@@ -67,6 +67,8 @@
 - [x] 상세 본문에 reading type token, 45–75자 수준의 읽기 폭, 1.7/1.78 행간, 한국어 keep-all과 완화된 tracking을 적용했다.
 - [x] 1440·390px 홈/상세에서 HTTP 200, overflow 0, console/page error 0과 다이얼 drag 반응을 확인했다.
 - [x] `npm run typecheck`, `npm run build`, `git diff --check`를 통과했다.
+- [x] `https://sgyun.kr/ko`와 The Aviator 상세가 200, overflow 0, 이미지 오류 0으로 응답하는 것을 1440·390px에서 확인했다. RecoPick은 공개 보류에 따라 404로 확인했다.
+- [x] Vercel production deployment가 Ready 상태이며 `https://sgyun.kr` alias가 연결됐다. 최근 1시간 error log는 없었다.
 
 ## VESA detail copy and hierarchy pass — 2026-07-30
 

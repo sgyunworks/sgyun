@@ -13,11 +13,10 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 
 ## 이후 개발 단계
 
-1. 이번 quiet portfolio·dial interaction pass를 커밋·푸시하고 `https://sgyun.kr` production 응답을 확인한다.
+1. 실제 기기에서 배포된 다이얼의 라쳇 음량과 vibration 지원 여부·강도를 브라우저별로 검증한다.
 2. Studio에 상세 미디어 배열 편집, 게시 전 미리보기와 Git 이력 기반 rollback 안내를 추가한다.
-3. 실제 장치에서 라쳇 음량과 vibration 지원 여부·강도를 브라우저별로 검증한다.
-4. 최종 이미지 등록 뒤 배포 preview에서 Web Vitals와 이미지 캐시를 측정한다.
-5. Next.js·Sharp·PostCSS 보안 공지와 호환 가능한 업그레이드 경로를 검토한 뒤 dependency upgrade를 별도 변경으로 수행한다.
+3. 최종 이미지 등록 뒤 배포 preview에서 Web Vitals와 이미지 캐시를 측정한다.
+4. Next.js·Sharp·PostCSS 보안 공지와 호환 가능한 업그레이드 경로를 검토한 뒤 dependency upgrade를 별도 변경으로 수행한다.
 
 ## 지금 하지 않는 것
 
