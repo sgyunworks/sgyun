@@ -16,8 +16,8 @@ type DialStyle = CSSProperties & {
 };
 
 const routeLabels = {
-  ko: ["홈", "작품", "소개", "연락", "어펜딕스"],
-  en: ["Home", "Works", "About", "Contact", "Appendix"],
+  ko: ["홈", "작품", "소개", "연락", "어펜딕스", "캘리브레이션"],
+  en: ["Home", "Works", "About", "Contact", "Appendix", "Calibration"],
 } as const;
 
 export function RouteDial({ locale }: { locale: Locale }) {
@@ -33,19 +33,27 @@ export function RouteDial({ locale }: { locale: Locale }) {
       { href: `/${locale}/about`, code: "PROFILE", label: routeLabels[locale][2] },
       { href: `/${locale}/contact`, code: "CONTACT", label: routeLabels[locale][3] },
       { href: `/${locale}/appendix`, code: "APPENDIX", label: routeLabels[locale][4] },
+      {
+        href: `/${locale}/calibration`,
+        code: "FIELD_00",
+        label: routeLabels[locale][5],
+        easter: true,
+      },
     ],
     [locale]
   );
 
-  const activeIndex = pathname.startsWith(`/${locale}/works`)
-    ? 1
-    : pathname.startsWith(`/${locale}/about`)
-      ? 2
-      : pathname.startsWith(`/${locale}/contact`)
-        ? 3
-        : pathname.startsWith(`/${locale}/appendix`)
-          ? 4
-          : 0;
+  const activeIndex = pathname.startsWith(`/${locale}/calibration`)
+    ? 5
+    : pathname.startsWith(`/${locale}/works`)
+      ? 1
+      : pathname.startsWith(`/${locale}/about`)
+        ? 2
+        : pathname.startsWith(`/${locale}/contact`)
+          ? 3
+          : pathname.startsWith(`/${locale}/appendix`)
+            ? 4
+            : 0;
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -81,7 +89,7 @@ export function RouteDial({ locale }: { locale: Locale }) {
     <div
       ref={shellRef}
       className="route-dial"
-      style={{ "--route-angle": `${activeIndex * 58}deg` } as DialStyle}
+      style={{ "--route-angle": `${activeIndex === 5 ? 332 : activeIndex * 58}deg` } as DialStyle}
     >
       <button
         ref={triggerRef}
@@ -113,7 +121,7 @@ export function RouteDial({ locale }: { locale: Locale }) {
         >
           <header>
             <span>ROUTE DIAL</span>
-            <b>{String(activeIndex + 1).padStart(2, "0")} / 05</b>
+            <b>{activeIndex === 5 ? "00 / 05" : `${String(activeIndex + 1).padStart(2, "0")} / 05`}</b>
           </header>
           <nav className="route-dial__routes">
             {routes.map((route, index) => (
@@ -121,8 +129,9 @@ export function RouteDial({ locale }: { locale: Locale }) {
                 href={route.href}
                 key={route.code}
                 aria-current={index === activeIndex ? "page" : undefined}
+                data-easter={route.easter ? "true" : undefined}
               >
-                <small>{String(index + 1).padStart(2, "0")}</small>
+                <small>{route.easter ? "00" : String(index + 1).padStart(2, "0")}</small>
                 <span>{route.label}</span>
                 <b>{route.code}</b>
               </Link>

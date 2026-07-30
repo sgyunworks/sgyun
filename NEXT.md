@@ -13,7 +13,7 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 
 ## 이후 개발 단계
 
-1. 실제 기기에서 배포된 다이얼의 라쳇 음량과 vibration 지원 여부·강도를 브라우저별로 검증한다.
+1. 실제 iOS Safari·Android Chrome에서 배포된 다이얼의 native pan, `FIELD_00` scrub, 라쳇 음량과 vibration 지원 여부·강도를 브라우저별로 검증한다.
 2. Studio에 상세 미디어 배열 편집, 게시 전 미리보기와 Git 이력 기반 rollback 안내를 추가한다.
 3. 최종 이미지 등록 뒤 배포 preview에서 Web Vitals와 이미지 캐시를 측정한다.
 4. Next.js·Sharp·PostCSS 보안 공지와 호환 가능한 업그레이드 경로를 검토한 뒤 dependency upgrade를 별도 변경으로 수행한다.
@@ -27,4 +27,4 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 
 - Appendix에 보류 작업을 임의로 채우지 않는다.
 - 사용자 근거 없이 수상·성과·역할을 작성하지 않는다.
-- 랜딩 다이얼 비밀번호 이스터에그는 기본 게시 흐름이 운영 환경에서 검증되기 전까지 구현하지 않는다.
+- Studio 인증을 랜딩 다이얼 비밀번호와 결합하지 않는다. `FIELD_00`은 게시 권한과 분리된 인터랙션 토이로만 유지한다.

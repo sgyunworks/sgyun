@@ -2,12 +2,12 @@
 
 ## 현재 판정
 
-2026-07-31 콘텐츠 시스템·조용한 정보 구조·다이얼 조작성 개편 기준으로 1차 대표작 구조와 소유자 게시 흐름은 **구현·로컬 및 production 검증 통과**다. 최신 production 배포는 `dpl_2YanXhVuMpf8MDwFkm499KeVsDco`이며 `sgyun.kr`에 연결됐다.
+2026-07-31 콘텐츠 시스템·조용한 정보 구조 기준의 공개본은 production 검증을 통과했다. 이후 추가한 모바일 native-scroll 다이얼 보정과 `FIELD_00` 캘리브레이션 토이는 **로컬 production build·브라우저 검증 통과, 아직 production 미배포** 상태다. 현재 `sgyun.kr`에 연결된 최신 production 배포는 `dpl_2YanXhVuMpf8MDwFkm499KeVsDco`다.
 
 ## 구현된 범위
 
 - 한국어·영어 홈, 작품 인덱스, 작품 상세, About, Contact, 빈 Appendix
-- Home·Works·About·Contact·Appendix를 여는 상단 route dial
+- Home·Works·About·Contact·Appendix와 선택적 `FIELD_00`을 여는 상단 route dial
 - 홈 전체와 Works·상세·About·Contact·Appendix에서 지속되는 오른쪽 half dial
 - 페이지별 실제 섹션 인덱스와 스크롤·drag·키보드를 양방향 동기화하는 공통 Vault Dial
 - 소수 scroll cursor로 연속 회전하고 정수 detent에서만 rail·번호·라쳇을 갱신하는 dial motion
@@ -18,7 +18,8 @@
 - 12시 축의 가는 datum과 동일한 graphite face anatomy를 공유하는 소형 rotary latch family
 - reduced-motion, 키보드 slider, archive dialog
 - 홈의 장식 문구·중복 상태·카운트를 덜어낸 quiet portfolio hierarchy
-- 다이얼 전체 hit area, 마우스·터치 감도 분리, 직접 드래그 시 자동 snap 제거
+- 다이얼 전체 hit area, 모바일 native vertical pan, 마우스·펜 직접 scrub, release 시 단일 settle
+- `03→08→05` detent를 맞추는 한·영 `FIELD_00` 캘리브레이션 토이와 touch·mouse·rail·키보드 대체 입력
 - 상세 Summary·Description·Process·Evidence의 읽기 폭·자간·행간·한국어 줄바꿈 규칙
 - 404·runtime error·미디어 실패 상태
 - locale별 canonical, 상세 Open Graph 메타데이터, 공통 Open Graph 이미지
@@ -41,6 +42,7 @@
 - VESA 공개 문구·이미지 순서·캡션의 사용자 최종 승인
 - V-CADO의 세부 기여 범위와 변동 가능한 수상 결과의 후속 근거
 - 실제 모바일 기기의 사운드 크기·햅틱 강도
+- 실제 iOS Safari·Android Chrome에서 다이얼 위 native pan과 `FIELD_00` scrub의 손가락 체감
 - 배포 환경의 LCP·CLS·INP와 캐시 정책
 - 운영 환경 Studio 비밀번호·세션 비밀·최소 권한 GitHub 토큰 설정과 실제 배포 동기화
 - 게시 이력 rollback·미리보기는 후속 기능
@@ -73,6 +75,16 @@
 - [x] 프로필 요약을 `제품·웹·앱을 설계하고 구현합니다.` / `I design and build products, websites, and apps.`로 낮춰 작업보다 자기서사가 앞서지 않게 했다.
 - [x] 20개 개인 포트폴리오의 카피 구조를 조사하고 `docs/RESEARCH.md`에 출처·관찰·적용 원칙을 기록했다.
 - [ ] production 재배포 후 About과 홈 Profile의 긴 문장·줄바꿈·다이얼 안전 열을 1440px·390px에서 재승인한다.
+
+## Mobile dial native pan and FIELD_00 — 2026-07-31
+
+- [x] 홈·내부 페이지의 touch pointer capture와 move별 `window.scrollTo`를 제거하고 `touch-action: pan-y pinch-zoom`으로 native scroll을 우선했다.
+- [x] CDP 실제 touch sequence를 오른쪽 다이얼에 보낸 결과 390×844 홈은 `scrollY 0→265`, About은 `0→263`으로 이동했으며 브라우저 스크롤이 차단되지 않았다.
+- [x] `/ko/calibration`, `/en/calibration`에 공통 Vault Dial anatomy를 사용하는 `FIELD_00` 토이를 추가했다. 일반 페이지와 달리 이 장면만 `touch-action: none` scrub을 사용한다.
+- [x] 모바일 touch drag는 페이지를 움직이지 않고 slider `01→03`으로 변했으며, `03→08→05` 완료 뒤 `LOCKED` 상태에 도달했다. `− / SET / +`, rail과 키보드가 대체 입력으로 동작한다.
+- [x] 1440·1024·720·390·320px × 기존 경로와 새 Calibration 경로에서 HTTP 200, overflow 0, 깨진 이미지 0, console/page error 0을 확인했다. Calibration 제목 열 침범을 수정한 뒤 다섯 폭 모두 `h1Overflow 0`으로 재검증했다.
+- [x] reduced motion에서 field scan animation이 `none`이며 `npm run typecheck`, `npm run build`, `git diff --check`가 통과했다.
+- 검증 결과와 캡처: `qa/critical-audit/mobile-dial-field00/`, `/tmp/sgyun-calibration-*-locked.png`.
 
 ## Quiet portfolio and dial interaction pass — 2026-07-30
 

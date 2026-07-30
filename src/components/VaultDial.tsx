@@ -40,6 +40,7 @@ type VaultDialProps = {
   activeIndex: number;
   ariaLabel: string;
   className?: string;
+  mousePixelsPerStep?: number;
   items: VaultDialItem[];
   onEngage?: () => void;
   getScrubStartIndex?: () => number;
@@ -48,6 +49,8 @@ type VaultDialProps = {
   onSelect: (index: number) => void;
   sound?: boolean;
   stepDegrees?: number;
+  touchMode?: "native-scroll" | "scrub";
+  touchPixelsPerStep?: number;
   visualAngle?: string;
   visualIndex?: number;
   variant?: "archive" | "page";
@@ -63,12 +66,15 @@ export function VaultDial({
   className,
   getScrubStartIndex,
   items,
+  mousePixelsPerStep = DRAG_PX_PER_STEP_MOUSE,
   onEngage,
   onScrub,
   onScrubEnd,
   onSelect,
   sound = true,
   stepDegrees,
+  touchMode = "native-scroll",
+  touchPixelsPerStep = DRAG_PX_PER_STEP_TOUCH,
   visualAngle,
   visualIndex,
   variant = "page",
@@ -81,6 +87,7 @@ export function VaultDial({
   const lastHapticStepRef = useRef(
     Math.round((visualIndex ?? activeIndex) * 4)
   );
+  const lastSettledHapticRef = useRef(activeIndex);
   const dragRef = useRef<{
     currentIndex: number;
     pointerId: number;
@@ -149,6 +156,23 @@ export function VaultDial({
   }, [activeIndex, playRatchet, visualIndex]);
 
   useEffect(() => {
+    if (
+      touchMode !== "native-scroll" ||
+      !audioArmedRef.current ||
+      lastSettledHapticRef.current === activeIndex
+    ) {
+      return;
+    }
+    lastSettledHapticRef.current = activeIndex;
+    if (
+      typeof navigator.vibrate === "function" &&
+      navigator.maxTouchPoints > 0
+    ) {
+      navigator.vibrate(4);
+    }
+  }, [activeIndex, touchMode]);
+
+  useEffect(() => {
     const arm = () => armAudio();
     window.addEventListener("pointerdown", arm, { capture: true, once: true });
     window.addEventListener("keydown", arm, { capture: true, once: true });
@@ -181,6 +205,9 @@ export function VaultDial({
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     armAudio();
+    if (event.pointerType === "touch" && touchMode === "native-scroll") {
+      return;
+    }
     const startIndex = clampIndex(
       getScrubStartIndex?.() ?? visualIndex ?? activeIndex
     );
@@ -200,8 +227,8 @@ export function VaultDial({
     if (!drag || drag.pointerId !== event.pointerId) return;
     const pixelsPerStep =
       drag.pointerType === "mouse"
-        ? DRAG_PX_PER_STEP_MOUSE
-        : DRAG_PX_PER_STEP_TOUCH;
+        ? mousePixelsPerStep
+        : touchPixelsPerStep;
     const nextIndex = clampIndex(
       drag.startIndex + (drag.startY - event.clientY) / pixelsPerStep
     );
@@ -272,6 +299,7 @@ export function VaultDial({
 
       <div
         className={styles.controlHitArea}
+        data-touch-mode={touchMode}
         role="slider"
         tabIndex={0}
         aria-label={ariaLabel}
@@ -279,6 +307,7 @@ export function VaultDial({
         aria-valuemax={items.length}
         aria-valuenow={activeIndex + 1}
         aria-valuetext={activeItem?.label}
+        aria-orientation="vertical"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endPointer}

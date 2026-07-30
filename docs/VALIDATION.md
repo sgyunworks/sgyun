@@ -174,3 +174,16 @@ ESLint는 아직 구성하지 않았다. 실행 불가능했던 `next lint` 스�
 - [x] 재생 전 iframe `0`개를 확인하고, 재생 입력 후 `https://www.youtube-nocookie.com/embed/T-T_7QIveWY?autoplay=1&rel=0` iframe 1개가 생성되는 것을 확인했다.
 - [x] The Aviator 상세에 `EVIDENCE`가 생성되고, 이미지 기록·프로세스·실물 프로토타입·영상이 같은 다이얼 인덱스 문맥으로 연결된다.
 - [x] `jq empty src/content/portfolio.json`, `npm run typecheck`, `git diff --check`가 통과했다. production build는 다음 최종 검증에서 함께 수행한다.
+
+## Mobile dial native pan and FIELD_00 — 2026-07-31
+
+- [x] 일반 Vault Dial의 computed `touch-action`은 `pan-y pinch-zoom`, `FIELD_00` 전용 scrub dial은 `none`이다.
+- [x] 390×844 CDP touch sequence에서 홈 다이얼 위 upward pan은 `scrollY 0→265`, About은 `0→263`으로 이동했다. touch pointer는 capture되지 않고 move별 programmatic scroll을 호출하지 않는다.
+- [x] 같은 touch sequence에서 Calibration은 `scrollY 0→0`, slider `01→03`으로 바뀌어 페이지 pan과 toy scrub이 분리됐다.
+- [x] `− / SET / +` 대체 입력으로 `03→08→05`를 입력해 desktop·mobile 모두 `LOCKED` 완료 상태에 도달했다.
+- [x] route dial에 일반 목적지와 분리된 `00 / 캘리브레이션 / FIELD_00` 링크가 표시되고 `/ko/calibration`으로 연결된다.
+- [x] 제거된 About Identity anchor를 다이얼 목록에서도 삭제해 실제 `Profile→Education→Practice→Records→Contact` 다섯 섹션과 `01→05`가 다시 일치한다.
+- [x] 1440·1024·720·390·320px Calibration에서 horizontal overflow, 제목 열 overflow, key overlap, console/page error가 모두 0이다.
+- [x] reduced motion에서는 scan animation이 제거되고 slider의 rail·방향키·Home·End 조작이 유지된다.
+- [x] 전체 회귀 감사 55개 렌더와 `npm run typecheck`, `npm run build`, `git diff --check`가 통과했다.
+- 원시 결과와 초기 캡처: `qa/critical-audit/mobile-dial-field00/`. 최종 optical correction 캡처: `/tmp/sgyun-calibration-desktop.png`, `/tmp/sgyun-calibration-mobile.png`, `/tmp/sgyun-calibration-compact.png`.

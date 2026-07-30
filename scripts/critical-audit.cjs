@@ -25,6 +25,7 @@ const routes = [
   { name: "about", path: "/ko/about" },
   { name: "contact", path: "/ko/contact" },
   { name: "appendix", path: "/ko/appendix" },
+  { name: "calibration", path: "/ko/calibration" },
   { name: "home-en", path: "/en" },
 ];
 
@@ -640,6 +641,97 @@ async function inspectDialContinuity(browser) {
   return result;
 }
 
+async function dispatchVerticalTouch(context, page, element, distance = 150) {
+  const box = await element.boundingBox();
+  if (!box) return null;
+  const viewport = page.viewportSize() || { width: 390, height: 844 };
+  const x = Math.min(viewport.width - 18, Math.max(18, box.x + box.width * 0.28));
+  const startY = Math.min(viewport.height - 70, Math.max(120, box.y + box.height * 0.56));
+  const cdp = await context.newCDPSession(page);
+  await cdp.send("Input.dispatchTouchEvent", {
+    type: "touchStart",
+    touchPoints: [{ x, y: startY }],
+  });
+  for (let step = 1; step <= 8; step += 1) {
+    await cdp.send("Input.dispatchTouchEvent", {
+      type: "touchMove",
+      touchPoints: [{ x, y: startY - (distance * step) / 8 }],
+    });
+    await page.waitForTimeout(18);
+  }
+  await cdp.send("Input.dispatchTouchEvent", {
+    type: "touchEnd",
+    touchPoints: [],
+  });
+  await page.waitForTimeout(520);
+  return { x: Math.round(x), startY: Math.round(startY), distance };
+}
+
+async function inspectMobileDialTouch(browser) {
+  const results = [];
+  for (const path of ["/ko", "/ko/about"]) {
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+      isMobile: true,
+      hasTouch: true,
+    });
+    const page = await context.newPage();
+    await page.goto(`${baseUrl}${path}`, { waitUntil: "domcontentloaded" });
+    await settle(page);
+    const slider = page.getByRole("slider");
+    const before = await page.evaluate(() => Math.round(window.scrollY));
+    const touchAction = await slider.evaluate((element) => getComputedStyle(element).touchAction);
+    const gesture = await dispatchVerticalTouch(context, page, slider);
+    const after = await page.evaluate(() => Math.round(window.scrollY));
+    results.push({
+      path,
+      touchAction,
+      before,
+      after,
+      delta: after - before,
+      dialValue: await slider.getAttribute("aria-valuenow"),
+      gesture,
+    });
+    await context.close();
+  }
+
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+  });
+  const page = await context.newPage();
+  await page.goto(`${baseUrl}/ko/calibration`, { waitUntil: "domcontentloaded" });
+  await settle(page);
+  const slider = page.getByRole("slider");
+  const touchAction = await slider.evaluate((element) => getComputedStyle(element).touchAction);
+  const scrollBefore = await page.evaluate(() => Math.round(window.scrollY));
+  await dispatchVerticalTouch(context, page, slider, 92);
+  const scrubValue = await slider.getAttribute("aria-valuenow");
+  const scrollAfter = await page.evaluate(() => Math.round(window.scrollY));
+
+  const next = page.getByRole("button", { name: "다음 숫자" });
+  const set = page.getByRole("button", { name: "현재 값 확정" });
+  const targets = [3, 8, 5];
+  for (const target of targets) {
+    const current = Number(await slider.getAttribute("aria-valuenow"));
+    const delta = target - current;
+    const control = delta >= 0 ? next : page.getByRole("button", { name: "이전 숫자" });
+    for (let index = 0; index < Math.abs(delta); index += 1) await control.click();
+    await set.click();
+  }
+  const complete = await page.getByText("LOCKED").isVisible();
+  const calibration = {
+    touchAction,
+    scrollBefore,
+    scrollAfter,
+    scrubValue,
+    complete,
+  };
+  await context.close();
+  return { scrollLinked: results, calibration };
+}
+
 async function inspectPerformance(browser) {
   const context = await browser.newContext({ viewport: { width: 1440, height: 960 } });
   const page = await context.newPage();
@@ -743,6 +835,7 @@ async function main() {
   const navigation = await inspectNavigation(browser);
   const interactionStress = await inspectInteractionStress(browser);
   const dialContinuity = await inspectDialContinuity(browser);
+  const mobileDialTouch = await inspectMobileDialTouch(browser);
   const performance = await inspectPerformance(browser);
   await browser.close();
 
@@ -758,6 +851,7 @@ async function main() {
     navigation,
     interactionStress,
     dialContinuity,
+    mobileDialTouch,
     performance,
   };
   fs.writeFileSync(
@@ -793,6 +887,7 @@ async function main() {
         navigation,
         interactionStress,
         dialContinuity,
+        mobileDialTouch,
         performance,
       },
       null,

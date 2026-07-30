@@ -397,6 +397,16 @@ select {
   transform: scaleY(1);
 }
 
+.route-dial__routes a[data-easter="true"] {
+  margin-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.route-dial__routes a[data-easter="true"] b {
+  letter-spacing: 0.14em;
+}
+
 .route-dial__routes small,
 .route-dial__routes b {
   font: 510 7px/1 var(--font-mono), monospace;

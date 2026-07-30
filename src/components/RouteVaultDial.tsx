@@ -51,7 +51,6 @@ function getRouteItems(pathname: string, locale: Locale): RouteDialItem[] {
   if (pathname === `${root}/about`) {
     return numberItems([
       { id: "about-profile", label: "PROFILE", target: "about-profile" },
-      { id: "about-identity", label: "IDENTITY", target: "about-identity" },
       { id: "about-education", label: "EDUCATION", target: "about-education" },
       { id: "about-practice", label: "PRACTICE", target: "about-practice" },
       { id: "about-records", label: "RECORDS", target: "about-records" },

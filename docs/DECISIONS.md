@@ -98,7 +98,7 @@ INDEX의 유형 필터는 다섯 개의 사각 버튼을 반복하지 않는다.
 
 ## 전역 half dial은 경로가 아니라 현재 문맥을 보여 준다
 
-상단 내비게이션의 작은 route dial은 HOME·WORKS·ABOUT·CONTACT·APPENDIX 사이의 목적지 복구를 맡는다. 오른쪽의 큰 half dial은 현재 페이지 안에서 사용자가 어디를 보고 있는지 보여 준다. 홈에서는 프로젝트, Works에서는 Overview·Selected·Appendix, 상세에서는 Overview·Premise·Process·Next, About에서는 Profile·Identity·Education·Practice·Records·Contact처럼 실제 섹션을 사용한다. 두 다이얼의 역할을 섞지 않아 전역 정체성과 정보 구조를 동시에 유지한다.
+상단 내비게이션의 작은 route dial은 HOME·WORKS·ABOUT·CONTACT·APPENDIX 사이의 목적지 복구를 맡는다. 오른쪽의 큰 half dial은 현재 페이지 안에서 사용자가 어디를 보고 있는지 보여 준다. 홈에서는 프로젝트, Works에서는 Overview·Selected·Appendix, 상세에서는 Overview·Premise·Process·Next, About에서는 Profile·Education·Practice·Records·Contact처럼 실제 섹션을 사용한다. 두 다이얼의 역할을 섞지 않아 전역 정체성과 정보 구조를 동시에 유지한다.
 
 ## 다이얼 face와 활성 인덱스는 같은 값이지만 같은 해상도가 아니다
 
@@ -163,3 +163,11 @@ The Aviator는 새로 제공된 렌더 `1–5`를 숫자 순서로 유지하고,
 2026-07-31 개인 디자이너 포트폴리오 20개를 조사한 결과, 작품을 먼저 보여 주고 About에는 역할·지역·경력·교육·연락처 같은 확인 가능한 정보만 짧게 두는 패턴이 반복됐다. 따라서 SGYUN About의 긴 Identity 선언문과 중복 이름 패널을 제거한다. hero에는 역할과 한 문장 요약만 남기고, Education·Practice·Recognition·Activity·Contact를 기록으로 이어 간다.
 
 프로필 요약은 `제품·웹·앱을 설계하고 구현합니다.` / `I design and build products, websites, and apps.`로 제한한다. 작업 상세의 Summary·Description은 작품을 이해하기 위한 정보이므로 유지하며, 개인의 태도나 철학을 설명하는 새 문장은 추가하지 않는다. 사용자가 역할이나 분야를 즉시 파악하지 못한다는 검증 근거가 생길 때만 보조 문장을 한 줄 재도입한다.
+
+## 모바일의 스크롤 다이얼은 native pan을 우선한다
+
+기존 다이얼은 전체 face에 `touch-action: none`을 적용하고 touch pointer를 capture한 뒤 매 이동마다 `window.scrollTo`를 호출했다. 이 구조는 모바일 브라우저의 관성 스크롤·주소창 viewport 변화·scroll listener와 경쟁해 페이지가 멈추거나 과도하게 이동하는 원인이 된다. 홈과 편집 페이지에서는 touch drag를 native `pan-y`로 통과시키고 passive scroll sync가 다이얼을 따라가게 한다. 직접 scrub은 mouse·pen과 스크롤이 없는 `FIELD_00` 전용 장면에만 사용한다.
+
+## 이스터에그는 게시 인증이 아니라 선택적 캘리브레이션 토이다
+
+랜딩 다이얼 암호로 Studio를 여는 방식은 인증과 놀이를 결합해 보안·발견 가능성·유지보수를 모두 악화시킨다. 대신 route dial 안의 낮은 명도 `00 / FIELD_00`을 선택적 진입점으로 둔다. 세 개의 공개 target detent를 순서대로 맞추는 짧은 토이는 Vault Dial의 라쳇·정착·잠금 언어를 체험하게 하지만, 포트폴리오 콘텐츠나 Owner Studio 권한에는 영향을 주지 않는다.
