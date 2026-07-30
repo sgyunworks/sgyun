@@ -211,3 +211,4 @@ ESLint는 아직 구성하지 않았다. 실행 불가능했던 `next lint` 스�
 - [x] 390×844 Vault의 horizontal overflow 0과 reduced-motion 적용을 확인했다.
 - [x] `npm run typecheck`, `npm run build`, `node --check scripts/critical-audit.cjs`, `git diff --check`가 통과했고 31개 정적 페이지를 생성했다.
 - 원시 결과: `qa/critical-audit/vault-easter-egg-v2/report.json`. 비교 캡처: `/tmp/sgyun-works-concentric.png`, `/tmp/sgyun-vault-ready.png`, `/tmp/sgyun-vault-open.png`, `/tmp/sgyun-vault-mobile.png`.
+- [x] commit `1778a91`을 `codex/folder-archive-prototype`에 push하고 Vercel production `dpl_Dx873uZaZQFCxQizYZSvbnQyWPR8`을 `READY` 및 `sgyun.kr` alias로 확인했다. 실제 도메인의 `/ko`, `/ko/works`, `/ko/calibration`, `/ko/vault`, `/en/vault`가 200이며 모바일 Vault stage 3 open, overflow 0, browser error 0, 최근 30분 runtime error 0이다.
