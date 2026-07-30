@@ -146,7 +146,7 @@ export const dict: Record<Locale, Dict> = {
       locationValue: "Seoul, Korea",
     },
     footer: {
-      tagline: "ENGINEERING ART · SEOUL",
+      tagline: "PRODUCT · DIGITAL · SYSTEMS · SEOUL",
     },
   },
   en: {
@@ -226,7 +226,7 @@ export const dict: Record<Locale, Dict> = {
       locationValue: "Seoul, Korea",
     },
     footer: {
-      tagline: "ENGINEERING ART · SEOUL",
+      tagline: "PRODUCT · DIGITAL · SYSTEMS · SEOUL",
     },
   },
 };

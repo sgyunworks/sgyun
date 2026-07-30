@@ -1,0 +1,354 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-30",
+  "profile": {
+    "name": {
+      "ko": "이석윤",
+      "en": "Seokyoon Lee"
+    },
+    "title": {
+      "ko": "제품 디자이너 · 빌더",
+      "en": "Product Designer · Builder"
+    },
+    "summary": {
+      "ko": "금속공예와 산업디자인을 기반으로 물리적 구조, 디지털 제품, 작동하는 프로토타입을 하나의 설계 과정으로 연결합니다.",
+      "en": "I connect physical structure, digital products, and working prototypes through a practice grounded in metal craft and industrial design."
+    },
+    "education": [
+      {
+        "ko": "서울과학기술대학교 금속공예디자인학과",
+        "en": "Seoul National University of Science and Technology — Metal Craft Design"
+      },
+      {
+        "ko": "서울과학기술대학교 산업디자인전공 복수전공",
+        "en": "Seoul National University of Science and Technology — Industrial Design, Double Major"
+      }
+    ],
+    "practices": [
+      {
+        "code": "P",
+        "title": { "ko": "Physical", "en": "Physical" },
+        "body": {
+          "ko": "금속, 구조, 메커니즘과 제작 과정을 통해 형태가 실제로 작동하는 이유를 설계합니다.",
+          "en": "Metal, structure, mechanisms, and fabrication make form accountable to how it works."
+        }
+      },
+      {
+        "code": "D",
+        "title": { "ko": "Digital", "en": "Digital" },
+        "body": {
+          "ko": "웹과 앱을 아이디어의 그림이 아니라 입력, 상태, 결과가 이어지는 제품으로 구현합니다.",
+          "en": "Web and app ideas become products with connected input, state, and outcomes."
+        }
+      },
+      {
+        "code": "L",
+        "title": { "ko": "Learning", "en": "Learning" },
+        "body": {
+          "ko": "워크숍과 학회 운영을 통해 설계·제작·AI 활용의 시행착오를 다른 사람과 공유합니다.",
+          "en": "Workshops and community leadership turn design, making, and AI practice into shared learning."
+        }
+      }
+    ],
+    "recognitions": [
+      {
+        "year": "2026",
+        "title": { "ko": "K-Design Award", "en": "K-Design Award" },
+        "result": { "ko": "Finalist — VESA Based Floating Speaker", "en": "Finalist — VESA Based Floating Speaker" },
+        "note": { "ko": "후속 심사 결과 업데이트 예정", "en": "Further judging result pending" }
+      },
+      {
+        "year": "2026",
+        "title": { "ko": "대한민국디자인전람회", "en": "Korea Design Exhibition" },
+        "result": { "ko": "입선 — VESA Based Floating Speaker", "en": "Selected — VESA Based Floating Speaker" },
+        "note": { "ko": "후속 심사 결과 업데이트 예정", "en": "Further judging result pending" }
+      },
+      {
+        "year": "2026",
+        "title": { "ko": "노원대학연합창업캠프", "en": "Nowon University Startup Camp" },
+        "result": { "ko": "대상 — 바로고, 현 RecoPick", "en": "Grand Prize — Barogo, now RecoPick" },
+        "note": { "ko": "제품 발전 이력을 함께 표기", "en": "Shown with the product evolution" }
+      },
+      {
+        "year": "2025",
+        "title": { "ko": "강원디자인전람회", "en": "Gangwon Design Exhibition" },
+        "result": { "ko": "입선 — The Aviator", "en": "Selected — The Aviator" },
+        "note": { "ko": "확정", "en": "Confirmed" }
+      },
+      {
+        "year": "2024",
+        "title": { "ko": "서울과학기술대학교 ST창업경진대회", "en": "SeoulTech ST Startup Competition" },
+        "result": { "ko": "최우수상 — Thisplay", "en": "Excellence Award — Thisplay" },
+        "note": { "ko": "확정", "en": "Confirmed" }
+      }
+    ],
+    "activities": [
+      {
+        "year": "2026",
+        "title": { "ko": "한국디자인진흥원 KDM+ 워크숍 강사", "en": "KIDP KDM+ Workshop Instructor" },
+        "detail": { "ko": "디자이너를 위한 에이전틱 코딩", "en": "Agentic coding for designers" }
+      },
+      {
+        "year": "2026",
+        "title": { "ko": "CANAM 37기 회장", "en": "President, CANAM 37th" },
+        "detail": { "ko": "제품디자인학회 약 30명 운영", "en": "Leading a product design community of about 30 members" }
+      },
+      {
+        "year": "2026",
+        "title": { "ko": "N03 창립멤버 · 1기", "en": "Founding Member · N03" },
+        "detail": { "ko": "서울과학기술대학교 AI동아리", "en": "SeoulTech AI design community" }
+      },
+      {
+        "year": "2025—2026",
+        "title": { "ko": "SOSE* 전시 운영", "en": "SOSE* Exhibition Leadership" },
+        "detail": { "ko": "2025 전시장 2층 DP팀장 · 2026 제품트랙장", "en": "2025 display lead · 2026 product track lead" }
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "vesa-floating-speaker",
+      "slug": "vesa-floating-speaker",
+      "order": 1,
+      "status": "published",
+      "stage": "completed",
+      "title": "VESA BASED FLOATING SPEAKER",
+      "year": "2026",
+      "category": "physical",
+      "description": {
+        "ko": "VESA 마운트에 결합해 책상 위 공간을 비우고 오디오와 충전을 하나의 구조로 만든 데스크 스피커.",
+        "en": "A VESA-mounted desk speaker that clears the work surface and integrates audio with charging."
+      },
+      "role": { "ko": "제품 디자인 · 제작 · 시스템 통합", "en": "Product design · fabrication · system integration" },
+      "heroImage": "",
+      "heroAspectRatio": 1.45,
+      "imageAlt": { "ko": "VESA Based Floating Speaker 이미지 준비 중", "en": "VESA Based Floating Speaker media pending" },
+      "imageFit": "contain",
+      "imageTone": "light",
+      "detailIntro": {
+        "ko": "금속 외장, 3D 프린팅 내부 구조, 오디오 모듈과 MagSafe 충전을 VESA 규격 위에 통합한 실물 제품 프로젝트다.",
+        "en": "A fabricated product integrating a metal shell, 3D-printed structure, audio electronics, and MagSafe charging on a VESA mount."
+      },
+      "detailChapters": [
+        {
+          "code": "01",
+          "title": { "ko": "책상 위가 아니라, 모니터 뒤의 구조를 사용한다.", "en": "Use the structure behind the monitor, not the desk surface." },
+          "body": { "ko": "스피커와 충전기가 점유하던 평면을 비우기 위해 모니터의 VESA 결합부를 새로운 제품 위치로 해석했다.", "en": "The VESA interface becomes a new product location, freeing the desk area occupied by speakers and chargers." }
+        },
+        {
+          "code": "02",
+          "title": { "ko": "금속과 출력 부품이 서로 다른 역할을 맡는다.", "en": "Metal and printed parts take distinct structural roles." },
+          "body": { "ko": "레이저 커팅 알루미늄은 외관과 강성을, 3D 프린팅 부품은 내부 지지와 조립 오차 흡수를 담당한다.", "en": "Laser-cut aluminum provides the visible shell and stiffness; printed parts support components and absorb assembly tolerance." }
+        },
+        {
+          "code": "03",
+          "title": { "ko": "완성도는 사용 장면과 검증 기록으로 남긴다.", "en": "The result is documented through use and recognition." },
+          "body": { "ko": "실물 프로토타입과 조절 장면을 제작했으며, 2026 K-Design Award Finalist와 대한민국디자인전람회 입선으로 기록되었다.", "en": "The working prototype and adjustment scenarios were documented and recognized as a 2026 K-Design Award Finalist and Korea Design Exhibition selection." }
+        }
+      ],
+      "detailMedia": []
+    },
+    {
+      "id": "recopick",
+      "slug": "recopick",
+      "order": 2,
+      "status": "published",
+      "stage": "active",
+      "title": "RECOPICK",
+      "year": "2026",
+      "category": "digital",
+      "description": {
+        "ko": "검색 결과를 늘리는 대신 지금 갈 만한 세 곳으로 줄이고, 마지막 결정을 위임할 수 있게 만든 장소 추천 앱.",
+        "en": "A place-recommendation app that reduces search to three viable choices and can make the final pick."
+      },
+      "role": { "ko": "제품 전략 · UX/UI · 앱·서비스 구현", "en": "Product strategy · UX/UI · app and service implementation" },
+      "heroImage": "",
+      "heroAspectRatio": 0.46,
+      "imageAlt": { "ko": "RecoPick 앱 이미지 준비 중", "en": "RecoPick app media pending" },
+      "imageFit": "contain",
+      "imageTone": "light",
+      "detailIntro": {
+        "ko": "바로고에서 시작해 RecoPick으로 발전한 제품으로, 한 번에 하나씩 조건을 고르고 세 곳만 비교한 뒤 직접 선택하거나 앱에 결정을 맡긴다.",
+        "en": "Evolved from Barogo into RecoPick, the product asks one question at a time, presents three candidates, and supports direct or delegated choice."
+      },
+      "detailChapters": [
+        {
+          "code": "01",
+          "title": { "ko": "탐색보다 결정이 더 어려운 순간을 다룬다.", "en": "The product addresses decision fatigue, not discovery volume." },
+          "body": { "ko": "무한 목록을 복제하지 않고 위치, 목적, 인원, 이동 방식과 시간을 순차적으로 받아 후보를 세 곳으로 압축한다.", "en": "Instead of another endless list, location, intent, party size, travel mode, and time narrow the field to three choices." }
+        },
+        {
+          "code": "02",
+          "title": { "ko": "모바일 화면 뒤에 실제 추천 시스템을 만든다.", "en": "A real recommendation system sits behind the mobile flow." },
+          "body": { "ko": "React Native 앱, 추천 API, PostGIS 장소 원장, 날씨와 이동시간 보정, 미디어 폴백을 하나의 제품 흐름으로 연결했다.", "en": "The React Native app connects recommendation APIs, a PostGIS place catalog, weather and travel-time adjustments, and licensed media fallbacks." }
+        },
+        {
+          "code": "03",
+          "title": { "ko": "선택을 끝내는 인터랙션까지 검증한다.", "en": "Interaction is validated through the final choice." },
+          "body": { "ko": "직접 선택, 새 후보 요청, 서버가 검증한 후보 안에서의 룰렛 결정과 햅틱을 실제 iPhone 시뮬레이터 흐름으로 검증했다. 전신 아이템 바로고는 2026 노원대학연합창업캠프 대상을 수상했다.", "en": "Direct pick, refresh, server-validated roulette, and haptic feedback were verified in an iPhone simulator flow. Its predecessor Barogo won the 2026 Nowon University Startup Camp Grand Prize." }
+        }
+      ],
+      "detailMedia": []
+    },
+    {
+      "id": "the-aviator",
+      "slug": "the-aviator",
+      "order": 3,
+      "status": "published",
+      "stage": "completed",
+      "title": "THE AVIATOR",
+      "year": "2025",
+      "category": "physical",
+      "description": { "ko": "음악의 비행을 움직임으로 연출하는 키네틱 스피커.", "en": "A kinetic speaker that stages the flight of music through motion." },
+      "role": { "ko": "단독 작업 · 디자인 · 메커니즘 · 회로/제어", "en": "Solo · design · mechanism · circuit/control" },
+      "heroImage": "/images/aviator_thumb.jpg",
+      "heroAspectRatio": 0.8,
+      "imageAlt": { "ko": "키네틱 스피커 The Aviator", "en": "The Aviator kinetic speaker" },
+      "imageFit": "contain",
+      "imageTone": "dark",
+      "detailIntro": { "ko": "두 개의 스피커 유닛과 금속 윙·힌지 구조를 결합해 소리가 시작되기 전의 움직임까지 감상의 일부로 만든 오브제 스피커다.", "en": "An object speaker combining two drivers with metal wings and hinges so motion before playback becomes part of listening." },
+      "detailChapters": [
+        {
+          "code": "01",
+          "title": { "ko": "소리가 나기 전, 형태가 먼저 출발한다.", "en": "The form departs before sound begins." },
+          "body": { "ko": "전원이 켜지면 접혀 있던 윙이 천천히 펼쳐지고 스피커 유닛이 청자를 향한다. 이 전환을 음악의 이륙 신호로 설계했다.", "en": "When powered, folded wings unfold and orient the drivers toward the listener, acting as a takeoff cue for music." }
+        },
+        {
+          "code": "02",
+          "title": { "ko": "메커니즘을 장식 뒤에 숨기지 않는다.", "en": "The mechanism is not hidden behind styling." },
+          "body": { "ko": "액추에이터, 스프링, 베어링, 힌지와 스토퍼가 외형을 결정하며, 가동 범위와 충돌을 실제 구조 문제로 다뤘다.", "en": "Actuators, springs, bearings, hinges, and stops determine the form while range and collision are treated as real structural problems." }
+        },
+        {
+          "code": "03",
+          "title": { "ko": "움직임은 전시와 수상 기록으로 이어졌다.", "en": "Motion carried into exhibition and recognition." },
+          "body": { "ko": "2025 조형대학연합전에 전시했고 강원디자인전람회 입선작으로 선정되었다.", "en": "The project was exhibited in the 2025 College of Art and Design joint exhibition and selected by the Gangwon Design Exhibition." }
+        }
+      ],
+      "detailMedia": [
+        { "src": "/images/aviator_d1.jpg", "alt": { "ko": "The Aviator 정면", "en": "The Aviator front view" }, "aspectRatio": 0.8, "fit": "contain", "tone": "dark" },
+        { "src": "/images/aviator_d2.jpg", "alt": { "ko": "The Aviator 움직임 상세", "en": "The Aviator motion detail" }, "aspectRatio": 0.8, "fit": "contain", "tone": "dark" },
+        { "src": "/images/aviator_d3_wide.jpg", "alt": { "ko": "The Aviator 전개 장면", "en": "The Aviator sequence" }, "aspectRatio": 2.78, "fit": "contain", "tone": "dark" }
+      ]
+    },
+    {
+      "id": "double-wishbone-chair",
+      "slug": "double-wishbone-chair",
+      "order": 4,
+      "status": "published",
+      "stage": "concept",
+      "title": "DOUBLE WISHBONE CHAIR",
+      "year": "2025",
+      "category": "physical",
+      "description": { "ko": "고성능 서스펜션의 링크와 하중 분산 원리를 착석 구조로 번역한 체어 콘셉트.", "en": "A chair concept translating high-performance suspension links and load distribution into seating." },
+      "role": { "ko": "단독 작업 · 디자인 · 3D 모델링", "en": "Solo · design · 3D modeling" },
+      "heroImage": "/images/dwc_thumb.jpg",
+      "heroAspectRatio": 0.853,
+      "imageAlt": { "ko": "Double Wishbone Chair 렌더", "en": "Double Wishbone Chair render" },
+      "imageFit": "contain",
+      "imageTone": "light",
+      "detailIntro": { "ko": "자동차 더블 위시본 서스펜션의 구조적 관계를 가구의 지지, 반발과 시각적 긴장으로 옮긴 렌더 단계의 콘셉트 프로젝트다.", "en": "A render-stage concept translating double-wishbone suspension geometry into furniture support, response, and visual tension." },
+      "detailChapters": [
+        {
+          "code": "01",
+          "title": { "ko": "차용한 것은 자동차의 외형이 아니라 링크의 관계다.", "en": "The reference is link geometry, not automotive styling." },
+          "body": { "ko": "상·하 컨트롤 암과 댐퍼가 하중을 나누는 원리를 시트와 베이스 사이의 지지 구조로 재구성했다.", "en": "Upper and lower control arms and a damper are reorganized as the support relationship between seat and base." }
+        },
+        {
+          "code": "02",
+          "title": { "ko": "구조가 조형의 중심에 드러난다.", "en": "Structure remains visible as the center of the form." },
+          "body": { "ko": "금속 링크와 댐퍼를 감추지 않고 의자의 인상과 사용 원리를 동시에 설명하는 시각적 골격으로 사용했다.", "en": "Metal links and the damper remain exposed as a visual skeleton explaining both appearance and intended behavior." }
+        },
+        {
+          "code": "03",
+          "title": { "ko": "현재는 구조 가설을 보여주는 콘셉트다.", "en": "The current outcome is a structural hypothesis." },
+          "body": { "ko": "3D 모델과 렌더로 형태를 검토한 단계이며, 실제 착석 하중과 댐퍼 스트로크 검증은 후속 과제로 명확히 구분한다.", "en": "Form has been explored through 3D models and renders; real seating loads and damper travel remain explicit future validation." }
+        }
+      ],
+      "detailMedia": [
+        { "src": "/images/dwc_d1.jpg", "alt": { "ko": "Double Wishbone Chair 전체 형태", "en": "Double Wishbone Chair full form" }, "aspectRatio": 0.8, "fit": "contain", "tone": "light" },
+        { "src": "/images/dwc_d2.jpg", "alt": { "ko": "Double Wishbone Chair 구조", "en": "Double Wishbone Chair structure" }, "aspectRatio": 0.8, "fit": "contain", "tone": "light" },
+        { "src": "/images/dwc_d3.jpg", "alt": { "ko": "Double Wishbone Chair 상세", "en": "Double Wishbone Chair detail" }, "aspectRatio": 0.8, "fit": "contain", "tone": "light" }
+      ]
+    },
+    {
+      "id": "wrgs",
+      "slug": "wrgs",
+      "order": 5,
+      "status": "published",
+      "stage": "completed",
+      "title": "WRGS",
+      "year": "2024",
+      "category": "physical",
+      "description": { "ko": "하나의 와이어 장력으로 결합되는 라쳇 기어 스툴 시스템.", "en": "A ratchet-gear stool system assembled through the tension of one wire." },
+      "role": { "ko": "팀 프로젝트 · 스툴 파트 디자인 및 제작", "en": "Team project · stool design and fabrication" },
+      "heroImage": "/images/wrgs_thumb.jpg",
+      "heroAspectRatio": 0.875,
+      "imageAlt": { "ko": "WRGS 스툴과 작업 공간", "en": "WRGS stool and workspace" },
+      "imageFit": "contain",
+      "imageTone": "light",
+      "detailIntro": { "ko": "복잡한 패스너 대신 하나의 와이어 라쳇 기어와 장력으로 스툴의 부품을 결합한 가구 제작 프로젝트다.", "en": "A furniture project replacing complex fasteners with a single wire ratchet and controlled tension." },
+      "detailChapters": [
+        {
+          "code": "01",
+          "title": { "ko": "결합 방식을 하나의 장치로 줄인다.", "en": "Assembly is reduced to one fastening device." },
+          "body": { "ko": "와이어 라쳇 기어를 핵심 패스너로 고안해 여러 파츠의 조립 순서와 체결 구조를 단순화했다.", "en": "A wire ratchet gear becomes the central fastener, simplifying the sequence and logic of joining multiple parts." }
+        },
+        {
+          "code": "02",
+          "title": { "ko": "하중이 결합을 더 단단하게 만든다.", "en": "Load reinforces the joint." },
+          "body": { "ko": "세 개의 다리와 바깥으로 벌어지는 각도, 상판의 맞물림을 통해 아래 방향의 하중이 구조를 조이도록 설계했다.", "en": "Three splayed legs and the interlocking top turn downward load into additional tightening force." }
+        },
+        {
+          "code": "03",
+          "title": { "ko": "소재와 마감이 구조를 읽게 한다.", "en": "Material and finish keep the structure legible." },
+          "body": { "ko": "스테인리스 스틸과 헤어라인 마감으로 용접부, 와이어와 판재의 긴장을 숨기지 않고 하나의 조형 언어로 정리했다.", "en": "Stainless steel and a hairline finish keep welds, wire, and plate tension visible as one formal language." }
+        }
+      ],
+      "detailMedia": [
+        { "src": "/images/wrgs_detail_1.jpg", "alt": { "ko": "WRGS 전체 형태", "en": "WRGS full form" }, "aspectRatio": 1.289, "fit": "contain", "tone": "light" },
+        { "src": "/images/wrgs_detail_2.jpg", "alt": { "ko": "WRGS 구조 상세", "en": "WRGS structural detail" }, "aspectRatio": 1.287, "fit": "contain", "tone": "light" },
+        { "src": "/images/wrgs_detail_3.jpg", "alt": { "ko": "WRGS 결합부", "en": "WRGS joint detail" }, "aspectRatio": 1, "fit": "contain", "tone": "light" }
+      ]
+    },
+    {
+      "id": "v-cado",
+      "slug": "v-cado",
+      "order": 6,
+      "status": "published",
+      "stage": "concept",
+      "title": "V-CADO",
+      "year": "2025",
+      "category": "systems",
+      "description": { "ko": "싱크홀 사고 직후 인간보다 먼저 투입되는 초기 대응 구난 로봇 시스템.", "en": "A rapid-response rescue robot system deployed before human entry after a sinkhole incident." },
+      "role": { "ko": "4인 팀 프로젝트 · 엔지니어 & 디자이너", "en": "Four-person team · engineer & designer" },
+      "heroImage": "/images/vcado_thumb.jpg",
+      "heroAspectRatio": 1.278,
+      "imageAlt": { "ko": "싱크홀 구난 로봇 V-CADO", "en": "V-CADO sinkhole rescue robot" },
+      "imageFit": "cover",
+      "imageTone": "dark",
+      "detailIntro": { "ko": "구조 대원이 직접 진입하기 전 피해자를 찾고 지형을 파악하며 구조 조건을 만드는 초기 대응 로봇 콘셉트다.", "en": "A response-robot concept that locates victims, maps terrain, and prepares rescue conditions before responders descend." },
+      "detailChapters": [
+        {
+          "code": "01",
+          "title": { "ko": "골든타임의 첫 진입자를 바꾼다.", "en": "Change who enters first during the golden hour." },
+          "body": { "ko": "삼각대 설치와 구조 대원의 직접 하강에 앞서 로봇이 먼저 들어가 위치와 환경 정보를 확보하는 흐름을 제안했다.", "en": "The robot enters before tripod setup and human descent to secure location and environmental information." }
+        },
+        {
+          "code": "02",
+          "title": { "ko": "이동, 탐색과 구조 준비를 하나의 시스템으로 본다.", "en": "Mobility, search, and rescue preparation form one system." },
+          "body": { "ko": "지형 맵핑, 피해자 확인, 조명·통신과 도구 사용을 독립 기능이 아니라 다음 구조 단계로 이어지는 순서로 설계했다.", "en": "Terrain mapping, victim detection, lighting, communication, and tools are organized as a sequence leading to rescue." }
+        },
+        {
+          "code": "03",
+          "title": { "ko": "팀 작업의 기여 범위를 명확히 남긴다.", "en": "Team contribution stays explicit." },
+          "body": { "ko": "현재 공개 문구는 4인 팀 프로젝트와 엔지니어·디자이너 역할까지만 확인된 상태다. 세부 담당 범위는 최종 자료와 함께 보강한다.", "en": "Public copy currently confirms a four-person team and an engineer-designer role; detailed ownership will be added with final evidence." }
+        }
+      ],
+      "detailMedia": [
+        { "src": "/images/vcado_d1.jpg", "alt": { "ko": "V-CADO 로봇 형태", "en": "V-CADO robot form" }, "aspectRatio": 0.854, "fit": "contain", "tone": "dark" },
+        { "src": "/images/vcado_d2_seq.jpg", "alt": { "ko": "V-CADO 작동 순서", "en": "V-CADO operation sequence" }, "aspectRatio": 0.778, "fit": "contain", "tone": "dark" },
+        { "src": "/images/vcado_d3_scenario.jpg", "alt": { "ko": "V-CADO 사용 시나리오", "en": "V-CADO use scenario" }, "aspectRatio": 3.479, "fit": "contain", "tone": "dark" }
+      ]
+    }
+  ]
+}

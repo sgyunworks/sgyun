@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { SafeImage } from "@/components/SafeImage";
 import type { Locale } from "@/lib/i18n";
 import {
   type ArchiveCategory,
@@ -38,11 +38,12 @@ export function ArchiveIndex({
         : "Choose a type or scan the complete archive, then enter each record.",
     all: locale === "ko" ? "전체" : "All",
     open: locale === "ko" ? "기록 열기" : "Open record",
+    appendix: locale === "ko" ? "비어 있는 어펜딕스" : "Empty appendix",
   };
 
   return (
     <div className={styles.indexPage}>
-      <header className={styles.indexHero}>
+      <header id="works-overview" className={styles.indexHero}>
         <div className={styles.controlLine}>
           <span>SGYUN / ARCHIVE</span>
           <span>
@@ -89,7 +90,7 @@ export function ArchiveIndex({
         </nav>
       </header>
 
-      <section className={styles.contactSheet} aria-label={copy.index}>
+      <section id="works-records" className={styles.contactSheet} aria-label={copy.index}>
         {projects.map((project) => (
           <Link
             href={`/${locale}/works/${project.slug}`}
@@ -102,9 +103,12 @@ export function ArchiveIndex({
                 { "--media-aspect": project.heroAspectRatio } as MediaFrameStyle
               }
             >
-              <Image
+              <SafeImage
                 src={project.heroImage}
                 alt={project.imageAltText}
+                fallbackLabel={
+                  locale === "ko" ? "프로젝트 미디어를 불러오지 못했습니다" : "Project media unavailable"
+                }
                 fill
                 sizes="(max-width: 760px) 100vw, (max-width: 1200px) 58vw, 62vw"
                 className={styles.naturalImage}
@@ -117,7 +121,10 @@ export function ArchiveIndex({
                 <small>{project.categoryCode}</small>
               </span>
               <strong>{project.title}</strong>
-              <small>{project.year}</small>
+              <span className={styles.recordState}>
+                <small>{project.year}</small>
+                <small>{project.statusCode}</small>
+              </span>
             </span>
             <span className={styles.recordFoot}>
               <span>{project.descriptionText}</span>
@@ -129,6 +136,17 @@ export function ArchiveIndex({
           </Link>
         ))}
       </section>
+
+      <Link
+        id="works-appendix"
+        className={styles.appendixLink}
+        href={`/${locale}/appendix`}
+      >
+        <span>APPENDIX / 00</span>
+        <strong>{copy.appendix}</strong>
+        <small>{locale === "ko" ? "보류 기록을 위한 예약 공간" : "Reserved for held records"}</small>
+        <i aria-hidden="true" />
+      </Link>
     </div>
   );
 }

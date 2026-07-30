@@ -122,13 +122,13 @@
 .latch::after {
   position: absolute;
   top: 4px;
-  right: 9px;
-  width: 5px;
-  height: 14px;
+  left: 50%;
+  width: 2px;
+  height: 9px;
   border-radius: 999px;
   background: var(--rotor-capsule);
   content: "";
-  transform: rotate(31deg);
+  transform: translateX(-50%);
 }
 
 .latch i {

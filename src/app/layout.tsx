@@ -20,12 +20,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Engineering Art`,
+    default: `${siteConfig.name} | Product Designer · Builder`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description.ko,
   openGraph: {
-    title: `${siteConfig.name} | Engineering Art`,
+    title: `${siteConfig.name} | Product Designer · Builder`,
     description: siteConfig.description.ko,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Engineering Art`,
+    title: `${siteConfig.name} | Product Designer · Builder`,
     description: siteConfig.description.ko,
   },
 };
@@ -48,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" data-scroll-behavior="smooth">
+    <html lang="ko" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={`${poppins.variable} ${geistMono.variable}`}>
         {children}
       </body>

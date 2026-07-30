@@ -13,8 +13,8 @@ export const siteConfig = {
   domain: "sgyun.kr",
   url: "https://sgyun.kr",
   description: {
-    ko: "이석윤 (SGYUN) — 디자이너이자 엔지니어. 상상을 작동하는 하드웨어로 구현하는 '엔지니어링 아트'.",
-    en: "Seokyoon Lee (SGYUN) — Designer & engineer. Crafting hardware that operates as engineering art.",
+    ko: "이석윤 (SGYUN) — 금속공예와 산업디자인을 바탕으로 물리적 제품, 디지털 제품과 작동하는 프로토타입을 설계하는 디자이너·빌더.",
+    en: "Seokyoon Lee (SGYUN) — a designer and builder creating physical products, digital products, and working prototypes.",
   },
   skills: [
     "Rhino",

@@ -6,7 +6,7 @@
 
 .projectHero {
   min-height: 100svh;
-  padding: 100px clamp(16px, 4vw, 66px) clamp(36px, 5vw, 72px);
+  padding: 100px clamp(176px, 14vw, 220px) clamp(36px, 5vw, 72px) clamp(16px, 4vw, 66px);
   background:
     radial-gradient(circle at 74% 30%, rgba(178, 188, 201, 0.065), transparent 32%),
     #08090b;
@@ -24,6 +24,9 @@
 }
 
 .heroRail a {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
   color: rgba(255, 255, 255, 0.64);
   transition: color 180ms ease;
 }
@@ -155,6 +158,15 @@
   font-size: 9px;
 }
 
+.statusMeta {
+  grid-column: 1 / -1;
+}
+
+.statusMeta dd {
+  max-width: 34ch;
+  color: rgba(255, 255, 255, 0.54);
+}
+
 .heroMeta dt {
   color: rgba(255, 255, 255, 0.52);
   font-family: var(--font-mono), monospace;
@@ -174,7 +186,7 @@
   grid-template-columns: minmax(150px, 0.45fr) minmax(0, 1.55fr) auto;
   gap: 5vw;
   align-items: start;
-  padding: clamp(110px, 15vw, 230px) clamp(20px, 5vw, 88px);
+  padding: clamp(110px, 15vw, 230px) clamp(176px, 14vw, 220px) clamp(110px, 15vw, 230px) clamp(20px, 5vw, 88px);
   border-top: 1px solid rgba(255, 255, 255, 0.07);
   background: #0d0f12;
   color: #f4f4f0;
@@ -209,7 +221,7 @@
   grid-template-columns: minmax(0, 7fr) minmax(310px, 5fr);
   gap: clamp(18px, 3vw, 52px);
   align-items: start;
-  padding: clamp(90px, 12vw, 180px) clamp(16px, 3.5vw, 58px) clamp(150px, 18vw, 280px);
+  padding: clamp(90px, 12vw, 180px) clamp(176px, 14vw, 220px) clamp(150px, 18vw, 280px) clamp(16px, 3.5vw, 58px);
   background: #08090b;
 }
 
@@ -371,7 +383,7 @@
 }
 
 .nextRecord {
-  padding: clamp(100px, 14vw, 210px) clamp(18px, 5vw, 88px) clamp(120px, 16vw, 240px);
+  padding: clamp(100px, 14vw, 210px) clamp(176px, 14vw, 220px) clamp(120px, 16vw, 240px) clamp(18px, 5vw, 88px);
   border-top: 1px solid rgba(255, 255, 255, 0.07);
   background: #0d0f12;
   color: #f4f4f0;
@@ -470,13 +482,13 @@
 .nextLatch::after {
   position: absolute;
   top: 4px;
-  right: 10px;
-  width: 5px;
-  height: 15px;
+  left: 50%;
+  width: 2px;
+  height: 10px;
   border-radius: 999px;
   background: var(--rotor-capsule);
   content: "";
-  transform: rotate(31deg);
+  transform: translateX(-50%);
 }
 
 .nextLatch i {
@@ -588,6 +600,42 @@
   }
 }
 
+@media (min-width: 761px) and (max-width: 1100px) {
+  .projectHero,
+  .premise,
+  .story,
+  .nextRecord {
+    padding-right: clamp(126px, 16vw, 164px);
+  }
+}
+
+@media (max-width: 820px) {
+  .heroLayout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 40px;
+    min-height: 0;
+    margin-top: 22px;
+  }
+
+  .heroMediaViewport {
+    grid-row: 1;
+    min-height: 0;
+    container-type: normal;
+  }
+
+  .heroMedia {
+    width: min(100%, calc(72svh * var(--media-aspect, 1.3333)));
+    height: auto;
+    max-height: none;
+  }
+
+  .heroInfo {
+    grid-row: 2;
+    padding: 0 4px;
+  }
+}
+
 @media (max-width: 600px) {
   .projectHero {
     padding-top: 84px;
@@ -597,6 +645,12 @@
   .heroRail {
     padding: 0 4px;
     font-size: 8px;
+  }
+
+  .heroRail a {
+    min-height: 44px;
+    margin: -18px 0 -18px -4px;
+    padding: 0 4px;
   }
 
   .heroLayout {

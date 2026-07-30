@@ -1,0 +1,226 @@
+.loginPage,
+.studioPage {
+  min-height: 100dvh;
+  color: #f3f3ef;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(122, 130, 143, 0.11), transparent 28%),
+    #08090b;
+}
+
+.loginPage {
+  display: grid;
+  padding: clamp(18px, 4vw, 56px);
+  place-items: center;
+}
+
+.loginShell {
+  display: grid;
+  width: min(100%, 1040px);
+  grid-template-columns: minmax(260px, 0.9fr) minmax(300px, 1.1fr);
+  gap: clamp(50px, 8vw, 120px);
+  align-items: end;
+  padding: clamp(32px, 5vw, 72px);
+  border-radius: 10px;
+  background: rgba(18, 20, 24, 0.82);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.08), 0 50px 140px rgba(0, 0, 0, 0.5);
+}
+
+.loginInstrument {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto minmax(30px, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.48);
+  font: 520 9px/1 var(--font-geist-mono), monospace;
+  letter-spacing: 0.14em;
+}
+
+.loginInstrument > div { position: relative; height: 1px; background: rgba(255, 255, 255, 0.15); }
+.loginInstrument > div::before,
+.loginInstrument > div::after { position: absolute; top: 50%; width: 3px; height: 3px; border-radius: 50%; background: rgba(255, 255, 255, 0.52); content: ""; transform: translateY(-50%); }
+.loginInstrument > div::before { left: 0; }
+.loginInstrument > div::after { right: 0; }
+
+.loginCopy > span,
+.studioBrand small,
+.railHeading small,
+.editorHeading > div > span {
+  color: rgba(255, 255, 255, 0.45);
+  font: 500 9px/1.3 var(--font-geist-mono), monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.loginCopy h1 {
+  margin: 20px 0 26px;
+  font-family: var(--font-poppins), sans-serif;
+  font-size: clamp(58px, 8vw, 108px);
+  font-weight: 200;
+  line-height: 0.82;
+  letter-spacing: -0.065em;
+}
+
+.loginCopy p {
+  max-width: 36ch;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 15px;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.loginForm { display: grid; gap: 22px; }
+.field,
+.localizedField { display: grid; gap: 9px; }
+.field label,
+.localizedLabel,
+.segmentField legend { color: rgba(255, 255, 255, 0.88); font-size: 13px; font-weight: 550; }
+.helper { display: block; color: rgba(255, 255, 255, 0.42); font-size: 11px; line-height: 1.5; }
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 13px 14px;
+  color: #f5f5f1;
+  border: 0;
+  border-radius: 5px;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.055);
+  font: 400 14px/1.55 var(--font-pretendard), sans-serif;
+  transition: outline-color 420ms cubic-bezier(0.32, 0.72, 0, 1), background 420ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.field textarea { min-height: 120px; resize: vertical; }
+.field input:focus,
+.field textarea:focus,
+.field select:focus { outline: 1px solid rgba(255, 255, 255, 0.58); background: rgba(255, 255, 255, 0.08); }
+
+.passwordField { position: relative; }
+.passwordField input { padding-right: 70px; }
+.passwordField button { position: absolute; top: 4px; right: 4px; min-width: 58px; height: 40px; color: rgba(255, 255, 255, 0.62); border: 0; border-radius: 3px; background: rgba(255, 255, 255, 0.08); cursor: pointer; }
+
+.formMessage,
+.configNote { margin: 0; color: rgba(255, 255, 255, 0.5); font-size: 12px; line-height: 1.6; }
+.configNote { grid-column: 2; }
+.configNote code { color: rgba(255, 255, 255, 0.78); }
+.backLink { grid-column: 1 / -1; width: max-content; color: rgba(255, 255, 255, 0.48); font-size: 12px; }
+
+.primaryButton {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 6px 7px 6px 20px;
+  color: #0a0b0d;
+  border: 0;
+  border-radius: 999px;
+  background: #f3f3ee;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: transform 520ms cubic-bezier(0.32, 0.72, 0, 1), opacity 320ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.primaryButton i { width: 38px; height: 38px; border-radius: 50%; background: radial-gradient(circle at 38% 33%, #30343b, #08090b 72%); box-shadow: inset 0 1px rgba(255, 255, 255, 0.18); }
+.primaryButton:hover:not(:disabled) { transform: translateY(-2px); }
+.primaryButton:active:not(:disabled) { transform: scale(0.98); }
+.primaryButton:disabled { cursor: not-allowed; opacity: 0.42; }
+
+.studioHeader {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 28px;
+  align-items: center;
+  min-height: 78px;
+  padding: 0 clamp(18px, 3vw, 48px);
+  background: rgba(10, 11, 14, 0.88);
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px) saturate(120%);
+}
+.studioBrand { display: flex; gap: 18px; align-items: baseline; }
+.studioBrand > span { font: 600 16px/1 var(--font-poppins), sans-serif; letter-spacing: 0.06em; }
+.studioStatus { display: flex; gap: 22px; color: rgba(255, 255, 255, 0.4); font: 500 8px/1 var(--font-geist-mono), monospace; letter-spacing: 0.1em; }
+.studioStatus b { margin-right: 5px; color: rgba(255, 255, 255, 0.82); font-weight: 560; }
+.quietButton { min-height: 44px; padding: 0 16px; color: rgba(255, 255, 255, 0.62); border: 0; border-radius: 4px; background: rgba(255, 255, 255, 0.065); cursor: pointer; }
+
+.studioLayout { display: grid; grid-template-columns: 286px minmax(0, 1fr); max-width: 1520px; margin: 0 auto; }
+.projectRail { position: sticky; top: 78px; height: calc(100dvh - 78px); overflow: auto; padding: 34px 18px 50px; box-shadow: inset -1px 0 rgba(255, 255, 255, 0.075); }
+.railHeading { display: flex; align-items: flex-end; justify-content: space-between; padding: 0 8px 22px; }
+.railHeading > div { display: grid; gap: 7px; }
+.railHeading > div > span { font: 520 11px/1 var(--font-geist-mono), monospace; letter-spacing: 0.1em; }
+.railHeading button { min-height: 38px; padding: 0 13px; color: #f5f5f1; border: 0; border-radius: 3px; background: rgba(255, 255, 255, 0.08); cursor: pointer; }
+.projectList { display: grid; gap: 3px; }
+.projectList > button { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 8px; align-items: center; min-height: 60px; padding: 9px 10px; color: rgba(255, 255, 255, 0.48); border: 0; border-radius: 4px; background: transparent; text-align: left; cursor: pointer; }
+.projectList > button:hover { background: rgba(255, 255, 255, 0.04); }
+.projectList .activeProject { color: #f5f5f1; background: rgba(255, 255, 255, 0.08); box-shadow: inset 2px 0 #f2f2ed; }
+.projectList span,
+.projectList small { font: 500 8px/1 var(--font-geist-mono), monospace; letter-spacing: 0.08em; }
+.projectList strong { overflow: hidden; font-family: var(--font-poppins), var(--font-pretendard), sans-serif; font-size: 12px; font-weight: 400; text-overflow: ellipsis; white-space: nowrap; }
+.projectList small[data-status="published"] { color: #f3f3ee; }
+.projectRail > p { margin: 24px 9px 0; color: rgba(255, 255, 255, 0.36); font-size: 11px; line-height: 1.65; word-break: keep-all; }
+
+.editorForm { min-width: 0; padding: clamp(34px, 5vw, 82px) clamp(20px, 6vw, 100px) 140px; }
+.editorHeading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 0.42fr); gap: 50px; align-items: end; margin-bottom: 80px; }
+.editorHeading h1 { max-width: 15ch; margin: 18px 0 0; font-family: var(--font-poppins), sans-serif; font-size: clamp(42px, 5vw, 78px); font-weight: 200; line-height: 0.93; letter-spacing: -0.055em; }
+.saveCluster { display: grid; gap: 16px; justify-items: end; }
+.saveMessage { max-width: 42ch; margin: 0; color: rgba(255, 255, 255, 0.48); font-size: 11px; line-height: 1.55; text-align: right; }
+.saveMessage[data-tone="success"] { color: #d9eadc; }
+.saveMessage[data-tone="error"] { color: #f2b8b5; }
+
+.formSection { display: grid; grid-template-columns: minmax(180px, 0.42fr) minmax(0, 1fr); gap: clamp(36px, 7vw, 110px); padding: 58px 0; box-shadow: inset 0 1px rgba(255, 255, 255, 0.08); }
+.formSection > header { display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-content: start; }
+.formSection > header > span { font: 500 9px/1 var(--font-geist-mono), monospace; color: rgba(255, 255, 255, 0.42); }
+.formSection h2 { margin: 0 0 9px; font-family: var(--font-poppins), var(--font-pretendard), sans-serif; font-size: 20px; font-weight: 350; }
+.formSection header p { margin: 0; color: rgba(255, 255, 255, 0.42); font-size: 12px; line-height: 1.6; word-break: keep-all; }
+.formBody { display: grid; gap: 30px; max-width: 760px; }
+.localizedField { gap: 15px; padding: 22px; border-radius: 6px; background: rgba(255, 255, 255, 0.025); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.065); }
+.segmentField { display: grid; gap: 10px; padding: 0; border: 0; }
+.segmentField > div { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+.segmentField label { cursor: pointer; }
+.segmentField input { position: absolute; opacity: 0; pointer-events: none; }
+.segmentField label span { display: grid; min-height: 48px; place-items: center; border-radius: 4px; color: rgba(255, 255, 255, 0.52); background: rgba(255, 255, 255, 0.045); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08); transition: background 420ms cubic-bezier(0.32, 0.72, 0, 1), color 420ms cubic-bezier(0.32, 0.72, 0, 1); }
+.segmentField input:checked + span { color: #090a0c; background: #f1f1ed; }
+.segmentField input:focus-visible + span { outline: 2px solid #fff; outline-offset: 2px; }
+.chapterEditor { display: grid; gap: 18px; padding: 26px 0 0; box-shadow: inset 0 1px rgba(255, 255, 255, 0.07); }
+.chapterEditor > span { color: rgba(255, 255, 255, 0.38); font: 500 9px/1 var(--font-geist-mono), monospace; }
+
+@media (max-width: 900px) {
+  .studioHeader { grid-template-columns: 1fr auto; }
+  .studioStatus { display: none; }
+  .studioLayout { grid-template-columns: 1fr; }
+  .projectRail { position: static; height: auto; padding: 24px 16px; box-shadow: inset 0 -1px rgba(255, 255, 255, 0.08); }
+  .projectList { display: flex; overflow-x: auto; padding-bottom: 5px; }
+  .projectList > button { min-width: 210px; }
+  .projectRail > p { display: none; }
+  .editorHeading { grid-template-columns: 1fr; margin-bottom: 54px; }
+  .saveCluster { justify-items: start; }
+  .saveMessage { text-align: left; }
+  .formSection { grid-template-columns: 1fr; gap: 30px; }
+}
+
+@media (max-width: 680px) {
+  .loginShell { grid-template-columns: 1fr; gap: 38px; padding: 28px 20px; }
+  .loginForm,
+  .configNote { grid-column: 1; }
+  .loginCopy h1 { font-size: clamp(52px, 18vw, 78px); }
+  .studioHeader { min-height: 68px; padding: 0 14px; }
+  .studioBrand small { display: none; }
+  .editorForm { padding: 42px 16px 100px; }
+  .editorHeading h1 { font-size: clamp(38px, 12vw, 58px); }
+  .formSection { padding: 44px 0; }
+  .localizedField { padding: 18px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .field input,
+  .field textarea,
+  .field select,
+  .segmentField label span { transition: none; }
+}

@@ -25,9 +25,19 @@ export default async function WorksPage({
   return <ArchiveIndex locale={lang as Locale} activeCategory={activeCategory} />;
 }
 
-export function generateMetadata() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const locale = (locales as readonly string[]).includes(lang) ? lang : "ko";
   return {
     title: "Archive Index",
     description: "SGYUN physical, digital, experimental, and recognition archive.",
+    alternates: {
+      canonical: `/${locale}/works`,
+      languages: { ko: "/ko/works", en: "/en/works" },
+    },
   };
 }

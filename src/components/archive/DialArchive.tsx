@@ -1,10 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import {
   type CSSProperties,
-  type PointerEvent as ReactPointerEvent,
   useCallback,
   useEffect,
   useMemo,
@@ -15,22 +13,23 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import type { Locale } from "@/lib/i18n";
+import { SafeImage } from "@/components/SafeImage";
 import { VaultAction } from "@/components/VaultAction";
+import { VaultDial } from "@/components/VaultDial";
 import {
   archiveCategories,
   archiveCategoryOrder,
   archiveProjects,
   localizeArchiveProject,
+  portfolioProfile,
 } from "@/lib/archive";
 import styles from "./DialArchive.module.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const DIAL_STEP = 15;
-const TICK_COUNT = 55;
+const HOME_DIAL_ARC = 84;
+const HOME_DIAL_STEP_MAX = 15;
 const RATCHET_STEPS_PER_PROJECT = 4;
-const DRAG_PX_PER_PROJECT = 84;
-const HAPTIC_MIN_INTERVAL_MS = 34;
 
 type AudioWindow = Window & {
   webkitAudioContext?: typeof AudioContext;
@@ -44,30 +43,25 @@ type PreviewFrameStyle = CSSProperties & {
   "--preview-aspect": number;
 };
 
-type TickStyle = CSSProperties & {
-  "--tick-index": number;
-};
-
-type MarkerStyle = CSSProperties & {
-  "--marker-angle": string;
-  "--counter-angle": string;
-};
-
 export function DialArchive({ locale }: { locale: Locale }) {
   const pageRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLElement>(null);
+  const practiceRef = useRef<HTMLElement>(null);
+  const evidenceRef = useRef<HTMLElement>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const lastAudioTimeRef = useRef(0);
-  const lastHapticTimeRef = useRef(0);
   const lastRatchetStepRef = useRef<number | null>(null);
   const activeIndexRef = useRef(0);
+  const activeDialIndexRef = useRef(0);
+  const dialCursorRef = useRef(0);
+  const homeAnchorsRef = useRef<number[]>([]);
+  const dialFrameRef = useRef<number | null>(null);
   const reducedMotionRef = useRef(false);
-  const dragRef = useRef<{ pointerId: number; y: number; index: number } | null>(
-    null
-  );
   const indexTriggerRef = useRef<HTMLButtonElement>(null);
   const indexCloseRef = useRef<HTMLButtonElement>(null);
+  const indexPanelRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeDialIndex, setActiveDialIndex] = useState(0);
   const [indexOpen, setIndexOpen] = useState(false);
 
   const projects = useMemo(
@@ -76,13 +70,29 @@ export function DialArchive({ locale }: { locale: Locale }) {
   );
   const active = projects[activeIndex];
 
+  const homeDialItems = useMemo(
+    () => [
+      ...projects.map((project) => ({
+        id: project.id,
+        number: project.number,
+        label: project.title,
+      })),
+      { id: "practice-ledger", number: "07", label: "PRACTICE" },
+      { id: "profile-ledger", number: "08", label: "PROFILE" },
+    ],
+    [projects]
+  );
+  const homeDialStep = Math.min(
+    HOME_DIAL_STEP_MAX,
+    HOME_DIAL_ARC / Math.max(1, homeDialItems.length - 1)
+  );
+
   const categorySummaries = useMemo(
     () =>
       archiveCategoryOrder.map((category) => ({
         id: category,
         ...archiveCategories[category],
         count: projects.filter((project) => project.category === category).length,
-        preview: projects.find((project) => project.category === category),
       })),
     [projects]
   );
@@ -171,21 +181,46 @@ export function DialArchive({ locale }: { locale: Locale }) {
     [getAudioContext]
   );
 
-  const pulseHapticTick = useCallback((distance = 1) => {
-    if (!dragRef.current || typeof navigator.vibrate !== "function") return;
-    const now = window.performance.now();
-    if (now - lastHapticTimeRef.current < HAPTIC_MIN_INTERVAL_MS) return;
-    lastHapticTimeRef.current = now;
-    navigator.vibrate(distance > 2 ? 7 : 5);
-  }, []);
+  const applyDialCursor = useCallback(
+    (nextCursor: number, withSound = true) => {
+      const clamped = Math.min(
+        homeDialItems.length - 1,
+        Math.max(0, nextCursor)
+      );
+      dialCursorRef.current = clamped;
+      pageRef.current?.style.setProperty(
+        "--archive-vault-angle",
+        `${clamped * -homeDialStep}deg`
+      );
+
+      const rounded = Math.min(
+        homeDialItems.length - 1,
+        Math.max(0, Math.round(clamped))
+      );
+      if (activeDialIndexRef.current !== rounded) {
+        activeDialIndexRef.current = rounded;
+        setActiveDialIndex(rounded);
+      }
+
+      if (!withSound) return;
+      const ratchetStep = Math.round(clamped * RATCHET_STEPS_PER_PROJECT);
+      if (lastRatchetStepRef.current === null) {
+        lastRatchetStepRef.current = ratchetStep;
+      } else if (lastRatchetStepRef.current !== ratchetStep) {
+        const distance = Math.abs(ratchetStep - lastRatchetStepRef.current);
+        lastRatchetStepRef.current = ratchetStep;
+        playRatchetTick(Math.min(1, 0.58 + distance * 0.09));
+      }
+    },
+    [homeDialItems.length, homeDialStep, playRatchetTick]
+  );
 
   const applyCursor = useCallback(
-    (nextCursor: number, withSound = true) => {
+    (nextCursor: number) => {
       const root = rootRef.current;
       if (!root) return;
 
       const clamped = Math.min(projects.length - 1, Math.max(0, nextCursor));
-      root.style.setProperty("--dial-angle", `${clamped * -DIAL_STEP}deg`);
 
       root.querySelectorAll<HTMLElement>("[data-media-index]").forEach((layer) => {
         const index = Number(layer.dataset.mediaIndex ?? 0);
@@ -205,20 +240,84 @@ export function DialArchive({ locale }: { locale: Locale }) {
         activeIndexRef.current = rounded;
         setActiveIndex(rounded);
       }
-
-      if (!withSound) return;
-      const ratchetStep = Math.round(clamped * RATCHET_STEPS_PER_PROJECT);
-      if (lastRatchetStepRef.current === null) {
-        lastRatchetStepRef.current = ratchetStep;
-      } else if (lastRatchetStepRef.current !== ratchetStep) {
-        const distance = Math.abs(ratchetStep - lastRatchetStepRef.current);
-        lastRatchetStepRef.current = ratchetStep;
-        playRatchetTick(Math.min(1, 0.58 + distance * 0.09));
-        pulseHapticTick(distance);
-      }
     },
-    [playRatchetTick, projects.length, pulseHapticTick]
+    [projects.length]
   );
+
+  useEffect(() => {
+    const root = rootRef.current;
+    const practice = practiceRef.current;
+    const evidence = evidenceRef.current;
+    if (!root || !practice || !evidence) return;
+
+    const measureAnchors = () => {
+      const maxScroll = Math.max(
+        0,
+        document.documentElement.scrollHeight - window.innerHeight
+      );
+      const projectRange = Math.max(0, root.offsetHeight - window.innerHeight);
+      const anchors = projects.map((_, index) =>
+        Math.min(
+          maxScroll,
+          root.offsetTop + (index / Math.max(1, projects.length - 1)) * projectRange
+        )
+      );
+      anchors.push(
+        Math.min(maxScroll, Math.max(anchors.at(-1) ?? 0, practice.offsetTop - window.innerHeight * 0.3))
+      );
+      anchors.push(
+        Math.min(maxScroll, Math.max(anchors.at(-1) ?? 0, evidence.offsetTop - window.innerHeight * 0.3))
+      );
+      homeAnchorsRef.current = anchors;
+    };
+
+    const cursorAtScroll = (scrollY: number) => {
+      const anchors = homeAnchorsRef.current;
+      if (anchors.length < 2 || scrollY <= anchors[0]) return 0;
+      const lastIndex = anchors.length - 1;
+      if (scrollY >= anchors[lastIndex]) return lastIndex;
+      for (let index = 0; index < lastIndex; index += 1) {
+        const start = anchors[index];
+        const end = anchors[index + 1];
+        if (scrollY > end) continue;
+        const span = Math.max(1, end - start);
+        return index + Math.min(1, Math.max(0, (scrollY - start) / span));
+      }
+      return lastIndex;
+    };
+
+    const syncDial = () => {
+      dialFrameRef.current = null;
+      applyDialCursor(cursorAtScroll(window.scrollY));
+    };
+    const scheduleDialSync = () => {
+      if (dialFrameRef.current !== null) return;
+      dialFrameRef.current = window.requestAnimationFrame(syncDial);
+    };
+    const handleResize = () => {
+      measureAnchors();
+      scheduleDialSync();
+    };
+
+    measureAnchors();
+    scheduleDialSync();
+    window.addEventListener("scroll", scheduleDialSync, { passive: true });
+    window.addEventListener("resize", handleResize);
+    const observer = new ResizeObserver(handleResize);
+    observer.observe(root);
+    observer.observe(practice);
+    observer.observe(evidence);
+
+    return () => {
+      window.removeEventListener("scroll", scheduleDialSync);
+      window.removeEventListener("resize", handleResize);
+      observer.disconnect();
+      if (dialFrameRef.current !== null) {
+        window.cancelAnimationFrame(dialFrameRef.current);
+      }
+      dialFrameRef.current = null;
+    };
+  }, [applyDialCursor, projects]);
 
   useEffect(() => {
     const armAudio = () => unlockAudio();
@@ -246,7 +345,43 @@ export function DialArchive({ locale }: { locale: Locale }) {
     indexCloseRef.current?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIndexOpen(false);
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIndexOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+      const panel = indexPanelRef.current;
+      if (!panel) return;
+      const focusable = Array.from(
+        panel.querySelectorAll<HTMLElement>(
+          "button:not([disabled]), a[href], [tabindex]:not([tabindex='-1'])"
+        )
+      ).filter((element) => element.getClientRects().length > 0);
+
+      if (!focusable.length) {
+        event.preventDefault();
+        panel.focus();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const activeElement = document.activeElement;
+      if (
+        event.shiftKey &&
+        (activeElement === first || !panel.contains(activeElement))
+      ) {
+        event.preventDefault();
+        last.focus();
+      } else if (
+        !event.shiftKey &&
+        (activeElement === last || !panel.contains(activeElement))
+      ) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => {
@@ -264,7 +399,7 @@ export function DialArchive({ locale }: { locale: Locale }) {
         reducedMotionRef.current = false;
         gsap
           .timeline({ defaults: { ease: "power3.out" } })
-          .from(`.${styles.instrumentHeader}`, {
+          .from(`.${styles.mediaTelemetry}`, {
             y: -18,
             opacity: 0,
             duration: 0.8,
@@ -276,18 +411,8 @@ export function DialArchive({ locale }: { locale: Locale }) {
           )
           .from(
             `.${styles.mediaStage}`,
-            { scale: 0.975, opacity: 0, duration: 1.1 },
+            { scale: 0.992, duration: 0.9 },
             "-=0.78"
-          )
-          .from(
-            `.${styles.projectRail}`,
-            { x: 18, opacity: 0, duration: 0.8 },
-            "-=0.78"
-          )
-          .from(
-            `.${styles.dialAssembly}`,
-            { opacity: 0, duration: 0.8 },
-            "<0.08"
           );
 
         const trigger = ScrollTrigger.create({
@@ -306,41 +431,40 @@ export function DialArchive({ locale }: { locale: Locale }) {
           },
         });
 
-        gsap.utils.toArray<HTMLElement>(`.${styles.folder}`).forEach((folder, index) => {
-          gsap.from(folder, {
-            y: 72,
-            scale: 0.94,
+        gsap.utils.toArray<HTMLElement>(`.${styles.practiceRow}`).forEach((row, index) => {
+          gsap.from(row, {
+            y: 34,
             opacity: 0,
-            duration: 1.15,
-            delay: index * 0.06,
+            duration: 0.85,
+            delay: index * 0.045,
             ease: "power3.out",
             scrollTrigger: {
-              trigger: folder,
-              start: "top 88%",
+              trigger: row,
+              start: "top 90%",
               once: true,
             },
           });
         });
 
-        gsap.from(`.${styles.manifestoMedia}`, {
-          scale: 0.72,
+        gsap.from(`.${styles.evidenceGrid}`, {
+          y: 42,
           opacity: 0,
-          duration: 1.15,
+          duration: 0.95,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: `.${styles.manifesto}`,
-            start: "top 72%",
+            trigger: `.${styles.evidenceField}`,
+            start: "top 76%",
             once: true,
           },
         });
 
-        applyCursor(trigger.progress * (projects.length - 1), false);
+        applyCursor(trigger.progress * (projects.length - 1));
         return () => trigger.kill();
       });
 
       mediaQuery.add("(prefers-reduced-motion: reduce)", () => {
         reducedMotionRef.current = true;
-        applyCursor(activeIndexRef.current, false);
+        applyCursor(activeIndexRef.current);
       });
 
       return () => mediaQuery.revert();
@@ -359,7 +483,7 @@ export function DialArchive({ locale }: { locale: Locale }) {
       const clamped = Math.min(projects.length - 1, Math.max(0, index));
 
       if (reducedMotionRef.current) {
-        applyCursor(clamped, false);
+        applyCursor(clamped);
         return;
       }
 
@@ -370,56 +494,27 @@ export function DialArchive({ locale }: { locale: Locale }) {
     [applyCursor, projects.length]
   );
 
+  const scrollToHomeCursor = useCallback(
+    (cursor: number, behavior: ScrollBehavior = "smooth") => {
+      const anchors = homeAnchorsRef.current;
+      if (!anchors.length) return;
+      const clamped = Math.min(homeDialItems.length - 1, Math.max(0, cursor));
+      const lower = Math.floor(clamped);
+      const upper = Math.min(homeDialItems.length - 1, Math.ceil(clamped));
+      const mix = clamped - lower;
+      const start = anchors[lower] ?? 0;
+      const end = anchors[upper] ?? start;
+      window.scrollTo({
+        top: start + (end - start) * mix,
+        behavior: reducedMotionRef.current ? "auto" : behavior,
+      });
+    },
+    [homeDialItems.length]
+  );
+
   const selectFromIndex = (index: number) => {
     setIndexOpen(false);
     window.requestAnimationFrame(() => scrollToIndex(index));
-  };
-
-  const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-    unlockAudio();
-    lastHapticTimeRef.current = 0;
-    dragRef.current = {
-      pointerId: event.pointerId,
-      y: event.clientY,
-      index: activeIndexRef.current,
-    };
-    event.currentTarget.setPointerCapture(event.pointerId);
-  };
-
-  const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
-    const drag = dragRef.current;
-    if (!drag || drag.pointerId !== event.pointerId) return;
-    const cursorDelta = (drag.y - event.clientY) / DRAG_PX_PER_PROJECT;
-    scrollToIndex(drag.index + cursorDelta, "auto");
-  };
-
-  const endPointer = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (dragRef.current?.pointerId !== event.pointerId) return;
-    dragRef.current = null;
-    if (typeof navigator.vibrate === "function") navigator.vibrate(0);
-    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-      event.currentTarget.releasePointerCapture(event.pointerId);
-    }
-  };
-
-  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    unlockAudio();
-    if (["ArrowDown", "ArrowRight", "PageDown"].includes(event.key)) {
-      event.preventDefault();
-      scrollToIndex(activeIndexRef.current + 1);
-    }
-    if (["ArrowUp", "ArrowLeft", "PageUp"].includes(event.key)) {
-      event.preventDefault();
-      scrollToIndex(activeIndexRef.current - 1);
-    }
-    if (event.key === "Home") {
-      event.preventDefault();
-      scrollToIndex(0);
-    }
-    if (event.key === "End") {
-      event.preventDefault();
-      scrollToIndex(projects.length - 1);
-    }
   };
 
   const activeHref = `/${locale}/works/${active.slug}`;
@@ -429,6 +524,22 @@ export function DialArchive({ locale }: { locale: Locale }) {
 
   return (
     <div ref={pageRef} className={styles.archivePage}>
+      <VaultDial
+        activeIndex={activeDialIndex}
+        ariaLabel={
+          locale === "ko" ? "홈 아카이브 탐색 다이얼" : "Home archive navigation dial"
+        }
+        items={homeDialItems}
+        onEngage={unlockAudio}
+        getScrubStartIndex={() => dialCursorRef.current}
+        onSelect={(index) => scrollToHomeCursor(Math.round(index))}
+        onScrub={(index) => scrollToHomeCursor(index, "auto")}
+        onScrubEnd={(index) => scrollToHomeCursor(Math.round(index))}
+        sound={false}
+        stepDegrees={homeDialStep}
+        visualAngle="var(--archive-vault-angle, 0deg)"
+        variant="archive"
+      />
       <section
         ref={rootRef}
         className={styles.archive}
@@ -440,25 +551,13 @@ export function DialArchive({ locale }: { locale: Locale }) {
         <div className={styles.stage}>
           <div className={styles.ambient} aria-hidden="true" />
 
-          <div className={styles.instrumentHeader}>
-            <div className={styles.instrumentActions}>
-              <button
-                ref={indexTriggerRef}
-                type="button"
-                aria-expanded={indexOpen}
-                aria-controls="archive-index"
-                onClick={() => setIndexOpen(true)}
-              >
-                {locale === "ko" ? "전체 보기" : "Overview"}
-              </button>
-            </div>
-          </div>
-
           <div className={styles.stageFrame}>
             <div className={styles.projectInfo} key={active.id} aria-live="polite">
+              <span className={styles.identitySignal}>SGYUN / DESIGNER + BUILDER</span>
               <div className={styles.infoTopline}>
                 <span>{active.categoryText}</span>
                 <span>{active.year}</span>
+                <span>{active.statusCode}</span>
               </div>
               <h1
                 className={`${styles.title}${
@@ -483,7 +582,7 @@ export function DialArchive({ locale }: { locale: Locale }) {
                   { "--preview-aspect": active.heroAspectRatio } as PreviewFrameStyle
                 }
               >
-                <div className={styles.mediaTelemetry} aria-hidden="true">
+                <div className={styles.mediaTelemetry}>
                   <span className={styles.mediaIdentity}>
                     <b>{active.number}</b>
                     <span>{active.title}</span>
@@ -492,6 +591,17 @@ export function DialArchive({ locale }: { locale: Locale }) {
                   <span className={styles.mediaRatio}>
                     RATIO {active.heroAspectRatio.toFixed(3)}
                   </span>
+                  <button
+                    ref={indexTriggerRef}
+                    className={styles.mediaOverview}
+                    type="button"
+                    aria-expanded={indexOpen}
+                    aria-controls="archive-index"
+                    onClick={() => setIndexOpen(true)}
+                  >
+                    {locale === "ko" ? "전체" : "All"}{" "}
+                    {String(projects.length).padStart(2, "0")}
+                  </button>
                 </div>
                 <div className={styles.mediaStage}>
                   {projects.map((project, index) => (
@@ -501,108 +611,40 @@ export function DialArchive({ locale }: { locale: Locale }) {
                       key={project.id}
                       aria-hidden={index !== activeIndex}
                     >
-                      <Image
-                        src={project.heroImage}
-                        alt={index === activeIndex ? project.imageAltText : ""}
-                        fill
-                        priority={index === 0}
-                        fetchPriority={index === 0 ? "high" : "auto"}
-                        sizes="(max-width: 900px) 94vw, (max-width: 1180px) 66vw, 68vw"
-                        className={`${styles.previewImage} ${
-                          project.imageTone === "light" ? styles.lightSourceImage : ""
-                        }`}
-                        style={{ objectPosition: project.imagePosition }}
-                      />
+                      {Math.abs(index - activeIndex) <= 1 ? (
+                        <SafeImage
+                          src={project.heroImage}
+                          alt={index === activeIndex ? project.imageAltText : ""}
+                          fallbackLabel={
+                            locale === "ko"
+                              ? "프로젝트 미디어를 불러오지 못했습니다"
+                              : "Project media unavailable"
+                          }
+                          fill
+                          priority={index === 0}
+                          fetchPriority={index === 0 ? "high" : "auto"}
+                          sizes="(max-width: 900px) 94vw, (max-width: 1180px) 66vw, 68vw"
+                          className={`${styles.previewImage} ${
+                            project.imageTone === "light" ? styles.lightSourceImage : ""
+                          }`}
+                          style={{ objectPosition: project.imagePosition }}
+                        />
+                      ) : null}
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            <aside className={styles.projectRail} aria-label="Archive entries">
-              <div className={styles.railList}>
-                {projects.map((project, index) => (
-                  <button
-                    type="button"
-                    key={project.id}
-                    className={index === activeIndex ? styles.activeRailItem : ""}
-                    aria-current={index === activeIndex ? "true" : undefined}
-                    onClick={() => {
-                      unlockAudio();
-                      scrollToIndex(index);
-                    }}
-                  >
-                    <span>{project.number}</span>
-                    <strong>{project.title}</strong>
-                  </button>
-                ))}
-              </div>
-            </aside>
-
-            <div className={styles.dialAssembly}>
-              <div
-                className={styles.dialControl}
-                role="slider"
-                tabIndex={0}
-                aria-label={
-                  locale === "ko" ? "프로젝트 선택 다이얼" : "Project selection dial"
-                }
-                aria-description={
-                  locale === "ko"
-                    ? "위아래로 드래그하면 다이얼과 페이지가 함께 스크롤됩니다."
-                    : "Drag vertically to move the dial and page together."
-                }
-                aria-valuemin={1}
-                aria-valuemax={projects.length}
-                aria-valuenow={activeIndex + 1}
-                aria-valuetext={active.title}
-                onPointerDown={onPointerDown}
-                onPointerMove={onPointerMove}
-                onPointerUp={endPointer}
-                onPointerCancel={endPointer}
-                onKeyDown={onKeyDown}
-              >
-                <div className={styles.dialTrack} aria-hidden="true">
-                  {Array.from({ length: TICK_COUNT }).map((_, index) => (
-                    <i
-                      className={styles.tick}
-                      key={index}
-                      style={{ "--tick-index": index } as TickStyle}
-                    />
-                  ))}
-                  {projects.map((project, index) => {
-                    const angle = -90 + index * DIAL_STEP;
-                    const markerStyle: MarkerStyle = {
-                      "--marker-angle": `${angle}deg`,
-                      "--counter-angle": `${-angle}deg`,
-                    };
-                    return (
-                      <span
-                        key={project.id}
-                        className={`${styles.marker} ${
-                          index === activeIndex ? styles.activeMarker : ""
-                        }`}
-                        style={markerStyle}
-                      >
-                        <b>{project.number}</b>
-                      </span>
-                    );
-                  })}
-                </div>
-                <span className={styles.dialDatum} aria-hidden="true" />
-              </div>
-              <div className={styles.dialReadout} aria-hidden="true">
-                <span>{active.number}</span>
-                <small>{String(projects.length).padStart(2, "0")}</small>
-              </div>
-            </div>
           </div>
 
           {indexOpen ? (
             <div
+              ref={indexPanelRef}
               id="archive-index"
               className={styles.indexPanel}
               role="dialog"
+              tabIndex={-1}
               aria-modal="true"
               aria-labelledby="archive-index-title"
             >
@@ -624,7 +666,7 @@ export function DialArchive({ locale }: { locale: Locale }) {
                     onClick={() => selectFromIndex(index)}
                   >
                     <span className={styles.indexThumb}>
-                      <Image
+                      <SafeImage
                         src={project.heroImage}
                         alt=""
                         fill
@@ -634,7 +676,7 @@ export function DialArchive({ locale }: { locale: Locale }) {
                     </span>
                     <span className={styles.indexMeta}>
                       <small>
-                        {project.categoryCode} / {project.year}
+                        {project.categoryCode} / {project.year} / {project.statusCode}
                       </small>
                       <strong>{project.title}</strong>
                     </span>
@@ -646,52 +688,40 @@ export function DialArchive({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className={styles.folderField} aria-labelledby="folder-field-title">
-        <div className={styles.folderIntro}>
-          <h2 id="folder-field-title">
-            {locale === "ko" ? "매체가 달라도, 설계 태도는 이어진다." : "Different media. One design attitude."}
+      <section ref={practiceRef} className={styles.practiceField} aria-labelledby="practice-field-title">
+        <div className={styles.sectionDatum} aria-hidden="true">
+          <span>PRACTICE LEDGER</span>
+          <i />
+          <b>{String(projects.length).padStart(2, "0")} RECORDS</b>
+        </div>
+        <div className={styles.practiceIntro}>
+          <h2 id="practice-field-title">
+            {locale === "ko" ? "형태보다 먼저, 작동의 구조를 설계한다." : "Design the structure of how it works."}
           </h2>
-          <div className={styles.folderIntroAside}>
-            <div className={styles.folderMicro} aria-hidden="true">
-              <span>ARCHIVE_FIELD</span>
-              <b>{String(categorySummaries.length).padStart(2, "0")}</b>
-              <i />
-              <small>{String(projects.length).padStart(2, "0")}_RECORDS</small>
-            </div>
-            <p>
-              {locale === "ko"
-                ? "물성, 메커니즘, 인터페이스와 코드가 하나의 아카이브 안에서 연결된다."
-                : "Material, mechanics, interface, and code share one archive."}
-            </p>
-          </div>
+          <p>
+            {locale === "ko"
+              ? "물리적 제품, 디지털 인터페이스, 서비스 시스템을 서로 다른 장르가 아니라 같은 설계 태도의 결과로 다룹니다."
+              : "Physical products, digital interfaces, and service systems are outcomes of the same design attitude, not separate genres."}
+          </p>
         </div>
 
-        <div className={styles.folderStack}>
-          {categorySummaries.map((category, index) => (
+        <div className={styles.practiceRows}>
+          {categorySummaries.map((category) => (
             <Link
               key={category.id}
               href={`/${locale}/works?category=${category.id}`}
-              className={styles.folder}
-              style={{ "--folder-index": index } as CSSProperties}
+              className={styles.practiceRow}
             >
-              {category.preview ? (
-                <span className={styles.folderPreview} aria-hidden="true">
-                  <Image
-                    src={category.preview.heroImage}
-                    alt=""
-                    fill
-                    sizes="(max-width: 760px) 64vw, 36vw"
-                    className={styles.coverImage}
-                  />
-                </span>
-              ) : null}
-              <span className={styles.folderTab}>{category.code}</span>
-              <span className={styles.folderCount}>
-                {String(category.count).padStart(2, "0")}
+              <span className={styles.practiceIdentity}>
+                <small>{category.code}</small>
+                <strong>{category.title[locale]}</strong>
               </span>
-              <strong>{category.title[locale]}</strong>
               <p>{category.description[locale]}</p>
-              <span className={styles.folderAction} aria-hidden="true">
+              <span className={styles.practiceCount}>
+                <small>{locale === "ko" ? "기록" : "Records"}</small>
+                <b>{String(category.count).padStart(2, "0")}</b>
+              </span>
+              <span className={styles.practiceLatch} aria-hidden="true">
                 <i />
               </span>
             </Link>
@@ -699,42 +729,80 @@ export function DialArchive({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className={styles.manifesto} aria-labelledby="working-principle-title">
-        <div className={styles.manifestoHeader} aria-hidden="true">
-          <span>{locale === "ko" ? "작업 원칙" : "Working principle"}</span>
+      <section ref={evidenceRef} className={styles.evidenceField} aria-labelledby="profile-ledger-title">
+        <div className={styles.sectionDatum} aria-hidden="true">
+          <span>PROFILE LEDGER</span>
           <i />
-          <b>01</b>
+          <b>VERIFIED / 2026</b>
         </div>
-        <div className={styles.manifestoGrid}>
-          <div className={styles.manifestoStatement}>
-            <h2 id="working-principle-title">
-              <span>{locale === "ko" ? "물성과 메커니즘을" : "Material and mechanics"}</span>
-              <span>{locale === "ko" ? "디지털 경험으로 잇는다." : "become digital experience."}</span>
-            </h2>
-            <p>
-              {locale === "ko"
-                ? "산업디자인, 금속공예, 웹과 앱을 하나의 작업 세계로 편집한다. 구조를 이해하고 실제로 작동하게 만든다는 태도는 같다."
-                : "Industrial design, metal craft, web, and apps form one body of work. The constant is understanding structure and making it operate."}
-            </p>
-          </div>
-          <div className={styles.manifestoVisual}>
-            <div className={styles.manifestoMedia} aria-hidden="true">
-              <Image
-                src="/images/archive/vibey-control-console.png"
-                alt=""
-                fill
-                sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 1200px) 44vw, 560px"
-                className={styles.coverImage}
+
+        <div className={styles.evidenceGrid}>
+          <div className={styles.profileStatement}>
+            <span>{portfolioProfile.title[locale]}</span>
+            <h2 id="profile-ledger-title">{portfolioProfile.name[locale]}</h2>
+            <p>{portfolioProfile.summary[locale]}</p>
+            <div className={styles.profileActions}>
+              <VaultAction
+                href={`/${locale}/about`}
+                code="PROFILE_01"
+                label={locale === "ko" ? "프로필 열기" : "Open profile"}
+              />
+              <VaultAction
+                href={`/${locale}/contact`}
+                code="CONTACT_01"
+                label={locale === "ko" ? "연락하기" : "Contact"}
               />
             </div>
-            <VaultAction
-              className={styles.manifestoAction}
-              href={`/${locale}/about`}
-              code="PROFILE_01"
-              label={locale === "ko" ? "SGYUN 소개" : "About SGYUN"}
-            />
+          </div>
+
+          <div className={styles.evidenceLists}>
+            <section className={styles.evidenceGroup} aria-labelledby="recognition-title">
+              <header>
+                <h3 id="recognition-title">{locale === "ko" ? "수상·선정" : "Recognition"}</h3>
+                <span>{String(portfolioProfile.recognitions.length).padStart(2, "0")}</span>
+              </header>
+              <ol>
+                {portfolioProfile.recognitions.map((item) => (
+                  <li key={`${item.year}-${item.title.en}`}>
+                    <time>{item.year}</time>
+                    <span>
+                      <strong>{item.title[locale]}</strong>
+                      <small>{item.result[locale]}</small>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <section className={styles.evidenceGroup} aria-labelledby="activity-title">
+              <header>
+                <h3 id="activity-title">{locale === "ko" ? "활동" : "Activities"}</h3>
+                <span>{String(portfolioProfile.activities.length).padStart(2, "0")}</span>
+              </header>
+              <ol>
+                {portfolioProfile.activities.map((item) => (
+                  <li key={`${item.year}-${item.title.en}`}>
+                    <time>{item.year}</time>
+                    <span>
+                      <strong>{item.title[locale]}</strong>
+                      <small>{item.detail[locale]}</small>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
           </div>
         </div>
+
+        <Link className={styles.appendixReserve} href={`/${locale}/appendix`}>
+          <span>APPENDIX / RESERVED</span>
+          <p>
+            {locale === "ko"
+              ? "보류된 실험과 보조 기록을 위한 빈 공간입니다. 현재 공개 항목은 없습니다."
+              : "A reserved space for held experiments and supporting records. No public entries yet."}
+          </p>
+          <b>{locale === "ko" ? "빈 페이지 보기" : "View empty appendix"}</b>
+        </Link>
       </section>
     </div>
   );

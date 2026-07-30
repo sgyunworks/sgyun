@@ -8,7 +8,7 @@
 - [x] 미디어 프레임과 컨트롤의 반경·표면 등급이 명확히 다르다.
 - [x] 홈·목록·상세에서 광원, 자간, 신호색 사용이 일관된다.
 - [x] 홈 primary media가 이전 캡처보다 크게 보이며 두꺼운 glass-like bezel이 없다.
-- [x] folder intro 제목이 hero 제목보다 작고 자간·행간이 여유롭다.
+- [x] Practice Ledger 제목이 hero 제목보다 작고 자간·행간이 여유롭다.
 - [x] nav, 프로젝트 CTA, category action에서 vault datum·rotary latch 문법이 일관된다.
 - [x] 마이크로그래픽이 실제 번호·비율·record count·route 정보만 표시하고 작품을 가리지 않는다.
 - [x] 다이얼 옆의 장식성 `15°`, 고정 emissive pointer, rail glow가 없다.
@@ -21,7 +21,7 @@
 - [x] reduced-motion 설정에서 콘텐츠 접근이 가능하다.
 - [x] `npm run build`가 타입 검사와 정적 페이지 생성을 포함해 통과한다.
 
-`npm run lint`는 ESLint 설정 파일이 없어 대화형 초기 설정 화면에서 멈춘다. 이번 변경의 오류가 아니라 기존 품질 게이트의 미설정 상태이며, 별도 개발 작업으로 남긴다.
+ESLint는 아직 구성하지 않았다. 실행 불가능했던 `next lint` 스크립트는 제거했고 현재 정적 검사는 `npm run typecheck`와 production build를 기준으로 한다.
 
 ## 비교 방식
 
@@ -48,8 +48,8 @@
 
 ## Dial sync·Vault transition — 2026-07-29
 
-- [x] 01–07 각각의 active dial marker 순각도가 모두 `-90°`이고 counter-rotation 후 글자 순회전이 `0°`다.
-- [x] scroll이 멈추면 `1 / 6` 간격의 가장 가까운 project detent로 snap한다.
+- [x] 01–06 각각의 active dial marker 순각도가 모두 `-90°`이고 counter-rotation 후 글자 순회전이 `0°`다.
+- [x] scroll이 멈추면 `1 / 5` 간격의 가장 가까운 project detent로 snap한다.
 - [x] 고정 emissive pointer와 desktop active rail glow가 없으며 tablet·mobile bar도 발광 shadow를 사용하지 않는다.
 - [x] `SOUND START/ON/OFF` UI, localStorage preference, sound toggle state가 source와 렌더링 결과에 없다.
 - [x] 첫 pointer·keyboard·touch 입력이 Web Audio를 준비하고 이후 ratchet tick은 기본 활성 상태다.
@@ -74,3 +74,74 @@
 - [x] `/ko`, `/ko/works`, `/ko/works/wrgs`, `/ko/about`을 1440×960과 390×844에서 검사했고 모든 경로의 document horizontal overflow가 `0px`다.
 - [x] `npx tsc --noEmit`, `git diff --check`, 별도 임시 복제본의 Next.js production build가 통과했으며 정적 페이지 27개를 생성했다.
 - 검증 캡처: `qa/typography-refined-home-manifesto-desktop.png`, `qa/typography-refined-home-manifesto-mobile.png`, `qa/typography-refined-works-hero-desktop.png`, `qa/typography-refined-detail-premise-mobile.png`, `qa/typography-refined-detail-story-mobile.png`, `qa/typography-refined-about-copy-desktop.png`, `qa/typography-refined-about-copy-mobile.png`.
+
+## Multi-skill design review pass — 2026-07-30
+
+- [x] 홈의 `전체 보기`가 독립 control island에서 primary media telemetry baseline으로 이동해 제어 대상과 소유 관계가 일치한다.
+- [x] 390×844 홈은 `media 12,111–382,269.625 → rail 283.625–327.625 → info 341.625–530.0625`의 연속 흐름이며 각 구간이 겹치지 않는다.
+- [x] 모바일 half dial은 `x=292`, 중심 `y=597.21875`에 있어 오른쪽 엄지 영역을 유지하고 프로젝트 정보 열과 교차하지 않는다.
+- [x] About 첫 장면은 대형 제목, 작업 태도, 이름·위치 datum을 같은 viewport 안에서 독립 grid cell로 표시한다. 1440×960, 768×1024, 390×844에서 제목과 thesis 교차는 0이다.
+- [x] `/ko`, `/ko/works`, `/ko/works/wrgs`, `/ko/about`을 1440×960, 768×1024, 390×844에서 확인했고 수평 overflow, 깨진 이미지, page error, console error가 모두 0이다.
+- [x] archive dialog는 열릴 때 닫기 버튼으로 focus가 이동하고 Escape 후 trigger로 복귀한다. 다이얼의 `End` 키는 세 viewport에서 모두 `aria-valuenow=6`으로 동기화된다.
+- [x] tablet·mobile project rail에 명시적 accessible name을 추가한 뒤 axe-core WCAG 2 A/AA violation이 0건이다.
+- [x] `npx tsc --noEmit`과 Next.js production build를 통과했고 정적 페이지 27개가 생성됐다.
+- 검증 캡처: `qa/design-gate-home-desktop.png`, `qa/design-gate-home-tablet.png`, `qa/design-system-review-home-mobile.png`, `qa/design-gate-about-desktop.png`, `qa/design-gate-about-tablet.png`, `qa/design-gate-about-mobile.png`.
+
+## Critical audit and correction — 2026-07-30
+
+- [x] 1440×960, 1024×900, 720×960 reflow, 390×844, 320×720에서 홈·인덱스·필터·상세·About·Contact·영문 홈 총 35개 프로덕션 렌더를 검사했다.
+- [x] 수평 overflow, 핵심 요소 overlap, 깨진 가시 이미지, console/page error, actionable request failure, axe-core WCAG 2 A/AA violation, 작은 조작 대상이 모두 0건이다.
+- [x] 모바일 전역 nav에서 INDEX·About·Contact·언어 전환이 유지되고 320px에서도 문서 overflow가 없다.
+- [x] archive dialog focus trap과 Escape focus restore가 5개 폭에서 모두 통과했다.
+- [x] 빠른 wheel 정·역방향과 pointer drag가 dial index에 동기화됐다.
+- [x] reduced motion, JavaScript-off, 대표 미디어 강제 실패, 잘못된 상세 경로 404를 검증했다.
+- [x] locale별 `html lang`, canonical, Open Graph image, 중복 없는 홈 title을 확인했다.
+- [x] `npm run typecheck`, `git diff --check`, `npm run build`가 통과했고 정적 페이지 28개가 생성됐다.
+- [ ] 느린 3G 로컬 측정의 LCP `3.288s`는 배포 preview에서 다시 측정하고 개선한다. CLS는 `0`, 총 전송은 `551KB`, 첫 화면 이미지는 `2개 / 27KB`였다.
+- [ ] 실제 모바일의 Web Audio 음량과 vibration 체감은 실기기 검증이 필요하다.
+- [ ] `npm audit` high 3건은 Next.js가 포함한 PostCSS·Sharp 호환 업그레이드가 필요하다. 강제 major upgrade는 이번 감사 범위에서 수행하지 않았다.
+- 최종 보고: `docs/CRITICAL_AUDIT.md`
+- 원시 결과와 동일 상태 캡처: `qa/critical-audit/before-fixes/`, `qa/critical-audit/after-fixes/`
+
+## Approved content system and Owner Studio — 2026-07-30
+
+- [x] 홈 다이얼·인덱스·상세가 승인된 6개 대표작을 `01–06` 같은 순서로 표시한다.
+- [x] Vibey·ALLSET은 공개 프로젝트에 없고 N03는 About·Profile Ledger의 활동에만 표시된다.
+- [x] VESA와 RecoPick의 빈 이미지가 깨진 요청 없이 `MEDIA_PENDING`으로 렌더링되고, 실제 이미지 요청 실패는 `MEDIA_UNAVAILABLE`로 전환된다.
+- [x] Home·Works·About·Contact·Appendix 5개 route dial 항목이 표시되고 About 진입 시 `03 / PROFILE`로 동기화된다. 방향키 포커스 이동과 Enter 링크 이동을 확인했다.
+- [x] Appendix는 `00 RECORDS` 빈 상태이며 보류 작업을 임의로 노출하지 않는다.
+- [x] `/studio` 미인증 접근은 로그인으로 이동하고, 잘못된 비밀번호는 거부되며, 인증 후 `06 PUBLISHED`와 승인한 6개 제목을 순서대로 표시한다.
+- [x] Studio 인증 상태에서 콘텐츠 API가 6개 원본을 반환한다. 실제 게시 PUT과 GitHub 커밋은 운영용 토큰을 저장하지 않기 위해 이번 로컬 검증에서 실행하지 않았다.
+- [x] 1440×960, 1024×900, 720×960, 390×844, 320×720 × 9개 경로의 45개 렌더에서 HTTP 200, 수평 overflow 0, 깨진 이미지 0, console/page error 0을 확인했다.
+- [x] wheel 정·역방향은 `01→06→01`, drag는 `01→03`으로 다이얼·스크롤이 동기화됐다. reduced motion, JavaScript-off, 404, Vault 진입·복귀도 통과했다.
+- [x] `npm run typecheck`, `git diff --check`, `npm run build`가 통과했고 정적 페이지 29개를 생성했다.
+- 로컬 느린 3G 합성: LCP 1.020s, CLS 0, 총 전송 704KB. 첫 대표작 이미지 등록 뒤 재측정한다.
+- 원시 결과와 캡처: `qa/critical-audit/content-system-v2/`
+
+## Global Vault Dial identity pass — 2026-07-30
+
+- [x] 오른쪽 half dial이 홈 첫 장면부터 Practice·Profile까지 fixed 상태로 유지되고 Works·상세·About·Contact·Appendix에도 같은 face anatomy와 화면 축으로 표시된다.
+- [x] 페이지별 rail은 Works `Overview / Selected / Appendix`, 상세 `Overview / Premise / Process / Next`, About `Profile / Identity / Education / Practice / Records / Contact`, Contact `Contact / Channels`, Appendix `Reserved / Status`로 실제 section id와 연결된다.
+- [x] About의 `Practice`, 상세의 `Next` rail 선택이 해당 섹션 상단으로 이동하고 active index를 함께 갱신한다. 홈은 Ledger 확장 후 키보드 `End→08`, wheel `01→08→01`, 모바일 drag `01→03`으로 동기화된다.
+- [x] 작은 rotary latch의 백색 datum을 12시 축의 `1.5–2px × 5–10px` capsule로 통일하고, 기울어진 독립 emissive pointer와 과도한 glow를 제거했다.
+- [x] 1440×960, 1024×900, 720×960, 390×844, 320×720 × 9개 경로의 45개 렌더에서 HTTP 200, 수평 overflow 0, 깨진 이미지 0, console/page error 0을 확인했다.
+- [x] reduced motion, JavaScript-off, 미디어 실패, 404, 프로젝트 진입·복귀가 유지된다. 로컬 합성 수치는 LCP 1.024s, CLS 0이었다.
+- 검증 캡처와 원시 결과: `qa/critical-audit/final-vault-identity-v4/`
+
+## Continuous dial motion correction — 2026-07-30
+
+- [x] 사용자 화면 기록의 Works·About 빠른 스크롤을 0.5초 간격으로 분해해, 기존 face가 정수 section 전환 때만 계단식 회전하고 observer 판정이 콘텐츠보다 늦는 원인을 확인했다.
+- [x] 홈은 ScrollTrigger의 소수 cursor를 공통 Vault Dial의 CSS angle에 직접 연결했다. `scrollY 0 / 300 / 600 / 900 / 1200`에서 각도는 `0 / -5.912 / -11.823 / -17.735 / -23.647deg`로 연속 변화했다.
+- [x] 내부 페이지는 IntersectionObserver의 최대 교차율 판정을 제거하고 section anchor 사이의 scroll progress를 보간한다. About 빠른 하향 스크롤에서 active sequence는 `01→02→03→04→05`, 역회전 frame은 `0`이었다.
+- [x] About section 중간 지점의 face angle은 `-7.207 / -21.604 / -36.006 / -50.399 / -66.396deg`로 정수 각도 사이에서도 연속 변화했다.
+- [x] 직접 drag는 `auto` 추종 후 release에서 한 번만 settle하며 About `01→03`, 홈 모바일 `01→03`을 확인했다.
+- [x] 5개 화면 폭 × 9개 경로 45개 렌더에서 HTTP 200, overflow 0, 깨진 이미지 0, console/page error 0을 유지했다. Ledger 확장 후 wheel `01→08→01`, reduced motion, JavaScript-off, 404, 미디어 실패도 통과했다.
+- 원시 결과와 캡처: `qa/critical-audit/dial-motion-continuous/`
+
+## Landing Ledger dial extension — 2026-07-30
+
+- [x] 홈 dial items를 작품 `01–06`과 `07 PRACTICE`, `08 PROFILE`의 8개 anchor로 확장했다.
+- [x] 작품 마지막 anchor에서 Practice·Profile까지 face angle은 `-60 / -68.571 / -72 / -80.476 / -84deg`로 연속 변화하고, active value는 `06→07→08`로 갱신된다.
+- [x] `07 PRACTICE`, `08 PROFILE` rail 선택이 각 Ledger로 이동하며 drag·keyboard도 같은 8개 anchor를 사용한다.
+- [x] 1440×960에서 Profile 최하단까지 horizontal overflow 0, console/page error 0을 확인했다.
+- 원시 결과와 캡처: `qa/critical-audit/landing-ledger-dial/`

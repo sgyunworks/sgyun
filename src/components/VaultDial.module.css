@@ -1,0 +1,367 @@
+.shell {
+  position: fixed;
+  top: 54%;
+  right: 0;
+  z-index: 32;
+  width: clamp(300px, 23.5vw, 372px);
+  aspect-ratio: 1;
+  filter: drop-shadow(0 34px 54px rgba(0, 0, 0, 0.48));
+  pointer-events: none;
+  transform: translate(52%, -50%);
+}
+
+.archive {
+  width: clamp(320px, 24vw, 380px);
+  transform: translate(50%, -50%);
+}
+
+.page {
+  top: 56%;
+  width: clamp(260px, 20.5vw, 314px);
+  opacity: 0.9;
+  transform: translate(57%, -50%);
+  transition: opacity 420ms var(--ease-fluid);
+}
+
+.page .rail {
+  right: calc(100% - 74px);
+  width: 124px;
+}
+
+.page:hover,
+.page:focus-within {
+  opacity: 1;
+}
+
+.scrim {
+  position: absolute;
+  inset: -38% -10% -38% -78%;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse at 88% 50%,
+    rgba(8, 9, 11, 0.94) 0 24%,
+    rgba(8, 9, 11, 0.74) 43%,
+    rgba(8, 9, 11, 0.18) 67%,
+    transparent 79%
+  );
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.archive .scrim {
+  opacity: 0.04;
+}
+
+.rail {
+  position: absolute;
+  top: 50%;
+  right: calc(100% - 8px);
+  display: flex;
+  width: clamp(136px, 10.5vw, 168px);
+  flex-direction: column;
+  pointer-events: auto;
+  transform: translateY(-50%);
+}
+
+.archive .rail,
+.page .rail {
+  mix-blend-mode: difference;
+}
+
+.rail button {
+  position: relative;
+  display: grid;
+  min-height: 36px;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: center;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.42);
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    color 240ms var(--ease-standard),
+    transform 360ms var(--ease-fluid);
+}
+
+.rail button::after {
+  position: absolute;
+  top: 50%;
+  right: -4px;
+  width: 0;
+  height: 1px;
+  background: rgba(245, 245, 239, 0.76);
+  content: "";
+  transform: translateY(-50%);
+  transition: width 360ms var(--ease-fluid);
+}
+
+.rail button:hover,
+.rail button:focus-visible {
+  color: rgba(255, 255, 255, 0.78);
+  transform: translateX(-3px);
+}
+
+.rail button span {
+  font: 510 9px/1 var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+}
+
+.rail button strong {
+  overflow: hidden;
+  font-family: var(--font-display), var(--font-korean), sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rail .activeRailItem {
+  color: #f5f5f1;
+}
+
+.rail .activeRailItem::after {
+  width: 18px;
+}
+
+.rail .activeRailItem span,
+.rail .activeRailItem strong {
+  font-weight: 620;
+}
+
+.control {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: var(--rotor-face);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+    inset 0 0 0 8px rgba(6, 7, 9, 0.76),
+    inset 0 0 0 9px rgba(255, 255, 255, 0.052),
+    0 0 0 1px #030405,
+    0 18px 58px rgba(0, 0, 0, 0.62);
+  cursor: ns-resize;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.control::before {
+  position: absolute;
+  inset: 8.5%;
+  z-index: 2;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(7, 8, 10, 0.97) 0 18%, transparent 18.6%),
+    repeating-conic-gradient(
+      from 28deg,
+      rgba(184, 190, 200, 0.17) 0deg 0.42deg,
+      rgba(8, 10, 13, 0.035) 0.58deg 4.2deg
+    ),
+    radial-gradient(circle at 39% 31%, #26292f 0, #121419 48%, #08090c 100%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.13),
+    inset 0 -22px 50px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(255, 255, 255, 0.052);
+  content: "";
+}
+
+.control::after {
+  position: absolute;
+  inset: 40%;
+  z-index: 5;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 34%, rgba(255, 255, 255, 0.145), transparent 26%),
+    linear-gradient(145deg, #22252b, #090a0d 72%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.12),
+    inset 0 -6px 16px rgba(0, 0, 0, 0.5),
+    0 4px 14px rgba(0, 0, 0, 0.48),
+    0 0 0 1px rgba(255, 255, 255, 0.065);
+  content: "";
+}
+
+.track {
+  position: absolute;
+  inset: 13%;
+  z-index: 4;
+  border-radius: 50%;
+  transform: rotate(var(--vault-dial-angle, 0deg));
+  will-change: transform;
+}
+
+.datum {
+  position: absolute;
+  top: 50%;
+  left: 1.8%;
+  z-index: 7;
+  width: clamp(9px, 3.5%, 13px);
+  height: 2px;
+  border-radius: 1px;
+  background: rgba(245, 245, 239, 0.92);
+  transform: translate(-12%, -50%);
+  pointer-events: none;
+}
+
+.tick {
+  position: absolute;
+  inset: 0;
+  transform: rotate(calc(var(--vault-tick-index) * 6deg));
+}
+
+.tick::before {
+  position: absolute;
+  top: 1.5%;
+  left: 50%;
+  width: 1px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.2);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.tick:nth-child(5n + 1)::before {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.44);
+}
+
+.marker {
+  position: absolute;
+  inset: 0;
+  transform: rotate(var(--vault-marker-angle));
+}
+
+.marker b {
+  position: absolute;
+  top: 7.4%;
+  left: 50%;
+  color: rgba(255, 255, 255, 0.4);
+  font: 510 9px/1 var(--font-mono), monospace;
+  letter-spacing: 0.07em;
+  transform: translateX(-50%)
+    rotate(calc(var(--vault-counter-angle) - var(--vault-dial-angle, 0deg)));
+  transition: color 240ms var(--ease-standard);
+}
+
+.activeMarker b {
+  color: #f5f5f1;
+  font-weight: 650;
+}
+
+.readout {
+  display: none;
+}
+
+@media (max-width: 1040px) {
+  .shell,
+  .archive {
+    top: 58%;
+    width: clamp(242px, 28vw, 288px);
+    transform: translate(58%, -50%);
+  }
+
+  .rail {
+    right: calc(100% - 5px);
+    width: 110px;
+  }
+
+  .rail button {
+    min-height: 34px;
+  }
+
+  .rail button strong {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 760px) {
+  .shell,
+  .archive,
+  .page {
+    top: 62%;
+    width: clamp(190px, 52vw, 224px);
+    opacity: 0.9;
+    transform: translate(68%, -50%);
+  }
+
+  .scrim {
+    inset: -42% -8% -42% -46%;
+    opacity: 0.06;
+  }
+
+  .archive .scrim {
+    opacity: 0.03;
+  }
+
+  .rail {
+    right: calc(100% - 4px);
+    width: 40px;
+  }
+
+  .rail button {
+    min-height: 0;
+    height: 0;
+    grid-template-columns: 1fr;
+    justify-items: end;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .rail button::after {
+    right: -2px;
+  }
+
+  .rail button span {
+    font-size: 8px;
+  }
+
+  .rail .activeRailItem {
+    min-height: 44px;
+    height: 44px;
+    overflow: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .rail button strong {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .rail .activeRailItem::after {
+    width: 13px;
+  }
+
+  .control {
+    inset: 10%;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.13),
+      inset 0 0 0 6px rgba(6, 7, 9, 0.76),
+      inset 0 0 0 7px rgba(255, 255, 255, 0.045),
+      0 12px 38px rgba(0, 0, 0, 0.58);
+  }
+
+  .marker b {
+    font-size: 8px;
+  }
+
+  .datum {
+    width: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page,
+  .rail button,
+  .rail button::after {
+    transition: none;
+  }
+}

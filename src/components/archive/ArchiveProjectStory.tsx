@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { type CSSProperties, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { SafeImage } from "@/components/SafeImage";
 import styles from "./ArchiveProjectDetail.module.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -92,6 +92,7 @@ export function ArchiveProjectStory({
 
   return (
     <section
+      id="project-process"
       ref={rootRef}
       className={styles.story}
       aria-label={locale === "ko" ? "프로젝트 장면" : "Project scenes"}
@@ -113,9 +114,14 @@ export function ArchiveProjectStory({
                 aria-hidden={!isActive}
                 key={`${item.src}-${index}`}
               >
-                <Image
+                <SafeImage
                   src={item.src}
                   alt={isActive ? item.altText : ""}
+                  fallbackLabel={
+                    locale === "ko"
+                      ? "프로젝트 장면을 불러오지 못했습니다"
+                      : "Project scene unavailable"
+                  }
                   fill
                   sizes="(max-width: 900px) 100vw, 58vw"
                   className={
@@ -154,9 +160,14 @@ export function ArchiveProjectStory({
                   { "--media-aspect": item.aspectRatio } as MediaFrameStyle
                 }
               >
-                <Image
+                <SafeImage
                   src={item.src}
                   alt={item.altText}
+                  fallbackLabel={
+                    locale === "ko"
+                      ? "프로젝트 장면을 불러오지 못했습니다"
+                      : "Project scene unavailable"
+                  }
                   fill
                   sizes="(max-width: 900px) calc(100vw - 52px), 1px"
                   className={

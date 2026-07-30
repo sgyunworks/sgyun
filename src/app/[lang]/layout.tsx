@@ -4,6 +4,8 @@ import { locales, type Locale, getDict } from "@/lib/i18n";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { VaultTransition } from "@/components/VaultTransition";
+import { DocumentLanguage } from "@/components/DocumentLanguage";
+import { RouteVaultDial } from "@/components/RouteVaultDial";
 import { siteConfig } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -20,15 +22,20 @@ export async function generateMetadata({
     ? (lang as Locale)
     : "ko";
   return {
-    title: `${siteConfig.name} | ${
-      validLang === "ko" ? "Engineering Art" : "Engineering Art"
-    }`,
+    title: { absolute: `${siteConfig.name} | Product Designer · Builder` },
     description: siteConfig.description[validLang],
     alternates: {
+      canonical: `/${validLang}`,
       languages: {
         ko: `/ko`,
         en: `/en`,
       },
+    },
+    openGraph: {
+      title: `${siteConfig.name} | Product Designer · Builder`,
+      description: siteConfig.description[validLang],
+      url: `/${validLang}`,
+      locale: validLang === "ko" ? "ko_KR" : "en_US",
     },
   };
 }
@@ -48,8 +55,10 @@ export default async function LangLayout({
 
   return (
     <div lang={validLang}>
+      <DocumentLanguage locale={validLang} />
       <Nav locale={validLang} t={t} />
       <VaultTransition />
+      <RouteVaultDial locale={validLang} />
       <main className={validLang === "ko" ? "body-text" : ""}>{children}</main>
       <Footer t={t} />
     </div>

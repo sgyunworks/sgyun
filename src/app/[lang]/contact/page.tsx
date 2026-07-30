@@ -13,29 +13,37 @@ export default async function ContactPage({
   if (!(locales as readonly string[]).includes(lang)) notFound();
   const validLang = lang as Locale;
   const t = getDict(validLang);
+  const isKo = validLang === "ko";
 
   return (
     <div className={styles.page}>
       <div className={styles.shell}>
-        <header className={styles.contactHero}>
+        <header id="contact-intro" className={styles.contactHero}>
         <span className={styles.sectionLabel}>
           {t.contact.eyebrow}
         </span>
 
-        <h1>
-          {t.contact.headline1}
-          <br />
-          {t.contact.headline2}{" "}
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className={styles.contactAction}
-          >
-            {t.contact.headline3}
-          </a>
-        </h1>
+        <div className={styles.contactLead}>
+          <h1>
+            {t.contact.headline1}
+            <br />
+            {t.contact.headline2}{" "}
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className={styles.contactAction}
+            >
+              {t.contact.headline3}
+            </a>
+          </h1>
+          <p>
+            {isKo
+              ? "물리적 제품, 디지털 제품, 전시와 실험적 협업까지 형식에 제한 없이 이야기할 수 있습니다."
+              : "Open to physical products, digital products, exhibitions, and experimental collaborations."}
+          </p>
+        </div>
         </header>
 
-        <div className={styles.contactGrid}>
+        <div id="contact-channels" className={styles.contactGrid}>
           <Block label={t.contact.labelEmail}>
             <a
               href={`mailto:${siteConfig.email}`}
@@ -81,8 +89,18 @@ function Block({
   );
 }
 
-export function generateMetadata() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const locale = (locales as readonly string[]).includes(lang) ? lang : "ko";
   return {
     title: "Contact",
+    alternates: {
+      canonical: `/${locale}/contact`,
+      languages: { ko: "/ko/contact", en: "/en/contact" },
+    },
   };
 }

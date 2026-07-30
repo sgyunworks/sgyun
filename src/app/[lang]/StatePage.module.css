@@ -1,0 +1,69 @@
+.statePage {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  padding: 110px 20px 60px;
+  background:
+    radial-gradient(circle at 72% 28%, rgba(94, 119, 151, 0.12), transparent 30%),
+    #08090b;
+  color: #f4f4f0;
+}
+
+.statePanel {
+  width: min(720px, 100%);
+}
+
+.datum {
+  display: grid;
+  grid-template-columns: auto minmax(40px, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.45);
+  font: 510 8px/1 var(--font-mono), monospace;
+  letter-spacing: 0.12em;
+}
+
+.datum i {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.statePanel h1 {
+  max-width: 10ch;
+  margin: clamp(90px, 18vh, 160px) 0 0;
+  font-size: clamp(64px, 11vw, 144px);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.052em;
+}
+
+.statePanel p {
+  max-width: 42ch;
+  margin: 30px 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+  word-break: keep-all;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 42px;
+}
+
+.actions a,
+.actions button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 18px;
+  color: #f4f4f0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 3px;
+  background: #111318;
+  font: 540 9px/1 var(--font-mono), monospace;
+  letter-spacing: 0.09em;
+  cursor: pointer;
+}

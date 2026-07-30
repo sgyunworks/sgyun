@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { SafeImage } from "@/components/SafeImage";
 import type { ArchiveProject } from "@/lib/archive";
 import {
   archiveCategories,
@@ -50,11 +50,11 @@ export function ArchiveProjectDetail({
 
   return (
     <article className={styles.detailPage}>
-      <header className={styles.projectHero}>
+      <header id="project-overview" className={styles.projectHero}>
         <div className={styles.heroRail}>
           <Link href={`/${locale}/works`}>{copy.back}</Link>
           <span>
-            {item.categoryCode} / {item.number}
+            {item.categoryCode} / {item.number} / {item.statusCode}
           </span>
         </div>
 
@@ -81,6 +81,10 @@ export function ArchiveProjectDetail({
                 <dt>Archive</dt>
                 <dd>{category.code} / {item.number}</dd>
               </div>
+              <div className={styles.statusMeta}>
+                <dt>Status</dt>
+                <dd>{item.statusText}</dd>
+              </div>
             </dl>
           </div>
 
@@ -91,9 +95,14 @@ export function ArchiveProjectDetail({
                 { "--media-aspect": item.heroAspectRatio } as MediaFrameStyle
               }
             >
-              <Image
+              <SafeImage
                 src={item.heroImage}
                 alt={item.imageAltText}
+                fallbackLabel={
+                  locale === "ko"
+                    ? "프로젝트 미디어를 불러오지 못했습니다"
+                    : "Project media unavailable"
+                }
                 fill
                 priority
                 sizes="(max-width: 900px) 100vw, 64vw"
@@ -107,7 +116,7 @@ export function ArchiveProjectDetail({
         </div>
       </header>
 
-      <section className={styles.premise}>
+      <section id="project-premise" className={styles.premise}>
         <span>
           {item.categoryCode} / {copy.premise}
         </span>
@@ -121,7 +130,7 @@ export function ArchiveProjectDetail({
         locale={locale}
       />
 
-      <section className={styles.nextRecord}>
+      <section id="project-next" className={styles.nextRecord}>
         <div className={styles.nextHeader}>
           <span>{copy.next}</span>
           <small>
@@ -135,9 +144,14 @@ export function ArchiveProjectDetail({
               { "--media-aspect": next.heroAspectRatio } as MediaFrameStyle
             }
           >
-            <Image
+            <SafeImage
               src={next.heroImage}
               alt={next.imageAltText}
+              fallbackLabel={
+                locale === "ko"
+                  ? "다음 기록 미디어를 불러오지 못했습니다"
+                  : "Next record media unavailable"
+              }
               fill
               sizes="(max-width: 900px) 100vw, 42vw"
               className={`${styles.previewImage} ${

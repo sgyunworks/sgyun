@@ -4,7 +4,7 @@
 
 대표 프리뷰의 역할은 분위기용 배경이 아니라 작품 감상이다. 단, 고정된 큰 상자에 `contain`만 적용하면 작품 주변에 거대한 letterbox가 생긴다. 따라서 이미지 데이터를 종횡비까지 포함하도록 확장하고, 프레임이 원본 비율을 따라가게 한다. `contain`은 안전장치로 유지하되 내부 패딩은 제거한다.
 
-작품 주변의 여백은 이미지 상자 내부가 아니라 페이지 레이아웃에 둔다. 작은 dialog 썸네일과 folder background만 슬롯을 채우기 위한 의도적 crop을 허용한다.
+작품 주변의 여백은 이미지 상자 내부가 아니라 페이지 레이아웃에 둔다. 작은 dialog 썸네일만 빠른 스캔을 위한 의도적 crop을 허용한다.
 
 ## Slim Poppins를 브랜드 리듬으로 사용한다
 
@@ -20,11 +20,13 @@ Poppins의 압축 자간과 짧은 행간을 Pretendard 한글에 그대로 적�
 
 ## 모호한 glass 대신 기계식 aperture를 사용한다
 
-반투명 배경, blur, 여러 겹의 밝은 테두리를 동시에 사용했지만 실제 배경 굴절이나 명확한 광학 깊이가 없어 liquid glass가 아니라 평범한 패널처럼 보였다. 홈 primary media의 두꺼운 테두리와 광택 overlay를 제거하고, 원본 비율의 큰 이미지와 얇은 기계식 aperture, 바깥쪽 telemetry만 남긴다. 내비게이션과 홈 상단 도구도 folder field와 같은 solid graphite 계열로 통일한다.
+반투명 배경, blur, 여러 겹의 밝은 테두리를 동시에 사용했지만 실제 배경 굴절이나 명확한 광학 깊이가 없어 liquid glass가 아니라 평범한 패널처럼 보였다. 홈 primary media의 두꺼운 테두리와 광택 overlay를 제거하고, 원본 비율의 큰 이미지와 얇은 기계식 aperture, 바깥쪽 telemetry만 남긴다. 내비게이션과 홈 상단 도구도 solid graphite 계열로 통일한다.
 
 ## Vault dial을 장식이 아닌 전역 문법으로 확장한다
 
-큰 오른쪽 다이얼은 홈의 프로젝트 탐색이라는 실제 입력을 담당한다. 내부 페이지와 보조 행동에는 큰 원을 반복하지 않고, 고정 datum·회전 latch·번호·비율 표기로 축소한다. `프로젝트 열기`는 일반 흰색 pill 대신 rotary latch가 있는 control plate가 되고, 전역 내비게이션의 SGYUN mark는 현재 route를 표시하는 작은 dial을 가진다.
+큰 오른쪽 다이얼은 홈에서만 보이는 장식이 아니라 사이트 전체의 지속적인 탐색 장치다. 홈에서는 01–06 프로젝트와 07–08 Ledger를 문서 스크롤에 연결하고, Works·상세·About·Contact·Appendix에서는 각 페이지의 실제 섹션을 같은 rail과 face로 표시한다. viewport 오른쪽 중앙보다 약간 아래의 고정축, 반원 노출, graphite face anatomy는 바뀌지 않고 맥락에 따라 인덱스만 바뀐다. 보조 행동은 이 구조를 그대로 축소 복제하지 않고 가는 datum과 rotary latch로 같은 제품군임을 보여 준다.
+
+다이얼이 전역에 남는 만큼 본문과 우연히 겹치는 것은 허용하지 않는다. 데스크톱은 오른쪽 전용 gutter를 예약하고 내부 페이지 rail은 보이는 face 안으로 결합한다. 모바일은 활성 항목만 남기고 콘텐츠에 별도 안전 여백을 부여한다. 홈의 다이얼은 첫 장면이 끝난 뒤 Practice·Profile 섹션까지 고정 상태로 계속 존재한다.
 
 ## 마이크로그래픽은 실제 메타데이터만 표시한다
 
@@ -88,7 +90,17 @@ INDEX의 유형 필터는 다섯 개의 사각 버튼을 반복하지 않는다.
 
 ## Rotary family는 하나의 face anatomy를 공유한다
 
-내비게이션 route dial, 프로젝트 CTA, INDEX 기록 latch, folder action, 상세 next latch, route transition lock이 각각 다른 눈금 간격·중앙 허브·datum 위치를 사용하면서 사이트 전역이 같은 제품군으로 보이지 않았다. 사용자가 제시한 기준 그래픽에 맞춰 검은 산화금속 face, 촘촘한 방사형 spoke, 작은 recessed core, 우상단 bone-white capsule을 공통 해부로 고정한다. 큰 홈 다이얼만 프로젝트 번호와 활성 축을 추가하며, datum은 왼쪽 활성 번호 축에 정확히 붙인다.
+내비게이션 route dial, 프로젝트 CTA, INDEX 기록 latch, 상세 next latch, route transition lock이 각각 다른 눈금 간격·중앙 허브·datum 위치를 사용하면서 사이트 전역이 같은 제품군으로 보이지 않았다. 사용자가 제시한 기준 그래픽에 맞춰 검은 산화금속 face, 촘촘한 방사형 spoke, 작은 recessed core, bone-white capsule을 공통 해부로 고정한다. 큰 전역 half dial은 현재 section 번호와 활성 축을 추가하고, 작은 latch의 datum은 face의 12시 축에서 시작해 face와 함께 회전한다. 작은 datum은 너비 1.5–2px, 높이 5–10px 범위로 제한해 백색 면적이 face를 압도하거나 독립 포인터처럼 삐뚤어져 보이지 않게 한다.
+
+## 전역 half dial은 경로가 아니라 현재 문맥을 보여 준다
+
+상단 내비게이션의 작은 route dial은 HOME·WORKS·ABOUT·CONTACT·APPENDIX 사이의 목적지 복구를 맡는다. 오른쪽의 큰 half dial은 현재 페이지 안에서 사용자가 어디를 보고 있는지 보여 준다. 홈에서는 프로젝트, Works에서는 Overview·Selected·Appendix, 상세에서는 Overview·Premise·Process·Next, About에서는 Profile·Identity·Education·Practice·Records·Contact처럼 실제 섹션을 사용한다. 두 다이얼의 역할을 섞지 않아 전역 정체성과 정보 구조를 동시에 유지한다.
+
+## 다이얼 face와 활성 인덱스는 같은 값이지만 같은 해상도가 아니다
+
+영상 검토에서 콘텐츠는 연속 스크롤되는데 face가 반올림된 정수 인덱스마다 15도씩만 움직여, 큰 기계 장치가 아니라 뒤늦게 바뀌는 탭처럼 보였다. face는 소수 cursor를 사용해 section anchor 사이를 연속 회전하고, rail·번호·라쳇은 중간 detent를 넘을 때만 정수 상태를 갱신한다. 직접 drag 중에는 smooth scroll을 반복 호출하지 않고 즉시 추종하며, release에서 한 번만 가까운 detent로 정착한다. 내부 페이지의 항목 수가 적을 때는 보이는 왼쪽 arc를 더 충분히 사용하되 최대 step은 30도로 제한한다.
+
+홈의 정체성 다이얼이 작품 06에서 멈춘 채 Practice·Profile을 지나면 고정 장식으로 돌아간다. 따라서 홈은 프로젝트 01–06 뒤에 `07 PRACTICE`, `08 PROFILE`을 추가하고 전체 페이지 anchor를 하나의 cursor로 보간한다. 작품 미디어 선택은 06에서 끝나지만 다이얼의 의미와 직접 조작은 Profile Ledger까지 이어진다. 8개 항목은 왼쪽 가시 arc 84도 안에 배치해 기존 작품 다이얼보다 시각 질량을 키우지 않는다.
 
 ## 작품보다 다이얼이 먼저 보이면 다이얼을 줄인다
 
@@ -98,6 +110,30 @@ INDEX의 유형 필터는 다섯 개의 사각 버튼을 반복하지 않는다.
 
 `RECOGNITION LOG`처럼 긴 단일 단어가 정보 열을 넘어 미디어 위에 놓이는 현상은 의도적 연출이 아니라 반응형 실패다. 가장 긴 단어 길이를 기준으로 compact optical scale을 적용하고 제목 열의 너비 안에서만 조판한다. 작품명과 primary media의 bounding box 교차 허용치는 0이다.
 
-## 작업 원칙 장면은 정상 흐름으로 재구성한다
+## 홈 하단은 가짜 장면보다 실제 기록을 보여 준다
 
-이미지를 한글 대형 제목의 line box 안에 끼우고 마지막 단어를 우측으로 밀어낸 구성은 문장과 미디어의 소유 관계가 모호했다. 해당 장면은 선언문과 미디어를 독립된 2열로 분리하고, CTA는 미디어 아래의 별도 행동 영역에 둔다. 장면의 품질은 겹침이 아니라 비율, 기준선, negative space로 만든다.
+카테고리 배경 이미지와 추상 선언문은 작품 수가 적을 때 시각적 볼륨은 만들지만 포트폴리오 판단에 필요한 근거를 늘리지 못했다. 홈 하단을 Physical·Digital·Systems 작업 축, 실제 수상·선정, 활동 이력, 프로필·연락 행동으로 재구성한다. 이미지가 준비되지 않은 프로젝트를 다른 이미지로 대신 채우지 않는다.
+
+## 컨트롤은 자신이 제어하는 정보에 귀속한다
+
+홈의 `전체 보기`가 미디어와 떨어진 우측 상단에 독립 surface로 떠 있으면 navigation, 작품 선택, archive overview 중 어느 층위인지 모호해진다. 전체 프로젝트 선택은 현재 미디어의 범위를 확장하는 행동이므로 프로젝트 번호·제목·비율과 같은 telemetry baseline에 결합한다. 이 결정은 장식을 줄이는 동시에 소유 관계와 발견 가능성을 높인다.
+
+## 시네마틱 여백은 정보 사이의 긴장이어야 한다
+
+모바일 홈에서 이미지와 제목 사이의 큰 빈 구간, About에서 `About` 한 단어만 남은 첫 화면은 충돌은 없지만 편집 의도가 약해 미완성처럼 보였다. 홈은 `media → progress → identity`의 세 박자를 더 가깝게 묶고, About은 제목과 작업 태도·정체성 데이터를 같은 첫 화면에서 교차시킨다. 공백은 요소가 빠진 자리로 남기지 않고 이미 읽힌 두 정보군 사이의 호흡으로 사용한다.
+
+## 승인된 선택과 미확정 미디어를 분리한다
+
+1차 대표작 6개는 사용자가 승인한 공개 선택이므로 더 이상 `SYSTEM PREVIEW`로 축소하지 않는다. 대신 작품 단계는 `COMPLETE`, `ACTIVE`, `CONCEPT`로 사실대로 표시하고, 이미지가 아직 없는 VESA와 RecoPick은 빈 프레임의 `MEDIA_PENDING`으로 명확히 구분한다. 선택 승인과 자료 완비를 같은 상태로 취급하지 않는다.
+
+## 전역 route dial은 모든 목적지의 복구 경로다
+
+전역 목적지는 `HOME`, `WORKS`, `ABOUT`, `CONTACT`, `APPENDIX` 다섯 개다. 넓은 화면에서는 INDEX·ABOUT·CONTACT 직접 링크를 함께 보이고, 작은 화면에서는 INDEX만 남겨도 route dial을 누르면 다섯 경로가 모두 같은 순서로 열린다. 현재 경로의 번호와 회전 datum은 함께 갱신되고, 방향키와 Enter로 조작 가능해야 한다.
+
+## 소유자 게시 기능은 콘텐츠 원본과 공개 화면을 분리한다
+
+`src/content/portfolio.json`을 프로필과 프로젝트의 단일 원본으로 사용한다. Studio의 초안은 편집 화면에만 남고 `published` 항목만 `order` 순으로 홈 다이얼·인덱스·상세 정적 경로에 들어간다. 개발 환경은 로컬 파일에 저장하고 운영 환경은 GitHub Contents API에 커밋한 뒤 배포가 공개 화면을 갱신한다. 랜딩 다이얼 비밀번호 이스터에그는 인증·게시 동기화의 필수 기능이 아니므로 후순위로 둔다.
+
+## 작은 표식과 작은 조작 영역은 같은 말이 아니다
+
+태블릿 rail의 3px bar는 계기판 표현으로 유지하되 실제 button box는 44×44px로 둔다. 모달은 시각적 overlay인 동시에 키보드 탐색 범위이므로 Tab 순환과 포커스 복귀를 기능 계약으로 관리한다.
