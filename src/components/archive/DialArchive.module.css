@@ -1164,7 +1164,7 @@
   grid-template-columns: minmax(320px, 0.72fr) minmax(520px, 1.28fr);
   gap: clamp(70px, 11vw, 180px);
   align-items: start;
-  margin-top: clamp(80px, 10vw, 150px);
+  margin-top: clamp(62px, 8vw, 112px);
 }
 
 .profileStatement {
@@ -1181,8 +1181,8 @@
 
 .profileStatement h2 {
   max-width: 9ch;
-  margin: 34px 0 0;
-  font-size: clamp(52px, 5.8vw, 92px);
+  margin: 26px 0 0;
+  font-size: clamp(42px, 4.4vw, 68px);
   font-weight: 300;
   line-height: 0.98;
   letter-spacing: -0.045em;
@@ -1191,7 +1191,7 @@
 
 .profileStatement p {
   max-width: 40ch;
-  margin: 34px 0 0;
+  margin: 26px 0 0;
   color: rgba(255, 255, 255, 0.56);
   font-size: var(--type-body);
   line-height: var(--leading-body-relaxed);
@@ -1203,12 +1203,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 46px;
+  margin-top: 34px;
 }
 
 .evidenceLists {
   display: grid;
-  gap: clamp(80px, 9vw, 130px);
+  gap: clamp(58px, 7vw, 96px);
 }
 
 .evidenceGroup {
@@ -1219,13 +1219,13 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  min-height: 78px;
-  padding: 24px 2px;
+  min-height: 64px;
+  padding: 18px 2px;
 }
 
 .evidenceGroup h3 {
   margin: 0;
-  font-size: clamp(24px, 2.4vw, 38px);
+  font-size: clamp(20px, 1.7vw, 28px);
   font-weight: 300;
   letter-spacing: -0.04em;
 }
@@ -1245,7 +1245,7 @@
   display: grid;
   grid-template-columns: 72px minmax(0, 1fr);
   gap: 18px;
-  padding: 22px 2px;
+  padding: 18px 2px;
   border-top: 1px solid rgba(255, 255, 255, 0.085);
 }
 
@@ -1824,12 +1824,12 @@
   }
 
   .evidenceGrid {
-    gap: 96px;
-    margin-top: 76px;
+    gap: 72px;
+    margin-top: 64px;
   }
 
   .profileStatement h2 {
-    font-size: 52px;
+    font-size: 42px;
   }
 
   .profileActions {
@@ -1838,7 +1838,7 @@
 
   .evidenceLists {
     grid-template-columns: 1fr;
-    gap: 82px;
+    gap: 64px;
   }
 
   .evidenceGroup li {

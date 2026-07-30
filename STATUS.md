@@ -58,6 +58,14 @@
 
 이번 변경은 사용자의 요청에 따라 재검증 후 커밋·푸시·production 배포를 완료했다.
 
+## Humble visual hierarchy pass — 2026-07-31
+
+- [x] About의 자기소개·교육·작업 축 제목을 한 단계 낮추고, 본문은 읽기 폭과 행간을 유지해 주장보다 작업 방식이 먼저 읽히게 했다.
+- [x] 홈 Profile의 이름, Recognition·Activity 헤더, 행 간격을 축소해 기록이 과장된 성취 블록처럼 보이지 않도록 조정했다.
+- [x] Works의 `ARCHIVE INDEX`, Contact의 호출 문구, Appendix의 예약 제목을 낮춰 개인을 크게 선언하는 디스플레이 타이포그래피를 줄였다. 작품 상세의 작품명과 프로세스 제목은 작업 탐색에 필요한 위계를 유지했다.
+- [x] 1440px·390px에서 홈, Works, The Aviator 상세, About, Contact, Appendix를 production build 서버로 끝까지 스크롤해 HTTP 200, overflow 0, console/page error 0, 표시 이미지 실패 0을 확인했다.
+- [x] `npm run typecheck`, `npm run build`, `git diff --check` 통과.
+
 ## Quiet portfolio and dial interaction pass — 2026-07-30
 
 - [x] 홈의 identity signal, 중복 작품 상태·비율·기록 수·검증 문구·Practice 선언문·Appendix 설명을 제거해 필요한 정보만 남겼다.

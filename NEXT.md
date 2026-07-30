@@ -18,6 +18,11 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 3. 최종 이미지 등록 뒤 배포 preview에서 Web Vitals와 이미지 캐시를 측정한다.
 4. Next.js·Sharp·PostCSS 보안 공지와 호환 가능한 업그레이드 경로를 검토한 뒤 dependency upgrade를 별도 변경으로 수행한다.
 
+## 이번 시각 계층 패스 이후
+
+- 실제 사용자에게 공개하기 전, 1440px·390px에서 조용해진 제목 위계와 긴 한국어 문장의 줄바꿈을 한 번 더 승인한다.
+- production 배포는 승인 후 진행한다. 이번 커밋은 로컬 production build와 브라우저 검증까지만 포함한다.
+
 ## 지금 하지 않는 것
 
 - Appendix에 보류 작업을 임의로 채우지 않는다.
