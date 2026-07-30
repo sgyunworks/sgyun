@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 import { locales } from "@/lib/i18n";
-import { siteConfig } from "@/lib/site-config";
 import { portfolioProfile } from "@/lib/archive";
 import { VaultAction } from "@/components/VaultAction";
 import styles from "../EditorialPages.module.css";
@@ -38,40 +37,6 @@ export default async function AboutPage({
           </div>
         </div>
       </header>
-
-      <div id="about-identity" className={styles.aboutGrid}>
-        <section className={styles.panel}>
-          <span className={styles.sectionLabel}>
-            Identity
-          </span>
-          <p className={styles.identityName}>
-            이석윤
-            <br />
-            <span>Seokyoon Lee</span>
-          </p>
-          <p className={styles.alias}>
-            aka. {siteConfig.alias}
-          </p>
-        </section>
-
-        <section className={`${styles.panel} ${styles.bodyCopy}`}>
-          <p>
-            {isKo
-              ? "재료를 다룰 때와 코드를 작성할 때, 같은 질문에서 시작합니다. 이것은 왜 이렇게 작동해야 하는가."
-              : "The same question begins both material work and code: why should this operate this way?"}
-          </p>
-          <p>
-            {isKo
-              ? "금속공예에서 배운 물성과 제작 감각, 산업디자인의 구조적 사고를 바탕으로 오브젝트·웹·앱을 실제 사용 가능한 상태까지 발전시킵니다."
-              : "Material sensitivity from metal craft and structural thinking from industrial design guide objects, websites, and apps toward usable outcomes."}
-          </p>
-          <p>
-            {isKo
-              ? "분야를 넓히는 것이 목적이 아니라, 물리와 디지털 사이에서 아이디어가 작동하기 위해 필요한 수단을 직접 선택하고 연결하는 것이 작업 방식입니다."
-              : "The goal is not breadth for its own sake, but choosing and connecting the means required for an idea to work across physical and digital contexts."}
-          </p>
-        </section>
-      </div>
 
       <section id="about-education" className={styles.widePanel}>
         <div>

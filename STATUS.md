@@ -2,7 +2,7 @@
 
 ## 현재 판정
 
-2026-07-31 콘텐츠 시스템·조용한 정보 구조·다이얼 조작성 개편 기준으로 1차 대표작 구조와 소유자 게시 흐름은 **구현·로컬 및 production 검증 통과**다. 최신 production 배포는 `dpl_TmXzUfRewCyBe7NawVTsiNz1sSBL`이며 `sgyun.kr`에 연결됐다.
+2026-07-31 콘텐츠 시스템·조용한 정보 구조·다이얼 조작성 개편 기준으로 1차 대표작 구조와 소유자 게시 흐름은 **구현·로컬 및 production 검증 통과**다. 최신 production 배포는 `dpl_2YanXhVuMpf8MDwFkm499KeVsDco`이며 `sgyun.kr`에 연결됐다.
 
 ## 구현된 범위
 
@@ -66,6 +66,13 @@
 - [x] 1440px·390px에서 홈, Works, The Aviator 상세, About, Contact, Appendix를 production build 서버로 끝까지 스크롤해 HTTP 200, overflow 0, console/page error 0, 표시 이미지 실패 0을 확인했다.
 - [x] `npm run typecheck`, `npm run build`, `git diff --check` 통과.
 - [x] `88468fd`를 GitHub `main`에 반영하고 Vercel production 배포 `dpl_TmXzUfRewCyBe7NawVTsiNz1sSBL`을 `READY` 상태로 확인했다. `sgyun.kr` alias, 주요 경로 200, runtime error 없음.
+
+## Quiet copy pass — 2026-07-31
+
+- [x] About의 선언문형 Identity 본문과 중복 이름 패널을 제거해 역할·교육·활동·연락처만 남겼다.
+- [x] 프로필 요약을 `제품·웹·앱을 설계하고 구현합니다.` / `I design and build products, websites, and apps.`로 낮춰 작업보다 자기서사가 앞서지 않게 했다.
+- [x] 20개 개인 포트폴리오의 카피 구조를 조사하고 `docs/RESEARCH.md`에 출처·관찰·적용 원칙을 기록했다.
+- [ ] production 재배포 후 About과 홈 Profile의 긴 문장·줄바꿈·다이얼 안전 열을 1440px·390px에서 재승인한다.
 
 ## Quiet portfolio and dial interaction pass — 2026-07-30
 
