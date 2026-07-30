@@ -20,6 +20,7 @@ const routes = [
   { name: "index", path: "/ko/works" },
   { name: "index-digital", path: "/ko/works?category=digital" },
   { name: "detail-vesa", path: "/ko/works/vesa-floating-speaker" },
+  { name: "detail-aviator", path: "/ko/works/the-aviator" },
   { name: "detail-wrgs", path: "/ko/works/wrgs" },
   { name: "about", path: "/ko/about" },
   { name: "contact", path: "/ko/contact" },

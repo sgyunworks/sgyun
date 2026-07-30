@@ -107,7 +107,7 @@ ESLint는 아직 구성하지 않았다. 실행 불가능했던 `next lint` 스�
 
 - [x] 홈 다이얼·인덱스·상세가 승인된 6개 대표작을 `01–06` 같은 순서로 표시한다.
 - [x] Vibey·ALLSET은 공개 프로젝트에 없고 N03는 About·Profile Ledger의 활동에만 표시된다.
-- [x] VESA와 RecoPick의 빈 이미지가 깨진 요청 없이 `MEDIA_PENDING`으로 렌더링되고, 실제 이미지 요청 실패는 `MEDIA_UNAVAILABLE`로 전환된다.
+- [x] 초기 VESA·RecoPick 빈 이미지가 깨진 요청 없이 `MEDIA_PENDING`으로 렌더링됐고, VESA는 이후 실제 미디어로 전환했다. RecoPick은 대기 상태를 유지하며 실제 이미지 요청 실패는 `MEDIA_UNAVAILABLE`로 전환된다.
 - [x] Home·Works·About·Contact·Appendix 5개 route dial 항목이 표시되고 About 진입 시 `03 / PROFILE`로 동기화된다. 방향키 포커스 이동과 Enter 링크 이동을 확인했다.
 - [x] Appendix는 `00 RECORDS` 빈 상태이며 보류 작업을 임의로 노출하지 않는다.
 - [x] `/studio` 미인증 접근은 로그인으로 이동하고, 잘못된 비밀번호는 거부되며, 인증 후 `06 PUBLISHED`와 승인한 6개 제목을 순서대로 표시한다.
@@ -115,7 +115,7 @@ ESLint는 아직 구성하지 않았다. 실행 불가능했던 `next lint` 스�
 - [x] 1440×960, 1024×900, 720×960, 390×844, 320×720 × 9개 경로의 45개 렌더에서 HTTP 200, 수평 overflow 0, 깨진 이미지 0, console/page error 0을 확인했다.
 - [x] wheel 정·역방향은 `01→06→01`, drag는 `01→03`으로 다이얼·스크롤이 동기화됐다. reduced motion, JavaScript-off, 404, Vault 진입·복귀도 통과했다.
 - [x] `npm run typecheck`, `git diff --check`, `npm run build`가 통과했고 정적 페이지 29개를 생성했다.
-- 로컬 느린 3G 합성: LCP 1.020s, CLS 0, 총 전송 704KB. 첫 대표작 이미지 등록 뒤 재측정한다.
+- 로컬 느린 3G 합성의 당시 기준값: LCP 1.020s, CLS 0, 총 전송 704KB. VESA 미디어 등록 뒤 별도 재측정한다.
 - 원시 결과와 캡처: `qa/critical-audit/content-system-v2/`
 
 ## Global Vault Dial identity pass — 2026-07-30
@@ -138,6 +138,19 @@ ESLint는 아직 구성하지 않았다. 실행 불가능했던 `next lint` 스�
 - [x] 5개 화면 폭 × 9개 경로 45개 렌더에서 HTTP 200, overflow 0, 깨진 이미지 0, console/page error 0을 유지했다. Ledger 확장 후 wheel `01→08→01`, reduced motion, JavaScript-off, 404, 미디어 실패도 통과했다.
 - 원시 결과와 캡처: `qa/critical-audit/dial-motion-continuous/`
 
+## VESA project publication — 2026-07-30
+
+- [x] 렌더·실물 제작 사진 9개를 hero, process, evidence 순서로 선별했고 원본 비율과 한국어·영어 대체 텍스트를 연결했다.
+- [x] VESA의 실제 공개 순서는 `1.jpg → 2.jpg → 3.jpg → 4.jpg → 5.jpg → 6.jpg → 7.jpg → 실사1.jpg → 실사2.jpg`와 일치하며, YouTube 작동 영상은 이미지 기록 뒤에 배치했다.
+- [x] 2048px 홈 렌더에서 타이틀·미디어와 인덱스·미디어의 교차 영역이 각각 0px이며, 긴 VESA 타이틀은 정보 열 안에서 축소된다.
+- [x] 약 1.8GB ProRes 원본 영상은 저장소에 복제하지 않았다. 포스터 재생 전 YouTube 관련 iframe과 네트워크 요청은 0건이며, 재생 입력 뒤 `youtube-nocookie.com` 임베드와 외부 영상 링크가 동작한다.
+- [x] VESA 상세에만 `04 / EVIDENCE`가 생성되고 1440×960, 1024×900, 720×960, 390×844, 320×720 모든 화면에서 해당 섹션과 다이얼 값이 동기화된다. 다른 상세 페이지는 기존 4개 인덱스를 유지한다.
+- [x] 다섯 화면 폭에서 페이지 끝까지 순차 스크롤한 결과 수평 overflow, 깨진 이미지, console/page error가 모두 0건이며 재생 버튼의 키보드 포커스와 Enter 재생이 통과했다.
+- [x] 기존 9개 핵심 경로 × 5개 화면 폭의 45개 회귀 렌더도 HTTP 200, overflow 0, 깨진 이미지 0, console/page error 0을 유지했다.
+- [x] `npm run typecheck`, JSON 파싱, `git diff --check`, `npm run build`가 통과했고 정적 페이지 29개를 생성했다.
+- 파일 순서 수정 뒤 느린 3G 로컬 합성: LCP 1.040s, CLS 0, 초기 전송 771KB, 첫 화면 이미지 요청 1개 / 14KB. YouTube는 사용자 재생 전 초기 전송에 포함되지 않는다.
+- 원시 결과와 캡처: `qa/critical-audit/vesa-publication/`
+
 ## Landing Ledger dial extension — 2026-07-30
 
 - [x] 홈 dial items를 작품 `01–06`과 `07 PRACTICE`, `08 PROFILE`의 8개 anchor로 확장했다.
@@ -145,3 +158,19 @@ ESLint는 아직 구성하지 않았다. 실행 불가능했던 `next lint` 스�
 - [x] `07 PRACTICE`, `08 PROFILE` rail 선택이 각 Ledger로 이동하며 drag·keyboard도 같은 8개 anchor를 사용한다.
 - [x] 1440×960에서 Profile 최하단까지 horizontal overflow 0, console/page error 0을 확인했다.
 - 원시 결과와 캡처: `qa/critical-audit/landing-ledger-dial/`
+
+## VESA detail copy and hierarchy pass — 2026-07-30
+
+- [x] VESA 상세 `/ko/works/vesa-floating-speaker`의 Summary와 Description이 사용자 제공 한국어 원문으로 표시된다. locale 전환 시 영어 원문으로 전환된다.
+- [x] 1440px에서 Summary 28.08px, Process heading 31.68px; 720px에서 Summary 24px, Process heading 36px; 390px에서 Summary 28.08px, Process heading 28px; 320px에서 Summary 24px, Process heading 28px으로 계산된다.
+- [x] 네 화면 폭에서 document horizontal overflow `0px`, 깨진 이미지 `0`, console/page error `0`을 확인했다.
+- [x] 재생 전 iframe `0`개를 확인하고, 재생 입력 후 `https://www.youtube-nocookie.com/embed/PpmmcooixDk?autoplay=1&rel=0` iframe 1개가 생성되는 것을 확인했다.
+- [x] `npm run typecheck`, `npm run audit:ui -- detail-copy-review-v2`, `jq empty src/content/portfolio.json`, `git diff --check`가 통과했다.
+
+## The Aviator project publication — 2026-07-30
+
+- [x] `/ko/works/the-aviator`에서 `01.jpg → 02.jpg → 03.jpg → 04.jpg → 05.jpg → process.jpg → real-prototype.jpg` 순서로 7개 이미지가 모두 로드됐다.
+- [x] 1440×960과 390×844에서 document horizontal overflow `0px`, 깨진 이미지 `0`, console/page error `0`을 확인했다.
+- [x] 재생 전 iframe `0`개를 확인하고, 재생 입력 후 `https://www.youtube-nocookie.com/embed/T-T_7QIveWY?autoplay=1&rel=0` iframe 1개가 생성되는 것을 확인했다.
+- [x] The Aviator 상세에 `EVIDENCE`가 생성되고, 이미지 기록·프로세스·실물 프로토타입·영상이 같은 다이얼 인덱스 문맥으로 연결된다.
+- [x] `jq empty src/content/portfolio.json`, `npm run typecheck`, `git diff --check`가 통과했다. production build는 다음 최종 검증에서 함께 수행한다.

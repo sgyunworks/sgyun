@@ -20,7 +20,7 @@ export type Work = {
   thumbImage: string;
   gallery: { src: string; aspect: "full" | "half" | "third" | "two-thirds" }[];
   video?: {
-    type: "instagram";
+    type: "instagram" | "youtube";
     url: string;
     thumb: string;
   };
@@ -162,17 +162,17 @@ export const works: Work[] = [
         "The work refuses to define a single form. Instead, it exposes its mechanical skeleton openly, inviting viewers to project their own images of flight or motion onto it. The stimulus comes through movement, not silhouette. The transitional unfolding before sound plays is the takeoff cue for the senses, a doorway into immersion — and the listener flies through imagined space alongside the speaker, the work itself becoming a vessel on that journey.",
       ],
     },
-    heroImage: "/images/aviator_thumb.jpg",
-    thumbImage: "/images/aviator_thumb.jpg",
+    heroImage: "/images/the-aviator/01.jpg",
+    thumbImage: "/images/the-aviator/01.jpg",
     gallery: [
-      { src: "/images/aviator_d1.jpg", aspect: "half" },
-      { src: "/images/aviator_d2.jpg", aspect: "half" },
-      { src: "/images/aviator_d3_wide.jpg", aspect: "full" },
+      { src: "/images/the-aviator/02.jpg", aspect: "half" },
+      { src: "/images/the-aviator/03.jpg", aspect: "full" },
+      { src: "/images/the-aviator/04.jpg", aspect: "full" },
     ],
     video: {
-      type: "instagram",
-      url: "https://www.instagram.com/reel/DWYtP7Lkudp/",
-      thumb: "/images/aviator_video_thumb.jpg",
+      type: "youtube",
+      url: "https://youtu.be/T-T_7QIveWY",
+      thumb: "/images/the-aviator/real-prototype.jpg",
     },
   },
   {

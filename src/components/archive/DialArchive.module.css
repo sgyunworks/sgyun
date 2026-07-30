@@ -1462,6 +1462,17 @@
   }
 }
 
+@media (min-width: 1101px) {
+  .stageFrame {
+    column-gap: clamp(22px, 1.7vw, 34px);
+  }
+
+  .mediaViewport {
+    box-sizing: border-box;
+    padding-right: clamp(32px, 2.55vw, 54px);
+  }
+}
+
 @media (min-width: 761px) and (max-width: 1100px) {
   .practiceField,
   .evidenceField {

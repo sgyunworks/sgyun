@@ -9,10 +9,24 @@ export type ProjectStage = "completed" | "active" | "concept";
 export type ArchiveMedia = {
   src: string;
   alt: LocalizedText;
+  caption?: LocalizedText;
   aspectRatio: number;
   fit?: "cover" | "contain";
   tone?: "dark" | "light";
   position?: string;
+};
+
+export type ArchiveEvidence = {
+  title: LocalizedText;
+  body: LocalizedText;
+  media: ArchiveMedia[];
+  video?: {
+    youtubeId: string;
+    url: string;
+    poster: string;
+    title: LocalizedText;
+    caption: LocalizedText;
+  };
 };
 
 export type ArchiveChapter = {
@@ -39,7 +53,10 @@ export type ArchiveProjectSource = {
   imageTone?: "dark" | "light";
   imagePosition?: string;
   detailMedia?: ArchiveMedia[];
+  evidence?: ArchiveEvidence;
   detailIntro: LocalizedText;
+  detailSummary?: LocalizedText;
+  detailDescription?: LocalizedText;
   detailChapters: ArchiveChapter[];
 };
 
@@ -186,6 +203,8 @@ export function localizeArchiveProject(project: ArchiveProject, locale: Locale) 
     statusCode: stageCode[project.stage],
     statusText: stageText[project.stage][locale],
     detailIntroText: project.detailIntro[locale],
+    detailSummaryText: project.detailSummary?.[locale] ?? project.detailIntro[locale],
+    detailDescriptionText: project.detailDescription?.[locale] ?? "",
     chapterTexts: project.detailChapters.map((chapter) => ({
       code: chapter.code,
       title: chapter.title[locale],
@@ -194,6 +213,25 @@ export function localizeArchiveProject(project: ArchiveProject, locale: Locale) 
     detailMediaText: (project.detailMedia ?? []).map((media) => ({
       ...media,
       altText: media.alt[locale],
+      captionText: media.caption?.[locale] ?? media.alt[locale],
     })),
+    evidenceText: project.evidence
+      ? {
+          titleText: project.evidence.title[locale],
+          bodyText: project.evidence.body[locale],
+          media: project.evidence.media.map((media) => ({
+            ...media,
+            altText: media.alt[locale],
+            captionText: media.caption?.[locale] ?? media.alt[locale],
+          })),
+          video: project.evidence.video
+            ? {
+                ...project.evidence.video,
+                titleText: project.evidence.video.title[locale],
+                captionText: project.evidence.video.caption[locale],
+              }
+            : undefined,
+        }
+      : undefined,
   };
 }

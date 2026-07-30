@@ -520,7 +520,7 @@ export function DialArchive({ locale }: { locale: Locale }) {
   const activeHref = `/${locale}/works/${active.slug}`;
   const titleNeedsCompactScale = active.title
     .split(/\s+/)
-    .some((word) => word.length >= 10);
+    .some((word) => word.length >= 8);
 
   return (
     <div ref={pageRef} className={styles.archivePage}>

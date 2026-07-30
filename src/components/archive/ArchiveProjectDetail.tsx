@@ -8,6 +8,7 @@ import {
   localizeArchiveProject,
 } from "@/lib/archive";
 import type { Locale } from "@/lib/i18n";
+import { ArchiveProjectEvidence } from "./ArchiveProjectEvidence";
 import { ArchiveProjectStory } from "./ArchiveProjectStory";
 import styles from "./ArchiveProjectDetail.module.css";
 
@@ -42,7 +43,9 @@ export function ArchiveProjectDetail({
 
   const copy = {
     back: locale === "ko" ? "인덱스로" : "Back to index",
-    premise: locale === "ko" ? "기록의 관점" : "Archive premise",
+    premise: locale === "ko" ? "프로젝트 노트" : "Project note",
+    summary: locale === "ko" ? "요약" : "Summary",
+    description: locale === "ko" ? "설명" : "Description",
     scenes: locale === "ko" ? "장면 시스템" : "Scene system",
     next: locale === "ko" ? "다음 기록" : "Next record",
     role: locale === "ko" ? "형식" : "Format",
@@ -117,11 +120,22 @@ export function ArchiveProjectDetail({
       </header>
 
       <section id="project-premise" className={styles.premise}>
-        <span>
-          {item.categoryCode} / {copy.premise}
-        </span>
-        <p>{item.detailIntroText}</p>
-        <small>{copy.scenes} / {String(item.chapterTexts.length).padStart(2, "0")}</small>
+        <div className={styles.premiseMeta}>
+          <span>{item.categoryCode} / {copy.premise}</span>
+          <small>
+            {copy.scenes} / {String(item.chapterTexts.length).padStart(2, "0")}
+          </small>
+        </div>
+        <div className={styles.premiseSummary}>
+          <span className={styles.premiseLabel}>{copy.summary}</span>
+          <p>{item.detailSummaryText}</p>
+        </div>
+        {item.detailDescriptionText ? (
+          <div className={styles.premiseDescription}>
+            <span className={styles.premiseLabel}>{copy.description}</span>
+            <p>{item.detailDescriptionText}</p>
+          </div>
+        ) : null}
       </section>
 
       <ArchiveProjectStory
@@ -129,6 +143,16 @@ export function ArchiveProjectDetail({
         chapters={item.chapterTexts}
         locale={locale}
       />
+
+      {item.evidenceText ? (
+        <ArchiveProjectEvidence
+          title={item.evidenceText.titleText}
+          body={item.evidenceText.bodyText}
+          media={item.evidenceText.media}
+          video={item.evidenceText.video}
+          locale={locale}
+        />
+      ) : null}
 
       <section id="project-next" className={styles.nextRecord}>
         <div className={styles.nextHeader}>

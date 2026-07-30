@@ -49,6 +49,8 @@ function emptyProject(order: number): ArchiveProjectSource {
     imageFit: "contain",
     imageTone: "dark",
     detailIntro: { ko: "", en: "" },
+    detailSummary: { ko: "", en: "" },
+    detailDescription: { ko: "", en: "" },
     detailChapters: [
       { code: "01", title: { ko: "", en: "" }, body: { ko: "", en: "" } },
       { code: "02", title: { ko: "", en: "" }, body: { ko: "", en: "" } },
@@ -94,7 +96,7 @@ export function StudioEditor({ initialSource }: { initialSource: PortfolioSource
   };
 
   const changeLocalized = (
-    field: "description" | "role" | "imageAlt" | "detailIntro",
+    field: "description" | "role" | "imageAlt" | "detailIntro" | "detailSummary" | "detailDescription",
     locale: "ko" | "en",
     value: string
   ) => {
@@ -252,6 +254,8 @@ export function StudioEditor({ initialSource }: { initialSource: PortfolioSource
             <header><span>04</span><div><h2>상세 이야기</h2><p>문제, 설계 판단, 결과가 구분되도록 작성합니다.</p></div></header>
             <div className={styles.formBody}>
               <LocalizedField id="detail-intro" label="프로젝트 소개" value={selected.detailIntro} multiline onChange={(locale, value) => changeLocalized("detailIntro", locale, value)} />
+              <LocalizedField id="detail-summary" label="Summary / 요약" value={selected.detailSummary ?? { ko: "", en: "" }} multiline onChange={(locale, value) => changeLocalized("detailSummary", locale, value)} />
+              <LocalizedField id="detail-description" label="Description / 설명" value={selected.detailDescription ?? { ko: "", en: "" }} multiline onChange={(locale, value) => changeLocalized("detailDescription", locale, value)} />
               {selected.detailChapters.map((chapter, index) => (
                 <div className={styles.chapterEditor} key={`${selected.id}-${chapter.code}`}>
                   <span>{String(index + 1).padStart(2, "0")}</span>

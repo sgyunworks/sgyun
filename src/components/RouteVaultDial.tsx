@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { archiveProjects } from "@/lib/archive";
 import type { Locale } from "@/lib/i18n";
 import { VaultDial, type VaultDialItem } from "@/components/VaultDial";
 
@@ -28,12 +29,23 @@ function getRouteItems(pathname: string, locale: Locale): RouteDialItem[] {
   }
 
   if (pathname.startsWith(`${root}/works/`)) {
-    return numberItems([
+    const project = archiveProjects.find(
+      (item) => pathname === `${root}/works/${item.slug}`
+    );
+    const detailItems: Array<Omit<RouteDialItem, "number">> = [
       { id: "project-overview", label: "OVERVIEW", target: "project-overview" },
       { id: "project-premise", label: "PREMISE", target: "project-premise" },
       { id: "project-process", label: "PROCESS", target: "project-process" },
       { id: "project-next", label: "NEXT", target: "project-next" },
-    ]);
+    ];
+    if (project?.evidence) {
+      detailItems.splice(3, 0, {
+        id: "project-evidence",
+        label: "EVIDENCE",
+        target: "project-evidence",
+      });
+    }
+    return numberItems(detailItems);
   }
 
   if (pathname === `${root}/about`) {

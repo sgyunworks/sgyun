@@ -66,8 +66,8 @@
       {
         "year": "2026",
         "title": { "ko": "노원대학연합창업캠프", "en": "Nowon University Startup Camp" },
-        "result": { "ko": "대상 — 바로고, 현 RecoPick", "en": "Grand Prize — Barogo, now RecoPick" },
-        "note": { "ko": "제품 발전 이력을 함께 표기", "en": "Shown with the product evolution" }
+        "result": { "ko": "대상 — 바로고", "en": "Grand Prize — Barogo" },
+        "note": { "ko": "후속 제품명은 공개 포트폴리오에서 보류", "en": "The successor product name is withheld from the public portfolio for now" }
       },
       {
         "year": "2025",
@@ -116,43 +116,73 @@
       "year": "2026",
       "category": "physical",
       "description": {
-        "ko": "VESA 마운트에 결합해 책상 위 공간을 비우고 오디오와 충전을 하나의 구조로 만든 데스크 스피커.",
-        "en": "A VESA-mounted desk speaker that clears the work surface and integrates audio with charging."
+        "ko": "모니터 암의 VESA 인터페이스를 오디오·충전 플랫폼으로 전환해 책상 위 작업면을 비운 조절형 데스크 스피커.",
+        "en": "An adjustable desk speaker that turns a monitor arm's VESA interface into an audio-and-charging platform, clearing the work surface."
       },
-      "role": { "ko": "제품 디자인 · 제작 · 시스템 통합", "en": "Product design · fabrication · system integration" },
-      "heroImage": "",
-      "heroAspectRatio": 1.45,
-      "imageAlt": { "ko": "VESA Based Floating Speaker 이미지 준비 중", "en": "VESA Based Floating Speaker media pending" },
+      "role": { "ko": "제품 디자인 · 금속 제작 · 구조·전자 통합", "en": "Product design · metal fabrication · structural and electronic integration" },
+      "heroImage": "/images/vesa-floating-speaker/magsafe-approach.jpg",
+      "heroAspectRatio": 1.5,
+      "imageAlt": { "ko": "스마트폰을 VESA Based Floating Speaker 중앙의 MagSafe 충전면에 가까이 가져가는 장면", "en": "Bringing a phone toward the central MagSafe charging surface of the VESA Based Floating Speaker" },
       "imageFit": "contain",
       "imageTone": "light",
       "detailIntro": {
-        "ko": "금속 외장, 3D 프린팅 내부 구조, 오디오 모듈과 MagSafe 충전을 VESA 규격 위에 통합한 실물 제품 프로젝트다.",
-        "en": "A fabricated product integrating a metal shell, 3D-printed structure, audio electronics, and MagSafe charging on a VESA mount."
+        "ko": "스마트폰을 결합하고, 방향을 조절하고, 구조를 분해해 보는 순서로 VESA 시스템을 기록한다.",
+        "en": "The VESA system is documented through a sequence of docking, adjustment, and structural breakdown."
+      },
+      "detailSummary": {
+        "ko": "VESA Based Floating Speaker는 데스크 위에 놓이던 스피커를 모니터암 위로 이동시킨 VESA 기반 플로팅 스피커 시스템입니다. 책상 공간을 비우면서도 높이·각도·거리를 자유롭게 조절할 수 있어, 사용자의 자세와 작업 환경에 맞는 근거리 사운드 포지션을 제공합니다.",
+        "en": "VESA Based Floating Speaker is a monitor-arm speaker system that lifts desktop audio off the desk. Using a VESA-compatible mount, it frees workspace and lets users adjust height, angle, and distance for a personalized near-field listening experience."
+      },
+      "detailDescription": {
+        "ko": "현대의 데스크 환경은 모니터, 키보드, 충전기, 스마트폰 등 다양한 기기로 점점 복잡해지고 있습니다. 그러나 기존 데스크 스피커는 여전히 책상 위의 고정된 물체로 남아 공간을 차지하고, 사용자의 자세나 모니터 배치에 따라 최적의 청취 위치를 만들기 어렵습니다. VESA Based Floating Speaker는 스피커를 VESA 호환 모니터암에 결합해 공중에 배치함으로써 데스크 표면을 비우고, 높이·각도·거리를 유연하게 조절할 수 있도록 제안합니다. 중앙의 마그네틱 스마트폰 인터페이스는 충전, 재생 제어, 정보 확인을 하나의 전면 경험으로 통합하며, 스피커를 단순한 주변기기가 아닌 정돈된 작업 환경을 구성하는 데스크 오브제로 확장합니다.",
+        "en": "As modern desks become crowded with monitors, keyboards, chargers, and devices, conventional speakers still occupy valuable surface space and remain fixed in limited positions. VESA Based Floating Speaker rethinks desktop audio by mounting the speaker on a VESA-compatible monitor arm. The floating structure keeps the desk clear while allowing users to adjust height, angle, and distance according to their posture, monitor setup, and listening preference. A central magnetic phone interface supports charging, playback control, and glanceable information, integrating audio, display, and workspace organization into one refined desk object."
       },
       "detailChapters": [
         {
           "code": "01",
-          "title": { "ko": "책상 위가 아니라, 모니터 뒤의 구조를 사용한다.", "en": "Use the structure behind the monitor, not the desk surface." },
-          "body": { "ko": "스피커와 충전기가 점유하던 평면을 비우기 위해 모니터의 VESA 결합부를 새로운 제품 위치로 해석했다.", "en": "The VESA interface becomes a new product location, freeing the desk area occupied by speakers and chargers." }
+          "title": { "ko": "스마트폰을 스피커 중앙에 결합한다.", "en": "Dock the phone at the center of the speaker." },
+          "body": { "ko": "중앙의 MagSafe 면은 스마트폰을 붙잡는 충전·거치 위치가 된다. 오디오 장치에 화면과 충전의 역할을 함께 배치해, 작업 중 필요한 정보를 한 지점에 모았다.", "en": "The central MagSafe surface becomes both a charging and docking position. A screen and charging function are brought into the audio object so essential information stays in one place." }
         },
         {
           "code": "02",
-          "title": { "ko": "금속과 출력 부품이 서로 다른 역할을 맡는다.", "en": "Metal and printed parts take distinct structural roles." },
-          "body": { "ko": "레이저 커팅 알루미늄은 외관과 강성을, 3D 프린팅 부품은 내부 지지와 조립 오차 흡수를 담당한다.", "en": "Laser-cut aluminum provides the visible shell and stiffness; printed parts support components and absorb assembly tolerance." }
+          "title": { "ko": "가로·세로 회전과 청취 각도를 조절한다.", "en": "Adjust rotation and listening angle." },
+          "body": { "ko": "모니터 암의 관절을 이용해 스피커를 가로와 세로로 전환하고, 사용자의 위치에 맞춰 청취 방향을 조절한다. 책상 위를 점유하지 않으면서도 사용자의 자세와 화면 구성에 대응한다.", "en": "The monitor arm's joints allow the speaker to switch between horizontal and vertical orientations and turn toward the listener. It adapts to posture and display layout without occupying the desk surface." }
         },
         {
           "code": "03",
-          "title": { "ko": "완성도는 사용 장면과 검증 기록으로 남긴다.", "en": "The result is documented through use and recognition." },
-          "body": { "ko": "실물 프로토타입과 조절 장면을 제작했으며, 2026 K-Design Award Finalist와 대한민국디자인전람회 입선으로 기록되었다.", "en": "The working prototype and adjustment scenarios were documented and recognized as a 2026 K-Design Award Finalist and Korea Design Exhibition selection." }
+          "title": { "ko": "서로 다른 제작 방식이 구조를 완성한다.", "en": "Different fabrication methods complete the structure." },
+          "body": { "ko": "레이저 커팅 알루미늄 외장은 얇은 단면과 강성을 만들고, 3D 프린팅 부품은 스피커·충전 모듈의 정렬을 맡는다. 조절과 실제 작동은 프로토타입으로 검증했으며, 작업은 2026 K-Design Award Finalist와 대한민국디자인전람회 입선으로 기록되었다.", "en": "The laser-cut aluminum shell provides a thin, rigid profile while 3D-printed parts align the speaker and charging modules. Adjustment and operation were verified in the prototype; the project was recognized as a 2026 K-Design Award Finalist and selected by the Korea Design Exhibition." }
         }
       ],
-      "detailMedia": []
+      "detailMedia": [
+        { "src": "/images/vesa-floating-speaker/magsafe-mounted.jpg", "alt": { "ko": "스피커 중앙에 가로로 결합된 스마트폰", "en": "A phone mounted horizontally at the center of the speaker" }, "aspectRatio": 1.5, "fit": "contain", "tone": "light" },
+        { "src": "/images/vesa-floating-speaker/hero-adjustment.jpg", "alt": { "ko": "양손으로 VESA Based Floating Speaker의 각도를 조절하는 장면", "en": "Adjusting the angle of the VESA Based Floating Speaker by hand" }, "aspectRatio": 1.5, "fit": "contain", "tone": "light" },
+        { "src": "/images/vesa-floating-speaker/exploded-assembly.jpg", "alt": { "ko": "알루미늄 외장과 내부 부품의 분해 구조", "en": "Exploded assembly of the aluminum shell and internal components" }, "aspectRatio": 1.5, "fit": "contain", "tone": "light" }
+      ],
+      "evidence": {
+        "title": { "ko": "렌더에서 끝나지 않은, 작동하는 제품.", "en": "A working product, not a render-only proposal." },
+        "body": { "ko": "중앙 충전면에 스마트폰을 결합하고, 모니터 암의 관절을 따라 스피커를 가로와 세로로 돌려 작업 환경과 청취 방향에 맞추는 실제 프로토타입을 기록했다.", "en": "The physical prototype records a phone attaching to the central charging surface and the speaker rotating horizontally and vertically along the monitor arm to suit the workspace and listening direction." },
+        "video": {
+          "youtubeId": "PpmmcooixDk",
+          "url": "https://youtu.be/PpmmcooixDk",
+          "poster": "/images/vesa-floating-speaker/prototype-context.jpg",
+          "title": { "ko": "VESA Based Floating Speaker 실제 작동 영상", "en": "VESA-Based Floating Speaker: Product Demonstration" },
+          "caption": { "ko": "MagSafe 결합, 가로·세로 회전과 각도 조절을 실제 프로토타입으로 확인한다.", "en": "The physical prototype demonstrates MagSafe attachment, horizontal and vertical rotation, and angle adjustment." }
+        },
+        "media": [
+          { "src": "/images/vesa-floating-speaker/vertical-layout.jpg", "alt": { "ko": "울트라와이드 모니터 양쪽에서 세로로 회전한 스피커 구성", "en": "Speakers rotated vertically beside an ultrawide monitor" }, "caption": { "ko": "모니터와 작업 폭에 따라 스피커를 세로 방향으로 전환할 수 있다.", "en": "The speakers can rotate vertically to suit the display and available workspace." }, "aspectRatio": 1.5, "fit": "contain", "tone": "light" },
+          { "src": "/images/vesa-floating-speaker/monitor-layout.jpg", "alt": { "ko": "모니터 양쪽에 가로로 배치한 VESA 스피커 구성", "en": "VESA speakers positioned horizontally on both sides of a monitor" }, "caption": { "ko": "스피커를 화면 주변으로 들어 올려 책상 위의 연속된 작업면을 확보한다.", "en": "Lifting the speakers around the display preserves a continuous work surface." }, "aspectRatio": 1.5, "fit": "contain", "tone": "light" },
+          { "src": "/images/vesa-floating-speaker/dual-desk-layout.jpg", "alt": { "ko": "노트북 양쪽에 VESA 스피커를 배치한 데스크 구성", "en": "A desk setup with VESA speakers positioned on both sides of a laptop" }, "caption": { "ko": "노트북 양쪽으로 스피커를 배치해 책상 위 작업면을 비운다.", "en": "Positioning the speakers beside the laptop clears the work surface." }, "aspectRatio": 1.5, "fit": "contain", "tone": "light" },
+          { "src": "/images/vesa-floating-speaker/prototype-front.jpg", "alt": { "ko": "알루미늄 외장과 두 개의 스피커 유닛이 보이는 실물 프로토타입 정면", "en": "Front view of the physical prototype with its aluminum shell and two speaker drivers" }, "caption": { "ko": "렌더의 구조를 알루미늄 외장, 실제 유닛과 조작부를 갖춘 실물로 구현했다.", "en": "The rendered structure was fabricated as a physical object with an aluminum shell, working drivers, and controls." }, "aspectRatio": 1.5, "fit": "contain", "tone": "light" },
+          { "src": "/images/vesa-floating-speaker/prototype-context.jpg", "alt": { "ko": "책상 위에서 작동 중인 VESA Based Floating Speaker 실물 프로토타입", "en": "The working VESA Based Floating Speaker prototype on a desk" }, "caption": { "ko": "실제 책상 환경에서 제품의 설치와 사용 맥락을 확인한다.", "en": "The installation and use context are verified on an actual desk." }, "aspectRatio": 1.5, "fit": "contain", "tone": "light" }
+        ]
+      }
     },
     {
       "id": "recopick",
       "slug": "recopick",
       "order": 2,
-      "status": "published",
+      "status": "draft",
       "stage": "active",
       "title": "RECOPICK",
       "year": "2026",
@@ -201,34 +231,52 @@
       "category": "physical",
       "description": { "ko": "음악의 비행을 움직임으로 연출하는 키네틱 스피커.", "en": "A kinetic speaker that stages the flight of music through motion." },
       "role": { "ko": "단독 작업 · 디자인 · 메커니즘 · 회로/제어", "en": "Solo · design · mechanism · circuit/control" },
-      "heroImage": "/images/aviator_thumb.jpg",
+      "heroImage": "/images/the-aviator/01.jpg",
       "heroAspectRatio": 0.8,
       "imageAlt": { "ko": "키네틱 스피커 The Aviator", "en": "The Aviator kinetic speaker" },
       "imageFit": "contain",
       "imageTone": "dark",
-      "detailIntro": { "ko": "두 개의 스피커 유닛과 금속 윙·힌지 구조를 결합해 소리가 시작되기 전의 움직임까지 감상의 일부로 만든 오브제 스피커다.", "en": "An object speaker combining two drivers with metal wings and hinges so motion before playback becomes part of listening." },
+      "detailIntro": { "ko": "The Aviator는 두 개의 스피커 유닛과 금속 윙·힌지 구조를 결합한 키네틱 스피커입니다. 음악이 시작되기 전 윙이 펼쳐지고 유닛이 청자를 향하는 움직임을 통해, 소리를 듣는 일을 작동과 전시의 경험으로 확장합니다.", "en": "The Aviator is a kinetic speaker system that combines two speaker drivers with metal wings and hinges. As the wings unfold and the drivers turn toward the listener before playback, it extends listening into a visible sequence of movement and display." },
+      "detailSummary": { "ko": "The Aviator는 두 개의 스피커 유닛과 금속 윙·힌지 구조를 결합한 키네틱 스피커입니다. 음악이 시작되기 전 윙이 펼쳐지고 유닛이 청자를 향하는 움직임을 통해, 소리를 듣는 일을 작동과 전시의 경험으로 확장합니다.", "en": "The Aviator is a kinetic speaker system that combines two speaker drivers with metal wings and hinges. As the wings unfold and the drivers turn toward the listener before playback, it extends listening into a visible sequence of movement and display." },
+      "detailDescription": { "ko": "기존 스피커는 소리를 재생하는 동안에만 경험이 시작되지만, The Aviator는 음악이 시작되기 전의 준비 동작을 제품 경험의 일부로 봅니다. 두 개의 3인치 풀레인지 유닛과 Bluetooth·앰프 모듈을 중심에 두고, 액추에이터·스프링·힌지·베어링으로 연결된 금속 윙이 전개되도록 구성했습니다. 전원이 켜지면 접혀 있던 구조가 천천히 열리고 스피커 유닛이 청자를 향하며, 알루미늄 윙과 스탠드, 24개의 베어링과 스토퍼가 이 움직임의 범위와 안정성을 결정합니다. 3D 프린트 부품과 스위치 브라켓을 보완하고 실제 프로토타입의 작동 장면을 기록했으며, 가동 범위와 액추에이터가 끝까지 이완될 때 발생할 수 있는 충돌 조건은 별도의 구조 이슈로 검토했습니다.", "en": "Conventional speakers begin their experience only when sound is playing. The Aviator treats the preparation before playback as part of the product experience. Two 3-inch full-range drivers and a Bluetooth amplifier module sit at the center, while metal wings connected by actuators, springs, hinges, and bearings unfold around them. When powered on, the folded structure opens gradually and turns the drivers toward the listener; the aluminum wings and stand, 24 bearings, and mechanical stops define the range and stability of that movement. 3D-printed parts and a switch bracket were refined, and the working prototype was recorded while possible collision at full actuator release remained a separate structural issue to review." },
       "detailChapters": [
         {
           "code": "01",
           "title": { "ko": "소리가 나기 전, 형태가 먼저 출발한다.", "en": "The form departs before sound begins." },
-          "body": { "ko": "전원이 켜지면 접혀 있던 윙이 천천히 펼쳐지고 스피커 유닛이 청자를 향한다. 이 전환을 음악의 이륙 신호로 설계했다.", "en": "When powered, folded wings unfold and orient the drivers toward the listener, acting as a takeoff cue for music." }
+          "body": { "ko": "전원이 켜지면 접혀 있던 윙이 천천히 펼쳐지고 두 개의 스피커 유닛이 청자를 향한다. 재생 이전의 짧은 전환을 음악의 이륙 신호이자 제품을 바라보게 하는 첫 장면으로 설계했다.", "en": "When powered on, the folded wings unfold slowly and turn the two drivers toward the listener. This short transition before playback becomes both the takeoff cue for music and the first scene that asks the viewer to look." }
         },
         {
           "code": "02",
-          "title": { "ko": "메커니즘을 장식 뒤에 숨기지 않는다.", "en": "The mechanism is not hidden behind styling." },
-          "body": { "ko": "액추에이터, 스프링, 베어링, 힌지와 스토퍼가 외형을 결정하며, 가동 범위와 충돌을 실제 구조 문제로 다뤘다.", "en": "Actuators, springs, bearings, hinges, and stops determine the form while range and collision are treated as real structural problems." }
+          "title": { "ko": "윙과 힌지가 청취 방향을 만든다.", "en": "Wings and hinges shape the listening direction." },
+          "body": { "ko": "액추에이터와 스프링, 24개의 베어링과 힌지가 금속 윙의 전개 범위를 만든다. 구조를 감추는 외피 대신 움직임이 보이는 골격을 남겨, 제품의 형태와 작동 원리가 한 장면에서 읽히도록 했다.", "en": "Actuators, springs, 24 bearings, and hinges define how far the metal wings can unfold. Instead of hiding the mechanism behind an outer shell, the visible structure lets form and operation be read in the same scene." }
         },
         {
           "code": "03",
-          "title": { "ko": "움직임은 전시와 수상 기록으로 이어졌다.", "en": "Motion carried into exhibition and recognition." },
-          "body": { "ko": "2025 조형대학연합전에 전시했고 강원디자인전람회 입선작으로 선정되었다.", "en": "The project was exhibited in the 2025 College of Art and Design joint exhibition and selected by the Gangwon Design Exhibition." }
+          "title": { "ko": "렌더의 구조를 실제 작동으로 옮긴다.", "en": "The rendered structure moves into a working prototype." },
+          "body": { "ko": "3D 프린트 부품과 스위치 브라켓을 보완하고 실제 프로토타입에서 전개 동작을 기록했다. 2025 조형대학연합전에 전시했고 강원디자인전람회 입선작으로 선정되었으며, 액추에이터의 끝 위치에서 생길 수 있는 충돌은 스토퍼·스프링·지지 구조의 후속 검토 과제로 남겼다.", "en": "3D-printed parts and a switch bracket were refined, and the unfolding motion was recorded on a physical prototype. The project was exhibited in the 2025 College of Art and Design joint exhibition and selected by the Gangwon Design Exhibition; possible collision at the actuator's end position remains a follow-up review of the stops, springs, and support structure." }
         }
       ],
       "detailMedia": [
-        { "src": "/images/aviator_d1.jpg", "alt": { "ko": "The Aviator 정면", "en": "The Aviator front view" }, "aspectRatio": 0.8, "fit": "contain", "tone": "dark" },
-        { "src": "/images/aviator_d2.jpg", "alt": { "ko": "The Aviator 움직임 상세", "en": "The Aviator motion detail" }, "aspectRatio": 0.8, "fit": "contain", "tone": "dark" },
-        { "src": "/images/aviator_d3_wide.jpg", "alt": { "ko": "The Aviator 전개 장면", "en": "The Aviator sequence" }, "aspectRatio": 2.78, "fit": "contain", "tone": "dark" }
-      ]
+        { "src": "/images/the-aviator/02.jpg", "alt": { "ko": "The Aviator의 사선 구조와 스피커 유닛", "en": "The Aviator's oblique structure and speaker drivers" }, "aspectRatio": 0.8, "fit": "contain", "tone": "dark" },
+        { "src": "/images/the-aviator/03.jpg", "alt": { "ko": "두 개의 윙과 중앙 제어부가 보이는 The Aviator 구조", "en": "The Aviator structure with two wings and a central control unit" }, "aspectRatio": 1.6, "fit": "contain", "tone": "dark" },
+        { "src": "/images/the-aviator/04.jpg", "alt": { "ko": "후면에서 본 The Aviator의 윙과 힌지 구조", "en": "The Aviator's wings and hinge structure from the rear" }, "aspectRatio": 1.6, "fit": "contain", "tone": "dark" }
+      ],
+      "evidence": {
+        "title": { "ko": "움직임이 기록되는 실제 프로토타입.", "en": "A physical prototype whose motion can be recorded." },
+        "body": { "ko": "실제 프로토타입의 전개 동작과 전시 장면을 기록했다. 영상에서는 접힌 윙이 열리고 두 스피커 유닛이 청자를 향하는 과정을 확인할 수 있다.", "en": "The unfolding motion and exhibition context of the physical prototype are recorded. The film shows the folded wings opening and the two speaker drivers turning toward the listener." },
+        "video": {
+          "youtubeId": "T-T_7QIveWY",
+          "url": "https://youtu.be/T-T_7QIveWY",
+          "poster": "/images/the-aviator/real-prototype.jpg",
+          "title": { "ko": "The Aviator 실제 작동 영상", "en": "The Aviator: Working Prototype" },
+          "caption": { "ko": "전원이 켜진 뒤 윙이 전개되고 스피커 유닛이 청취 방향으로 전환되는 과정을 확인한다.", "en": "The prototype shows the wings unfolding and the speaker drivers turning toward the listening position after power-on." }
+        },
+        "media": [
+          { "src": "/images/the-aviator/05.jpg", "alt": { "ko": "The Aviator의 측면 구조와 액추에이터", "en": "The Aviator's side structure and actuator" }, "caption": { "ko": "측면 구조에서 윙의 전개와 액추에이터의 위치 관계를 확인한다.", "en": "The side view shows the relationship between wing movement and actuator placement." }, "aspectRatio": 0.8, "fit": "contain", "tone": "dark" },
+          { "src": "/images/the-aviator/process.jpg", "alt": { "ko": "CAD, Blender와 제작 부품을 함께 정리한 The Aviator 제작 과정", "en": "The Aviator process across CAD, Blender, and fabricated parts" }, "caption": { "ko": "CAD와 Blender에서 구조와 가동을 검토하고, 제작 부품과 전시용 프로토타입으로 연결했다.", "en": "The structure and movement were explored in CAD and Blender before being connected to fabricated parts and an exhibition prototype." }, "aspectRatio": 0.8, "fit": "contain", "tone": "light" },
+          { "src": "/images/the-aviator/real-prototype.jpg", "alt": { "ko": "전시장에서 태블릿과 함께 작동 중인 The Aviator 실물 프로토타입", "en": "The working The Aviator prototype displayed with a tablet" }, "caption": { "ko": "실제 전시 장면에서 스피커의 방향 전환과 인터랙션을 확인한다.", "en": "The exhibition view confirms the speaker's directional movement and interaction in context." }, "aspectRatio": 0.8, "fit": "contain", "tone": "light" }
+        ]
+      }
     },
     {
       "id": "double-wishbone-chair",
