@@ -2,7 +2,7 @@
 
 ## 현재 판정
 
-2026-07-30 콘텐츠 시스템·조용한 정보 구조·다이얼 조작성 개편 기준으로 1차 대표작 구조와 소유자 게시 흐름은 **구현·로컬 및 production 검증 통과**다. production 배포는 `dpl_AZd3jN3aR28118HXbvHBYDJYtvCi`로 완료했다.
+2026-07-31 콘텐츠 시스템·조용한 정보 구조·다이얼 조작성 개편 기준으로 1차 대표작 구조와 소유자 게시 흐름은 **구현·로컬 및 production 검증 통과**다. 최신 production 배포는 `dpl_TmXzUfRewCyBe7NawVTsiNz1sSBL`이며 `sgyun.kr`에 연결됐다.
 
 ## 구현된 범위
 
@@ -65,6 +65,7 @@
 - [x] Works의 `ARCHIVE INDEX`, Contact의 호출 문구, Appendix의 예약 제목을 낮춰 개인을 크게 선언하는 디스플레이 타이포그래피를 줄였다. 작품 상세의 작품명과 프로세스 제목은 작업 탐색에 필요한 위계를 유지했다.
 - [x] 1440px·390px에서 홈, Works, The Aviator 상세, About, Contact, Appendix를 production build 서버로 끝까지 스크롤해 HTTP 200, overflow 0, console/page error 0, 표시 이미지 실패 0을 확인했다.
 - [x] `npm run typecheck`, `npm run build`, `git diff --check` 통과.
+- [x] `88468fd`를 GitHub `main`에 반영하고 Vercel production 배포 `dpl_TmXzUfRewCyBe7NawVTsiNz1sSBL`을 `READY` 상태로 확인했다. `sgyun.kr` alias, 주요 경로 200, runtime error 없음.
 
 ## Quiet portfolio and dial interaction pass — 2026-07-30
 
