@@ -341,6 +341,42 @@ export function VaultDial({
       </nav>
 
       <div
+        className={styles.control}
+        data-vault-dial-control="true"
+        aria-hidden="true"
+      >
+        <div className={styles.track}>
+          {Array.from({ length: TICK_COUNT }).map((_, index) => (
+            <i
+              className={styles.tick}
+              key={index}
+              style={{ "--vault-tick-index": index } as TickStyle}
+            />
+          ))}
+          {items.map((item, index) => {
+            const angle = -90 + index * dialStep;
+            return (
+              <span
+                key={item.id}
+                className={`${styles.marker} ${
+                  index === activeIndex ? styles.activeMarker : ""
+                }`}
+                style={
+                  {
+                    "--vault-marker-angle": `${angle}deg`,
+                    "--vault-counter-angle": `${-angle}deg`,
+                  } as MarkerStyle
+                }
+              >
+                <b>{item.number}</b>
+              </span>
+            );
+          })}
+        </div>
+        <span className={styles.datum} />
+      </div>
+
+      <div
         className={styles.controlHitArea}
         data-touch-mode={touchMode}
         role="slider"
@@ -375,39 +411,7 @@ export function VaultDial({
             select(items.length - 1);
           }
         }}
-      >
-        <div className={styles.control} aria-hidden="true">
-          <div className={styles.track}>
-            {Array.from({ length: TICK_COUNT }).map((_, index) => (
-              <i
-                className={styles.tick}
-                key={index}
-                style={{ "--vault-tick-index": index } as TickStyle}
-              />
-            ))}
-            {items.map((item, index) => {
-              const angle = -90 + index * dialStep;
-              return (
-                <span
-                  key={item.id}
-                  className={`${styles.marker} ${
-                    index === activeIndex ? styles.activeMarker : ""
-                  }`}
-                  style={
-                    {
-                      "--vault-marker-angle": `${angle}deg`,
-                      "--vault-counter-angle": `${-angle}deg`,
-                    } as MarkerStyle
-                  }
-                >
-                  <b>{item.number}</b>
-                </span>
-              );
-            })}
-          </div>
-          <span className={styles.datum} />
-        </div>
-      </div>
+      />
 
       <div className={styles.readout} aria-hidden="true">
         <span>{activeItem?.number}</span>
