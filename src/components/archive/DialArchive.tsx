@@ -89,10 +89,12 @@ export function DialArchive({ locale }: { locale: Locale }) {
 
   const categorySummaries = useMemo(
     () =>
-      archiveCategoryOrder.map((category) => ({
-        id: category,
-        ...archiveCategories[category],
-      })),
+      archiveCategoryOrder
+        .filter((category) => projects.some((project) => project.category === category))
+        .map((category) => ({
+          id: category,
+          ...archiveCategories[category],
+        })),
     [projects]
   );
 

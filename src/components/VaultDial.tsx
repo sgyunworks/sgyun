@@ -55,6 +55,7 @@ type VaultDialProps = {
   stepDegrees?: number;
   touchMode?: "native-scroll" | "page-scroll" | "scrub";
   touchPixelsPerStep?: number;
+  tone?: "primary" | "quiet";
   visualAngle?: string;
   visualIndex?: number;
   variant?: "archive" | "page";
@@ -79,6 +80,7 @@ export function VaultDial({
   stepDegrees,
   touchMode = "native-scroll",
   touchPixelsPerStep = DRAG_PX_PER_STEP_TOUCH,
+  tone = "primary",
   visualAngle,
   visualIndex,
   variant = "page",
@@ -314,6 +316,7 @@ export function VaultDial({
     <aside
       className={`${styles.shell} ${styles[variant]}${className ? ` ${className}` : ""}`}
       data-vault-dial={variant}
+      data-tone={tone}
       data-interacting={isInteracting ? "true" : "false"}
       style={
         {

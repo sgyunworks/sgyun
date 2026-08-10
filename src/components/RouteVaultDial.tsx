@@ -204,6 +204,9 @@ export function RouteVaultDial({ locale }: { locale: Locale }) {
 
   if (!items.length) return null;
 
+  const root = `/${locale}`;
+  const tone = pathname.startsWith(`${root}/works/`) ? "primary" : "quiet";
+
   return (
     <VaultDial
       activeIndex={activeIndex}
@@ -225,6 +228,7 @@ export function RouteVaultDial({ locale }: { locale: Locale }) {
       }}
       onScrubEnd={(index) => select(Math.round(index))}
       touchMode="page-scroll"
+      tone={tone}
       visualIndex={visualIndex}
       variant="page"
     />

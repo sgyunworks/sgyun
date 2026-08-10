@@ -44,6 +44,9 @@
 }
 
 .locked a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   margin-top: 48px;
   color: #f5f5f1;
   font-size: 8px;

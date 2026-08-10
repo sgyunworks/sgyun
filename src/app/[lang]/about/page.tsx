@@ -1,7 +1,13 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 import { locales } from "@/lib/i18n";
-import { portfolioProfile } from "@/lib/archive";
+import {
+  archiveProjects,
+  localizeArchiveProject,
+  portfolioProfile,
+} from "@/lib/archive";
+import { SafeImage } from "@/components/SafeImage";
 import { VaultAction } from "@/components/VaultAction";
 import styles from "../EditorialPages.module.css";
 
@@ -14,6 +20,10 @@ export default async function AboutPage({
   if (!(locales as readonly string[]).includes(lang)) notFound();
   const validLang = lang as Locale;
   const isKo = validLang === "ko";
+  const proofSource =
+    archiveProjects.find((project) => project.slug === "the-aviator") ??
+    archiveProjects[0];
+  const proof = localizeArchiveProject(proofSource, validLang);
 
   return (
     <div className={styles.page}>
@@ -34,6 +44,26 @@ export default async function AboutPage({
               <i aria-hidden="true" />
               <span>SEOUL</span>
             </div>
+            <Link
+              href={`/${validLang}/works/${proof.slug}`}
+              className={styles.aboutProof}
+            >
+              <span className={styles.aboutProofMedia}>
+                <SafeImage
+                  src={proof.heroImage}
+                  alt={proof.imageAltText}
+                  fill
+                  priority
+                  sizes="(max-width: 640px) calc(100vw - 90px), 38vw"
+                  className={styles.aboutProofImage}
+                  style={{ objectPosition: proof.imagePosition }}
+                />
+              </span>
+              <span>
+                <small>{proof.number}</small>
+                <strong>{proof.title}</strong>
+              </span>
+            </Link>
           </div>
         </div>
       </header>

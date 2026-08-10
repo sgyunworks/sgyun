@@ -25,6 +25,7 @@ export function ArchiveIndex({
   const projects = archiveProjects
     .filter((project) => !activeCategory || project.category === activeCategory)
     .map((project) => localizeArchiveProject(project, locale));
+  const featuredProject = projects[0];
 
   const copy = {
     index: locale === "ko" ? "작품 인덱스" : "Work index",
@@ -53,10 +54,39 @@ export function ArchiveIndex({
 
         <div className={styles.heroComposition}>
           <h1>ARCHIVE INDEX</h1>
-          <div className={styles.heroCopy}>
-            <p>{copy.statement}</p>
-            <span>{copy.instruction}</span>
-          </div>
+          {featuredProject ? (
+            <Link
+              href={`/${locale}/works/${featuredProject.slug}`}
+              className={styles.heroFeature}
+            >
+              <span
+                className={styles.heroFeatureFrame}
+                style={
+                  { "--media-aspect": featuredProject.heroAspectRatio } as MediaFrameStyle
+                }
+              >
+                <SafeImage
+                  src={featuredProject.heroImage}
+                  alt={featuredProject.imageAltText}
+                  fallbackLabel={
+                    locale === "ko"
+                      ? "\ud504\ub85c\uc81d\ud2b8 \ubbf8\ub514\uc5b4\ub97c \ubd88\ub7ec\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4"
+                      : "Project media unavailable"
+                  }
+                  fill
+                  priority
+                  sizes="(max-width: 600px) calc(100vw - 86px), 46vw"
+                  className={styles.naturalImage}
+                  style={{ objectPosition: featuredProject.imagePosition }}
+                />
+              </span>
+              <span className={styles.heroFeatureCaption}>
+                <small>{featuredProject.number}</small>
+                <strong>{featuredProject.title}</strong>
+                <small>{featuredProject.year}</small>
+              </span>
+            </Link>
+          ) : null}
         </div>
 
         <nav className={styles.filters} aria-label={copy.index}>
@@ -74,6 +104,7 @@ export function ArchiveIndex({
               (project) => project.category === category
             ).length;
             const isActive = activeCategory === category;
+            if (count === 0) return null;
 
             return (
               <Link

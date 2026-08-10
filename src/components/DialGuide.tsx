@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/i18n";
 import styles from "./DialGuide.module.css";
@@ -38,14 +38,12 @@ export function DialGuide({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const shownThisVisitRef = useRef(false);
   const [visible, setVisible] = useState(false);
-  const [step, setStep] = useState(0);
+  const dismiss = useCallback(() => setVisible(false), []);
 
   useEffect(() => {
     setVisible(false);
-    setStep(0);
     if (pathname.endsWith("/calibration") || pathname.endsWith("/vault")) return;
 
-    let stepTimer: number | undefined;
     let closeTimer: number | undefined;
     const revealTimer = window.setTimeout(() => {
       if (shownThisVisitRef.current) return;
@@ -64,49 +62,57 @@ export function DialGuide({ locale }: { locale: Locale }) {
         // The guide still runs once for the current mounted visit.
       }
       setVisible(true);
-      stepTimer = window.setTimeout(() => setStep(1), 2200);
-      closeTimer = window.setTimeout(() => setVisible(false), 5000);
+      closeTimer = window.setTimeout(() => setVisible(false), 4600);
     }, 700);
 
     return () => {
       window.clearTimeout(revealTimer);
-      if (stepTimer !== undefined) window.clearTimeout(stepTimer);
       if (closeTimer !== undefined) window.clearTimeout(closeTimer);
     };
   }, [pathname]);
 
+  useEffect(() => {
+    if (!visible) return;
+    const closeOnPointer = (event: PointerEvent) => {
+      if ((event.target as Element | null)?.closest("[data-vault-dial]")) dismiss();
+    };
+    const closeOnKey = (event: KeyboardEvent) => {
+      if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End"].includes(event.key)) {
+        dismiss();
+      }
+    };
+    window.addEventListener("scroll", dismiss, { once: true, passive: true });
+    document.addEventListener("pointerdown", closeOnPointer, true);
+    window.addEventListener("keydown", closeOnKey, true);
+    return () => {
+      window.removeEventListener("scroll", dismiss);
+      document.removeEventListener("pointerdown", closeOnPointer, true);
+      window.removeEventListener("keydown", closeOnKey, true);
+    };
+  }, [dismiss, visible]);
+
   if (!visible) return null;
-  const message = copy[locale][step];
+  const messages = copy[locale];
 
   return (
     <aside
       className={styles.guide}
       data-dial-guide="true"
-      data-step={step}
       aria-live="polite"
+      aria-atomic="true"
     >
       <div className={styles.panel}>
-        <div className={styles.meta} aria-hidden="true">
-          <span>VAULT DIAL / GUIDE</span>
-          <i />
-          <span>{String(step + 1).padStart(2, "0")}/02</span>
-        </div>
-        <div className={styles.message} key={message.code}>
-          <small>{message.code}</small>
-          <strong>{message.title}</strong>
-          <p>{message.body}</p>
+        <div className={styles.message}>
+          <small>VAULT DIAL</small>
+          <strong>{messages[1].title}</strong>
         </div>
         <div className={styles.gesture} aria-hidden="true">
-          <i />
-        </div>
-        <div className={styles.progress} aria-hidden="true">
-          <i />
           <i />
         </div>
         <button
           type="button"
           aria-label={locale === "ko" ? "다이얼 안내 닫기" : "Dismiss dial guide"}
-          onClick={() => setVisible(false)}
+          onClick={dismiss}
         >
           ×
         </button>

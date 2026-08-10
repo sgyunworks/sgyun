@@ -25,32 +25,22 @@ export default async function ContactPage({
 
         <div className={styles.contactLead}>
           <h1>
-            {t.contact.headline1}
-            <br />
-            {t.contact.headline2}{" "}
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className={styles.contactAction}
-            >
-              {t.contact.headline3}
-            </a>
+            {isKo
+              ? "\ud504\ub85c\uc81d\ud2b8\uc640 \ud611\uc5c5 \ubb38\uc758"
+              : "Project and collaboration enquiries"}
           </h1>
           <p>
             {isKo
               ? "물리적 제품, 디지털 제품, 전시와 실험적 협업까지 형식에 제한 없이 이야기할 수 있습니다."
               : "Open to physical products, digital products, exhibitions, and experimental collaborations."}
           </p>
+          <a href={`mailto:${siteConfig.email}`} className={styles.contactEmail}>
+            {siteConfig.email}
+          </a>
         </div>
         </header>
 
         <div id="contact-channels" className={styles.contactGrid}>
-          <Block label={t.contact.labelEmail}>
-            <a
-              href={`mailto:${siteConfig.email}`}
-            >
-              {siteConfig.email}
-            </a>
-          </Block>
           <Block label={t.contact.labelInstagram}>
             <a
               href={siteConfig.instagram.url}

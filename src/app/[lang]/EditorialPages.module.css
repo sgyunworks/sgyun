@@ -35,7 +35,7 @@
 
 .hero {
   display: grid;
-  min-height: 82svh;
+  min-height: 78svh;
   grid-template-rows: auto 1fr;
   padding-top: 20px;
 }
@@ -84,16 +84,16 @@
 
 .heroComposition {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
-  gap: clamp(50px, 8vw, 130px);
-  align-items: end;
-  padding: clamp(100px, 15vh, 170px) 0 clamp(54px, 8vh, 90px);
+  grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(48px, 8vw, 126px);
+  align-items: center;
+  padding: clamp(72px, 10vh, 112px) 0 clamp(42px, 6vh, 68px);
 }
 
 .hero h1 {
-  max-width: 8ch;
+  max-width: 7ch;
   margin: 0;
-  font-size: clamp(68px, 9.5vw, 144px);
+  font-size: clamp(72px, 7.2vw, 108px);
   font-weight: 300;
   line-height: 0.86;
   letter-spacing: var(--tracking-display-latin);
@@ -109,7 +109,7 @@
   max-width: 18ch;
   margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.88);
-  font-size: clamp(18px, 1.3vw, 22px);
+  font-size: clamp(17px, 1.2vw, 20px);
   font-weight: 390;
   line-height: 1.3;
   letter-spacing: -0.024em;
@@ -131,6 +131,61 @@
 .heroIdentity i {
   height: 1px;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.06));
+}
+
+.aboutProof {
+  display: grid;
+  gap: 11px;
+  width: min(100%, 620px);
+  margin-top: clamp(34px, 5vh, 56px);
+  color: inherit;
+}
+
+.aboutProofMedia {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.5;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #15171b;
+  box-shadow: 0 30px 74px rgba(0, 0, 0, 0.3);
+}
+
+.aboutProofImage {
+  object-fit: contain;
+  transition: filter 500ms ease, transform 900ms var(--ease-fluid);
+}
+
+.aboutProof:hover .aboutProofImage,
+.aboutProof:focus-visible .aboutProofImage {
+  filter: brightness(1.035);
+  transform: scale(1.008);
+}
+
+.aboutProof > span:last-child {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 9px;
+  align-items: baseline;
+}
+
+.aboutProof small {
+  color: rgba(255, 255, 255, 0.42);
+  font: 510 8px/1 var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+}
+
+.aboutProof strong {
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: var(--font-display), var(--font-korean), sans-serif;
+  font-size: clamp(15px, 1.3vw, 19px);
+  font-weight: 320;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .aboutGrid {
@@ -203,12 +258,12 @@
   grid-template-columns: minmax(230px, 0.48fr) minmax(0, 1.52fr);
   gap: clamp(60px, 12vw, 200px);
   align-items: start;
-  padding: clamp(110px, 15vw, 220px) 0 0;
+  padding: clamp(90px, 11vw, 164px) 0 0;
 }
 
 .panelHeading {
   margin: 34px 0 0;
-  font-size: clamp(32px, 3.4vw, 54px);
+  font-size: clamp(30px, 2.8vw, 44px);
   font-weight: 300;
   line-height: 0.98;
   letter-spacing: -0.045em;
@@ -292,7 +347,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(40px, 8vw, 130px);
-  padding-top: clamp(120px, 14vw, 210px);
+  padding-top: clamp(96px, 11vw, 166px);
 }
 
 .recordColumn {
@@ -375,15 +430,15 @@
 
 .contactHero {
   display: flex;
-  min-height: 82svh;
+  min-height: 64svh;
   flex-direction: column;
   padding-top: 20px;
 }
 
 .contactHero h1 {
-  max-width: 11ch;
+  max-width: 12ch;
   margin: 0;
-  font-size: clamp(52px, 6.5vw, 100px);
+  font-size: clamp(46px, 5vw, 74px);
   font-weight: 300;
   line-height: 0.89;
   letter-spacing: -0.052em;
@@ -392,18 +447,29 @@
 
 .contactLead {
   display: grid;
-  gap: clamp(30px, 5vh, 52px);
-  margin: auto 0 clamp(50px, 8vh, 88px);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: end;
+  margin: auto 0 clamp(46px, 7vh, 72px);
 }
 
 .contactLead > p {
-  max-width: 52ch;
-  margin: 0 0 0 auto;
-  color: rgba(255, 255, 255, 0.52);
-  font-size: var(--type-body);
-  line-height: var(--leading-body-relaxed);
-  text-wrap: pretty;
-  word-break: keep-all;
+  display: none;
+}
+
+.contactEmail {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(15px, 1.15vw, 17px);
+  letter-spacing: -0.018em;
+  transition: color 180ms ease;
+}
+
+.contactEmail:hover,
+.contactEmail:focus-visible {
+  color: #fff;
 }
 
 :global([lang="ko"]) .contactHero h1 {
@@ -441,9 +507,10 @@
 
 .contactGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(28px, 4vw, 70px);
-  padding: clamp(80px, 11vw, 150px) 0 0;
+  padding: clamp(42px, 6vw, 76px) 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .contactBlock {
@@ -569,11 +636,11 @@
 
 @media (max-width: 640px) {
   .page {
-    padding: 84px 16px 140px;
+    padding: 84px 58px 124px 16px;
   }
 
   .hero {
-    min-height: 83svh;
+    min-height: auto;
   }
 
   .heroDatum {
@@ -582,24 +649,28 @@
 
   .heroComposition {
     grid-template-columns: 1fr;
-    gap: 44px;
+    gap: 32px;
     align-content: end;
-    padding: 112px 0 62px;
+    padding: 82px 0 54px;
   }
 
   .hero h1 {
-    font-size: clamp(62px, 17vw, 84px);
+    font-size: clamp(50px, 14vw, 64px);
   }
 
   .heroThesis p {
     max-width: 20ch;
     margin-top: 16px;
-    font-size: 19px;
+    font-size: 17px;
     line-height: 1.34;
   }
 
   .heroIdentity {
-    margin-top: 30px;
+    margin-top: 24px;
+  }
+
+  .aboutProof {
+    margin-top: 34px;
   }
 
   .aboutGrid {
@@ -621,11 +692,11 @@
 
   .widePanel {
     gap: 44px;
-    padding-top: 120px;
+    padding-top: 92px;
   }
 
   .panelHeading {
-    font-size: 40px;
+    font-size: 34px;
   }
 
   .educationList {
@@ -652,7 +723,7 @@
   }
 
   .recordSection {
-    padding-top: 150px;
+    padding-top: 112px;
   }
 
   .recordColumn li {
@@ -667,15 +738,17 @@
   }
 
   .contactHero {
-    min-height: 86svh;
+    min-height: 58svh;
   }
 
   .contactHero h1 {
-    font-size: clamp(42px, 12vw, 60px);
+    font-size: clamp(36px, 10vw, 46px);
   }
 
   .contactLead {
-    margin-bottom: 48px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-bottom: 38px;
   }
 
   .contactLead > p {
@@ -683,9 +756,9 @@
   }
 
   .contactGrid {
-    grid-template-columns: 1fr;
-    gap: 52px;
-    padding-top: 100px;
+    grid-template-columns: 1fr 1fr;
+    gap: 34px 18px;
+    padding-top: 34px;
   }
 
   .appendixHero {
@@ -715,7 +788,7 @@
   }
 
   .contactBlock > span:last-child {
-    font-size: 17px;
+    font-size: 14px;
   }
 
   .contactBlock a {
