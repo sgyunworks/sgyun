@@ -28,6 +28,7 @@
   height: 100%;
   overflow: visible;
   pointer-events: none;
+  mix-blend-mode: screen;
 }
 
 @media (prefers-reduced-motion: reduce) {
