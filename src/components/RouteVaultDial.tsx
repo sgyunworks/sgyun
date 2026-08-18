@@ -39,8 +39,15 @@ function getRouteItems(pathname: string, locale: Locale): RouteDialItem[] {
       { id: "project-process", label: "PROCESS", target: "project-process" },
       { id: "project-next", label: "NEXT", target: "project-next" },
     ];
+    if (project.liveApp) {
+      detailItems.splice(2, 0, {
+        id: "project-live-app",
+        label: "LIVE APP",
+        target: "project-live-app",
+      });
+    }
     if (project.evidence) {
-      detailItems.splice(3, 0, {
+      detailItems.splice(detailItems.length - 1, 0, {
         id: "project-evidence",
         label: "EVIDENCE",
         target: "project-evidence",

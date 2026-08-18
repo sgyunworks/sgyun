@@ -572,6 +572,7 @@ export function DialArchive({ locale }: { locale: Locale }) {
             <div className={styles.mediaViewport}>
               <div
                 className={styles.mediaInstrument}
+                data-portrait={active.heroAspectRatio < 0.72}
                 style={
                   { "--preview-aspect": active.heroAspectRatio } as PreviewFrameStyle
                 }

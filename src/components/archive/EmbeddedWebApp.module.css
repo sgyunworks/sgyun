@@ -1,0 +1,427 @@
+.section {
+  position: relative;
+  display: grid;
+  min-height: max(920px, 100svh);
+  grid-template-columns: minmax(240px, 0.72fr) minmax(340px, 1.28fr);
+  gap: clamp(42px, 7vw, 118px);
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(108px, 12vw, 174px) clamp(176px, 14vw, 220px) clamp(112px, 13vw, 190px) clamp(20px, 5vw, 88px);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background:
+    radial-gradient(circle at 68% 47%, rgba(152, 165, 184, 0.08), transparent 30%),
+    #08090b;
+  color: #f5f5f1;
+}
+
+.meta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.eyebrow,
+.meta small,
+.readout {
+  color: rgba(245, 245, 241, 0.46);
+  font: 510 9px/1.4 var(--font-mono), monospace;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.meta h2 {
+  max-width: 12ch;
+  margin: 18px 0 0;
+  font-family: var(--font-display), var(--font-korean), sans-serif;
+  font-size: clamp(34px, 3.2vw, 52px);
+  font-weight: 300;
+  line-height: 1.04;
+  letter-spacing: -0.042em;
+  text-wrap: balance;
+}
+
+:global([lang="ko"]) .meta h2 {
+  line-height: 1.36;
+  letter-spacing: -0.026em;
+  word-break: keep-all;
+}
+
+.meta > div > p {
+  max-width: 38ch;
+  margin: 24px 0 0;
+  color: rgba(245, 245, 241, 0.62);
+  font-family: var(--font-body), var(--font-korean), sans-serif;
+  font-size: var(--type-reading);
+  line-height: var(--leading-reading);
+  letter-spacing: var(--tracking-reading);
+  text-wrap: pretty;
+}
+
+:global([lang="ko"]) .meta > div > p {
+  line-height: var(--leading-reading-ko);
+  letter-spacing: var(--tracking-reading-ko);
+  word-break: keep-all;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 52px;
+}
+
+.actions button,
+.actions a {
+  color: inherit;
+  font-family: var(--font-body), var(--font-korean), sans-serif;
+  font-size: 12px;
+}
+
+.actions button {
+  display: grid;
+  width: min(100%, 280px);
+  min-height: 54px;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 280ms ease, color 280ms ease;
+}
+
+.actions button i {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+  transition: transform 360ms var(--ease-fluid), background 280ms ease;
+}
+
+.actions button i::before,
+.actions button i::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.actions button i::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.section:not([data-app-state="idle"]):not([data-app-state="error"]) .actions button i::after {
+  display: none;
+}
+
+.actions button:hover,
+.actions button:focus-visible {
+  border-color: rgba(255, 255, 255, 0.72);
+  outline: none;
+}
+
+.actions button:hover i,
+.actions button:focus-visible i {
+  background: rgba(255, 255, 255, 0.08);
+  transform: rotate(24deg);
+}
+
+.actions a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  gap: 9px;
+  color: rgba(245, 245, 241, 0.52);
+  transition: color 200ms ease;
+}
+
+.actions a:hover,
+.actions a:focus-visible {
+  color: #f5f5f1;
+}
+
+.privacy {
+  max-width: 34ch;
+  margin: 34px 0 0;
+  color: rgba(245, 245, 241, 0.34);
+  font-family: var(--font-body), var(--font-korean), sans-serif;
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+.deviceStage {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  place-items: center;
+}
+
+.device {
+  position: relative;
+  width: clamp(330px, 29vw, 402px);
+  aspect-ratio: 71.9 / 150;
+  border-radius: clamp(49px, 4.5vw, 62px);
+  background: linear-gradient(105deg, #161b23 0%, #3d4552 5%, #10141b 12%, #07090d 83%, #2f3742 96%, #151a22 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 0 0 3px rgba(2, 3, 5, 0.84),
+    0 44px 100px rgba(0, 0, 0, 0.45);
+}
+
+.screen {
+  position: absolute;
+  inset: 1.45% 3.4%;
+  overflow: hidden;
+  border-radius: clamp(43px, 4vw, 55px);
+  background: #f5f5f3;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  isolation: isolate;
+}
+
+.poster,
+.frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.poster {
+  object-fit: cover;
+  background: #f4f4f1;
+}
+
+.frame {
+  z-index: 3;
+  background: #f4f4f1;
+  opacity: 0;
+  transition: opacity 320ms ease;
+}
+
+.frame[data-visible="true"] {
+  opacity: 1;
+}
+
+.dynamicIsland {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  z-index: 8;
+  width: 80px;
+  height: 23px;
+  border-radius: 999px;
+  background: #050608;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.sideButtonTop,
+.sideButtonBottom,
+.actionButton {
+  position: absolute;
+  z-index: 0;
+  width: 3px;
+  border-radius: 2px 0 0 2px;
+  background: #343c48;
+  box-shadow: inset 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.sideButtonTop {
+  top: 17%;
+  left: -2px;
+  height: 8%;
+}
+
+.sideButtonBottom {
+  top: 28%;
+  left: -2px;
+  height: 14%;
+}
+
+.actionButton {
+  top: 24%;
+  right: -2px;
+  height: 10%;
+  border-radius: 0 2px 2px 0;
+}
+
+.loading,
+.error {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  padding: 42px;
+  background: rgba(246, 246, 243, 0.94);
+  color: #15161a;
+  text-align: center;
+}
+
+.loading span {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(21, 22, 26, 0.16);
+  border-top-color: #15161a;
+  border-radius: 50%;
+  animation: webapp-spin 900ms linear infinite;
+}
+
+.loading p,
+.error p {
+  max-width: 24ch;
+  margin: 20px 0 0;
+  font-family: var(--font-body), var(--font-korean), sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.error a {
+  margin-top: 20px;
+  color: #15161a;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.readout {
+  display: grid;
+  width: clamp(330px, 29vw, 402px);
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-top: 22px;
+}
+
+.readout i {
+  height: 1px;
+  background: rgba(245, 245, 241, 0.16);
+}
+
+@keyframes webapp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .section {
+    padding-right: clamp(126px, 16vw, 164px);
+  }
+}
+
+@media (max-width: 900px) {
+  .section {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding-top: 112px;
+    padding-bottom: 132px;
+    padding-left: 18px;
+  }
+
+  .meta {
+    display: grid;
+    grid-template-columns: 0.54fr 1.46fr;
+    gap: 42px;
+  }
+
+  .eyebrow {
+    grid-row: 1 / span 2;
+  }
+
+  .actions,
+  .privacy {
+    grid-column: 2;
+  }
+
+  .deviceStage {
+    margin-top: 68px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    gap: 0;
+    padding: 92px 12px 118px;
+  }
+
+  .meta {
+    display: block;
+    padding: 0 6px;
+  }
+
+  .meta > div:nth-of-type(1) {
+    margin-top: 54px;
+  }
+
+  .meta h2 {
+    max-width: 13ch;
+    font-size: clamp(32px, 9.3vw, 42px);
+  }
+
+  .meta > div > p {
+    max-width: 35ch;
+    font-size: 14px;
+  }
+
+  .actions,
+  .privacy {
+    margin-top: 34px;
+  }
+
+  .deviceStage {
+    margin-top: 58px;
+  }
+
+  .device {
+    width: min(100%, 402px);
+    border-radius: clamp(38px, 11vw, 54px);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+      inset 0 0 0 2px rgba(2, 3, 5, 0.86),
+      0 28px 64px rgba(0, 0, 0, 0.38);
+  }
+
+  .screen {
+    inset: 1.25% 2.5%;
+    border-radius: clamp(34px, 10vw, 50px);
+  }
+
+  .dynamicIsland {
+    top: 9px;
+    width: 70px;
+    height: 21px;
+  }
+
+  .readout {
+    width: 100%;
+    padding: 0 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .actions button,
+  .actions button i,
+  .frame {
+    transition: none;
+  }
+
+  .loading span {
+    animation: none;
+    border-color: #15161a;
+  }
+}

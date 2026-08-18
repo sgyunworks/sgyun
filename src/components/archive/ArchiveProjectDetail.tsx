@@ -10,6 +10,7 @@ import {
 import type { Locale } from "@/lib/i18n";
 import { ArchiveProjectEvidence } from "./ArchiveProjectEvidence";
 import { ArchiveProjectStory } from "./ArchiveProjectStory";
+import { EmbeddedWebApp } from "./EmbeddedWebApp";
 import styles from "./ArchiveProjectDetail.module.css";
 
 type MediaFrameStyle = CSSProperties & {
@@ -137,6 +138,17 @@ export function ArchiveProjectDetail({
           </div>
         ) : null}
       </section>
+
+      {item.liveAppText ? (
+        <EmbeddedWebApp
+          locale={locale}
+          url={item.liveAppText.url}
+          poster={item.liveAppText.poster}
+          title={item.liveAppText.titleText}
+          body={item.liveAppText.bodyText}
+          productTitle={item.title}
+        />
+      ) : null}
 
       <ArchiveProjectStory
         media={storyMedia}

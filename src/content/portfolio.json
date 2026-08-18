@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30",
+  "updatedAt": "2026-08-11",
   "profile": {
     "name": {
       "ko": "이석윤",
@@ -182,7 +182,7 @@
       "id": "recopick",
       "slug": "recopick",
       "order": 2,
-      "status": "draft",
+      "status": "published",
       "stage": "active",
       "title": "RECOPICK",
       "year": "2026",
@@ -192,14 +192,22 @@
         "en": "A place-recommendation app that reduces search to three viable choices and can make the final pick."
       },
       "role": { "ko": "제품 전략 · UX/UI · 앱·서비스 구현", "en": "Product strategy · UX/UI · app and service implementation" },
-      "heroImage": "",
+      "heroImage": "/images/recopick/01-home.jpg",
       "heroAspectRatio": 0.46,
-      "imageAlt": { "ko": "RecoPick 앱 이미지 준비 중", "en": "RecoPick app media pending" },
+      "imageAlt": { "ko": "세 가지 장소 유형을 보여주는 RecoPick 모바일 웹앱", "en": "RecoPick mobile web app showing three place types" },
       "imageFit": "contain",
       "imageTone": "light",
       "detailIntro": {
         "ko": "바로고에서 시작해 RecoPick으로 발전한 제품으로, 한 번에 하나씩 조건을 고르고 세 곳만 비교한 뒤 직접 선택하거나 앱에 결정을 맡긴다.",
         "en": "Evolved from Barogo into RecoPick, the product asks one question at a time, presents three candidates, and supports direct or delegated choice."
+      },
+      "detailSummary": {
+        "ko": "RecoPick은 장소 탐색을 긴 목록 대신 몇 번의 선택과 세 개의 후보로 줄이는 장소 추천 웹앱입니다. 사용자는 직접 고르거나 마지막 선택을 서비스에 맡길 수 있습니다.",
+        "en": "RecoPick is a place-recommendation web app that reduces discovery from a long list to a few choices and three candidates. Users can make the final choice or delegate it to the service."
+      },
+      "detailDescription": {
+        "ko": "장소를 찾을 때 문제는 정보가 부족해서가 아니라 후보가 너무 많아 결정을 끝내기 어렵다는 데서 시작했습니다. RecoPick은 위치와 목적, 인원, 이동 방식과 시간을 한 번에 하나씩 묻고, 조건에 맞는 후보를 세 곳만 남깁니다. 결과 화면에서는 직접 선택하거나 새 후보를 요청하고, 검증된 후보 안에서 서비스가 마지막 결정을 내리도록 할 수 있습니다. 추천 API와 장소 데이터, 날씨와 이동시간 보정, 이미지 폴백을 실제 제품 흐름으로 연결해 웹에서 직접 사용할 수 있는 상태까지 구현했습니다.",
+        "en": "The project starts from a simple problem: finding a place is often difficult not because information is scarce, but because too many options make the decision hard to finish. RecoPick asks for location, intent, party size, travel mode, and time one step at a time, then keeps only three viable candidates. On the result screen, users can choose directly, request a new set, or let the service make the final pick within the validated options. Recommendation APIs, place data, weather and travel-time adjustments, and image fallbacks are connected in a working web product."
       },
       "detailChapters": [
         {
@@ -218,7 +226,44 @@
           "body": { "ko": "직접 선택, 새 후보 요청, 서버가 검증한 후보 안에서의 룰렛 결정과 햅틱을 실제 iPhone 시뮬레이터 흐름으로 검증했다. 전신 아이템 바로고는 2026 노원대학연합창업캠프 대상을 수상했다.", "en": "Direct pick, refresh, server-validated roulette, and haptic feedback were verified in an iPhone simulator flow. Its predecessor Barogo won the 2026 Nowon University Startup Camp Grand Prize." }
         }
       ],
-      "detailMedia": []
+      "detailMedia": [
+        {
+          "src": "/images/recopick/01-home.jpg",
+          "alt": { "ko": "RecoPick의 장소 유형 선택 화면", "en": "RecoPick place-type selection screen" },
+          "caption": { "ko": "가볼 곳, 식사, 카페처럼 지금 필요한 장면부터 고른다.", "en": "The flow starts by choosing the kind of moment needed now." },
+          "aspectRatio": 0.46,
+          "fit": "contain",
+          "tone": "light"
+        },
+        {
+          "src": "/images/recopick/02-meal.jpg",
+          "alt": { "ko": "식사 장소를 선택한 RecoPick 화면", "en": "RecoPick screen with the meal category selected" },
+          "caption": { "ko": "한 화면에 한 질문만 남겨 다음 결정을 분명하게 만든다.", "en": "One question per screen keeps the next decision clear." },
+          "aspectRatio": 0.46,
+          "fit": "contain",
+          "tone": "light"
+        },
+        {
+          "src": "/images/recopick/03-cafe.jpg",
+          "alt": { "ko": "카페 장소를 선택한 RecoPick 화면", "en": "RecoPick screen with the cafe category selected" },
+          "caption": { "ko": "같은 흐름 안에서 목적을 바꾸고 추천을 다시 시작할 수 있다.", "en": "The purpose can change without leaving the recommendation flow." },
+          "aspectRatio": 0.46,
+          "fit": "contain",
+          "tone": "light"
+        }
+      ],
+      "liveApp": {
+        "url": "https://recopick.xyz",
+        "poster": "/images/recopick/01-home.jpg",
+        "title": {
+          "ko": "RecoPick을 직접 실행합니다.",
+          "en": "Run RecoPick here."
+        },
+        "body": {
+          "ko": "실제 배포 중인 웹앱입니다. 위치 사용을 허용하면 현재 조건에 맞는 장소를 좁혀 볼 수 있습니다.",
+          "en": "This is the deployed web app. Allowing location access lets it narrow places around your current context."
+        }
+      }
     },
     {
       "id": "the-aviator",

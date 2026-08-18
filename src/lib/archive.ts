@@ -29,6 +29,13 @@ export type ArchiveEvidence = {
   };
 };
 
+export type ArchiveLiveApp = {
+  url: string;
+  poster: string;
+  title: LocalizedText;
+  body: LocalizedText;
+};
+
 export type ArchiveChapter = {
   code: string;
   title: LocalizedText;
@@ -54,6 +61,7 @@ export type ArchiveProjectSource = {
   imagePosition?: string;
   detailMedia?: ArchiveMedia[];
   evidence?: ArchiveEvidence;
+  liveApp?: ArchiveLiveApp;
   detailIntro: LocalizedText;
   detailSummary?: LocalizedText;
   detailDescription?: LocalizedText;
@@ -215,6 +223,13 @@ export function localizeArchiveProject(project: ArchiveProject, locale: Locale) 
       altText: media.alt[locale],
       captionText: media.caption?.[locale] ?? media.alt[locale],
     })),
+    liveAppText: project.liveApp
+      ? {
+          ...project.liveApp,
+          titleText: project.liveApp.title[locale],
+          bodyText: project.liveApp.body[locale],
+        }
+      : undefined,
     evidenceText: project.evidence
       ? {
           titleText: project.evidence.title[locale],

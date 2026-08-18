@@ -1539,6 +1539,10 @@
     width: 100%;
   }
 
+  .mediaInstrument[data-portrait="true"] {
+    width: clamp(174px, 47vw, 218px);
+  }
+
   .mediaTelemetry {
     grid-template-columns: auto minmax(28px, 1fr) auto;
     gap: 8px;

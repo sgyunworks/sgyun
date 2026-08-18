@@ -12,6 +12,17 @@
   transform-origin: right center;
 }
 
+:global(html[data-embedded-app-focus="true"]) .shell {
+  opacity: 0.06;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+
+:global(html[data-embedded-app-focus="true"]) .shell .controlHitArea,
+:global(html[data-embedded-app-focus="true"]) .shell .rail {
+  pointer-events: none;
+}
+
 .archive {
   width: clamp(300px, 22vw, 352px);
   transform: translate(50%, -50%);
@@ -315,6 +326,10 @@
 }
 
 @media (max-width: 760px) {
+  :global(html[data-embedded-app-focus="true"]) .shell {
+    opacity: 0;
+  }
+
   .shell,
   .archive,
   .page {
