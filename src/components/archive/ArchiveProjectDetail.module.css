@@ -103,8 +103,7 @@
 }
 
 .mobileAppHeroDevice {
-  width: min(100%, 390px);
-  max-height: min(760px, calc(100svh - 164px));
+  width: min(100%, 371.74px);
 }
 
 .mobileAppHeroScreen {
@@ -314,6 +313,10 @@
 @media (min-width: 601px) {
   .heroMediaViewport {
     container-type: size;
+  }
+
+  .mobileAppHeroDevice {
+    width: min(100cqw, calc(100cqh * 0.48913));
   }
 
   .heroMedia {
