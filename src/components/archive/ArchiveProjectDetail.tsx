@@ -11,6 +11,8 @@ import type { Locale } from "@/lib/i18n";
 import { ArchiveProjectEvidence } from "./ArchiveProjectEvidence";
 import { ArchiveProjectStory } from "./ArchiveProjectStory";
 import { EmbeddedWebApp } from "./EmbeddedWebApp";
+import { MobileAppShowcase } from "./MobileAppShowcase";
+import { MobileAppVisualGuard } from "./MobileAppVisualGuard";
 import styles from "./ArchiveProjectDetail.module.css";
 
 type MediaFrameStyle = CSSProperties & {
@@ -54,7 +56,12 @@ export function ArchiveProjectDetail({
 
   return (
     <article className={styles.detailPage}>
-      <header id="project-overview" className={styles.projectHero}>
+      {item.liveAppText ? <MobileAppVisualGuard /> : null}
+      <header
+        id="project-overview"
+        className={styles.projectHero}
+        data-mobile-app-visual={item.liveAppText ? "true" : undefined}
+      >
         <div className={styles.heroRail}>
           <Link href={`/${locale}/works`}>{copy.back}</Link>
           <span>
@@ -140,6 +147,20 @@ export function ArchiveProjectDetail({
       </section>
 
       {item.liveAppText ? (
+        <MobileAppShowcase
+          media={storyMedia}
+          chapters={item.chapterTexts}
+          locale={locale}
+        />
+      ) : (
+        <ArchiveProjectStory
+          media={storyMedia}
+          chapters={item.chapterTexts}
+          locale={locale}
+        />
+      )}
+
+      {item.liveAppText ? (
         <EmbeddedWebApp
           locale={locale}
           url={item.liveAppText.url}
@@ -149,12 +170,6 @@ export function ArchiveProjectDetail({
           productTitle={item.title}
         />
       ) : null}
-
-      <ArchiveProjectStory
-        media={storyMedia}
-        chapters={item.chapterTexts}
-        locale={locale}
-      />
 
       {item.evidenceText ? (
         <ArchiveProjectEvidence

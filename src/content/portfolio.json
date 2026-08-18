@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-11",
+  "updatedAt": "2026-08-18",
   "profile": {
     "name": {
       "ko": "이석윤",
@@ -60,14 +60,14 @@
       {
         "year": "2026",
         "title": { "ko": "대한민국디자인전람회", "en": "Korea Design Exhibition" },
-        "result": { "ko": "입선 — VESA Based Floating Speaker", "en": "Selected — VESA Based Floating Speaker" },
-        "note": { "ko": "후속 심사 결과 업데이트 예정", "en": "Further judging result pending" }
+        "result": { "ko": "동상 이상 후보 — VESA Based Floating Speaker", "en": "Candidate for Bronze or Higher — VESA Based Floating Speaker" },
+        "note": { "ko": "상격 심사 중", "en": "Final award tier under review" }
       },
       {
         "year": "2026",
         "title": { "ko": "노원대학연합창업캠프", "en": "Nowon University Startup Camp" },
-        "result": { "ko": "대상 — 바로고", "en": "Grand Prize — Barogo" },
-        "note": { "ko": "후속 제품명은 공개 포트폴리오에서 보류", "en": "The successor product name is withheld from the public portfolio for now" }
+        "result": { "ko": "대상 — RecoPick", "en": "Grand Prize — RecoPick" },
+        "note": { "ko": "확정", "en": "Confirmed" }
       },
       {
         "year": "2025",
@@ -85,8 +85,13 @@
     "activities": [
       {
         "year": "2026",
-        "title": { "ko": "한국디자인진흥원 KDM+ 워크숍 강사", "en": "KIDP KDM+ Workshop Instructor" },
-        "detail": { "ko": "디자이너를 위한 에이전틱 코딩", "en": "Agentic coding for designers" }
+        "title": { "ko": "부산디자인진흥원 KDM+ 워크숍 강사", "en": "Busan Design Promotion Agency KDM+ Workshop Instructor" },
+        "detail": { "ko": "생성형 AI 기반 디자인 실무", "en": "Generative AI for design practice" }
+      },
+      {
+        "year": "2026",
+        "title": { "ko": "강원디자인진흥원 KDM+ 워크숍 강사", "en": "Gangwon Design Promotion Agency KDM+ Workshop Instructor" },
+        "detail": { "ko": "생성형 AI 기반 디자인 실무", "en": "Generative AI for design practice" }
       },
       {
         "year": "2026",
@@ -192,9 +197,9 @@
         "en": "A place-recommendation app that reduces search to three viable choices and can make the final pick."
       },
       "role": { "ko": "제품 전략 · UX/UI · 앱·서비스 구현", "en": "Product strategy · UX/UI · app and service implementation" },
-      "heroImage": "/images/recopick/01-home.jpg",
-      "heroAspectRatio": 0.46,
-      "imageAlt": { "ko": "세 가지 장소 유형을 보여주는 RecoPick 모바일 웹앱", "en": "RecoPick mobile web app showing three place types" },
+      "heroImage": "/images/recopick/01-hero-mockup.png",
+      "heroAspectRatio": 0.48913,
+      "imageAlt": { "ko": "Apple 공식 iPhone 17 Pro 목업에서 실행 중인 RecoPick 모바일 웹앱", "en": "RecoPick mobile web app presented in an official Apple iPhone 17 Pro bezel" },
       "imageFit": "contain",
       "imageTone": "light",
       "detailIntro": {
@@ -228,25 +233,25 @@
       ],
       "detailMedia": [
         {
-          "src": "/images/recopick/01-home.jpg",
-          "alt": { "ko": "RecoPick의 장소 유형 선택 화면", "en": "RecoPick place-type selection screen" },
-          "caption": { "ko": "가볼 곳, 식사, 카페처럼 지금 필요한 장면부터 고른다.", "en": "The flow starts by choosing the kind of moment needed now." },
+          "src": "/images/recopick/01-home.png",
+          "alt": { "ko": "RecoPick 랜딩과 장소 유형 카드", "en": "RecoPick landing screen and place-type cards" },
+          "caption": { "ko": "긴 검색 결과 대신 지금 필요한 장면에서 선택을 시작한다.", "en": "The flow starts from the moment needed now rather than a long search result." },
           "aspectRatio": 0.46,
           "fit": "contain",
           "tone": "light"
         },
         {
-          "src": "/images/recopick/02-meal.jpg",
-          "alt": { "ko": "식사 장소를 선택한 RecoPick 화면", "en": "RecoPick screen with the meal category selected" },
-          "caption": { "ko": "한 화면에 한 질문만 남겨 다음 결정을 분명하게 만든다.", "en": "One question per screen keeps the next decision clear." },
+          "src": "/images/recopick/02-questions.png",
+          "alt": { "ko": "RecoPick의 첫 번째 추천 조건 선택 화면", "en": "RecoPick first recommendation-condition screen" },
+          "caption": { "ko": "위치를 반영한 뒤 한 화면에 한 질문만 남겨 조건을 압축한다.", "en": "Location is applied first, then one question per screen compresses the conditions." },
           "aspectRatio": 0.46,
           "fit": "contain",
           "tone": "light"
         },
         {
-          "src": "/images/recopick/03-cafe.jpg",
-          "alt": { "ko": "카페 장소를 선택한 RecoPick 화면", "en": "RecoPick screen with the cafe category selected" },
-          "caption": { "ko": "같은 흐름 안에서 목적을 바꾸고 추천을 다시 시작할 수 있다.", "en": "The purpose can change without leaving the recommendation flow." },
+          "src": "/images/recopick/03-results.png",
+          "alt": { "ko": "위치와 조건을 반영해 세 곳만 보여주는 RecoPick 결과 화면", "en": "RecoPick result screen showing only three place candidates" },
+          "caption": { "ko": "현재 조건에서 갈 만한 세 곳만 남기고 직접 선택하거나 룰렛에 맡긴다.", "en": "Only three viable places remain for a direct pick or a roulette decision." },
           "aspectRatio": 0.46,
           "fit": "contain",
           "tone": "light"
@@ -254,7 +259,7 @@
       ],
       "liveApp": {
         "url": "https://recopick.xyz",
-        "poster": "/images/recopick/01-home.jpg",
+        "poster": "/images/recopick/01-home.png",
         "title": {
           "ko": "RecoPick을 직접 실행합니다.",
           "en": "Run RecoPick here."

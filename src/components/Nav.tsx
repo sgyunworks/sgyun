@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale, Dict } from "@/lib/i18n";
@@ -24,7 +25,14 @@ export function Nav({ locale, t }: { locale: Locale; t: Dict }) {
       <div className="site-nav__identity">
         <RouteDial locale={locale} />
         <Link href={`/${locale}`} className="site-nav__mark">
-          <span>SGYUN</span>
+          <Image
+            src="/brand/sgyun-wordmark.png"
+            alt="SGYUN"
+            width={900}
+            height={340}
+            className="site-nav__wordmark"
+            priority
+          />
           <small>DESIGNER / BUILDER</small>
         </Link>
       </div>

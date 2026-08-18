@@ -441,6 +441,14 @@ select {
   letter-spacing: 0.055em;
 }
 
+.site-nav__wordmark {
+  display: block;
+  width: 72px;
+  height: auto;
+  filter: invert(1);
+  mix-blend-mode: screen;
+}
+
 .site-nav__mark small {
   margin-top: 2px;
   color: rgba(255, 255, 255, 0.38);
@@ -625,6 +633,10 @@ select {
 
   .site-nav__mark {
     font-size: 14px;
+  }
+
+  .site-nav__wordmark {
+    width: 66px;
   }
 
   .site-nav__mark small {

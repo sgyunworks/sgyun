@@ -169,25 +169,11 @@
 }
 
 .device {
-  position: relative;
   width: clamp(330px, 29vw, 402px);
-  aspect-ratio: 71.9 / 150;
-  border-radius: clamp(49px, 4.5vw, 62px);
-  background: linear-gradient(105deg, #161b23 0%, #3d4552 5%, #10141b 12%, #07090d 83%, #2f3742 96%, #151a22 100%);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-    inset 0 0 0 3px rgba(2, 3, 5, 0.84),
-    0 44px 100px rgba(0, 0, 0, 0.45);
 }
 
 .screen {
-  position: absolute;
-  inset: 1.45% 3.4%;
-  overflow: hidden;
-  border-radius: clamp(43px, 4vw, 55px);
   background: #f5f5f3;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  isolation: isolate;
 }
 
 .poster,
@@ -204,10 +190,15 @@
   background: #f4f4f1;
 }
 
+.section[data-app-state="ready"] .poster {
+  opacity: 0;
+}
+
 .frame {
   z-index: 3;
   background: #f4f4f1;
   opacity: 0;
+  overscroll-behavior: none;
   transition: opacity 320ms ease;
 }
 
@@ -215,48 +206,51 @@
   opacity: 1;
 }
 
-.dynamicIsland {
+.deviceClose {
   position: absolute;
-  top: 11px;
-  left: 50%;
-  z-index: 8;
-  width: 80px;
-  height: 23px;
-  border-radius: 999px;
-  background: #050608;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025);
-  transform: translateX(-50%);
-  pointer-events: none;
+  top: 50%;
+  left: calc(50% + min(20vw, 214px));
+  z-index: 12;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #f5f5f1;
+  background: rgba(8, 9, 11, 0.82);
+  backdrop-filter: blur(12px);
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
-.sideButtonTop,
-.sideButtonBottom,
-.actionButton {
+.deviceClose span {
   position: absolute;
-  z-index: 0;
-  width: 3px;
-  border-radius: 2px 0 0 2px;
-  background: #343c48;
-  box-shadow: inset 1px 0 rgba(255, 255, 255, 0.16);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
-.sideButtonTop {
-  top: 17%;
-  left: -2px;
-  height: 8%;
+.deviceClose i,
+.deviceClose i::after {
+  width: 13px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: rotate(45deg);
 }
 
-.sideButtonBottom {
-  top: 28%;
-  left: -2px;
-  height: 14%;
+.deviceClose i::after {
+  display: block;
+  transform: rotate(90deg);
 }
 
-.actionButton {
-  top: 24%;
-  right: -2px;
-  height: 10%;
-  border-radius: 0 2px 2px 0;
+.deviceClose:hover,
+.deviceClose:focus-visible {
+  border-color: rgba(255, 255, 255, 0.58);
+  outline: none;
 }
 
 .loading,
@@ -389,27 +383,55 @@
 
   .device {
     width: min(100%, 402px);
-    border-radius: clamp(38px, 11vw, 54px);
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.16),
-      inset 0 0 0 2px rgba(2, 3, 5, 0.86),
-      0 28px 64px rgba(0, 0, 0, 0.38);
   }
 
-  .screen {
-    inset: 1.25% 2.5%;
-    border-radius: clamp(34px, 10vw, 50px);
-  }
-
-  .dynamicIsland {
-    top: 9px;
-    width: 70px;
-    height: 21px;
+  .deviceClose {
+    top: 18px;
+    right: 0;
+    left: auto;
+    width: 44px;
+    height: 44px;
+    transform: none;
   }
 
   .readout {
     width: 100%;
     padding: 0 4px;
+  }
+
+  .section[data-app-state="loading"] .deviceStage,
+  .section[data-app-state="ready"] .deviceStage {
+    position: fixed;
+    z-index: 80;
+    inset: 0;
+    margin: 0;
+    background:
+      radial-gradient(circle at 50% 48%, rgba(54, 60, 72, 0.24), transparent 46%),
+      rgba(8, 9, 11, 0.985);
+  }
+
+  .section[data-app-state="loading"] .device,
+  .section[data-app-state="ready"] .device {
+    width: min(88vw, calc((100dvh - 92px) * 0.48913));
+  }
+
+  .section[data-app-state="loading"] .frame,
+  .section[data-app-state="ready"] .frame {
+    width: 131.4%;
+    height: 131.4%;
+    transform: scale(0.761);
+    transform-origin: top left;
+  }
+
+  .section[data-app-state="loading"] .deviceClose,
+  .section[data-app-state="ready"] .deviceClose {
+    top: max(16px, env(safe-area-inset-top));
+    right: max(16px, env(safe-area-inset-right));
+  }
+
+  .section[data-app-state="loading"] .readout,
+  .section[data-app-state="ready"] .readout {
+    display: none;
   }
 }
 

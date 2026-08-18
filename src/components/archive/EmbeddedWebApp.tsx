@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@/lib/i18n";
+import { IPhone17ProMockup } from "./IPhone17ProMockup";
 import styles from "./EmbeddedWebApp.module.css";
 
 type AppState = "idle" | "loading" | "ready" | "error";
@@ -25,6 +26,8 @@ export function EmbeddedWebApp({
   const [state, setState] = useState<AppState>("idle");
   const [frameKey, setFrameKey] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const deviceStageRef = useRef<HTMLDivElement>(null);
+  const appIsOpen = state === "loading" || state === "ready";
 
   const copy = {
     section: locale === "ko" ? "실행 가능한 프로토타입" : "Working prototype",
@@ -70,7 +73,43 @@ export function EmbeddedWebApp({
     return () => window.clearTimeout(timeout);
   }, [frameKey, state]);
 
+  useEffect(() => {
+    if (!appIsOpen) return;
+
+    const scrollY = window.scrollY;
+    const body = document.body;
+    const html = document.documentElement;
+    const previousBody = {
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+      overflow: body.style.overflow,
+    };
+    const previousHtmlOverflow = html.style.overflow;
+    const previousOverscroll = html.style.overscrollBehavior;
+
+    html.dataset.embeddedAppActive = "true";
+    html.style.overflow = "hidden";
+    html.style.overscrollBehavior = "none";
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.width = "100%";
+    body.style.overflow = "hidden";
+
+    return () => {
+      delete html.dataset.embeddedAppActive;
+      html.style.overflow = previousHtmlOverflow;
+      html.style.overscrollBehavior = previousOverscroll;
+      body.style.position = previousBody.position;
+      body.style.top = previousBody.top;
+      body.style.width = previousBody.width;
+      body.style.overflow = previousBody.overflow;
+      window.scrollTo(0, scrollY);
+    };
+  }, [appIsOpen]);
+
   const launch = () => {
+    deviceStageRef.current?.scrollIntoView({ block: "center", behavior: "auto" });
     setFrameKey((current) => current + 1);
     setState("loading");
   };
@@ -83,6 +122,7 @@ export function EmbeddedWebApp({
       ref={sectionRef}
       className={styles.section}
       data-app-state={state}
+      data-mobile-app-visual="true"
     >
       <div className={styles.meta}>
         <span className={styles.eyebrow}>D / LIVE APP</span>
@@ -113,13 +153,20 @@ export function EmbeddedWebApp({
         <p className={styles.privacy}>{copy.privacy}</p>
       </div>
 
-      <div className={styles.deviceStage}>
-        <div className={styles.device}>
-          <span className={styles.sideButtonTop} aria-hidden="true" />
-          <span className={styles.sideButtonBottom} aria-hidden="true" />
-          <span className={styles.actionButton} aria-hidden="true" />
+      <div ref={deviceStageRef} className={styles.deviceStage}>
+        {appIsOpen ? (
+          <button
+            type="button"
+            className={styles.deviceClose}
+            onClick={close}
+            aria-label={copy.close}
+          >
+            <span>{copy.close}</span>
+            <i aria-hidden="true" />
+          </button>
+        ) : null}
 
-          <div className={styles.screen}>
+        <IPhone17ProMockup className={styles.device} screenClassName={styles.screen}>
             <Image
               src={poster}
               alt={`${productTitle} mobile interface`}
@@ -135,6 +182,7 @@ export function EmbeddedWebApp({
                 src={url}
                 title={`${productTitle} web app`}
                 allow="geolocation"
+                scrolling="no"
                 referrerPolicy="strict-origin-when-cross-origin"
                 className={styles.frame}
                 data-visible={state === "ready"}
@@ -157,10 +205,7 @@ export function EmbeddedWebApp({
                 </a>
               </div>
             ) : null}
-
-            <span className={styles.dynamicIsland} aria-hidden="true" />
-          </div>
-        </div>
+        </IPhone17ProMockup>
 
         <div className={styles.readout} aria-hidden="true">
           <span>RECOPICK.XYZ</span>

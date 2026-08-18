@@ -326,8 +326,10 @@
 }
 
 @media (max-width: 760px) {
+  :global(html[data-mobile-app-visual="true"]) .shell,
   :global(html[data-embedded-app-focus="true"]) .shell {
     opacity: 0;
+    pointer-events: none;
   }
 
   .shell,
