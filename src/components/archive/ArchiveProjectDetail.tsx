@@ -11,6 +11,7 @@ import type { Locale } from "@/lib/i18n";
 import { ArchiveProjectEvidence } from "./ArchiveProjectEvidence";
 import { ArchiveProjectStory } from "./ArchiveProjectStory";
 import { EmbeddedWebApp } from "./EmbeddedWebApp";
+import { IPhone17ProMockup } from "./IPhone17ProMockup";
 import { MobileAppShowcase } from "./MobileAppShowcase";
 import { MobileAppVisualGuard } from "./MobileAppVisualGuard";
 import styles from "./ArchiveProjectDetail.module.css";
@@ -99,30 +100,56 @@ export function ArchiveProjectDetail({
             </dl>
           </div>
 
-          <div className={styles.heroMediaViewport}>
-            <div
-              className={styles.heroMedia}
-              style={
-                { "--media-aspect": item.heroAspectRatio } as MediaFrameStyle
-              }
-            >
-              <SafeImage
-                src={item.heroImage}
-                alt={item.imageAltText}
-                fallbackLabel={
-                  locale === "ko"
-                    ? "프로젝트 미디어를 불러오지 못했습니다"
-                    : "Project media unavailable"
+          <div
+            className={`${styles.heroMediaViewport} ${
+              item.liveAppText ? styles.mobileAppHeroViewport : ""
+            }`}
+          >
+            {item.liveAppText ? (
+              <IPhone17ProMockup
+                className={styles.mobileAppHeroDevice}
+                screenClassName={styles.mobileAppHeroScreen}
+              >
+                <SafeImage
+                  src={item.heroImage}
+                  alt={item.imageAltText}
+                  fallbackLabel={
+                    locale === "ko"
+                      ? "프로젝트 미디어를 불러오지 못했습니다"
+                      : "Project media unavailable"
+                  }
+                  fill
+                  priority
+                  sizes="(max-width: 820px) 84vw, 390px"
+                  className={styles.mobileAppHeroImage}
+                  style={{ objectPosition: item.imagePosition }}
+                />
+              </IPhone17ProMockup>
+            ) : (
+              <div
+                className={styles.heroMedia}
+                style={
+                  { "--media-aspect": item.heroAspectRatio } as MediaFrameStyle
                 }
-                fill
-                priority
-                sizes="(max-width: 900px) 100vw, 64vw"
-                className={`${styles.previewImage} ${
-                  item.imageTone === "light" ? styles.lightSourceImage : ""
-                }`}
-                style={{ objectPosition: item.imagePosition }}
-              />
-            </div>
+              >
+                <SafeImage
+                  src={item.heroImage}
+                  alt={item.imageAltText}
+                  fallbackLabel={
+                    locale === "ko"
+                      ? "프로젝트 미디어를 불러오지 못했습니다"
+                      : "Project media unavailable"
+                  }
+                  fill
+                  priority
+                  sizes="(max-width: 900px) 100vw, 64vw"
+                  className={`${styles.previewImage} ${
+                    item.imageTone === "light" ? styles.lightSourceImage : ""
+                  }`}
+                  style={{ objectPosition: item.imagePosition }}
+                />
+              </div>
+            )}
           </div>
         </div>
       </header>

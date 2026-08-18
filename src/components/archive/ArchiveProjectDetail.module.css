@@ -98,6 +98,23 @@
   place-items: center;
 }
 
+.mobileAppHeroViewport {
+  min-height: min(760px, calc(100svh - 164px));
+}
+
+.mobileAppHeroDevice {
+  width: min(100%, 390px);
+  max-height: min(760px, calc(100svh - 164px));
+}
+
+.mobileAppHeroScreen {
+  background: #f4f4f1;
+}
+
+.mobileAppHeroImage {
+  object-fit: cover;
+}
+
 .heroMedia {
   position: relative;
   width: 100%;
@@ -1009,6 +1026,15 @@
     container-type: normal;
   }
 
+  .mobileAppHeroViewport {
+    min-height: 0;
+  }
+
+  .mobileAppHeroDevice {
+    width: min(84vw, 390px);
+    max-height: none;
+  }
+
   .heroMedia {
     width: min(100%, calc(72svh * var(--media-aspect, 1.3333)));
     height: auto;
@@ -1049,6 +1075,10 @@
   .heroMediaViewport {
     grid-row: 1;
     min-height: 0;
+  }
+
+  .mobileAppHeroDevice {
+    width: min(84vw, 360px);
   }
 
   .heroMedia {

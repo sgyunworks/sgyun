@@ -173,6 +173,11 @@
 }
 
 @media (max-width: 760px) {
+  :global(html[data-mobile-app-visual="true"]) .guide,
+  :global(html[data-embedded-app-focus="true"]) .guide {
+    display: none;
+  }
+
   .guide {
     top: 65px;
     right: 12px;

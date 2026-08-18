@@ -197,9 +197,9 @@
         "en": "A place-recommendation app that reduces search to three viable choices and can make the final pick."
       },
       "role": { "ko": "제품 전략 · UX/UI · 앱·서비스 구현", "en": "Product strategy · UX/UI · app and service implementation" },
-      "heroImage": "/images/recopick/01-hero-mockup.png",
-      "heroAspectRatio": 0.48913,
-      "imageAlt": { "ko": "Apple 공식 iPhone 17 Pro 목업에서 실행 중인 RecoPick 모바일 웹앱", "en": "RecoPick mobile web app presented in an official Apple iPhone 17 Pro bezel" },
+      "heroImage": "/images/recopick/01-home.png",
+      "heroAspectRatio": 0.46,
+      "imageAlt": { "ko": "RecoPick의 장소 추천 시작 화면", "en": "RecoPick place-recommendation starting screen" },
       "imageFit": "contain",
       "imageTone": "light",
       "detailIntro": {
