@@ -101,6 +101,17 @@
   pointer-events: none;
 }
 
+.deviceMediaStage {
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.deviceMediaStage::after {
+  display: none;
+}
+
 .mediaInstrument {
   width: min(100cqw, calc((100cqh - 23px) * var(--preview-aspect, 1.7778)));
   max-width: 100%;
@@ -221,6 +232,24 @@
 
 .mediaLayer::after {
   display: none;
+}
+
+.deviceMediaLayer {
+  overflow: visible;
+  background: transparent;
+}
+
+.archiveDevicePreview {
+  width: 100%;
+  height: 100%;
+}
+
+.archiveDeviceScreen {
+  background: #f4f4f1;
+}
+
+.mobileAppScreenImage {
+  object-fit: cover;
 }
 
 .coverImage,

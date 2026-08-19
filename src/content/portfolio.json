@@ -198,7 +198,7 @@
       },
       "role": { "ko": "제품 전략 · UX/UI · 앱·서비스 구현", "en": "Product strategy · UX/UI · app and service implementation" },
       "heroImage": "/images/recopick/01-home.png",
-      "heroAspectRatio": 0.46,
+      "heroAspectRatio": 0.4891304348,
       "imageAlt": { "ko": "RecoPick의 장소 추천 시작 화면", "en": "RecoPick place-recommendation starting screen" },
       "imageFit": "contain",
       "imageTone": "light",
@@ -249,7 +249,7 @@
           "tone": "light"
         },
         {
-          "src": "/images/recopick/03-results.png",
+          "src": "/images/recopick/03-results-actual.png",
           "alt": { "ko": "위치와 조건을 반영해 세 곳만 보여주는 RecoPick 결과 화면", "en": "RecoPick result screen showing only three place candidates" },
           "caption": { "ko": "현재 조건에서 갈 만한 세 곳만 남기고 직접 선택하거나 룰렛에 맡긴다.", "en": "Only three viable places remain for a direct pick or a roulette decision." },
           "aspectRatio": 0.46,

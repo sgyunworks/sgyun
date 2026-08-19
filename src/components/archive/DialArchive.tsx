@@ -23,6 +23,7 @@ import {
   localizeArchiveProject,
   portfolioProfile,
 } from "@/lib/archive";
+import { IPhone17ProMockup } from "./IPhone17ProMockup";
 import styles from "./DialArchive.module.css";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -69,6 +70,10 @@ export function DialArchive({ locale }: { locale: Locale }) {
     [locale]
   );
   const active = projects[activeIndex];
+  const activeUsesDeviceFrame = active.id === "recopick";
+  const activePreviewAspect = activeUsesDeviceFrame
+    ? 1350 / 2760
+    : active.heroAspectRatio;
 
   const homeDialItems = useMemo(
     () => [
@@ -572,9 +577,10 @@ export function DialArchive({ locale }: { locale: Locale }) {
             <div className={styles.mediaViewport}>
               <div
                 className={styles.mediaInstrument}
-                data-portrait={active.heroAspectRatio < 0.72}
+                data-device-preview={activeUsesDeviceFrame}
+                data-portrait={activePreviewAspect < 0.72}
                 style={
-                  { "--preview-aspect": active.heroAspectRatio } as PreviewFrameStyle
+                  { "--preview-aspect": activePreviewAspect } as PreviewFrameStyle
                 }
               >
                 <div className={styles.mediaTelemetry}>
@@ -593,32 +599,61 @@ export function DialArchive({ locale }: { locale: Locale }) {
                     INDEX
                   </button>
                 </div>
-                <div className={styles.mediaStage}>
+                <div
+                  className={`${styles.mediaStage} ${
+                    activeUsesDeviceFrame ? styles.deviceMediaStage : ""
+                  }`}
+                >
                   {projects.map((project, index) => (
                     <div
-                      className={styles.mediaLayer}
+                      className={`${styles.mediaLayer} ${
+                        project.id === "recopick" ? styles.deviceMediaLayer : ""
+                      }`}
                       data-media-index={index}
                       key={project.id}
                       aria-hidden={index !== activeIndex}
                     >
                       {Math.abs(index - activeIndex) <= 1 ? (
-                        <SafeImage
-                          src={project.heroImage}
-                          alt={index === activeIndex ? project.imageAltText : ""}
-                          fallbackLabel={
-                            locale === "ko"
-                              ? "프로젝트 미디어를 불러오지 못했습니다"
-                              : "Project media unavailable"
-                          }
-                          fill
-                          priority={index === 0}
-                          fetchPriority={index === 0 ? "high" : "auto"}
-                          sizes="(max-width: 900px) 94vw, (max-width: 1180px) 66vw, 68vw"
-                          className={`${styles.previewImage} ${
-                            project.imageTone === "light" ? styles.lightSourceImage : ""
-                          }`}
-                          style={{ objectPosition: project.imagePosition }}
-                        />
+                        project.id === "recopick" ? (
+                          <IPhone17ProMockup
+                            className={styles.archiveDevicePreview}
+                            screenClassName={styles.archiveDeviceScreen}
+                          >
+                            <SafeImage
+                              src={project.heroImage}
+                              alt={index === activeIndex ? project.imageAltText : ""}
+                              fallbackLabel={
+                                locale === "ko"
+                                  ? "프로젝트 미디어를 불러오지 못했습니다"
+                                  : "Project media unavailable"
+                              }
+                              fill
+                              priority={false}
+                              fetchPriority="auto"
+                              sizes="(max-width: 760px) 47vw, 32vw"
+                              className={styles.mobileAppScreenImage}
+                              style={{ objectPosition: project.imagePosition }}
+                            />
+                          </IPhone17ProMockup>
+                        ) : (
+                          <SafeImage
+                            src={project.heroImage}
+                            alt={index === activeIndex ? project.imageAltText : ""}
+                            fallbackLabel={
+                              locale === "ko"
+                                ? "프로젝트 미디어를 불러오지 못했습니다"
+                                : "Project media unavailable"
+                            }
+                            fill
+                            priority={index === 0}
+                            fetchPriority={index === 0 ? "high" : "auto"}
+                            sizes="(max-width: 900px) 94vw, (max-width: 1180px) 66vw, 68vw"
+                            className={`${styles.previewImage} ${
+                              project.imageTone === "light" ? styles.lightSourceImage : ""
+                            }`}
+                            style={{ objectPosition: project.imagePosition }}
+                          />
+                        )
                       ) : null}
                     </div>
                   ))}
