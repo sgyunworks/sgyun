@@ -2,24 +2,24 @@
 
 ## 현재 판정
 
-2026-07-31 전역 저이득 page scrub·최초 1회 가이드·동심원형 다이얼 안전 음영과 `FIELD_00 → VAULT_01` 이스터에그가 local·production 검증을 통과했다. 현재 `sgyun.kr`에 연결된 production 배포는 `dpl_Dx873uZaZQFCxQizYZSvbnQyWPR8` / commit `1778a91`이다.
+2026-08-31 일반 페이지 다이얼을 native scroll에 반응하는 passive instrument로 단순화하고 WGA 2026 수상을 Recognition에 추가했다. 이 변경은 local 검증을 통과했으며 아직 production에는 배포하지 않았다. 기존 production 상태는 별도 배포 전까지 유지된다.
 
 ## 구현된 범위
 
 - 한국어·영어 홈, 작품 인덱스, 작품 상세, About, Contact, 빈 Appendix
 - Home·Works·About·Contact·Appendix와 선택적 `FIELD_00`을 여는 상단 route dial
 - 홈 전체와 Works·상세·About·Contact·Appendix에서 지속되는 오른쪽 half dial
-- 페이지별 실제 섹션 인덱스와 스크롤·drag·키보드를 양방향 동기화하는 공통 Vault Dial
+- 페이지별 실제 섹션 인덱스와 native scroll을 시각·라쳇 사운드로 반영하는 공통 Vault Dial
 - 소수 scroll cursor로 연속 회전하고 정수 detent에서만 rail·번호·라쳇을 갱신하는 dial motion
 - 홈 작품 `01–06`에서 `07 PRACTICE`, `08 PROFILE`까지 이어지는 전체 페이지 dial cursor
 - Vault CTA 및 route transition
 - 원본 비율 기반 미디어 프레임과 반응형 재구성
-- 라쳇 Web Audio, 지원 기기 drag haptic
+- 데스크톱 즉시 활성화를 먼저 시도하는 라쳇 Web Audio, 모바일 native-scroll detent와 이스터에그 scrub의 지원 기기 haptic
 - 12시 축의 가는 datum과 동일한 graphite face anatomy를 공유하는 소형 rotary latch family
-- reduced-motion, 키보드 slider, archive dialog
+- reduced-motion, 이스터에그 키보드 slider, archive dialog
 - 홈의 장식 문구·중복 상태·카운트를 덜어낸 quiet portfolio hierarchy
-- 다이얼 visible half hit area, 모바일·데스크톱 저이득 page scrub, 일반 스크롤 동기화, 조작 중 확대와 edge guard
-- 첫 다이얼 화면에서만 일반 스크롤·직접 drag를 설명하는 2단계 반투명 가이드와 브라우저별 1회 노출 저장
+- 일반 페이지에서 hit area·pointer capture·drag-to-scroll·slider role·rail click·gesture guide를 제거한 passive dial
+- 다이얼 위에서 시작한 touch도 native pan으로 통과하며 일반 wheel·trackpad·touch scroll과 시각 상태를 동기화
 - `03→08→05` detent를 맞추는 한·영 `FIELD_00` 캘리브레이션 토이와 touch·mouse·rail·키보드 대체 입력
 - Calibration 완료 뒤에만 발견되는 `VAULT_01`, `07 UP→02 DOWN→09 UP` 교대 방향 조합과 aperture open·replay
 - 밝은 surface에서도 패널처럼 보이지 않는 다이얼 중심 동심원형 safety falloff
@@ -32,6 +32,7 @@
 ## 콘텐츠 상태
 
 - `src/content/portfolio.json`이 프로필과 프로젝트의 단일 원본이다.
+- Wonder Global Design Awards 2026의 Product / Consumer Electronics / Audio Devices 부문 Student Winner — VESA Based Floating Speaker를 한·영 Recognition 첫 항목으로 추가했다.
 - 현재 공개 대표작 5개가 `published` 상태다: VESA, The Aviator, Double Wishbone Chair, WRGS, V-CADO. RecoPick은 Owner Studio에 `draft`로 보존하지만 공개 포트폴리오에서는 제외했다.
 - Vibey·ALLSET은 제외했고 N03는 활동 이력에만 포함했다.
 - VESA는 전달받은 파일명 순서 `1→2→3→4→5→6→7→실사1→실사2`로 선별한 렌더·실물 제작 사진과 지연 로딩 YouTube 작동 영상을 연결했다. 홈 미디어와 오른쪽 인덱스 사이에는 전용 안전 열을 확보했다. RecoPick은 현재 공개하지 않고 초안으로 보류한다.
@@ -44,14 +45,18 @@
 - RecoPick의 공개 여부와 최종 이미지 선별은 보류한다.
 - VESA 공개 문구·이미지 순서·캡션의 사용자 최종 승인
 - V-CADO의 세부 기여 범위와 변동 가능한 수상 결과의 후속 근거
-- 실제 모바일 기기의 사운드 크기·햅틱 강도
-- 실제 iOS Safari·Android Chrome에서 전역 page scrub의 확대·저이득 이동·edge guard, `FIELD_00` 숫자 scrub과 `VAULT_01` 교대 방향 조합의 손가락 체감
+- 실제 iPhone Safari의 native switch detent 햅틱과 일반 페이지 라쳇 사운드 크기, `FIELD_00`·`VAULT_01` 햅틱 강도
+- 실제 iOS Safari·Android Chrome에서 다이얼 위 native pan 통과와 `FIELD_00` 숫자 scrub·`VAULT_01` 교대 방향 조합의 손가락 체감
 - 배포 환경의 LCP·CLS·INP와 캐시 정책
 - 운영 환경 Studio 비밀번호·세션 비밀·최소 권한 GitHub 토큰 설정과 실제 배포 동기화
 - 게시 이력 rollback·미리보기는 후속 기능
 - ESLint 구성과 2026-07-30 기준 npm audit high 3건의 호환 가능한 상위 버전 검토
 
 ## 최종 검증 요약
+
+- 2026-08-31 local 회귀: 1440×960·390×844의 홈·Works·About에서 일반 dial slider/hit area/guide 0, horizontal overflow 0, console/page error 0. 일반 스크롤 뒤 face transform이 변경됐고 모바일 다이얼 위치 native pan은 `scrollY 0→135`, 데스크톱 wheel은 `0→650`으로 통과했다.
+- `FIELD_00`은 interactive slider 1개를 유지했고, WGA 항목은 한국어 홈·About과 영문 About에 표시됐다. `jq empty`, typecheck, production build와 diff check가 통과했다.
+- 2026-08-31 sound/haptic 보강: desktop mount에서 AudioContext 생성·resume을 먼저 시도하고 autoplay 차단 상태는 최초 wheel 뒤 `running`으로 전환됐다. iPhone용 native switch haptic proxy와 Vibration API fallback을 렌더했으며 두 화면 폭에서 overflow·console error 0이다. 실제 Taptic Engine 감각은 실기기 확인이 남았다.
 
 - 1440, 1024, 720 reflow, 390, 320px × 9개 경로: HTTP/overflow/image/console/page error 구현 게이트 통과
 - 전역 half dial의 5개 화면 폭 고정 위치, 페이지별 section rail, 홈 wheel `01→08→01`, Ledger `07/08`, 모바일 drag `01→03`, 키보드 `End→08` 동기화 통과

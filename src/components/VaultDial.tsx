@@ -16,9 +16,24 @@ const PAGE_DIAL_ARC = 72;
 const PAGE_DIAL_STEP_MAX = 30;
 const DRAG_PX_PER_STEP_MOUSE = 170;
 const DRAG_PX_PER_STEP_TOUCH = 300;
-const PAGE_SCROLL_GAIN_MOUSE = 1.16;
-const PAGE_SCROLL_GAIN_TOUCH = 1.08;
-const PAGE_SCROLL_INTENT_PX = 12;
+const HAPTIC_INTERVAL_MS = 48;
+
+let lastWebHapticAt = 0;
+
+function triggerWebHaptic(proxy: HTMLInputElement | null, duration = 5) {
+  if (typeof window === "undefined" || document.visibilityState !== "visible") return;
+  const now = window.performance.now();
+  if (now - lastWebHapticAt < HAPTIC_INTERVAL_MS) return;
+  lastWebHapticAt = now;
+
+  if (typeof navigator.vibrate === "function" && navigator.vibrate(duration)) {
+    return;
+  }
+
+  if (window.matchMedia("(pointer: coarse)").matches) {
+    proxy?.click();
+  }
+}
 
 type DialStyle = CSSProperties & {
   "--vault-dial-angle": string;
@@ -50,10 +65,10 @@ type VaultDialProps = {
   getScrubStartIndex?: () => number;
   onScrub?: (index: number) => void;
   onScrubEnd?: (index: number) => void;
-  onSelect: (index: number) => void;
+  onSelect?: (index: number) => void;
   sound?: boolean;
   stepDegrees?: number;
-  touchMode?: "native-scroll" | "page-scroll" | "scrub";
+  touchMode?: "passive" | "scrub";
   touchPixelsPerStep?: number;
   tone?: "primary" | "quiet";
   visualAngle?: string;
@@ -78,7 +93,7 @@ export function VaultDial({
   onSelect,
   sound = true,
   stepDegrees,
-  touchMode = "native-scroll",
+  touchMode = "passive",
   touchPixelsPerStep = DRAG_PX_PER_STEP_TOUCH,
   tone = "primary",
   visualAngle,
@@ -86,6 +101,7 @@ export function VaultDial({
   variant = "page",
 }: VaultDialProps) {
   const audioContextRef = useRef<AudioContext | null>(null);
+  const hapticProxyRef = useRef<HTMLInputElement | null>(null);
   const audioArmedRef = useRef(false);
   const lastAudioStepRef = useRef(
     Math.round((visualIndex ?? activeIndex) * 4)
@@ -93,15 +109,12 @@ export function VaultDial({
   const lastHapticStepRef = useRef(
     Math.round((visualIndex ?? activeIndex) * 4)
   );
-  const lastSettledHapticRef = useRef(activeIndex);
   const [isInteracting, setIsInteracting] = useState(false);
   const dragRef = useRef<{
-    activated: boolean;
     currentIndex: number;
     pointerId: number;
     pointerType: string;
     startIndex: number;
-    startScrollY: number;
     startY: number;
   } | null>(null);
 
@@ -124,6 +137,11 @@ export function VaultDial({
       void audioContextRef.current.resume().catch(() => undefined);
     }
   }, [onEngage, sound]);
+
+  const setHapticProxy = useCallback((node: HTMLInputElement | null) => {
+    hapticProxyRef.current = node;
+    if (node) node.setAttribute("switch", "");
+  }, []);
 
   const playRatchet = useCallback(() => {
     const context = audioContextRef.current;
@@ -161,27 +179,14 @@ export function VaultDial({
     if (lastAudioStepRef.current !== audioStep) {
       lastAudioStepRef.current = audioStep;
       playRatchet();
+      triggerWebHaptic(hapticProxyRef.current);
     }
   }, [activeIndex, playRatchet, visualIndex]);
 
   useEffect(() => {
-    if (
-      touchMode === "scrub" ||
-      !audioArmedRef.current ||
-      lastSettledHapticRef.current === activeIndex
-    ) {
-      return;
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      armAudio();
     }
-    lastSettledHapticRef.current = activeIndex;
-    if (
-      typeof navigator.vibrate === "function" &&
-      navigator.maxTouchPoints > 0
-    ) {
-      navigator.vibrate(4);
-    }
-  }, [activeIndex, touchMode]);
-
-  useEffect(() => {
     const arm = () => armAudio();
     window.addEventListener("pointerdown", arm, { capture: true, once: true });
     window.addEventListener("keydown", arm, { capture: true, once: true });
@@ -191,17 +196,22 @@ export function VaultDial({
       once: true,
       passive: true,
     });
+    window.addEventListener("scroll", arm, {
+      capture: true,
+      once: true,
+      passive: true,
+    });
     return () => {
       window.removeEventListener("pointerdown", arm, true);
       window.removeEventListener("keydown", arm, true);
       window.removeEventListener("touchstart", arm, true);
       window.removeEventListener("wheel", arm, true);
+      window.removeEventListener("scroll", arm, true);
     };
   }, [armAudio]);
 
   useEffect(
     () => () => {
-      delete document.documentElement.dataset.vaultDialScrubbing;
       const context = audioContextRef.current;
       if (context && context.state !== "closed") void context.close();
     },
@@ -209,33 +219,27 @@ export function VaultDial({
   );
 
   const select = (index: number) => {
+    if (!onSelect) return;
     armAudio();
     onSelect(clampIndex(Math.round(index)));
   };
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (touchMode !== "scrub") return;
     armAudio();
     if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) {
-      return;
-    }
-    if (event.pointerType === "touch" && touchMode === "native-scroll") {
       return;
     }
     const startIndex = clampIndex(
       getScrubStartIndex?.() ?? visualIndex ?? activeIndex
     );
     dragRef.current = {
-      activated: touchMode !== "page-scroll",
       currentIndex: startIndex,
       pointerId: event.pointerId,
       pointerType: event.pointerType,
       startIndex,
-      startScrollY: window.scrollY,
       startY: event.clientY,
     };
-    if (touchMode === "page-scroll") {
-      document.documentElement.dataset.vaultDialScrubbing = "true";
-    }
     setIsInteracting(true);
     lastHapticStepRef.current = Math.round(startIndex * 4);
     event.currentTarget.setPointerCapture(event.pointerId);
@@ -244,21 +248,6 @@ export function VaultDial({
   const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
     const drag = dragRef.current;
     if (!drag || drag.pointerId !== event.pointerId) return;
-    if (touchMode === "page-scroll") {
-      const deltaY = drag.startY - event.clientY;
-      if (!drag.activated && Math.abs(deltaY) < PAGE_SCROLL_INTENT_PX) return;
-      drag.activated = true;
-      if (event.cancelable) event.preventDefault();
-      const gain =
-        drag.pointerType === "touch"
-          ? PAGE_SCROLL_GAIN_TOUCH
-          : PAGE_SCROLL_GAIN_MOUSE;
-      window.scrollTo({
-        top: Math.max(0, drag.startScrollY + deltaY * gain),
-        behavior: "auto",
-      });
-      return;
-    }
     const pixelsPerStep =
       drag.pointerType === "mouse"
         ? mousePixelsPerStep
@@ -274,7 +263,7 @@ export function VaultDial({
       typeof navigator.vibrate === "function"
     ) {
       lastHapticStepRef.current = hapticStep;
-      navigator.vibrate(4);
+      triggerWebHaptic(hapticProxyRef.current);
     }
   };
 
@@ -282,19 +271,17 @@ export function VaultDial({
     const drag = dragRef.current;
     if (drag?.pointerId !== event.pointerId) return;
     dragRef.current = null;
-    delete document.documentElement.dataset.vaultDialScrubbing;
     setIsInteracting(false);
     if (typeof navigator.vibrate === "function") navigator.vibrate(0);
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId);
     }
-    if (touchMode !== "page-scroll") onScrubEnd?.(drag.currentIndex);
+    onScrubEnd?.(drag.currentIndex);
   };
 
   const losePointer = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (dragRef.current?.pointerId !== event.pointerId) return;
     dragRef.current = null;
-    delete document.documentElement.dataset.vaultDialScrubbing;
     setIsInteracting(false);
     if (typeof navigator.vibrate === "function") navigator.vibrate(0);
   };
@@ -311,12 +298,14 @@ export function VaultDial({
   const resolvedVisualIndex = clampIndex(visualIndex ?? activeIndex);
   const resolvedVisualAngle =
     visualAngle ?? `${resolvedVisualIndex * -dialStep}deg`;
+  const isInteractive = touchMode === "scrub";
 
   return (
     <aside
       className={`${styles.shell} ${styles[variant]}${className ? ` ${className}` : ""}`}
       data-vault-dial={variant}
       data-tone={tone}
+      data-interactive={isInteractive ? "true" : "false"}
       data-interacting={isInteracting ? "true" : "false"}
       style={
         {
@@ -324,24 +313,50 @@ export function VaultDial({
           "--vault-dial-step": `${dialStep}deg`,
         } as DialStyle
       }
-      aria-label={ariaLabel}
+      aria-label={
+        isInteractive
+          ? ariaLabel
+          : `${ariaLabel}: ${activeItem?.number ?? ""} ${activeItem?.label ?? ""}`
+      }
     >
+      <input
+        ref={setHapticProxy}
+        className={styles.hapticProxy}
+        data-ios-haptic-proxy="true"
+        type="checkbox"
+        tabIndex={-1}
+        aria-hidden="true"
+      />
       <div className={styles.scrim} aria-hidden="true" />
-      <nav className={styles.rail} aria-label={ariaLabel}>
+      <div className={styles.rail} aria-hidden={!isInteractive}>
         {items.map((item, index) => (
-          <button
-            type="button"
-            key={item.id}
-            className={index === activeIndex ? styles.activeRailItem : undefined}
-            aria-current={index === activeIndex ? "true" : undefined}
-            aria-label={`${item.number} ${item.label}`}
-            onClick={() => select(index)}
-          >
-            <span>{item.number}</span>
-            <strong>{item.label}</strong>
-          </button>
+          isInteractive ? (
+            <button
+              type="button"
+              key={item.id}
+              className={`${styles.railItem} ${
+                index === activeIndex ? styles.activeRailItem : ""
+              }`}
+              aria-current={index === activeIndex ? "true" : undefined}
+              aria-label={`${item.number} ${item.label}`}
+              onClick={() => select(index)}
+            >
+              <span>{item.number}</span>
+              <strong>{item.label}</strong>
+            </button>
+          ) : (
+            <span
+              key={item.id}
+              className={`${styles.railItem} ${
+                index === activeIndex ? styles.activeRailItem : ""
+              }`}
+            >
+              <span>{item.number}</span>
+              <strong>{item.label}</strong>
+            </span>
+          )
         ))}
-      </nav>
+      </div>
 
       <div
         className={styles.control}
@@ -379,42 +394,44 @@ export function VaultDial({
         <span className={styles.datum} />
       </div>
 
-      <div
-        className={styles.controlHitArea}
-        data-touch-mode={touchMode}
-        role="slider"
-        tabIndex={0}
-        aria-label={ariaLabel}
-        aria-valuemin={1}
-        aria-valuemax={items.length}
-        aria-valuenow={activeIndex + 1}
-        aria-valuetext={activeItem?.label}
-        aria-orientation="vertical"
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={endPointer}
-        onPointerCancel={endPointer}
-        onLostPointerCapture={losePointer}
-        onKeyDown={(event) => {
-          armAudio();
-          if (["ArrowDown", "ArrowRight", "PageDown"].includes(event.key)) {
-            event.preventDefault();
-            select(activeIndex + 1);
-          }
-          if (["ArrowUp", "ArrowLeft", "PageUp"].includes(event.key)) {
-            event.preventDefault();
-            select(activeIndex - 1);
-          }
-          if (event.key === "Home") {
-            event.preventDefault();
-            select(0);
-          }
-          if (event.key === "End") {
-            event.preventDefault();
-            select(items.length - 1);
-          }
-        }}
-      />
+      {isInteractive ? (
+        <div
+          className={styles.controlHitArea}
+          data-touch-mode={touchMode}
+          role="slider"
+          tabIndex={0}
+          aria-label={ariaLabel}
+          aria-valuemin={1}
+          aria-valuemax={items.length}
+          aria-valuenow={activeIndex + 1}
+          aria-valuetext={activeItem?.label}
+          aria-orientation="vertical"
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endPointer}
+          onPointerCancel={endPointer}
+          onLostPointerCapture={losePointer}
+          onKeyDown={(event) => {
+            armAudio();
+            if (["ArrowDown", "ArrowRight", "PageDown"].includes(event.key)) {
+              event.preventDefault();
+              select(activeIndex + 1);
+            }
+            if (["ArrowUp", "ArrowLeft", "PageUp"].includes(event.key)) {
+              event.preventDefault();
+              select(activeIndex - 1);
+            }
+            if (event.key === "Home") {
+              event.preventDefault();
+              select(0);
+            }
+            if (event.key === "End") {
+              event.preventDefault();
+              select(items.length - 1);
+            }
+          }}
+        />
+      ) : null}
 
       <div className={styles.readout} aria-hidden="true">
         <span>{activeItem?.number}</span>

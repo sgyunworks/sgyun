@@ -185,3 +185,11 @@ The Aviator는 새로 제공된 렌더 `1–5`를 숫자 순서로 유지하고,
 ## 밝은 표면의 안전 음영은 다이얼과 동심원이어야 한다
 
 밝은 Works에서 다이얼 뒤의 넓은 타원 scrim은 별도 회색 패널처럼 읽혔다. 안전 여백은 다이얼 중심과 같은 원형 radial falloff로 제한해 표면의 소유 관계를 명확히 한다. `VAULT_01`은 일반 내비게이션에 노출하지 않고 `FIELD_00` 완료 뒤에만 연다. 조합은 `07 UP → 02 DOWN → 09 UP`이며 숫자와 방향이 모두 맞아야 한다. Calibration 저장값은 이스터에그 발견 상태일 뿐 인증 수단이 아니며 `/studio` 권한과 결합하지 않는다.
+
+## 일반 페이지 다이얼은 직접 입력이 아닌 스크롤 계기다 — 2026-08-31
+
+실제 모바일에서 전역 `page-scroll` drag가 브라우저의 native scrolling보다 불안정했고, 다이얼 확대 피드백과 별도 gesture guide까지 요구했다. 이 복잡도는 포트폴리오 감상보다 조작 학습을 앞세운다. 따라서 홈과 내부 페이지의 오른쪽 half dial은 일반 스크롤 위치를 연속 회전·정수 detent·라쳇 사운드로 보여 주는 passive instrument로 한정한다.
+
+이 결정은 위의 저이득 `page-scroll` 결정을 대체한다. 일반 페이지에서는 hit area, pointer capture, `window.scrollTo` drag 변환, slider role, 키보드 값 변경, rail click, drag haptic, 최초 방문 가이드를 제거한다. 다이얼 위에서 시작한 터치도 브라우저의 native pan으로 통과한다. 다만 native scroll이 detent를 넘을 때는 iOS 18 native switch haptic과 Vibration API를 이용한 짧은 촉각 피드백을 제공한다. `FIELD_00`과 `VAULT_01`은 조작 자체가 콘텐츠인 별도 이스터에그이므로 scrub·키보드 대체 입력·햅틱을 유지한다.
+
+데스크톱 사운드는 진입 즉시 AudioContext resume을 시도한다. 브라우저 autoplay 정책이 막는 경우를 숨기지 않고, 클릭 UI를 추가하는 대신 최초 wheel·scroll·키 입력을 해제 입력으로 사용한다.

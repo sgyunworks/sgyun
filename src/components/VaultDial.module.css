@@ -12,6 +12,16 @@
   transform-origin: right center;
 }
 
+.hapticProxy {
+  position: fixed;
+  inset: -2px auto auto -2px;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0.001;
+  pointer-events: none;
+}
+
 :global(html[data-embedded-app-focus="true"]) .shell {
   opacity: 0.06;
   pointer-events: none;
@@ -41,7 +51,7 @@
   opacity: 0.62;
 }
 
-.page[data-tone="quiet"] .rail button {
+.page[data-tone="quiet"] .railItem {
   color: rgba(255, 255, 255, 0.3);
 }
 
@@ -84,7 +94,7 @@
   display: flex;
   width: clamp(136px, 10.5vw, 168px);
   flex-direction: column;
-  pointer-events: auto;
+  pointer-events: none;
   transform: translateY(-50%);
 }
 
@@ -93,7 +103,7 @@
   mix-blend-mode: difference;
 }
 
-.rail button {
+.railItem {
   position: relative;
   display: grid;
   min-height: 36px;
@@ -104,13 +114,13 @@
   border: 0;
   background: transparent;
   text-align: left;
-  cursor: pointer;
+  cursor: default;
   transition:
     color 240ms var(--ease-standard),
     transform 360ms var(--ease-fluid);
 }
 
-.rail button::after {
+.railItem::after {
   position: absolute;
   top: 50%;
   right: -4px;
@@ -122,18 +132,18 @@
   transition: width 360ms var(--ease-fluid);
 }
 
-.rail button:hover,
-.rail button:focus-visible {
+.shell[data-interactive="true"] button.railItem:hover,
+.shell[data-interactive="true"] button.railItem:focus-visible {
   color: rgba(255, 255, 255, 0.78);
   transform: translateX(-3px);
 }
 
-.rail button span {
+.railItem span {
   font: 510 9px/1 var(--font-mono), monospace;
   letter-spacing: 0.08em;
 }
 
-.rail button strong {
+.railItem strong {
   overflow: hidden;
   font-family: var(--font-display), var(--font-korean), sans-serif;
   font-size: 10px;
@@ -156,6 +166,18 @@
   font-weight: 620;
 }
 
+.shell[data-interactive="true"] .rail {
+  pointer-events: auto;
+}
+
+.shell[data-interactive="true"] button.railItem {
+  cursor: pointer;
+}
+
+.shell[data-interactive="false"] .rail .railItem {
+  pointer-events: none;
+}
+
 .controlHitArea {
   position: absolute;
   inset: 0;
@@ -168,11 +190,6 @@
 }
 
 .controlHitArea[data-touch-mode="scrub"] {
-  touch-action: none;
-}
-
-.controlHitArea[data-touch-mode="page-scroll"] {
-  clip-path: inset(7% calc(57% + 10px) 7% 0 round 999px 0 0 999px);
   touch-action: none;
 }
 
@@ -307,20 +324,16 @@
     transform: translate(58%, -50%);
   }
 
-  .controlHitArea[data-touch-mode="page-scroll"] {
-    clip-path: inset(7% calc(58% + 10px) 7% 0 round 999px 0 0 999px);
-  }
-
   .rail {
     right: calc(100% - 5px);
     width: 110px;
   }
 
-  .rail button {
+  .railItem {
     min-height: 34px;
   }
 
-  .rail button strong {
+  .railItem strong {
     font-size: 9px;
   }
 }
@@ -356,16 +369,12 @@
     display: none;
   }
 
-  .controlHitArea[data-touch-mode="page-scroll"] {
-    clip-path: inset(8% calc(50% + 6px) 8% 0 round 999px 0 0 999px);
-  }
-
   .rail {
     right: calc(100% - 4px);
     width: 40px;
   }
 
-  .rail button {
+  .railItem {
     min-height: 0;
     height: 0;
     grid-template-columns: 1fr;
@@ -375,11 +384,11 @@
     pointer-events: none;
   }
 
-  .rail button::after {
+  .railItem::after {
     right: -2px;
   }
 
-  .rail button span {
+  .railItem span {
     font-size: 8px;
   }
 
@@ -391,7 +400,7 @@
     pointer-events: auto;
   }
 
-  .rail button strong {
+  .railItem strong {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -422,17 +431,14 @@
     width: 9px;
   }
 
-  .controlHitArea:not([data-touch-mode="scrub"]) {
-    cursor: default;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .shell,
   .page,
   .control,
-  .rail button,
-  .rail button::after {
+  .railItem,
+  .railItem::after {
     transition: none;
   }
 }

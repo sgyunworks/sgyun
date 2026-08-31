@@ -54,7 +54,6 @@ export function DialArchive({ locale }: { locale: Locale }) {
   const lastRatchetStepRef = useRef<number | null>(null);
   const activeIndexRef = useRef(0);
   const activeDialIndexRef = useRef(0);
-  const dialCursorRef = useRef(0);
   const homeAnchorsRef = useRef<number[]>([]);
   const dialFrameRef = useRef<number | null>(null);
   const reducedMotionRef = useRef(false);
@@ -193,7 +192,6 @@ export function DialArchive({ locale }: { locale: Locale }) {
         homeDialItems.length - 1,
         Math.max(0, nextCursor)
       );
-      dialCursorRef.current = clamped;
       pageRef.current?.style.setProperty(
         "--archive-vault-angle",
         `${clamped * -homeDialStep}deg`
@@ -326,14 +324,29 @@ export function DialArchive({ locale }: { locale: Locale }) {
   }, [applyDialCursor, projects]);
 
   useEffect(() => {
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      unlockAudio();
+    }
     const armAudio = () => unlockAudio();
     window.addEventListener("pointerdown", armAudio, { capture: true, once: true });
     window.addEventListener("keydown", armAudio, { capture: true, once: true });
     window.addEventListener("touchstart", armAudio, { capture: true, once: true });
+    window.addEventListener("wheel", armAudio, {
+      capture: true,
+      once: true,
+      passive: true,
+    });
+    window.addEventListener("scroll", armAudio, {
+      capture: true,
+      once: true,
+      passive: true,
+    });
     return () => {
       window.removeEventListener("pointerdown", armAudio, true);
       window.removeEventListener("keydown", armAudio, true);
       window.removeEventListener("touchstart", armAudio, true);
+      window.removeEventListener("wheel", armAudio, true);
+      window.removeEventListener("scroll", armAudio, true);
     };
   }, [unlockAudio]);
 
@@ -494,24 +507,6 @@ export function DialArchive({ locale }: { locale: Locale }) {
     [applyCursor, projects.length]
   );
 
-  const scrollToHomeCursor = useCallback(
-    (cursor: number, behavior: ScrollBehavior = "smooth") => {
-      const anchors = homeAnchorsRef.current;
-      if (!anchors.length) return;
-      const clamped = Math.min(homeDialItems.length - 1, Math.max(0, cursor));
-      const lower = Math.floor(clamped);
-      const upper = Math.min(homeDialItems.length - 1, Math.ceil(clamped));
-      const mix = clamped - lower;
-      const start = anchors[lower] ?? 0;
-      const end = anchors[upper] ?? start;
-      window.scrollTo({
-        top: start + (end - start) * mix,
-        behavior: reducedMotionRef.current ? "auto" : behavior,
-      });
-    },
-    [homeDialItems.length]
-  );
-
   const selectFromIndex = (index: number) => {
     setIndexOpen(false);
     window.requestAnimationFrame(() => scrollToIndex(index));
@@ -531,13 +526,8 @@ export function DialArchive({ locale }: { locale: Locale }) {
         }
         items={homeDialItems}
         onEngage={unlockAudio}
-        getScrubStartIndex={() => dialCursorRef.current}
-        onSelect={(index) => scrollToHomeCursor(Math.round(index))}
-        onScrub={(index) => scrollToHomeCursor(index, "auto")}
-        onScrubEnd={(index) => scrollToHomeCursor(Math.round(index))}
         sound={false}
         stepDegrees={homeDialStep}
-        touchMode="page-scroll"
         visualAngle="var(--archive-vault-angle, 0deg)"
         variant="archive"
       />

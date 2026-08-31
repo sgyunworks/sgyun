@@ -15,8 +15,8 @@
 
 ## 기능 검증
 
-- [x] 다이얼 드래그·휠·키보드 탐색과 스크롤 동기화가 유지된다.
-- [ ] 라쳇 사운드와 지원 기기의 햅틱이 실제 장치에서 인덱스 변경 때만 발생한다.
+- [x] 일반 페이지 다이얼은 직접 입력 없이 native scroll에 시각·라쳇 사운드로 동기화된다.
+- [ ] 라쳇 사운드와 모바일 native-scroll detent·이스터에그 scrub의 햅틱이 실제 장치에서 인덱스 변경 때만 발생한다.
 - [x] 필터와 작품 링크가 동작한다.
 - [x] reduced-motion 설정에서 콘텐츠 접근이 가능하다.
 - [x] `npm run build`가 타입 검사와 정적 페이지 생성을 포함해 통과한다.
@@ -28,6 +28,19 @@ ESLint는 아직 구성하지 않았다. 실행 불가능했던 `next lint` 스�
 동일한 뷰포트와 상태로 변경 전·후 캡처를 만들고, 프리뷰 크롭, 제목 무게, 표면 위계, 여백, 겹침을 우선 비교한다.
 
 사용자 제공 WRGS 캡처와 842×1330 구현 캡처는 `qa/wrgs-preview-comparison.png`에서 나란히 확인했다.
+
+## Passive page dial and WGA recognition — 2026-08-31
+
+- [x] 홈·Works·About의 일반 다이얼에 `data-interactive=false`가 적용되고 slider, touch hit area, page-scroll mode, 최초 방문 가이드가 각각 0개다.
+- [x] 1440×960과 390×844에서 일반 스크롤 후 face transform과 현재 인덱스가 함께 변경됐다.
+- [x] 390×844에서 다이얼 위치로 시작한 native touch pan은 `scrollY 0→135`로 통과했고 custom hit area와 interacting 상태는 생성되지 않았다.
+- [x] 1440px에서 다이얼 위 mouse drag는 문서를 움직이지 않았고 wheel은 `scrollY 0→650`으로 일반 스크롤됐다.
+- [x] `FIELD_00`은 두 화면 폭 모두 interactive slider 1개를 유지해 일반 페이지와 이스터에그 입력 경계가 분리됐다.
+- [x] WGA 인증서의 공식 명칭·2026·Student Winner·VESA Based Floating Speaker·Product / Consumer Electronics / Audio Devices를 한·영 Recognition 첫 항목으로 표시했다.
+- [x] 홈·Works·About·영문 About에서 horizontal overflow 0, visible broken image 0, console/page error 0이다.
+- [x] `jq empty src/content/portfolio.json`, `npm run typecheck`, `npm run build`, `git diff --check`가 통과했다. 현재 변경은 아직 production에 배포하지 않았다.
+- [x] 데스크톱 진입 시 AudioContext 생성·resume을 즉시 시도한다. 자동 재생이 차단된 Chromium 검증에서는 별도 클릭 없이 최초 wheel 뒤 `suspended→running`으로 전환됐다.
+- [x] iPhone 경로에 Safari 18 native switch haptic proxy를 렌더하고 Android 등 지원 브라우저에는 Vibration API를 우선 적용했다. 1440×960·390×844에서 proxy가 레이아웃·pointer·overflow에 영향을 주지 않고 console/page error 0이다.
 
 ## Vault instrument polish — 2026-07-29
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { archiveProjects } from "@/lib/archive";
 import type { Locale } from "@/lib/i18n";
 import { VaultDial, type VaultDialItem } from "@/components/VaultDial";
@@ -89,7 +89,6 @@ export function RouteVaultDial({ locale }: { locale: Locale }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [visualIndex, setVisualIndex] = useState(0);
   const activeIndexRef = useRef(0);
-  const visualIndexRef = useRef(0);
   const anchorsRef = useRef<number[]>([]);
   const frameRef = useRef<number | null>(null);
 
@@ -97,7 +96,6 @@ export function RouteVaultDial({ locale }: { locale: Locale }) {
     setActiveIndex(0);
     setVisualIndex(0);
     activeIndexRef.current = 0;
-    visualIndexRef.current = 0;
     anchorsRef.current = [];
     if (!items.length) return;
 
@@ -142,7 +140,6 @@ export function RouteVaultDial({ locale }: { locale: Locale }) {
     const syncFromScroll = () => {
       frameRef.current = null;
       const cursor = cursorAtScroll(window.scrollY);
-      visualIndexRef.current = cursor;
       setVisualIndex((current) =>
         Math.abs(current - cursor) < 0.001 ? current : cursor
       );
@@ -180,35 +177,6 @@ export function RouteVaultDial({ locale }: { locale: Locale }) {
     };
   }, [items]);
 
-  const scrollToCursor = useCallback(
-    (cursor: number, behavior: ScrollBehavior) => {
-      const anchors = anchorsRef.current;
-      if (!anchors.length) return;
-      const clamped = Math.min(items.length - 1, Math.max(0, cursor));
-      const lower = Math.floor(clamped);
-      const upper = Math.min(items.length - 1, Math.ceil(clamped));
-      const mix = clamped - lower;
-      const targetTop =
-        (anchors[lower] ?? 0) +
-        ((anchors[upper] ?? anchors[lower] ?? 0) - (anchors[lower] ?? 0)) * mix;
-      window.scrollTo({
-        top: Math.max(0, targetTop),
-        behavior,
-      });
-    },
-    [items]
-  );
-
-  const select = useCallback(
-    (index: number) => {
-      const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth";
-      scrollToCursor(Math.round(index), behavior);
-    },
-    [scrollToCursor]
-  );
-
   if (!items.length) return null;
 
   const root = `/${locale}`;
@@ -220,21 +188,7 @@ export function RouteVaultDial({ locale }: { locale: Locale }) {
       ariaLabel={
         locale === "ko" ? "현재 페이지 섹션 다이얼" : "Current page section dial"
       }
-      getScrubStartIndex={() => visualIndexRef.current}
       items={items}
-      onSelect={select}
-      onScrub={(index) => {
-        visualIndexRef.current = index;
-        setVisualIndex(index);
-        const rounded = Math.round(index);
-        if (activeIndexRef.current !== rounded) {
-          activeIndexRef.current = rounded;
-          setActiveIndex(rounded);
-        }
-        scrollToCursor(index, "auto");
-      }}
-      onScrubEnd={(index) => select(Math.round(index))}
-      touchMode="page-scroll"
       tone={tone}
       visualIndex={visualIndex}
       variant="page"

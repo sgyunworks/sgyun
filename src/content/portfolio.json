@@ -50,9 +50,24 @@
         }
       }
     ],
-    "recognitions": [
-      {
-        "year": "2026",
+  "recognitions": [
+    {
+      "year": "2026",
+      "title": {
+        "ko": "Wonder Global Design Awards (WGA)",
+        "en": "Wonder Global Design Awards (WGA)"
+      },
+      "result": {
+        "ko": "Student Winner — VESA Based Floating Speaker",
+        "en": "Student Winner — VESA Based Floating Speaker"
+      },
+      "note": {
+        "ko": "Product · Consumer Electronics · Audio Devices",
+        "en": "Product · Consumer Electronics · Audio Devices"
+      }
+    },
+    {
+      "year": "2026",
         "title": { "ko": "K-Design Award", "en": "K-Design Award" },
         "result": { "ko": "Finalist — VESA Based Floating Speaker", "en": "Finalist — VESA Based Floating Speaker" },
         "note": { "ko": "후속 심사 결과 업데이트 예정", "en": "Further judging result pending" }

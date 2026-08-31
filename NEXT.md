@@ -13,7 +13,7 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 
 ## 이후 개발 단계
 
-1. 실제 iOS Safari·Android Chrome에서 전역 다이얼의 조작 중 확대, 12px 의도 임계값, 약 1:1 page scrub, edge guard와 `FIELD_00` 숫자 scrub의 체감을 브라우저별로 검증한다. 같은 실기기 검증에서 `VAULT_01`의 교대 방향 조합, 햅틱, aperture open 전환도 확인한다.
+1. 실제 iPhone Safari 18 이상에서 일반 페이지 다이얼 위 native pan 통과, native switch detent 햅틱과 라쳇 음량을 검증한다. 같은 실기기 검증에서 `FIELD_00` 숫자 scrub, `VAULT_01`의 교대 방향 조합·햅틱·aperture open 전환도 확인한다.
 2. Studio에 상세 미디어 배열 편집, 게시 전 미리보기와 Git 이력 기반 rollback 안내를 추가한다.
 3. 최종 이미지 등록 뒤 배포 preview에서 Web Vitals와 이미지 캐시를 측정한다.
 4. Next.js·Sharp·PostCSS 보안 공지와 호환 가능한 업그레이드 경로를 검토한 뒤 dependency upgrade를 별도 변경으로 수행한다.

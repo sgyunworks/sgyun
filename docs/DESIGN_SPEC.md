@@ -66,18 +66,17 @@
 
 ## 모션과 피드백
 
-- 다이얼 face는 실제 스크롤·drag 진행률을 소수 cursor로 연속 추종한다. rail 강조·번호·라쳇·햅틱은 cursor가 정수 사이의 중간 detent를 통과할 때만 변경한다. 홈과 직접 drag는 손을 놓으면 가장 가까운 정수 detent로 160–340ms 안에 정렬하고, 긴 편집 페이지의 일반 스크롤은 독자의 읽기 위치를 강제로 snap하지 않는다.
-- 홈 다이얼은 문서 전체의 스크롤 진행과 01–06 프로젝트·07 Practice·08 Profile 인덱스를 연결한다. 내부 페이지 다이얼은 section anchor 사이의 실제 scroll progress를 보간해 face를 연속 회전시키고, rail 선택·키보드 입력은 해당 anchor로 이동한다. drag 중에는 `auto`로 즉시 추종하고 release에서만 가까운 section으로 smooth settle한다.
-- 홈·내부 페이지의 visible half dial에는 전용 `page-scroll` 입력 모드를 사용한다. pointer down에서 face를 데스크톱 4.5%, 모바일 8% 확대하고, 12px 세로 의도 임계값 이후 touch는 `1.08×`, mouse·pen은 `1.16×`의 저이득으로 문서 scrollY를 직접 갱신한다. drag 중에만 document smooth scroll을 해제하고 release·cancel·capture loss에서 즉시 복구한다.
-- page-scroll hit zone은 보이는 half dial 안쪽으로 제한한다. 모바일은 상하 10%, 화면 오른쪽 끝 12px를 비활성 안전띠로 남기며, 데스크톱·태블릿도 10px edge guard를 유지한다. rail·keyboard는 같은 section anchor를 사용하되 page drag release에서 강제 section snap은 만들지 않는다.
-- 다이얼 밖의 일반 touch scroll·wheel·trackpad 입력은 passive scroll sync로 face의 소수 cursor를 계속 갱신한다.
-- 최초 방문 가이드는 dial 왼쪽 또는 모바일 하단 안전영역에 배치한 72–78% 불투명 graphite panel이다. 한 번에 한 문장만 보여 주고 `01/02 → 02/02`로 전환하며 5초 안에 사라진다. 모바일에서 작품명·CTA를 덮지 않고, reduced motion에서는 이동 애니메이션을 제거한다.
+- 일반 페이지의 다이얼 face는 브라우저의 native scroll 진행률을 소수 cursor로 연속 추종한다. rail 강조·번호·라쳇은 cursor가 정수 사이의 중간 detent를 통과할 때만 변경하며 문서 위치를 강제로 snap하지 않는다.
+- 홈 다이얼은 문서 전체의 스크롤 진행과 01–06 프로젝트·07 Practice·08 Profile 인덱스를 연결한다. 내부 페이지 다이얼은 section anchor 사이의 실제 scroll progress를 보간해 face를 연속 회전시킨다.
+- 홈·내부 페이지의 visible half dial은 passive instrument다. pointer capture, drag-to-scroll, rail click, slider role, 키보드 값 변경과 최초 방문 gesture guide를 두지 않으며 다이얼 위에서 시작한 touch도 native `pan-y`로 통과시킨다.
+- wheel·trackpad·touch scroll은 기존 문서 동작을 그대로 사용하고, 다이얼은 현재 위치를 시각·짧은 라쳇 사운드·모바일 detent 햅틱으로 반영한다. iOS 18 이상은 native switch haptic, 지원 브라우저는 Vibration API를 사용한다.
+- 직접 scrub은 조작 자체가 콘텐츠인 `FIELD_00`과 `VAULT_01`에만 허용한다. 이 두 장면은 rail·keyboard 대체 입력·햅틱과 release detent 정렬을 유지한다.
 - 화면 오른쪽 반원 배치는 비율 기반 `translate(50%)`로 유지하며, 진입 모션이 해당 x축 transform을 픽셀값으로 덮어쓰지 않게 한다.
 - 콘텐츠 전환은 opacity, translate, 짧은 scale로 제한한다.
 - Vault CTA는 hover/focus에서 rotary latch가 짧게 회전하고 datum rail이 발광 없이 확장된다. 반응은 180–320ms 안에 끝나며 전체 버튼은 눌릴 때만 0.985 scale로 압축한다.
 - CTA의 래치 회전과 datum 확장은 같은 상태 변화를 설명해야 하며, CTA 전체를 또 하나의 패널처럼 띄우지 않는다.
 - 프로젝트 진입은 좌우 graphite shutter가 520ms 동안 닫히고 중앙 lock이 회전한 뒤 새 기록에서 600ms 동안 다시 열리는 Vault transition을 사용한다. reduced motion에서는 90ms 이내의 짧은 전환으로 축약한다.
-- 라쳇 사운드는 기본 활성 상태이며 별도 SOUND UI를 만들지 않는다. 브라우저 autoplay 정책 때문에 첫 사용자 입력에서 AudioContext를 준비한 뒤 이후 detent 변화에 계속 반응한다.
+- 라쳇 사운드는 기본 활성 상태이며 별도 SOUND UI를 만들지 않는다. 데스크톱 진입 즉시 AudioContext resume을 먼저 시도하고, autoplay 정책이 이를 막으면 별도 클릭 없이 최초 wheel·scroll·키 입력에서 준비해 이후 detent 변화에 계속 반응한다.
 - 라쳇 음량은 여러 detent가 겹쳐도 clipping이 생기지 않는 범위에서 짧은 noise와 tooth layer를 같은 비율로 조절한다. 시각 상태보다 늦게 들리거나 배경음처럼 지속되면 실패다.
 - `prefers-reduced-motion`에서는 핵심 상태만 즉시 전환한다.
 
@@ -90,7 +89,7 @@
 - 긴 단어가 포함된 작품명은 정보 열의 실제 가용 폭을 기준으로 별도 optical scale을 사용한다. 어떤 상태에서도 제목 bounding box가 primary media bounding box와 교차하지 않는다.
 - 하단의 밝은 Practice Ledger는 Physical·Digital·Systems의 실제 게시 개수를 한 줄 기록으로 보여 주고, 배경 이미지를 장식으로 사용하지 않는다.
 - 이어지는 Profile Ledger는 이름·작업 정의·수상·활동·About·Contact를 실제 데이터로 구성한다. N03는 프로젝트가 아니라 Activity에만 위치한다.
-- 홈 half dial은 작품 `01–06`에서 끝나지 않고 `07 PRACTICE`, `08 PROFILE`을 같은 연속 arc에 포함한다. 작품 미디어는 06에서 유지되지만 face·rail·drag·keyboard 탐색은 마지막 Ledger까지 페이지 전체 위치를 반영한다.
+- 홈 half dial은 작품 `01–06`에서 끝나지 않고 `07 PRACTICE`, `08 PROFILE`을 같은 연속 arc에 포함한다. 작품 미디어는 06에서 유지되지만 face와 rail은 마지막 Ledger까지 페이지 전체 위치를 반영한다.
 - 첫 장면에는 이름만 두지 않고 `DESIGNER / BUILDER`, 프로젝트 단계와 실제 기록 번호를 표시한다. 이미지 미정은 다른 이미지로 채우지 않고 `MEDIA_PENDING`을 사용한다.
 
 ## 상세 화면 위계
