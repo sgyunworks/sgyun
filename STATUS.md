@@ -2,7 +2,7 @@
 
 ## 현재 판정
 
-2026-08-31 일반 페이지 다이얼을 native scroll에 반응하는 passive instrument로 단순화하고 WGA 2026 수상을 Recognition에 추가했다. 이 변경은 local 검증을 통과했으며 아직 production에는 배포하지 않았다. 기존 production 상태는 별도 배포 전까지 유지된다.
+2026-08-31 일반 페이지 다이얼을 native scroll에 반응하는 passive instrument로 단순화하고 WGA 2026 수상을 Recognition에 추가했다. commit `b5a6257`을 `main`에 반영했고 Vercel production `dpl_EBDuE1J618hRb3eQiBMLxbKFc8Kd`가 `READY` 상태로 `sgyun.kr`에 연결됐다.
 
 ## 구현된 범위
 
@@ -57,6 +57,7 @@
 - 2026-08-31 local 회귀: 1440×960·390×844의 홈·Works·About에서 일반 dial slider/hit area/guide 0, horizontal overflow 0, console/page error 0. 일반 스크롤 뒤 face transform이 변경됐고 모바일 다이얼 위치 native pan은 `scrollY 0→135`, 데스크톱 wheel은 `0→650`으로 통과했다.
 - `FIELD_00`은 interactive slider 1개를 유지했고, WGA 항목은 한국어 홈·About과 영문 About에 표시됐다. `jq empty`, typecheck, production build와 diff check가 통과했다.
 - 2026-08-31 sound/haptic 보강: desktop mount에서 AudioContext 생성·resume을 먼저 시도하고 autoplay 차단 상태는 최초 wheel 뒤 `running`으로 전환됐다. iPhone용 native switch haptic proxy와 Vibration API fallback을 렌더했으며 두 화면 폭에서 overflow·console error 0이다. 실제 Taptic Engine 감각은 실기기 확인이 남았다.
+- 2026-08-31 production 회귀: 1440×960·390×844의 `sgyun.kr/ko`에서 WGA 표시, guide/slider 0, haptic proxy, native scroll, overflow 0, console/page error 0을 확인했다. Works·한/영 About·Calibration은 200이며 최근 30분 runtime error 0이다.
 
 - 1440, 1024, 720 reflow, 390, 320px × 9개 경로: HTTP/overflow/image/console/page error 구현 게이트 통과
 - 전역 half dial의 5개 화면 폭 고정 위치, 페이지별 section rail, 홈 wheel `01→08→01`, Ledger `07/08`, 모바일 drag `01→03`, 키보드 `End→08` 동기화 통과

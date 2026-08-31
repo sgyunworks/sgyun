@@ -38,9 +38,10 @@ ESLint는 아직 구성하지 않았다. 실행 불가능했던 `next lint` 스�
 - [x] `FIELD_00`은 두 화면 폭 모두 interactive slider 1개를 유지해 일반 페이지와 이스터에그 입력 경계가 분리됐다.
 - [x] WGA 인증서의 공식 명칭·2026·Student Winner·VESA Based Floating Speaker·Product / Consumer Electronics / Audio Devices를 한·영 Recognition 첫 항목으로 표시했다.
 - [x] 홈·Works·About·영문 About에서 horizontal overflow 0, visible broken image 0, console/page error 0이다.
-- [x] `jq empty src/content/portfolio.json`, `npm run typecheck`, `npm run build`, `git diff --check`가 통과했다. 현재 변경은 아직 production에 배포하지 않았다.
+- [x] `jq empty src/content/portfolio.json`, `npm run typecheck`, `npm run build`, `git diff --check`가 통과했다.
 - [x] 데스크톱 진입 시 AudioContext 생성·resume을 즉시 시도한다. 자동 재생이 차단된 Chromium 검증에서는 별도 클릭 없이 최초 wheel 뒤 `suspended→running`으로 전환됐다.
 - [x] iPhone 경로에 Safari 18 native switch haptic proxy를 렌더하고 Android 등 지원 브라우저에는 Vibration API를 우선 적용했다. 1440×960·390×844에서 proxy가 레이아웃·pointer·overflow에 영향을 주지 않고 console/page error 0이다.
+- [x] commit `b5a6257`을 `main`에 fast-forward하고 Vercel production `dpl_EBDuE1J618hRb3eQiBMLxbKFc8Kd`의 `READY`·`sgyun.kr` alias를 확인했다. 실제 도메인의 홈·Works·한/영 About·Calibration은 200, 최근 30분 runtime error 0이다.
 
 ## Vault instrument polish — 2026-07-29
 
