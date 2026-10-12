@@ -27,7 +27,7 @@ export function ProjectCover({ project: p, locale, detail = false }: { project: 
       {p.id === "cinder" && <small>{ko ? "인공지능디자인" : "AI design coursework"}</small>}
       {!detail && <Link className={styles.projectLink} href={`/${locale}/works/${p.slug}`}>{ko ? "작품 보기" : "View project"}<span aria-hidden="true">↗</span></Link>}
     </div>
-    {p.id === "vesa" && <div className={styles.awardMarks}><Image src="/portfolio-a/vesa-awards.webp" alt="VESA design award marks" fill sizes="15vw" /></div>}
+    {p.id === "vesa" && <div className={styles.awardMarks}><Image src="/portfolio-a/vesa-awards.webp" alt="Korea International Design Award" fill unoptimized sizes="(max-width: 700px) 150px, 15vw" /></div>}
     </div>
     {p.id === "cinder" && <div className={styles.crtScreen} aria-hidden="true"/>}
   </section>;

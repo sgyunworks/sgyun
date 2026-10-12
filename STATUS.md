@@ -205,3 +205,6 @@ Inspected live Figma frame 65:413: CRT screen shader v584 is applied to the pare
 - Added user-supplied 2.mp4 at the end of Wishbone content, before Next Project, with muted autoplay, repeat playback, playsInline and native controls (user requested autoplay after initial review). Caption accurately identifies joint animation, not engineering simulation.
 - Original Downloads file retained. Web derivative is 1440×1802 H.264, faststart, CRF18. Highlight curve preserves black at 0–15%, lifts 80% to98%, keeping metal shading. Silent audio removed. Poster uses same grade.
 - Build passed; desktop cover and video playback checked; responsive player contains portrait footage without cropping.
+
+## Mobile review corrections — 2026-10-13
+Mobile-only order corrections: VESA page8 front desk configuration now precedes two lifestyle images; Vibey Imaginator follows user-marked 1→2→3 sequence; Output captions directly follow their corresponding images; WRGS Joint & structure groups both sketches before detail photographs. Desktop absolute positions unchanged. Award logo now serves its sharp 568px source directly rather than an undersized mobile responsive derivative.

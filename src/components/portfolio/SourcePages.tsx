@@ -19,6 +19,12 @@ export function SourcePages({projectId,title,locale}:{projectId:string;title:str
     if(n.w>1400)return -9000+n.y;
     return Math.floor(n.x/1250)*10000+n.y;
   }
+  // Mobile: show both front desk configurations before the lifestyle pair.
+  if(page.page==='8' && n.id==='36:492')return 400;
+  if(page.page==='21' && n.id==='36:556')return 300;
+  if(page.page==='21' && n.id==='36:555')return 301;
+  const mobileSequence:Record<string,number>={'61:247':480,'61:239':600,'61:253':720,'61:243':240,'62:321':241,'61:242':1267,'62:320':1268};
+  if((page.page==='15'||page.page==='16') && n.id in mobileSequence)return mobileSequence[n.id];
   return n.y;
  };
  const mobileOrder=[...nodes].sort((a,b)=>readingOrder(a)-readingOrder(b)||a.x-b.x);
