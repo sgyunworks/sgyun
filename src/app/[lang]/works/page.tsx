@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
-import { ArchiveIndex } from "@/components/archive/ArchiveIndex";
-import { isArchiveCategory } from "@/lib/archive";
+import { PortfolioHome } from "@/components/portfolio/Portfolio";
 import type { Locale } from "@/lib/i18n";
 import { locales } from "@/lib/i18n";
 
@@ -11,18 +10,10 @@ export default async function WorksPage({
   params: Promise<{ lang: string }>;
   searchParams: Promise<{ category?: string | string[] }>;
 }) {
-  const [{ lang }, query] = await Promise.all([params, searchParams]);
+  const { lang } = await params;
   if (!(locales as readonly string[]).includes(lang)) notFound();
 
-  const categoryValue = Array.isArray(query.category)
-    ? query.category[0]
-    : query.category;
-  const activeCategory =
-    categoryValue && isArchiveCategory(categoryValue)
-      ? categoryValue
-      : undefined;
-
-  return <ArchiveIndex locale={lang as Locale} activeCategory={activeCategory} />;
+  return <PortfolioHome locale={lang as Locale} indexOnly />;
 }
 
 export async function generateMetadata({
@@ -33,7 +24,7 @@ export async function generateMetadata({
   const { lang } = await params;
   const locale = (locales as readonly string[]).includes(lang) ? lang : "ko";
   return {
-    title: "Archive Index",
+    title: "Selected Works",
     description: "SGYUN physical, digital, experimental, and recognition archive.",
     alternates: {
       canonical: `/${locale}/works`,

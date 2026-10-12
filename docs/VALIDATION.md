@@ -1,3 +1,28 @@
+# Portfolio A renewal validation — 2026-10-12
+
+## Verified in this change
+
+- Figma Portfolio A live inspection: 39 source frames. Six project covers and 29 detail pages implemented, with the empty Vibey prototype placeholder excluded.
+- Desktop 1440×960: cover, VESA image/title proportions, profile columns, CINDER cover and configurator compositions inspected in Codex browser. Source page colors and absolute transformed bounds verified against Figma; Wishbone mirrored image bounds corrected.
+- Mobile 390×844: VESA and Vibey covers, VESA process/prototype content, navigation and readable text reflow checked. Observed horizontal overflow 0 and broken loaded images 0.
+- Keyboard dial: Home/End and arrow navigation; VESA reaches section 8, switching to Vibey resets range to 5. Sound toggle exposes correct pressed state; ratchet synthesis reuses existing VaultDial implementation. Physical speaker output and real-device haptics are not verified.
+- Original QR destinations decoded locally and linked: Wishbone and Aviator Instagram videos, CINDER YouTube video. No external embed loads before a visitor chooses the link.
+- Vibey display overlay uses the original transparent image fill because the exported node flattened its transparent corners to white. Verified in the rebuilt local browser: the white rectangle is gone and the display composes with the controller. Screenshot: `.local/vibey-fixed.jpg` (local-only).
+- No Figma edits; images exported individually and optimized as WebP. Original source text remains selectable. Dark backgrounds are retained where Portfolio A uses them.
+- TypeScript and initial production build passed; final build result is recorded in STATUS.md.
+
+## Scope and remaining boundaries
+
+- Korean source detail pages preserve Portfolio A copy. English navigation, project covers, summaries, profile, and contact remain available; the original detail essays are explicitly marked `lang="ko"` rather than falsely presented as a full translation.
+- CINDER page 36 source screenshots extend past its frame; web layout brings all four configurator states within the canvas. Mobile reflows rather than miniaturizes the source slides.
+- Owner Studio still edits portfolio.json. Exact Figma-derived detail compositions live separately in portfolio-a-pages.json and are not edited through Studio.
+- Existing dependency audit findings are inherited from the lockfile; dependencies were not upgraded in this visual change.
+- Production sgyun.kr is not modified by this feature branch. Preview is local until merge/deployment.
+
+---
+
+## Historical validation (does not certify this branch)
+
 # SGYUN Portfolio — Validation
 
 ## 시각 검증

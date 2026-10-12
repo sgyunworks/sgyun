@@ -442,3 +442,5 @@
     transition: none;
   }
 }
+
+.editorial{position:relative;width:80px;height:80px;color:#222;pointer-events:auto}.editorialKnob{position:relative;width:100%;height:100%;border-radius:50%;cursor:ns-resize;touch-action:none;user-select:none}.editorialKnob svg{width:100%;height:100%;transition:transform 120ms linear}.editorialPointer{position:absolute;top:0;left:calc(50% - 1px);height:7px;width:2px;background:#222}.editorialNumber{position:absolute;inset:0;display:grid;place-items:center;font:400 15px var(--font-poppins),sans-serif}.editorialKnob:focus-visible{outline:2px solid #245acc;outline-offset:3px}@media(max-width:700px){.editorial{width:62px;height:62px}.editorialNumber{font-size:12px}}@media(prefers-reduced-motion:reduce){.editorialKnob svg{transition:none}}

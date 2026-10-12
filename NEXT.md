@@ -1,3 +1,17 @@
+# Current next steps — Portfolio A renewal
+
+1. Review the local Portfolio A preview and the small rotary navigation at `http://localhost:3100/ko`.
+2. After review, merge/deploy `codex/portfolio-a-renewal` to update sgyun.kr. The old live site remains the current production version.
+3. If the Figma prototype placeholder becomes ready, replace it with verified Vibey physical prototype evidence.
+4. A full English translation of the original Korean detail essays is a separate content pass. Current English routes have English covers and summaries with original Korean portfolio pages.
+5. Check audible ratchet level and real-device touch/haptics on the user's hardware. Automated/visual interaction checks do not certify physical playback.
+
+Exact source: `src/content/portfolio-a-pages.json`; project/profile records: `src/content/portfolio.json`; visual contract: `UI-SYSTEM.md`; Figma asset trace: `docs/PORTFOLIO_A_ASSETS.json`.
+
+---
+
+## Historical next steps (superseded where above differs)
+
 # SGYUN Portfolio — Next
 
 ## 사용자 결정이 필요한 다음 단계

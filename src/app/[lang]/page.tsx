@@ -1,6 +1,6 @@
 import type { Locale } from "@/lib/i18n";
 import { locales } from "@/lib/i18n";
-import { DialArchive } from "@/components/archive/DialArchive";
+import { PortfolioHome } from "@/components/portfolio/Portfolio";
 import { notFound } from "next/navigation";
 
 export default async function HomePage({
@@ -12,5 +12,5 @@ export default async function HomePage({
   if (!(locales as readonly string[]).includes(lang)) notFound();
   const validLang = lang as Locale;
 
-  return <DialArchive locale={validLang} />;
+  return <PortfolioHome locale={validLang} />;
 }

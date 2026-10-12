@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "SGYUN",
   fullName: {
     ko: "이석윤",
-    en: "Seokyoon Lee",
+    en: "Seokyun Lee",
   },
   alias: "SGYUN",
   email: "pio1075@naver.com",
@@ -14,7 +14,7 @@ export const siteConfig = {
   url: "https://sgyun.kr",
   description: {
     ko: "이석윤 (SGYUN) — 금속공예와 산업디자인을 바탕으로 물리적 제품, 디지털 제품과 작동하는 프로토타입을 설계하는 디자이너·빌더.",
-    en: "Seokyoon Lee (SGYUN) — a designer and builder creating physical products, digital products, and working prototypes.",
+    en: "Seokyun Lee (SGYUN) — a designer and builder creating physical products, digital products, and working prototypes.",
   },
   skills: [
     "Rhino",

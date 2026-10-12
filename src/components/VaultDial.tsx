@@ -56,6 +56,7 @@ export type VaultDialItem = {
 };
 
 type VaultDialProps = {
+  appearance?: "classic" | "editorial";
   activeIndex: number;
   ariaLabel: string;
   className?: string;
@@ -81,6 +82,7 @@ type AudioWindow = Window & {
 };
 
 export function VaultDial({
+  appearance = "classic",
   activeIndex,
   ariaLabel,
   className,
@@ -299,6 +301,15 @@ export function VaultDial({
   const resolvedVisualAngle =
     visualAngle ?? `${resolvedVisualIndex * -dialStep}deg`;
   const isInteractive = touchMode === "scrub";
+
+  if (appearance === "editorial") return <aside className={styles.editorial} aria-label={ariaLabel}>
+    <div className={styles.editorialKnob} role="slider" tabIndex={0} aria-label={ariaLabel} aria-valuemin={1} aria-valuemax={items.length} aria-valuenow={activeIndex+1} aria-valuetext={activeItem?.label}
+      onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={endPointer} onPointerCancel={losePointer} onLostPointerCapture={losePointer}
+      onKeyDown={e=>{if(["ArrowRight","ArrowDown","ArrowLeft","ArrowUp","Home","End"].includes(e.key)){e.preventDefault();select(e.key==="Home"?0:e.key==="End"?items.length-1:activeIndex+(["ArrowRight","ArrowDown"].includes(e.key)?1:-1));}}}>
+      <svg viewBox="0 0 100 100" aria-hidden="true" style={{transform:`rotate(${resolvedVisualAngle})`}}>{Array.from({length:60},(_,i)=><line key={i} x1="50" y1="5" x2="50" y2={i%5===0?14:9} transform={`rotate(${i*6} 50 50)`} stroke={i%5===0?"#333":"#bcbcbc"} strokeWidth={i%5===0?1.2:.7}/>)}</svg>
+      <span className={styles.editorialPointer}/><span className={styles.editorialNumber}>{activeItem?.number}</span>
+    </div>
+  </aside>;
 
   return (
     <aside

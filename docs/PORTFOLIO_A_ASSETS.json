@@ -1,0 +1,523 @@
+{
+  "fileKey": "8nM5IOo3oTvIcxOcZ9mQhR",
+  "pageId": "2:901",
+  "verified": "2026-10-12",
+  "assets": [
+    {
+      "name": "vesa-cover",
+      "nodeId": "29:43",
+      "path": "/portfolio-a/vesa-cover.webp"
+    },
+    {
+      "name": "vibey-cover",
+      "nodeId": "63:388",
+      "path": "/portfolio-a/vibey-cover.webp"
+    },
+    {
+      "name": "vibey-object",
+      "nodeId": "63:408",
+      "path": "/portfolio-a/vibey-display.webp",
+      "source": "Original transparent image fill; node export incorrectly flattened transparent corners to white."
+    },
+    {
+      "name": "wrgs-cover",
+      "nodeId": "36:526",
+      "path": "/portfolio-a/wrgs-cover.webp"
+    },
+    {
+      "name": "wishbone-cover",
+      "nodeId": "36:652",
+      "path": "/portfolio-a/wishbone-cover.webp"
+    },
+    {
+      "name": "aviator-cover",
+      "nodeId": "36:774",
+      "path": "/portfolio-a/aviator-cover.webp"
+    },
+    {
+      "name": "cinder-cover",
+      "nodeId": "58:204",
+      "path": "/portfolio-a/cinder-cover.webp"
+    },
+    {
+      "name": "portrait",
+      "nodeId": "31:2",
+      "path": "/portfolio-a/portrait.webp"
+    },
+    {
+      "name": "vesa-awards",
+      "nodeId": "36:301",
+      "path": "/portfolio-a/vesa-awards.webp"
+    },
+    {
+      "name": "vesa-interface",
+      "nodeId": "36:383",
+      "path": "/portfolio-a/vesa-interface.webp"
+    },
+    {
+      "name": "vesa-exploded",
+      "nodeId": "36:309",
+      "path": "/portfolio-a/vesa-exploded.webp"
+    },
+    {
+      "name": "vesa-bending",
+      "nodeId": "36:408",
+      "path": "/portfolio-a/vesa-bending.webp"
+    },
+    {
+      "name": "vesa-prototype",
+      "nodeId": "36:450",
+      "path": "/portfolio-a/vesa-prototype.webp"
+    },
+    {
+      "name": "vibey-controls",
+      "nodeId": "59:214",
+      "path": "/portfolio-a/vibey-controls.webp"
+    },
+    {
+      "name": "vibey-imaginator",
+      "nodeId": "61:253",
+      "path": "/portfolio-a/vibey-imaginator.webp"
+    },
+    {
+      "name": "vibey-previs",
+      "nodeId": "61:242",
+      "path": "/portfolio-a/vibey-previs.webp"
+    },
+    {
+      "name": "vibey-output",
+      "nodeId": "61:243",
+      "path": "/portfolio-a/vibey-output.webp"
+    },
+    {
+      "name": "wrgs-front",
+      "nodeId": "36:525",
+      "path": "/portfolio-a/wrgs-front.webp"
+    },
+    {
+      "name": "wrgs-top",
+      "nodeId": "36:528",
+      "path": "/portfolio-a/wrgs-top.webp"
+    },
+    {
+      "name": "wrgs-making",
+      "nodeId": "36:607",
+      "path": "/portfolio-a/wrgs-making.webp"
+    },
+    {
+      "name": "wishbone-detail",
+      "nodeId": "36:703",
+      "path": "/portfolio-a/wishbone-detail.webp"
+    },
+    {
+      "name": "wishbone-front",
+      "nodeId": "36:694",
+      "path": "/portfolio-a/wishbone-front.webp"
+    },
+    {
+      "name": "wishbone-motion",
+      "nodeId": "36:736",
+      "path": "/portfolio-a/wishbone-motion.webp"
+    },
+    {
+      "name": "aviator-open",
+      "nodeId": "51:882",
+      "path": "/portfolio-a/aviator-open.webp"
+    },
+    {
+      "name": "aviator-back",
+      "nodeId": "51:884",
+      "path": "/portfolio-a/aviator-back.webp"
+    },
+    {
+      "name": "aviator-prototype",
+      "nodeId": "36:839",
+      "path": "/portfolio-a/aviator-prototype.webp"
+    },
+    {
+      "name": "cinder-configurator",
+      "nodeId": "70:604",
+      "path": "/portfolio-a/cinder-configurator.webp"
+    },
+    {
+      "name": "cinder-code",
+      "nodeId": "58:188",
+      "path": "/portfolio-a/cinder-code.webp"
+    },
+    {
+      "name": "cinder-blender",
+      "nodeId": "70:512",
+      "path": "/portfolio-a/cinder-blender.webp"
+    },
+    {
+      "name": "node-36-323",
+      "nodeId": "36:323",
+      "path": "/portfolio-a/node-36-323.webp"
+    },
+    {
+      "name": "node-36-327",
+      "nodeId": "36:327",
+      "path": "/portfolio-a/node-36-327.webp"
+    },
+    {
+      "name": "node-36-303",
+      "nodeId": "36:303",
+      "path": "/portfolio-a/node-36-303.webp"
+    },
+    {
+      "name": "node-36-381",
+      "nodeId": "36:381",
+      "path": "/portfolio-a/node-36-381.webp"
+    },
+    {
+      "name": "node-36-483",
+      "nodeId": "36:483",
+      "path": "/portfolio-a/node-36-483.webp"
+    },
+    {
+      "name": "node-36-484",
+      "nodeId": "36:484",
+      "path": "/portfolio-a/node-36-484.webp"
+    },
+    {
+      "name": "node-36-485",
+      "nodeId": "36:485",
+      "path": "/portfolio-a/node-36-485.webp"
+    },
+    {
+      "name": "node-36-486",
+      "nodeId": "36:486",
+      "path": "/portfolio-a/node-36-486.webp"
+    },
+    {
+      "name": "node-36-492",
+      "nodeId": "36:492",
+      "path": "/portfolio-a/node-36-492.webp"
+    },
+    {
+      "name": "node-36-493",
+      "nodeId": "36:493",
+      "path": "/portfolio-a/node-36-493.webp"
+    },
+    {
+      "name": "node-36-207",
+      "nodeId": "36:207",
+      "path": "/portfolio-a/node-36-207.webp"
+    },
+    {
+      "name": "node-36-403",
+      "nodeId": "36:403",
+      "path": "/portfolio-a/node-36-403.webp"
+    },
+    {
+      "name": "node-36-402",
+      "nodeId": "36:402",
+      "path": "/portfolio-a/node-36-402.webp"
+    },
+    {
+      "name": "node-36-451",
+      "nodeId": "36:451",
+      "path": "/portfolio-a/node-36-451.webp"
+    },
+    {
+      "name": "node-58-4",
+      "nodeId": "58:4",
+      "path": "/portfolio-a/node-58-4.webp"
+    },
+    {
+      "name": "node-61-239",
+      "nodeId": "61:239",
+      "path": "/portfolio-a/node-61-239.webp"
+    },
+    {
+      "name": "node-61-247",
+      "nodeId": "61:247",
+      "path": "/portfolio-a/node-61-247.webp"
+    },
+    {
+      "name": "node-61-309",
+      "nodeId": "61:309",
+      "path": "/portfolio-a/node-61-309.webp"
+    },
+    {
+      "name": "node-36-529",
+      "nodeId": "36:529",
+      "path": "/portfolio-a/node-36-529.webp"
+    },
+    {
+      "name": "node-36-547",
+      "nodeId": "36:547",
+      "path": "/portfolio-a/node-36-547.webp"
+    },
+    {
+      "name": "node-36-548",
+      "nodeId": "36:548",
+      "path": "/portfolio-a/node-36-548.webp"
+    },
+    {
+      "name": "node-36-549",
+      "nodeId": "36:549",
+      "path": "/portfolio-a/node-36-549.webp"
+    },
+    {
+      "name": "node-36-550",
+      "nodeId": "36:550",
+      "path": "/portfolio-a/node-36-550.webp"
+    },
+    {
+      "name": "node-36-555",
+      "nodeId": "36:555",
+      "path": "/portfolio-a/node-36-555.webp"
+    },
+    {
+      "name": "node-36-556",
+      "nodeId": "36:556",
+      "path": "/portfolio-a/node-36-556.webp"
+    },
+    {
+      "name": "node-36-609",
+      "nodeId": "36:609",
+      "path": "/portfolio-a/node-36-609.webp"
+    },
+    {
+      "name": "node-36-608",
+      "nodeId": "36:608",
+      "path": "/portfolio-a/node-36-608.webp"
+    },
+    {
+      "name": "node-36-612",
+      "nodeId": "36:612",
+      "path": "/portfolio-a/node-36-612.webp"
+    },
+    {
+      "name": "node-36-611",
+      "nodeId": "36:611",
+      "path": "/portfolio-a/node-36-611.webp"
+    },
+    {
+      "name": "node-36-705",
+      "nodeId": "36:705",
+      "path": "/portfolio-a/node-36-705.webp"
+    },
+    {
+      "name": "node-36-698",
+      "nodeId": "36:698",
+      "path": "/portfolio-a/node-36-698.webp"
+    },
+    {
+      "name": "node-36-688",
+      "nodeId": "36:688",
+      "path": "/portfolio-a/node-36-688.webp"
+    },
+    {
+      "name": "node-36-672",
+      "nodeId": "36:672",
+      "path": "/portfolio-a/node-36-672.webp"
+    },
+    {
+      "name": "node-36-673",
+      "nodeId": "36:673",
+      "path": "/portfolio-a/node-36-673.webp"
+    },
+    {
+      "name": "node-36-674",
+      "nodeId": "36:674",
+      "path": "/portfolio-a/node-36-674.webp"
+    },
+    {
+      "name": "node-36-675",
+      "nodeId": "36:675",
+      "path": "/portfolio-a/node-36-675.webp"
+    },
+    {
+      "name": "node-36-751",
+      "nodeId": "36:751",
+      "path": "/portfolio-a/node-36-751.webp"
+    },
+    {
+      "name": "node-51-883",
+      "nodeId": "51:883",
+      "path": "/portfolio-a/node-51-883.webp"
+    },
+    {
+      "name": "node-51-881",
+      "nodeId": "51:881",
+      "path": "/portfolio-a/node-51-881.webp"
+    },
+    {
+      "name": "node-54-950",
+      "nodeId": "54:950",
+      "path": "/portfolio-a/node-54-950.webp"
+    },
+    {
+      "name": "node-51-880",
+      "nodeId": "51:880",
+      "path": "/portfolio-a/node-51-880.webp"
+    },
+    {
+      "name": "node-36-840",
+      "nodeId": "36:840",
+      "path": "/portfolio-a/node-36-840.webp"
+    },
+    {
+      "name": "node-36-869",
+      "nodeId": "36:869",
+      "path": "/portfolio-a/node-36-869.webp"
+    },
+    {
+      "name": "node-80-616",
+      "nodeId": "80:616",
+      "path": "/portfolio-a/node-80-616.webp"
+    },
+    {
+      "name": "node-70-499",
+      "nodeId": "70:499",
+      "path": "/portfolio-a/node-70-499.webp"
+    },
+    {
+      "name": "node-70-425",
+      "nodeId": "70:425",
+      "path": "/portfolio-a/node-70-425.webp"
+    },
+    {
+      "name": "node-70-428",
+      "nodeId": "70:428",
+      "path": "/portfolio-a/node-70-428.webp"
+    },
+    {
+      "name": "node-70-429",
+      "nodeId": "70:429",
+      "path": "/portfolio-a/node-70-429.webp"
+    },
+    {
+      "name": "node-70-430",
+      "nodeId": "70:430",
+      "path": "/portfolio-a/node-70-430.webp"
+    },
+    {
+      "name": "node-70-431",
+      "nodeId": "70:431",
+      "path": "/portfolio-a/node-70-431.webp"
+    },
+    {
+      "name": "node-70-432",
+      "nodeId": "70:432",
+      "path": "/portfolio-a/node-70-432.webp"
+    },
+    {
+      "name": "node-70-440",
+      "nodeId": "70:440",
+      "path": "/portfolio-a/node-70-440.webp"
+    },
+    {
+      "name": "node-70-441",
+      "nodeId": "70:441",
+      "path": "/portfolio-a/node-70-441.webp"
+    },
+    {
+      "name": "node-70-442",
+      "nodeId": "70:442",
+      "path": "/portfolio-a/node-70-442.webp"
+    },
+    {
+      "name": "node-70-443",
+      "nodeId": "70:443",
+      "path": "/portfolio-a/node-70-443.webp"
+    },
+    {
+      "name": "node-70-444",
+      "nodeId": "70:444",
+      "path": "/portfolio-a/node-70-444.webp"
+    },
+    {
+      "name": "node-70-434",
+      "nodeId": "70:434",
+      "path": "/portfolio-a/node-70-434.webp"
+    },
+    {
+      "name": "node-70-435",
+      "nodeId": "70:435",
+      "path": "/portfolio-a/node-70-435.webp"
+    },
+    {
+      "name": "node-70-436",
+      "nodeId": "70:436",
+      "path": "/portfolio-a/node-70-436.webp"
+    },
+    {
+      "name": "node-70-437",
+      "nodeId": "70:437",
+      "path": "/portfolio-a/node-70-437.webp"
+    },
+    {
+      "name": "node-70-438",
+      "nodeId": "70:438",
+      "path": "/portfolio-a/node-70-438.webp"
+    },
+    {
+      "name": "node-58-189",
+      "nodeId": "58:189",
+      "path": "/portfolio-a/node-58-189.webp"
+    },
+    {
+      "name": "node-58-192",
+      "nodeId": "58:192",
+      "path": "/portfolio-a/node-58-192.webp"
+    },
+    {
+      "name": "node-70-524",
+      "nodeId": "70:524",
+      "path": "/portfolio-a/node-70-524.webp"
+    },
+    {
+      "name": "node-80-606",
+      "nodeId": "80:606",
+      "path": "/portfolio-a/node-80-606.webp"
+    },
+    {
+      "name": "node-58-190",
+      "nodeId": "58:190",
+      "path": "/portfolio-a/node-58-190.webp"
+    },
+    {
+      "name": "node-70-502",
+      "nodeId": "70:502",
+      "path": "/portfolio-a/node-70-502.webp"
+    },
+    {
+      "name": "node-70-503",
+      "nodeId": "70:503",
+      "path": "/portfolio-a/node-70-503.webp"
+    },
+    {
+      "name": "node-70-523",
+      "nodeId": "70:523",
+      "path": "/portfolio-a/node-70-523.webp"
+    },
+    {
+      "name": "node-70-509",
+      "nodeId": "70:509",
+      "path": "/portfolio-a/node-70-509.webp"
+    },
+    {
+      "name": "node-80-608",
+      "nodeId": "80:608",
+      "path": "/portfolio-a/node-80-608.webp"
+    },
+    {
+      "name": "node-80-609",
+      "nodeId": "80:609",
+      "path": "/portfolio-a/node-80-609.webp"
+    },
+    {
+      "name": "cinder-web-top",
+      "nodeId": "58:118",
+      "path": "/portfolio-a/cinder-web-top.webp"
+    },
+    {
+      "name": "cinder-web-bottom",
+      "nodeId": "58:141",
+      "path": "/portfolio-a/cinder-web-bottom.webp"
+    }
+  ]
+}

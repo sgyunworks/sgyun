@@ -20,12 +20,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Product Designer · Builder`,
+    default: `${siteConfig.name} | Industrial · Metalcraft · AI Creative Design`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description.ko,
   openGraph: {
-    title: `${siteConfig.name} | Product Designer · Builder`,
+    title: `${siteConfig.name} | Industrial · Metalcraft · AI Creative Design`,
     description: siteConfig.description.ko,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -33,13 +33,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Product Designer · Builder`,
+    title: `${siteConfig.name} | Industrial · Metalcraft · AI Creative Design`,
     description: siteConfig.description.ko,
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08090b",
+  themeColor: "#ffffff",
   viewportFit: "cover",
 };
 

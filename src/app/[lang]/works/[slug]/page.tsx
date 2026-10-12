@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { ArchiveProjectDetail } from "@/components/archive/ArchiveProjectDetail";
+import { PortfolioDetail } from "@/components/portfolio/Portfolio";
 import {
   archiveProjects,
   getArchiveProject,
@@ -59,5 +59,5 @@ export default async function WorkDetailPage({
   const project = getArchiveProject(slug);
   if (!project) notFound();
 
-  return <ArchiveProjectDetail project={project} locale={lang as Locale} />;
+  return <PortfolioDetail project={project} locale={lang as Locale} />;
 }

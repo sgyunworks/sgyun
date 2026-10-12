@@ -706,3 +706,6 @@ select {
     background: #111318;
   }
 }
+
+/* Portfolio A uses an opt-in white shell; legacy interaction routes keep their theme. */
+html:has([class*="Portfolio_site"]){color-scheme:light;background:white}body:has([class*="Portfolio_site"]){background:white}body:has([class*="Portfolio_site"])::before{display:none}

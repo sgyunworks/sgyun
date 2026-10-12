@@ -1,3 +1,4 @@
+import { PortfolioShell } from "@/components/portfolio/PortfolioShell";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { locales, type Locale, getDict } from "@/lib/i18n";
@@ -22,7 +23,7 @@ export async function generateMetadata({
     ? (lang as Locale)
     : "ko";
   return {
-    title: { absolute: `${siteConfig.name} | Product Designer · Builder` },
+    title: { absolute: `${siteConfig.name} | Industrial · Metalcraft · AI Creative Design` },
     description: siteConfig.description[validLang],
     alternates: {
       canonical: `/${validLang}`,
@@ -32,7 +33,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: `${siteConfig.name} | Product Designer · Builder`,
+      title: `${siteConfig.name} | Industrial · Metalcraft · AI Creative Design`,
       description: siteConfig.description[validLang],
       url: `/${validLang}`,
       locale: validLang === "ko" ? "ko_KR" : "en_US",
@@ -56,11 +57,13 @@ export default async function LangLayout({
   return (
     <div lang={validLang}>
       <DocumentLanguage locale={validLang} />
+      <PortfolioShell locale={validLang} legacy={<>
       <Nav locale={validLang} t={t} />
       <VaultTransition />
       <RouteVaultDial locale={validLang} />
       <main className={validLang === "ko" ? "body-text" : ""}>{children}</main>
       <Footer t={t} />
+      </>}>{children}</PortfolioShell>
     </div>
   );
 }
