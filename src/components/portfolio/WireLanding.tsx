@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import {useRouter} from 'next/navigation';
 import {useEffect, useRef, useState, type PointerEvent} from 'react';
 import type {Locale} from '@/lib/i18n';
@@ -33,8 +32,8 @@ export function WireLanding({locale}:{locale:Locale}) {
   setPhase('rebound');const start=performance.now();
   const animate=(now:number)=>{
    const elapsed=now-start;
-   const seconds=elapsed/1000,decay=Math.exp(-5.8*seconds);
-   const spring={x:from.x*decay*Math.cos(17*seconds),y:from.y*decay*Math.cos(20*seconds)};
+   const seconds=elapsed/1000,decay=Math.exp(-4.6*seconds);
+   const spring={x:from.x*decay*Math.cos(22*seconds),y:from.y*decay*Math.cos(26*seconds)};
    if(continueToWorks){
     // Overlap the first recoil with flight: no settled pose or second start.
     const t=Math.min(1,Math.max(0,(elapsed-70)/980)),e=t*t*(3-2*t);
@@ -75,9 +74,9 @@ export function WireLanding({locale}:{locale:Locale}) {
   <div className={styles.copy}>
    <h1 aria-label="SGYUN"><span style={{opacity:1-travel}} aria-hidden="true"><u>S</u>G</span><button ref={letter} className={styles.letter} onPointerDown={down} onPointerMove={move} onPointerUp={e=>up(e)} onPointerCancel={e=>up(e,true)} onLostPointerCapture={e=>{if(drag.current)up(e,true);}} onClick={e=>{if(e.detail===0&&!busy.current){if(sound)portfolioAudio();release({x:70,y:45},true);}}} aria-label={ko?'Y를 튕겨 작품으로 이동':'Pluck Y to enter Works'} aria-describedby="wire-instruction" aria-disabled={busy.current} style={{transform:`translate(${position.x}px,${position.y}px) rotate(${rotation}deg) scale(${1-travel*.65})`,opacity:1-travel}}>Y</button><span aria-hidden="true" style={{opacity:1-travel}}>UN</span></h1>
    <div className={styles.subtitle} style={{opacity:1-travel}}><p>PORTFOLIO 2026</p><p>Industrial · Metalcraft · AI Creative Design</p></div>
+  <div className={styles.guidance} style={{opacity:1-travel}}><p id="wire-instruction">{phase==='dragging'?(ko?'놓으면, 다음으로':'Release to continue'):(ko?'Y를 드래그해 튕겨서 계속':'Drag and release Y to continue')}</p></div>
   </div>
   <svg className={styles.arrivingDial} aria-hidden="true" width="80" height="80" viewBox="0 0 100 100" style={{left:x,top:y,opacity:Math.max(0,(travel-.55)/.45),transform:`translate(-50%,-50%) rotate(${(1-travel)*-160}deg)`}}>{Array.from({length:60},(_,i)=><line key={i} x1="50" y1="8" x2="50" y2={i%5===0?'15':'11'} stroke={i%5===0?'#555':'#b7b7b7'} strokeWidth={i%5===0?1: .6} transform={`rotate(${i*6} 50 50)`}/>)}<text x="50" y="55" textAnchor="middle" fill="#444" fontSize="15">01</text></svg>
-  <div className={styles.guidance} style={{opacity:1-travel}}><p id="wire-instruction">{phase==='dragging'?(ko?'놓으면, 다음으로':'Release to continue'):(ko?'Y를 드래그해 튕겨서 계속':'Drag and release Y to continue')}</p><Link href={`/${locale}/works`}>{ko?'작품 바로 보기':'Go directly to Works'} ↗</Link></div>
   <button className={styles.sound} aria-pressed={sound} aria-label={ko?'사운드':'Sound'} onClick={()=>{savePortfolioSound(!sound);setSound(!sound);if(!sound)portfolioAudio();}}>Sound {sound?'on':'off'}</button>
  </section>;
 }

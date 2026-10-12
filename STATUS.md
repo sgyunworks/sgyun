@@ -150,3 +150,7 @@
 User found a pause between rebound and dial travel. Flight now overlaps recoil after 70 ms, with continuous spring/arc blending and rotation; total entry motion reduced from 1700 ms to 1050 ms. No settled middle pose.
 
 - Wishbone cover resolution fixed: replaced exported 256px processed fill with the original 2048×2562 KeyShot image from the same Figma node; original mirrored direction retained.
+
+- 2026-10-12: Landing guidance now follows the logo/subtitle with 44px desktop / 36px mobile spacing and a slow 2.4s contrast-preserving pulse. Reduced motion disables it. Recoil damping reduced, rebound frequency increased; steel-wire tone uses a decaying pitch oscillation. Continuous 1050ms entry remains.
+
+- User removed the direct Works link from the landing; Y pointer and keyboard activation remain the entry actions.

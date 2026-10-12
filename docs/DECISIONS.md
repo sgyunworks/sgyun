@@ -209,3 +209,7 @@ The Aviator는 새로 제공된 렌더 `1–5`를 숫자 순서로 유지하고,
 ## Release continuity refinement — 2026-10-12
 
 User found a pause between rebound and dial travel. Flight now overlaps recoil after 70 ms, with continuous spring/arc blending and rotation; total entry motion reduced from 1700 ms to 1050 ms. No settled middle pose.
+
+- 2026-10-12: Landing guidance now follows the logo/subtitle with 44px desktop / 36px mobile spacing and a slow 2.4s contrast-preserving pulse. Reduced motion disables it. Recoil damping reduced, rebound frequency increased; steel-wire tone uses a decaying pitch oscillation. Continuous 1050ms entry remains.
+
+- User removed the direct Works link from the landing; Y pointer and keyboard activation remain the entry actions.

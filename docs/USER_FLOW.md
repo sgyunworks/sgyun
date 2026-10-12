@@ -1,6 +1,6 @@
 ## Landing entry — 2026-10-12
 
-Home → drag Y → release above threshold → damped wire rebound → shrink/rotate into bottom-right dial → Works. Tap/small drag returns to rest. Cancel returns to rest without navigation. Enter/Space gives equivalent entry; direct Works link skips animation. Sound on/mute is available before entry and in Works.
+Home → drag Y → release above threshold → damped wire rebound → shrink/rotate into bottom-right dial → Works. Tap/small drag returns to rest. Cancel returns to rest without navigation. Enter/Space gives equivalent entry; direct Works link removed by user request. Sound on/mute is available before entry and in Works.
 
 # Portfolio A renewal — current contract (2026-10-12)
 

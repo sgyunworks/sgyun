@@ -1,3 +1,7 @@
+## Central guidance and elastic feedback — 2026-10-12
+
+Browser confirmed no direct Works links remain on landing, guidance follows subtitle at desktop/mobile widths, and the slow pulse animation is active. Keyboard Y entry reached Works. Production build and diff check passed. Pitch envelope revised; physical audio quality remains user listening verification. Screenshot: .local/landing-guidance.jpg.
+
 ## Wishbone source resolution — 2026-10-12
 
 Figma node 36:652 contains a 2048×2562 original and a 256×321 processed image. Previous node export enlarged the latter. Cover now uses the original with CSS mirroring; browser confirmed the new file loaded and visibly sharper. Shared project hero updates Works and detail. Build and diff check passed. Screenshot: .local/wishbone-hq.jpg.
