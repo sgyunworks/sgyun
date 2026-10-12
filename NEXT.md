@@ -1,7 +1,7 @@
 # Current next steps — Portfolio A renewal
 
 1. Review the uncropped mobile imagery, the restored high-resolution Wishbone cover, the new Y wire-pluck landing, stronger guidance pulse and Figma-matched wordmark, elastic sound and overlapping recoil/travel timing and the small rotary navigation at `http://localhost:3100/ko`.
-2. After review, merge/deploy `codex/portfolio-a-renewal` to update sgyun.kr. The old live site remains the current production version.
+2. Production deployment authorized on 2026-10-13. Verify sgyun.kr after main update; old version is archived under archive/sgyun-before-portfolio-a-2026-10-13.
 3. If the Figma prototype placeholder becomes ready, replace it with verified Vibey physical prototype evidence.
 4. A full English translation of the original Korean detail essays is a separate content pass. Current English routes have English covers and summaries with original Korean portfolio pages.
 5. Check audible ratchet level and real-device touch/haptics on the user's hardware. Automated/visual interaction checks do not certify physical playback.

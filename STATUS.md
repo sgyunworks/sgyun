@@ -208,3 +208,6 @@ Inspected live Figma frame 65:413: CRT screen shader v584 is applied to the pare
 
 ## Mobile review corrections — 2026-10-13
 Mobile-only order corrections: VESA page8 front desk configuration now precedes two lifestyle images; Vibey Imaginator follows user-marked 1→2→3 sequence; Output captions directly follow their corresponding images; WRGS Joint & structure groups both sketches before detail photographs. Desktop absolute positions unchanged. Award logo now serves its sharp 568px source directly rather than an undersized mobile responsive derivative.
+
+## Production release preparation — 2026-10-13
+User authorized replacement of sgyun.kr with reviewed Portfolio A version. Existing production d6353c128337bc4a652842e12b1ebe1796fdfb15 (Vercel dpl_Ep1jvA2zEedMsxDTi3Gj5TsgvFDa) preserved on GitHub as branch and annotated tag archive/sgyun-before-portfolio-a-2026-10-13. This preserves tracked old content and media for future curation. Current public works are the six reviewed projects; old selection is not republished.
