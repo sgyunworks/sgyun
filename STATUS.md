@@ -211,3 +211,5 @@ Mobile-only order corrections: VESA page8 front desk configuration now precedes 
 
 ## Production release preparation — 2026-10-13
 User authorized replacement of sgyun.kr with reviewed Portfolio A version. Existing production d6353c128337bc4a652842e12b1ebe1796fdfb15 (Vercel dpl_Ep1jvA2zEedMsxDTi3Gj5TsgvFDa) preserved on GitHub as branch and annotated tag archive/sgyun-before-portfolio-a-2026-10-13. This preserves tracked old content and media for future curation. Current public works are the six reviewed projects; old selection is not republished.
+
+Production confirmed READY: https://sgyun.kr, deployment dpl_ERmTr5Hw5DERRPXa9nty6933s4TS, source 088c329ef3cd7f9631b67688623dbcba2c49bf85. Domain alias assigned without error. Public /ko, /en/works, Vibey and Wishbone detail return 200; six selected projects confirmed; Wishbone MP4 returns video/mp4 and autoplay markup is present. Browser verified new SGYUN wire landing. Prior production remains recoverable through the archive tag/branch. Verification covers release routes/assets, not long-term runtime monitoring.

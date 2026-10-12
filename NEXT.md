@@ -52,3 +52,4 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 - CINDER cover now includes a browser CRT equivalent around native localized content; preserve this parent-frame effect when changing assets.
 - Wishbone film source: user-supplied Downloads/2.mp4; keep original untouched. Graded H.264 derivative and poster are in public/portfolio-a.
 - Continue user's mobile review; desktop composition is approved. Preserve explicit mobile media sequences in SourcePages.
+- Production is live on sgyun.kr (088c329). Curate archived projects later; source archive branch/tag: archive/sgyun-before-portfolio-a-2026-10-13.
