@@ -175,3 +175,7 @@ The previous fidelity audit missed a critical asset-pipeline error: node exports
 Recovered 12 raw fills across VESA, Wishbone and CINDER using download_assets rawImages. Applied original normalized crop transforms to source pixels, retained full uncropped fills for FILL nodes, saved lossless WebP with versioned paths, and bypassed Next image resizing for these restored assets. No AI enhancement or upscaling. Raw source dimensions/crop provenance are in FIGMA_RAW_IMAGE_RESTORATION.json. Two prototype photos now use original exposure, without reproducing Figma's exposure filter.
 
 Browser verified VESA page 7 loads the actual 1779×1879 / 1775×1879 assets at native proportions; page 6 restored full 2048×2899 portrait fill. Build/type/lint passed. Production unchanged.
+
+## Effect volume — 2026-10-12
+
+Raised current portfolio ratchet and wire-pluck peak gains by 3x (+9.54 dB): 0.042→0.126 and 0.035→0.105. Legacy dial level retained. Tone/envelope and mute unchanged. Single wire voice worst-case summed partial peak remains below 0.251. Actual perceived loudness requires user listening on their device.

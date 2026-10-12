@@ -170,12 +170,12 @@ export function VaultDial({
     filter.frequency.setValueAtTime(3300 + Math.random() * 260, now);
     filter.Q.setValueAtTime(1.05, now);
     gain.gain.setValueAtTime(0.0001, now);
-    gain.gain.exponentialRampToValueAtTime(0.042, now + 0.0012);
+    gain.gain.exponentialRampToValueAtTime(appearance === "editorial" ? 0.126 : 0.042, now + 0.0012);
     gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
     source.connect(filter).connect(gain).connect(context.destination);
     source.start(now);
     source.stop(now + duration);
-  }, [sound]);
+  }, [sound, appearance]);
 
   useEffect(() => {
     const audioStep = Math.round((visualIndex ?? activeIndex) * 4);

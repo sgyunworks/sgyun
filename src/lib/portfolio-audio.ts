@@ -22,7 +22,7 @@ export function wireTone(strength = 1) {
     }
     oscillator.frequency.setValueCurveAtTime(pitch, now, .85);
     gain.gain.setValueAtTime(.0001, now);
-    gain.gain.exponentialRampToValueAtTime((.035 / (i + 1)) * Math.min(1.3, strength), now + .004);
+    gain.gain.exponentialRampToValueAtTime((.105 / (i + 1)) * Math.min(1.3, strength), now + .004);
     gain.gain.exponentialRampToValueAtTime(.0001, now + .82 / (i + 1));
     oscillator.connect(gain).connect(ctx.destination); oscillator.start(now); oscillator.stop(now + .9);
     oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
