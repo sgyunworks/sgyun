@@ -2,6 +2,7 @@
 
 - Working branch: `codex/portfolio-a-renewal`, based on `d6353c1`.
 - Active checkout verified on MacBook 2026-10-12: `~/Workspace/10_PROJECTS/sgyun-portfolio-renewal`.
+- Entry: standalone Portfolio A cover with draggable steel-wire Y, damped rebound, animated dial handoff and Works navigation. Sound defaults ON and mute persists across routes.
 - User contract: Figma Portfolio A almost unchanged, with a small vault dial and ratchet sound. Latest overlapping copy and images come from Portfolio A.
 - Six projects: VESA, Vibey, WRGS, Double Wishbone Chair, The Aviator, CINDER. Source profile and awards updated. Prior non-selected records preserved as Studio drafts.
 - Source layout: six cover compositions, 29 detail pages, 103 individually exported assets including source web previews. See asset manifest for actual inventory.

@@ -1,3 +1,12 @@
+## Wire Y landing verification — 2026-10-12
+
+- Compared desktop 1440×810 with Portfolio A cover: SGYUN proportions, S underline, source subtitle and fine three-wire composition retained. Wires connect to Y and reach viewport boundaries. Mobile 390×844 inspected; no horizontal overflow.
+- Real browser pointer drag released into rebound and navigated to /ko/works. Dial appears bottom-right with sound ON. Keyboard Enter also enters Works.
+- Muted landing, entered by keyboard, verified Works dial aria-pressed=false; re-enabled sound and verified ON on return.
+- Pointer capture/cancel cleanup, reduced-motion immediate entry, direct Works alternative and animation-frame cleanup reviewed in code. OS reduced-motion toggle and physical touchscreen were not exercised.
+- Browser logs: no runtime errors observed; development hot-reload and inherited VESA image-priority warnings only. Physical speaker sound quality/volume requires user listening.
+- Local screenshots: .local/wire-landing-desktop.jpg and .local/wire-landing-mobile.jpg. Production deployment remains unchanged.
+
 # Portfolio A renewal validation — 2026-10-12
 
 ## Verified in this change

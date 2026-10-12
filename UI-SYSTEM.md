@@ -1,3 +1,7 @@
+## Wire Y interaction — 2026-10-12
+
+User-authorized extension of Portfolio A frame 16:3: full-viewport first cover, original wordmark and typography; Y is draggable on three fine stainless wires reaching viewport edges. Release springs back, then Y travels into the bottom-right navigation dial and opens Works. Sound defaults on, activated by the first intentional gesture; mute remains available. Preserve reduced-motion and keyboard entry. No new library.
+
 # Portfolio A website
 
 ## Contract — 2026-10-12

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { archiveProjects, portfolioProfile, type ArchiveProject } from "@/lib/archive";
+import { WireLanding } from "./WireLanding";
 import { SourcePages } from "./SourcePages";
 import { PortfolioDial } from "./PortfolioDial";
 import styles from "./Portfolio.module.css";
@@ -29,12 +30,8 @@ export function ProjectCover({ project: p, locale, detail = false }: { project: 
 }
 
 export function PortfolioHome({ locale, indexOnly = false }: { locale: Locale; indexOnly?: boolean }) {
- return <div className={styles.portfolio}>
-   {!indexOnly && <section className={styles.intro} id="intro" aria-labelledby="portfolio-title">
-     <svg className={styles.coverLines} viewBox="0 0 3840 2160" preserveAspectRatio="none" aria-hidden="true"><path d="M1397 0L1920 1020L2443 0M1920 1020V2160" /></svg>
-     <div className={styles.introCopy}><h1 id="portfolio-title"><span>S</span>GYUN</h1><p>PORTFOLIO 2026</p><span>Industrial · Metalcraft · AI Creative Design</span></div>
-     <a className={styles.explore} href="#selected">{locale === "ko" ? "작품 살펴보기" : "Explore selected works"}<span aria-hidden="true">↓</span></a>
-   </section>}
+ if (!indexOnly) return <WireLanding locale={locale}/>;
+ return <div className={`${styles.portfolio} ${styles.worksEntry}`}>
    <section className={styles.contents} id="selected">{indexOnly?<h1>Selected Works</h1>:<h2>Selected Works</h2>}<ol>{archiveProjects.map(p=><li key={p.id}><a href={`#${p.id}`}><span>{p.number}</span><strong>{p.title}</strong><span aria-hidden="true">↘</span></a></li>)}</ol></section>
    {archiveProjects.map(p=><ProjectCover key={p.id} project={p} locale={locale}/>)}
    <PortfolioDial locale={locale}/>

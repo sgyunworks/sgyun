@@ -24,3 +24,6 @@
 .webPreviewTop,.webPreviewBottom{position:absolute;left:6.35%;top:28.5%;width:21.66%;height:62%;overflow:hidden}.webPreviewTop img,.webPreviewBottom img{object-fit:cover;object-position:top}.webPreviewBottom{left:31.25%}.webPreviewBottom img{object-position:bottom}.configuratorPage{aspect-ratio:16/9;padding-bottom:0}.configuratorPage .sourceImage{left:55%;top:29%;width:20.4%;height:22%}.configuratorPage .sourceImage:nth-of-type(4){left:77%}.configuratorPage .sourceImage:nth-of-type(5){left:55%;top:56%}.configuratorPage .sourceImage:nth-of-type(6){left:77%;top:56%}
 @media(max-width:700px){.webPreviewTop,.webPreviewBottom{position:relative;left:auto;top:auto;width:100%;height:560px;order:2}.configuratorPage{aspect-ratio:auto;padding:40px 6%}.configuratorPage .sourceImage{inset:auto!important;width:100%;height:auto}.webPreviewBottom{order:3}}
 @media(min-width:701px){.configuratorPage .sourceImage:nth-of-type(3){left:55%;top:29%}.configuratorPage .sourceImage:nth-of-type(4){left:77%;top:29%}}
+
+@keyframes revealWorks{from{opacity:0}to{opacity:1}}
+.worksEntry>.contents,.worksEntry>.cover{animation:revealWorks .55s ease-out both}

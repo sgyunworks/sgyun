@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
+import {portfolioAudio} from "@/lib/portfolio-audio";
 import styles from "./VaultDial.module.css";
 
 const TICK_COUNT = 60;
@@ -133,12 +134,12 @@ export function VaultDial({
       const AudioContextConstructor =
         window.AudioContext ?? (window as AudioWindow).webkitAudioContext;
       if (!AudioContextConstructor) return;
-      audioContextRef.current = new AudioContextConstructor();
+      audioContextRef.current = appearance === "editorial" ? portfolioAudio() : new AudioContextConstructor();
     }
-    if (audioContextRef.current.state === "suspended") {
+    if (audioContextRef.current?.state === "suspended") {
       void audioContextRef.current.resume().catch(() => undefined);
     }
-  }, [onEngage, sound]);
+  }, [onEngage, sound, appearance]);
 
   const setHapticProxy = useCallback((node: HTMLInputElement | null) => {
     hapticProxyRef.current = node;
@@ -215,9 +216,9 @@ export function VaultDial({
   useEffect(
     () => () => {
       const context = audioContextRef.current;
-      if (context && context.state !== "closed") void context.close();
+      if (appearance !== "editorial" && context && context.state !== "closed") void context.close();
     },
-    []
+    [appearance]
   );
 
   const select = (index: number) => {

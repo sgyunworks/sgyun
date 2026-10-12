@@ -1,3 +1,7 @@
+## Landing wire specification — 2026-10-12
+
+Keep Portfolio A first cover proportions, black SGYUN (underlined S), subtitle, white field and three edge-to-edge wires. Remove normal navigation/footer on this entry screen. Y supports two-axis pointer capture and bounded elastic displacement; a meaningful release rings the wire, rebounds, travels to the responsive dial location, then opens Works. Bottom guidance: Y를 드래그해 튕겨서 계속. Keyboard Enter/Space and a direct Works link offer equivalent entry; reduced motion skips travel. Sound on by default, user mute persists during navigation.
+
 # Portfolio A renewal — current contract (2026-10-12)
 
 See `../UI-SYSTEM.md`. The user requests Portfolio A almost unchanged: preserve cover composition, white space, source images, typography, and current copy. The only vault additions are a small rotary work index and optional ratchet sound. Native scroll remains primary; mobile reflows source content. Portfolio A overrides overlapping website records. Home cover → selected works → project detail; Profile and Contact remain directly accessible.

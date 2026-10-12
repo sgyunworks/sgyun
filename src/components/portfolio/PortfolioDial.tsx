@@ -1,6 +1,7 @@
 "use client";
 import {useEffect,useRef,useState} from "react";
 import {usePathname} from "next/navigation";
+import {portfolioAudio,readPortfolioSound,savePortfolioSound} from "@/lib/portfolio-audio";
 import type {Locale} from "@/lib/i18n";
 import {VaultDial} from "@/components/VaultDial";
 import styles from "./Portfolio.module.css";
@@ -8,7 +9,8 @@ import styles from "./Portfolio.module.css";
 export function PortfolioDial({locale}:{locale:Locale}) {
  const pathname=usePathname();
  const [items,setItems]=useState<{id:string;number:string;label:string}[]>([]);
- const [active,setActive]=useState(0),[visual,setVisual]=useState(0),[sound,setSound]=useState(false);
+ const [active,setActive]=useState(0),[visual,setVisual]=useState(0),[sound,setSound]=useState(true);
+ useEffect(()=>setSound(readPortfolioSound()),[]);
  const positions=useRef<number[]>([]);
  useEffect(()=>{
   const sections=Array.from(document.querySelectorAll<HTMLElement>('[data-portfolio-section]'));
@@ -25,6 +27,6 @@ export function PortfolioDial({locale}:{locale:Locale}) {
  if(!items.length)return null;
  return <div className={styles.dialDock}>
   <VaultDial activeIndex={active} visualIndex={visual} items={items} ariaLabel={locale==='ko'?'작품 다이얼 · 방향키로 이동':'Project dial · use arrow keys'} appearance="editorial" touchMode="scrub" sound={sound} stepDegrees={360/items.length} onSelect={select} onScrub={setVisual} onScrubEnd={i=>select(Math.round(i))}/>
-  <button className={styles.soundButton} aria-pressed={sound} aria-label={locale==='ko'?'다이얼 소리':'Dial sound'} onClick={()=>setSound(!sound)}>Sound {sound?'on':'off'}</button>
+  <button className={styles.soundButton} aria-pressed={sound} aria-label={locale==='ko'?'다이얼 소리':'Dial sound'} onClick={()=>{savePortfolioSound(!sound);setSound(!sound);if(!sound)portfolioAudio();}}>Sound {sound?'on':'off'}</button>
  </div>;
 }

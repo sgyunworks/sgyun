@@ -1,3 +1,7 @@
+## Landing interaction goal — 2026-10-12
+
+Communicate metal-oriented making and elastic, playful imagination through the actual SGYUN cover. Successful entry preserves the source composition on desktop/mobile and connects one intentional gesture to the Works navigation dial without trapping visitors.
+
 # Portfolio A renewal — current contract (2026-10-12)
 
 See `../UI-SYSTEM.md`. The user requests Portfolio A almost unchanged: preserve cover composition, white space, source images, typography, and current copy. The only vault additions are a small rotary work index and optional ratchet sound. Native scroll remains primary; mobile reflows source content. Portfolio A overrides overlapping website records. Home cover → selected works → project detail; Profile and Contact remain directly accessible.

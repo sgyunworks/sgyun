@@ -1,3 +1,7 @@
+## Wire entry technical basis — 2026-10-12
+
+MDN setPointerCapture (https://developer.mozilla.org/en-US/docs/Web/API/Element/setPointerCapture): capture maintains drag outside target; release/cancel need cleanup. MDN Web Audio best practices (https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Best_practices): create/resume audio from a user gesture. Default ON expresses preference; no sound is promised before interaction or on a muted device. Reuse existing ratchet synthesis, share the gesture-unlocked context across the client route transition.
+
 # SGYUN Portfolio — Research Notes
 
 ## 사용한 근거

@@ -1,3 +1,7 @@
+## Wire Y entry — 2026-10-12
+
+User requests Portfolio A first page as standalone landing and explicitly adds a custom Y-on-steel-wire interaction. This supersedes the earlier scrolling cover homepage. Works retains source project layouts. Audio defaults ON; actual activation occurs on user input. Shared audio context avoids losing activation during the route transition.
+
 # Portfolio A renewal — current contract (2026-10-12)
 
 See `../UI-SYSTEM.md`. The user requests Portfolio A almost unchanged: preserve cover composition, white space, source images, typography, and current copy. The only vault additions are a small rotary work index and optional ratchet sound. Native scroll remains primary; mobile reflows source content. Portfolio A overrides overlapping website records. Home cover → selected works → project detail; Profile and Contact remain directly accessible.
