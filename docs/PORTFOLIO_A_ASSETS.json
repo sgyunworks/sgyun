@@ -27,7 +27,8 @@
     {
       "name": "wishbone-cover",
       "nodeId": "36:652",
-      "path": "/portfolio-a/wishbone-cover.webp"
+      "path": "/portfolio-a/wishbone-cover-hq.webp",
+      "sourceNote": "Original 2048x2562 image fill. Node export used a 256x321 background-removed fill. Mirroring is retained in CSS."
     },
     {
       "name": "aviator-cover",

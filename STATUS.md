@@ -148,3 +148,5 @@
 ## Release continuity refinement — 2026-10-12
 
 User found a pause between rebound and dial travel. Flight now overlaps recoil after 70 ms, with continuous spring/arc blending and rotation; total entry motion reduced from 1700 ms to 1050 ms. No settled middle pose.
+
+- Wishbone cover resolution fixed: replaced exported 256px processed fill with the original 2048×2562 KeyShot image from the same Figma node; original mirrored direction retained.

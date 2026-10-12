@@ -27,3 +27,6 @@
 
 @keyframes revealWorks{from{opacity:0}to{opacity:1}}
 .worksEntry>.contents,.worksEntry>.cover{animation:revealWorks .55s ease-out both}
+
+/* Use the original 2048px render; preserve the mirrored Figma composition. */
+.wishbone .coverArt img{transform:scaleX(-1);object-fit:cover}

@@ -1,3 +1,7 @@
+## Wishbone source resolution — 2026-10-12
+
+Figma node 36:652 contains a 2048×2562 original and a 256×321 processed image. Previous node export enlarged the latter. Cover now uses the original with CSS mirroring; browser confirmed the new file loaded and visibly sharper. Shared project hero updates Works and detail. Build and diff check passed. Screenshot: .local/wishbone-hq.jpg.
+
 ## Continuous release — 2026-10-12
 
 Production build and diff check passed. Browser pointer drag verified overlapping recoil/travel and successful Works arrival with sound ON. Transition capture: .local/wire-motion-continuity.jpg.
