@@ -305,3 +305,13 @@ Browser verified VESA page 7 loads the actual 1779×1879 / 1775×1879 assets at 
 - VESA Prototype and CINDER pages 35–36 use full-resolution 3840×2160 source composites on desktop, preserving exact masks, exposure, background, stacking and typography. Live semantic content remains in DOM; <=700px retains readable text and intrinsic images. Tradeoff: desktop text is rasterized visually; source headers/page numbers are intentionally retained for exact fidelity.
 - Added Aviator T-T_7QIveWY and CINDER m0Xcpsa-vuI lazy no-cookie films before Next Project, with external links. Browser confirmed both player thumbnails, corrected source compositions and transparent connector. Mobile CINDER no horizontal overflow; favicon has refreshed content hash.
 - Build/type/lint and git diff checks passed. Local preview updated; production unchanged.
+
+## Live bilingual source layers — 2026-10-12
+
+Supersedes the full-frame composite approach above. Removed all three flattened editorial pages and their public assets. VESA uses two individual photographic compositions with native headings/captions. CINDER uses separate background, car view sheets (no editorial copy), web screenshots and native labels. Restored Figma coordinates and image corner radii for Build Process / Assets; raw screenshot pixels replace low-resolution exports. The web composition uses source crop bounds without manual grid rearrangement.
+
+All 45 Korean editorial text nodes across six projects now have English translations in portfolio-a-en.json; remaining nodes are already English. SourcePages receives locale and translates body text, captions, diagram labels, image descriptions and video links. Embedded software/UI screenshots remain documentary source imagery. Removed redundant English-only overview so section order matches Korean. Desktop uses actual text, with explicit heading line breaks; mobile retains reflow and full images.
+
+Verified build and translation coverage (zero missing Korean-node translations), plus browser English Build Process and Korean source pages. No deployment to production.
+
+Final browser check: English CINDER live text contains zero Hangul editorial nodes, horizontal overflow 0 at 390px. English Assets, English Configurator, English VESA captions and Korean CINDER composition were visually inspected. Screenshot evidence is in ignored .local/cinder-assets-live-en.jpg. Existing embedded app screenshots are not translated.

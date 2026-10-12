@@ -46,4 +46,6 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 
 - VESA original uploads recovered; no replacement renders requested from the user.
 
-- Review the restored desktop Figma compositions (VESA Prototype; CINDER 35–36) and the added Aviator/CINDER films before production deployment. These three desktop frames use 3840px source composites; mobile retains semantic text and uncropped images.
+
+
+- Review bilingual live text and restored individual media layouts before production release. Whole editorial pages must never be flattened into image assets.

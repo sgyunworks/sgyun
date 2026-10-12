@@ -47,7 +47,14 @@
 
 @media(min-width:701px){.sourceSingleLine{white-space:pre}}
 @media(min-width:701px){.videoLink>span{display:none}}
-/* Complex source compositions retain Figma's clipping, exposure and layer blending.
-   Semantic live content remains available; narrow screens use the reading layout. */
-.sourceComposite{display:none}
-@media(min-width:701px){.faithfulPage> :not(.sourceComposite){opacity:0;pointer-events:none}.faithfulPage>.sourceComposite{display:block;object-fit:contain;z-index:1}.faithfulPage{aspect-ratio:16/9;padding:0}}
+
+/* Figma source coordinates; individual images and translatable text. */
+@media(min-width:701px){
+.configuratorPage .sourceImage{left:var(--source-x)!important;top:var(--source-y)!important;width:var(--source-w)!important;height:var(--source-h)!important}
+.webPreviewTop{left:6.354%;top:28.529%;width:21.663%;height:71.471%}
+.webPreviewBottom{left:31.25%;top:0;width:21.842%;height:89.133%}
+.webPreviewTop img,.webPreviewBottom img{object-fit:fill}
+.webPreviewBottom:after{content:"";position:absolute;inset:0 0 auto;height:43.7%;background:linear-gradient(#000,transparent);pointer-events:none}
+}
+@media(max-width:700px){.sourcePage .sourceDecoration{display:none}}
+@media(min-width:701px){.sourcePage h2.sourceText{white-space:pre}.sourceDecoration img{object-fit:cover}}

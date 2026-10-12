@@ -628,28 +628,85 @@
       "path": "/portfolio-a/vector-73-83.svg"
     },
     {
-      "name": "faithful-source-73:16",
-      "nodeId": "73:16",
-      "path": "/portfolio-a/frame-73-16-faithful.webp",
-      "source": "3840x2160 full-frame Figma export; lossless, no resizing; desktop composition with semantic HTML/mobile reading layout retained."
-    },
-    {
-      "name": "faithful-source-73:40",
-      "nodeId": "73:40",
-      "path": "/portfolio-a/frame-73-40-faithful.webp",
-      "source": "3840x2160 full-frame Figma export; lossless, no resizing; desktop composition with semantic HTML/mobile reading layout retained."
-    },
-    {
-      "name": "faithful-source-36:431",
-      "nodeId": "36:431",
-      "path": "/portfolio-a/frame-36-431-faithful.webp",
-      "source": "3840x2160 full-frame Figma export; lossless, no resizing; desktop composition with semantic HTML/mobile reading layout retained."
-    },
-    {
       "name": "wishbone-rear-original",
       "nodeId": "36:694",
       "path": "/portfolio-a/raw-36-694.webp",
       "source": "Original full-resolution image fill; lossless WebP, no resampling."
+    },
+    {
+      "nodeId": "36:448",
+      "path": "/portfolio-a/live-36-448.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "36:449",
+      "path": "/portfolio-a/live-36-449.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "70:425",
+      "path": "/portfolio-a/cinder-sketch-background.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "70:427",
+      "path": "/portfolio-a/live-70-427.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "70:439",
+      "path": "/portfolio-a/live-70-439.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "70:433",
+      "path": "/portfolio-a/live-70-433.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "58:188",
+      "path": "/portfolio-a/live-58-188.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "58:189",
+      "path": "/portfolio-a/live-58-189.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "58:190",
+      "path": "/portfolio-a/live-58-190.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "58:192",
+      "path": "/portfolio-a/live-58-192.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "70:502",
+      "path": "/portfolio-a/live-70-502.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "70:503",
+      "path": "/portfolio-a/live-70-503.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "70:524",
+      "path": "/portfolio-a/live-70-524.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "70:512",
+      "path": "/portfolio-a/live-70-512.webp",
+      "source": "Individual media only; editorial text remains live HTML."
+    },
+    {
+      "nodeId": "70:509",
+      "path": "/portfolio-a/live-70-509.webp",
+      "source": "Individual media only; editorial text remains live HTML."
     }
   ]
 }

@@ -586,6 +586,26 @@
     "page": "11",
     "nodes": [
       {
+        "id": "36:448",
+        "type": "image",
+        "x": 236,
+        "y": 475.6899,
+        "w": 1491,
+        "h": 1365.31,
+        "src": "/portfolio-a/live-36-448.webp",
+        "rawSource": true
+      },
+      {
+        "id": "36:449",
+        "type": "image",
+        "x": 1735,
+        "y": 480,
+        "w": 1865,
+        "h": 1320,
+        "src": "/portfolio-a/live-36-449.webp",
+        "rawSource": true
+      },
+      {
         "id": "36:437",
         "x": 2513,
         "y": 1880,
@@ -613,52 +633,6 @@
         "paragraphSpacing": 0
       },
       {
-        "id": "36:402",
-        "x": 236,
-        "y": 476,
-        "w": 1491,
-        "h": 1328,
-        "type": "image",
-        "name": "IMG_7739 4",
-        "src": "/portfolio-a/node-36-402.webp"
-      },
-      {
-        "id": "36:418",
-        "type": "vector",
-        "x": 237,
-        "y": 1139,
-        "w": 1487,
-        "h": 2,
-        "src": "/portfolio-a/vector-36-418.svg"
-      },
-      {
-        "id": "36:419",
-        "type": "vector",
-        "x": 1362.390625,
-        "y": 475.68994140625,
-        "w": 2,
-        "h": 1365.3099365234375,
-        "src": "/portfolio-a/vector-36-419.svg"
-      },
-      {
-        "id": "36:422",
-        "type": "vector",
-        "x": 602,
-        "y": 475.68994140625,
-        "w": 2,
-        "h": 1325.8502197265625,
-        "src": "/portfolio-a/vector-36-422.svg"
-      },
-      {
-        "id": "36:420",
-        "type": "vector",
-        "x": 982,
-        "y": 475.68994140625,
-        "w": 2,
-        "h": 1365.3099365234375,
-        "src": "/portfolio-a/vector-36-420.svg"
-      },
-      {
         "id": "36:446",
         "x": 921,
         "y": 1880,
@@ -684,28 +658,6 @@
           "value": 0
         },
         "paragraphSpacing": 0
-      },
-      {
-        "id": "36:450",
-        "x": 1622,
-        "y": 177,
-        "w": 2091.3623046875,
-        "h": 2382.192626953125,
-        "type": "image",
-        "name": "IMG_8385 2",
-        "src": "/portfolio-a/raw-36-450.webp",
-        "rawSource": true
-      },
-      {
-        "id": "36:451",
-        "x": 1752.5,
-        "y": 178.06640625,
-        "w": 1785.5640869140625,
-        "h": 2380.751953125,
-        "type": "image",
-        "name": "IMG_8385 2",
-        "src": "/portfolio-a/raw-36-451.webp",
-        "rawSource": true
       },
       {
         "id": "36:457",
@@ -739,8 +691,7 @@
       "r": 1,
       "g": 1,
       "b": 1
-    },
-    "composite": "/portfolio-a/frame-36-431-faithful.webp"
+    }
   },
   {
     "id": "60:234",
@@ -2194,6 +2145,19 @@
     "page": "35",
     "nodes": [
       {
+        "id": "70:425",
+        "x": 97,
+        "y": -14,
+        "w": 3840,
+        "h": 2264,
+        "type": "image",
+        "name": "ㅠㅁ챃개ㅕㅜㅇ",
+        "src": "/portfolio-a/cinder-sketch-background.webp",
+        "opacity": 0.5,
+        "decorative": true,
+        "rawSource": true
+      },
+      {
         "id": "73:19",
         "x": 240,
         "y": 235,
@@ -2491,172 +2455,41 @@
         "paragraphSpacing": 0
       },
       {
-        "id": "70:425",
-        "x": 97,
-        "y": -14,
-        "w": 3840,
-        "h": 2264,
+        "id": "70:427",
         "type": "image",
-        "name": "ㅠㅁ챃개ㅕㅜㅇ",
-        "src": "/portfolio-a/node-70-425.webp"
+        "x": 240,
+        "y": 636.562,
+        "w": 1088,
+        "h": 1001.118,
+        "src": "/portfolio-a/live-70-427.webp",
+        "rawSource": true
       },
       {
-        "id": "70:428",
-        "x": 239.4560546875,
-        "y": 1167.484375,
-        "w": 533.3712158203125,
-        "h": 218.83985900878906,
+        "id": "70:439",
         "type": "image",
-        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 1",
-        "src": "/portfolio-a/node-70-428-2x.webp"
+        "x": 1376,
+        "y": 636.562,
+        "w": 1088,
+        "h": 1001.118,
+        "src": "/portfolio-a/live-70-439.webp",
+        "rawSource": true
       },
       {
-        "id": "70:429",
-        "x": 239.4560546875,
-        "y": 1447.4921875,
-        "w": 533.3712158203125,
-        "h": 189.7518310546875,
+        "id": "70:433",
         "type": "image",
-        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 3",
-        "src": "/portfolio-a/node-70-429-2x.webp"
-      },
-      {
-        "id": "70:430",
-        "x": 794.8446044921875,
-        "y": 1447.4921875,
-        "w": 533.3712158203125,
-        "h": 189.7518310546875,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 4",
-        "src": "/portfolio-a/node-70-430-2x.webp"
-      },
-      {
-        "id": "70:431",
-        "x": 794.84375,
-        "y": 1167.484375,
-        "w": 533.3712158203125,
-        "h": 218.83985900878906,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 2",
-        "src": "/portfolio-a/node-70-431-2x.webp"
-      },
-      {
-        "id": "70:432",
-        "x": 239.4560546875,
-        "y": 636.5615234375,
-        "w": 1088.6846923828125,
-        "h": 446.68255615234375,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 5",
-        "src": "/portfolio-a/node-70-432.webp"
-      },
-      {
-        "id": "70:440",
-        "x": 1376.8828125,
-        "y": 636.5615234375,
-        "w": 1088.7623291015625,
-        "h": 415.1161193847656,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 16",
-        "src": "/portfolio-a/node-70-440.webp"
-      },
-      {
-        "id": "70:441",
-        "x": 1383.1337890625,
-        "y": 1117.7373046875,
-        "w": 538.2645263671875,
-        "h": 260.70489501953125,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 17",
-        "src": "/portfolio-a/node-70-441-2x.webp"
-      },
-      {
-        "id": "70:442",
-        "x": 1932.546875,
-        "y": 1117.7373046875,
-        "w": 539.3519287109375,
-        "h": 260.70489501953125,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 18",
-        "src": "/portfolio-a/node-70-442-2x.webp"
-      },
-      {
-        "id": "70:443",
-        "x": 1383.1337890625,
-        "y": 1389.5869140625,
-        "w": 538.1939697265625,
-        "h": 247.14471435546875,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 6월 8일 오전 09_38_30 1",
-        "src": "/portfolio-a/node-70-443-2x.webp"
-      },
-      {
-        "id": "70:444",
-        "x": 1932.5687866210938,
-        "y": 1389.5771484375,
-        "w": 539.3296508789062,
-        "h": 247.66622924804688,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 6월 8일 오전 09_38_30 2",
-        "src": "/portfolio-a/node-70-444-2x.webp"
-      },
-      {
-        "id": "70:434",
         "x": 2512,
         "y": 635,
-        "w": 1088.762451171875,
-        "h": 446.6508483886719,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 1",
-        "src": "/portfolio-a/node-70-434.webp"
-      },
-      {
-        "id": "70:435",
-        "x": 2512,
-        "y": 1165.9228515625,
-        "w": 532.8275146484375,
-        "h": 218.83985900878906,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 2",
-        "src": "/portfolio-a/node-70-435-2x.webp"
-      },
-      {
-        "id": "70:436",
-        "x": 2512,
-        "y": 1445.9326171875,
-        "w": 532.8275146484375,
-        "h": 189.7518310546875,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 4",
-        "src": "/portfolio-a/node-70-436-2x.webp"
-      },
-      {
-        "id": "70:437",
-        "x": 3067.9365234375,
-        "y": 1445.9326171875,
-        "w": 532.8275146484375,
-        "h": 189.7518310546875,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 5",
-        "src": "/portfolio-a/node-70-437-2x.webp"
-      },
-      {
-        "id": "70:438",
-        "x": 3067.9365234375,
-        "y": 1165.9228515625,
-        "w": 532.8275146484375,
-        "h": 218.83985900878906,
-        "type": "image",
-        "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 3",
-        "src": "/portfolio-a/node-70-438-2x.webp"
+        "w": 1088,
+        "h": 1001.118,
+        "src": "/portfolio-a/live-70-433.webp",
+        "rawSource": true
       }
     ],
     "background": {
       "r": 0,
       "g": 0,
       "b": 0
-    },
-    "composite": "/portfolio-a/frame-73-16-faithful.webp"
+    }
   },
   {
     "id": "73:40",
@@ -2763,8 +2596,7 @@
       "r": 0,
       "g": 0,
       "b": 0
-    },
-    "composite": "/portfolio-a/frame-73-40-faithful.webp"
+    }
   },
   {
     "id": "73:58",
@@ -3093,7 +2925,9 @@
         "h": 829.6056518554688,
         "type": "image",
         "name": "스크린샷 2026-06-07 오후 11.47.37 1",
-        "src": "/portfolio-a/cinder-code.webp"
+        "src": "/portfolio-a/live-58-188.webp",
+        "corner": 20.778688430786133,
+        "rawSource": true
       },
       {
         "id": "58:189",
@@ -3103,7 +2937,9 @@
         "h": 411.3697204589844,
         "type": "image",
         "name": "스크린샷 2026-06-07 오후 11.49.23 1",
-        "src": "/portfolio-a/node-58-189.webp"
+        "src": "/portfolio-a/live-58-189.webp",
+        "corner": 0,
+        "rawSource": true
       },
       {
         "id": "58:190",
@@ -3113,7 +2949,9 @@
         "h": 411.3697204589844,
         "type": "image",
         "name": "스크린샷 2026-06-07 오후 11.49.38 1",
-        "src": "/portfolio-a/node-58-190.webp"
+        "src": "/portfolio-a/live-58-190.webp",
+        "corner": 0,
+        "rawSource": true
       },
       {
         "id": "58:192",
@@ -3123,7 +2961,9 @@
         "h": 411.3697204589844,
         "type": "image",
         "name": "스크린샷 2026-06-07 오후 11.49.56 1",
-        "src": "/portfolio-a/node-58-192.webp"
+        "src": "/portfolio-a/live-58-192.webp",
+        "corner": 0,
+        "rawSource": true
       },
       {
         "id": "70:502",
@@ -3133,7 +2973,9 @@
         "h": 764.3167114257812,
         "type": "image",
         "name": "스크린샷 2026-06-07 오후 11.52.41 1",
-        "src": "/portfolio-a/node-70-502.webp"
+        "src": "/portfolio-a/live-70-502.webp",
+        "corner": 0,
+        "rawSource": true
       },
       {
         "id": "70:503",
@@ -3143,7 +2985,9 @@
         "h": 883.7117919921875,
         "type": "image",
         "name": "스크린샷 2026-06-07 오후 11.51.31 1",
-        "src": "/portfolio-a/node-70-503.webp"
+        "src": "/portfolio-a/live-70-503.webp",
+        "corner": 0,
+        "rawSource": true
       },
       {
         "id": "70:523",
@@ -3154,7 +2998,8 @@
         "type": "image",
         "name": "화면 캡처 2026-05-28 222523 1",
         "src": "/portfolio-a/raw-70-523.webp",
-        "rawSource": true
+        "rawSource": true,
+        "corner": 15
       }
     ],
     "background": {
@@ -3229,7 +3074,9 @@
         "h": 960,
         "type": "image",
         "name": "화면 캡처 2026-06-09 195941 1",
-        "src": "/portfolio-a/node-70-524.webp"
+        "src": "/portfolio-a/live-70-524.webp",
+        "corner": 15,
+        "rawSource": true
       },
       {
         "id": "70:512",
@@ -3239,7 +3086,9 @@
         "h": 764,
         "type": "image",
         "name": "화면 캡처 2026-05-20 210107 1",
-        "src": "/portfolio-a/cinder-blender.webp"
+        "src": "/portfolio-a/live-70-512.webp",
+        "corner": 15,
+        "rawSource": true
       },
       {
         "id": "70:509",
@@ -3249,7 +3098,9 @@
         "h": 1136,
         "type": "image",
         "name": "화면 캡처 2026-05-28 222123 1",
-        "src": "/portfolio-a/node-70-509.webp"
+        "src": "/portfolio-a/live-70-509.webp",
+        "corner": 15,
+        "rawSource": true
       }
     ],
     "background": {
