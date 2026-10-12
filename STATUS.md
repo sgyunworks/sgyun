@@ -144,3 +144,7 @@
 - [x] Summary/Description과 3개 장면을 지식체계의 확인 사실인 3인치 풀레인지 유닛 2개, Bluetooth·앰프, 액추에이터·스프링·힌지·베어링, 알루미늄 윙·스탠드, 실제 프로토타입, 2025 전시·강원디자인전람회 입선 범위에서 작성했다.
 - [x] 프로세스 콜라주와 실물 프로토타입 이미지를 `EVIDENCE`에 배치하고, 작동 영상은 로컬 MP4를 복제하지 않고 YouTube 지연 임베드로 연결했다.
 - [x] The Aviator 상세를 데스크톱·모바일에서 끝까지 스크롤해 이미지 순서, overflow 0, 깨진 이미지 0, console/page error 0, 재생 전 iframe 0을 확인했다. 재생 클릭 뒤 `youtube-nocookie.com/embed/T-T_7QIveWY?autoplay=1&rel=0` 생성도 확인했다.
+
+## Release continuity refinement — 2026-10-12
+
+User found a pause between rebound and dial travel. Flight now overlaps recoil after 70 ms, with continuous spring/arc blending and rotation; total entry motion reduced from 1700 ms to 1050 ms. No settled middle pose.

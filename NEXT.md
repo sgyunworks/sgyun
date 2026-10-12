@@ -1,6 +1,6 @@
 # Current next steps — Portfolio A renewal
 
-1. Review the new Y wire-pluck landing, transition timing and the small rotary navigation at `http://localhost:3100/ko`.
+1. Review the new Y wire-pluck landing, overlapping recoil/travel timing and the small rotary navigation at `http://localhost:3100/ko`.
 2. After review, merge/deploy `codex/portfolio-a-renewal` to update sgyun.kr. The old live site remains the current production version.
 3. If the Figma prototype placeholder becomes ready, replace it with verified Vibey physical prototype evidence.
 4. A full English translation of the original Korean detail essays is a separate content pass. Current English routes have English covers and summaries with original Korean portfolio pages.

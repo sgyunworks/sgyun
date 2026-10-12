@@ -205,3 +205,7 @@ The Aviator는 새로 제공된 렌더 `1–5`를 숫자 순서로 유지하고,
 이 결정은 위의 저이득 `page-scroll` 결정을 대체한다. 일반 페이지에서는 hit area, pointer capture, `window.scrollTo` drag 변환, slider role, 키보드 값 변경, rail click, drag haptic, 최초 방문 가이드를 제거한다. 다이얼 위에서 시작한 터치도 브라우저의 native pan으로 통과한다. 다만 native scroll이 detent를 넘을 때는 iOS 18 native switch haptic과 Vibration API를 이용한 짧은 촉각 피드백을 제공한다. `FIELD_00`과 `VAULT_01`은 조작 자체가 콘텐츠인 별도 이스터에그이므로 scrub·키보드 대체 입력·햅틱을 유지한다.
 
 데스크톱 사운드는 진입 즉시 AudioContext resume을 시도한다. 브라우저 autoplay 정책이 막는 경우를 숨기지 않고, 클릭 UI를 추가하는 대신 최초 wheel·scroll·키 입력을 해제 입력으로 사용한다.
+
+## Release continuity refinement — 2026-10-12
+
+User found a pause between rebound and dial travel. Flight now overlaps recoil after 70 ms, with continuous spring/arc blending and rotation; total entry motion reduced from 1700 ms to 1050 ms. No settled middle pose.

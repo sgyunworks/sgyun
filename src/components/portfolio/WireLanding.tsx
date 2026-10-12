@@ -33,13 +33,18 @@ export function WireLanding({locale}:{locale:Locale}) {
   setPhase('rebound');const start=performance.now();
   const animate=(now:number)=>{
    const elapsed=now-start;
-   if(elapsed<780){const s=elapsed/1000,decay=Math.exp(-4.5*s);setPosition({x:from.x*decay*Math.cos(17*s),y:from.y*decay*Math.cos(20*s)});}
-   else if(continueToWorks){
-    const t=Math.min(1,(elapsed-780)/920),e=t*t*(3-2*t);setPhase('travel');setTravel(e);
+   const seconds=elapsed/1000,decay=Math.exp(-5.8*seconds);
+   const spring={x:from.x*decay*Math.cos(17*seconds),y:from.y*decay*Math.cos(20*seconds)};
+   if(continueToWorks){
+    // Overlap the first recoil with flight: no settled pose or second start.
+    const t=Math.min(1,Math.max(0,(elapsed-70)/980)),e=t*t*(3-2*t);
+    setPhase(t>0?'travel':'rebound');setTravel(e);
     const mobile=window.innerWidth<=700,dx=window.innerWidth-(mobile?45:65)-anchor.x,dy=window.innerHeight-(mobile?70:100)-anchor.y;
-    setPosition({x:dx*e,y:dy*e-Math.sin(Math.PI*t)*Math.min(170,window.innerHeight*.18)});
+    const arc=Math.sin(Math.PI*e)*Math.min(140,window.innerHeight*.16);
+    setPosition({x:spring.x*(1-e)+dx*e,y:spring.y*(1-e)+dy*e-arc});
     if(t===1){if(soundRef.current)wireTone(.3);enter();return;}
-   }else{setPosition({x:0,y:0});setPhase('idle');return;}
+   }else if(elapsed<620){setPosition(spring);}
+   else{setPosition({x:0,y:0});setPhase('idle');return;}
    frame.current=requestAnimationFrame(animate);
   };frame.current=requestAnimationFrame(animate);
  };
@@ -58,11 +63,11 @@ export function WireLanding({locale}:{locale:Locale}) {
   if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);
   release(d.position,!cancel&&Math.hypot(d.position.x,d.position.y)>24);
  };
- const rotation=phase==='travel'?travel*300:position.x*.1;
+ const rotation=position.x*.1*(1-travel)+travel*300;
  const x=anchor.x+position.x,y=anchor.y+position.y;
  const attach=(dx:number,dy:number)=>{const r=rotation*Math.PI/180;return {x:x+dx*Math.cos(r)-dy*Math.sin(r),y:y+dx*Math.sin(r)+dy*Math.cos(r)};};
  const left=attach(-anchor.w*.36,-anchor.h*.29),right=attach(anchor.w*.36,-anchor.h*.29),bottom=attach(0,anchor.h*.28);
- const bend=phase==='rebound'?position.x*.7:0;
+ const bend=(phase==='rebound'||phase==='travel')?position.x*.7*(1-travel):0;
  const paths=[`M${anchor.x-anchor.vh*.24},0 Q${(anchor.x-anchor.vh*.24+left.x)/2+bend},${left.y/2} ${left.x},${left.y}`,`M${anchor.x+anchor.vh*.24},0 Q${(anchor.x+anchor.vh*.24+right.x)/2-bend},${right.y/2} ${right.x},${right.y}`,`M${bottom.x},${bottom.y} Q${bottom.x+bend},${(bottom.y+anchor.vh)/2} ${anchor.x},${anchor.vh}`];
  return <section className={styles.landing} data-phase={phase} aria-label="SGYUN Portfolio 2026">
   <span className={styles.corner}>S̲GYUN</span>

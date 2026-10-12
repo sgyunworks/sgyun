@@ -1,3 +1,7 @@
+## Continuous release — 2026-10-12
+
+Production build and diff check passed. Browser pointer drag verified overlapping recoil/travel and successful Works arrival with sound ON. Transition capture: .local/wire-motion-continuity.jpg.
+
 ## Wire Y landing verification — 2026-10-12
 
 - Compared desktop 1440×810 with Portfolio A cover: SGYUN proportions, S underline, source subtitle and fine three-wire composition retained. Wires connect to Y and reach viewport boundaries. Mobile 390×844 inspected; no horizontal overflow.
