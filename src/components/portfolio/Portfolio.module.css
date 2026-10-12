@@ -47,3 +47,7 @@
 
 @media(min-width:701px){.sourceSingleLine{white-space:pre}}
 @media(min-width:701px){.videoLink>span{display:none}}
+/* Complex source compositions retain Figma's clipping, exposure and layer blending.
+   Semantic live content remains available; narrow screens use the reading layout. */
+.sourceComposite{display:none}
+@media(min-width:701px){.faithfulPage> :not(.sourceComposite){opacity:0;pointer-events:none}.faithfulPage>.sourceComposite{display:block;object-fit:contain;z-index:1}.faithfulPage{aspect-ratio:16/9;padding:0}}

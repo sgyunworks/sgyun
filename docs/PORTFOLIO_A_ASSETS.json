@@ -626,6 +626,30 @@
       "name": "source-vector",
       "nodeId": "73:83",
       "path": "/portfolio-a/vector-73-83.svg"
+    },
+    {
+      "name": "faithful-source-73:16",
+      "nodeId": "73:16",
+      "path": "/portfolio-a/frame-73-16-faithful.webp",
+      "source": "3840x2160 full-frame Figma export; lossless, no resizing; desktop composition with semantic HTML/mobile reading layout retained."
+    },
+    {
+      "name": "faithful-source-73:40",
+      "nodeId": "73:40",
+      "path": "/portfolio-a/frame-73-40-faithful.webp",
+      "source": "3840x2160 full-frame Figma export; lossless, no resizing; desktop composition with semantic HTML/mobile reading layout retained."
+    },
+    {
+      "name": "faithful-source-36:431",
+      "nodeId": "36:431",
+      "path": "/portfolio-a/frame-36-431-faithful.webp",
+      "source": "3840x2160 full-frame Figma export; lossless, no resizing; desktop composition with semantic HTML/mobile reading layout retained."
+    },
+    {
+      "name": "wishbone-rear-original",
+      "nodeId": "36:694",
+      "path": "/portfolio-a/raw-36-694.webp",
+      "source": "Original full-resolution image fill; lossless WebP, no resampling."
     }
   ]
 }

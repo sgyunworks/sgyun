@@ -739,7 +739,8 @@
       "r": 1,
       "g": 1,
       "b": 1
-    }
+    },
+    "composite": "/portfolio-a/frame-36-431-faithful.webp"
   },
   {
     "id": "60:234",
@@ -1543,7 +1544,8 @@
         "h": 2189,
         "type": "image",
         "name": "untitled.1 1",
-        "src": "/portfolio-a/wishbone-front.webp"
+        "src": "/portfolio-a/raw-36-694.webp",
+        "rawSource": true
       },
       {
         "id": "36:688",
@@ -1623,7 +1625,8 @@
         "y": 1442.732421875,
         "w": 2508.528076171875,
         "h": 224.97723388671875,
-        "src": "/portfolio-a/vector-36-677.svg"
+        "src": "/portfolio-a/vector-36-677.svg",
+        "blendMode": "multiply"
       },
       {
         "id": "36:751",
@@ -2652,7 +2655,8 @@
       "r": 0,
       "g": 0,
       "b": 0
-    }
+    },
+    "composite": "/portfolio-a/frame-73-16-faithful.webp"
   },
   {
     "id": "73:40",
@@ -2759,7 +2763,8 @@
       "r": 0,
       "g": 0,
       "b": 0
-    }
+    },
+    "composite": "/portfolio-a/frame-73-40-faithful.webp"
   },
   {
     "id": "73:58",

@@ -297,3 +297,11 @@ The previous fidelity audit missed a critical asset-pipeline error: node exports
 Recovered 12 raw fills across VESA, Wishbone and CINDER using download_assets rawImages. Applied original normalized crop transforms to source pixels, retained full uncropped fills for FILL nodes, saved lossless WebP with versioned paths, and bypassed Next image resizing for these restored assets. No AI enhancement or upscaling. Raw source dimensions/crop provenance are in FIGMA_RAW_IMAGE_RESTORATION.json. Two prototype photos now use original exposure, without reproducing Figma's exposure filter.
 
 Browser verified VESA page 7 loads the actual 1779×1879 / 1775×1879 assets at native proportions; page 6 restored full 2048×2899 portrait fill. Build/type/lint passed. Production unchanged.
+
+## Source composition, favicon and films — 2026-10-12
+
+- Replaced favicon with outlined Poppins Regular S and a full-width underline. Export used a temporary Figma text node, removed in the same call; no persistent design changes.
+- Wishbone rear view 36:694 now uses original lossless pixels. Motion connector 36:677 uses multiply blending, matching the actual Figma fill (node opacity is 1).
+- VESA Prototype and CINDER pages 35–36 use full-resolution 3840×2160 source composites on desktop, preserving exact masks, exposure, background, stacking and typography. Live semantic content remains in DOM; <=700px retains readable text and intrinsic images. Tradeoff: desktop text is rasterized visually; source headers/page numbers are intentionally retained for exact fidelity.
+- Added Aviator T-T_7QIveWY and CINDER m0Xcpsa-vuI lazy no-cookie films before Next Project, with external links. Browser confirmed both player thumbnails, corrected source compositions and transparent connector. Mobile CINDER no horizontal overflow; favicon has refreshed content hash.
+- Build/type/lint and git diff checks passed. Local preview updated; production unchanged.

@@ -15,3 +15,11 @@ Fonts: Poppins and Pretendard (Noto Sans KR allowed by portfolio contract). Whit
 ## Validation
 
 Compare source cover compositions with desktop rendering. Check mobile reflow, keyboard navigation, sound on/off, reduced motion, project links and locale routes. Portfolio A has a blank Vibey prototype placeholder and stale chapter headers; exclude placeholder and correct headers without inventing evidence. Wishbone is motion animation, not a physical or engineering simulation.
+
+## Source composition, favicon and films — 2026-10-12
+
+- Replaced favicon with outlined Poppins Regular S and a full-width underline. Export used a temporary Figma text node, removed in the same call; no persistent design changes.
+- Wishbone rear view 36:694 now uses original lossless pixels. Motion connector 36:677 uses multiply blending, matching the actual Figma fill (node opacity is 1).
+- VESA Prototype and CINDER pages 35–36 use full-resolution 3840×2160 source composites on desktop, preserving exact masks, exposure, background, stacking and typography. Live semantic content remains in DOM; <=700px retains readable text and intrinsic images. Tradeoff: desktop text is rasterized visually; source headers/page numbers are intentionally retained for exact fidelity.
+- Added Aviator T-T_7QIveWY and CINDER m0Xcpsa-vuI lazy no-cookie films before Next Project, with external links. Browser confirmed both player thumbnails, corrected source compositions and transparent connector. Mobile CINDER no horizontal overflow; favicon has refreshed content hash.
+- Build/type/lint and git diff checks passed. Local preview updated; production unchanged.

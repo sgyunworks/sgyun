@@ -45,3 +45,5 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 - `VAULT_01`의 calibration 저장값을 보안·권한 판정으로 사용하지 않는다. 발견 흐름을 위한 로컬 상태로만 취급한다.
 
 - VESA original uploads recovered; no replacement renders requested from the user.
+
+- Review the restored desktop Figma compositions (VESA Prototype; CINDER 35–36) and the added Aviator/CINDER films before production deployment. These three desktop frames use 3840px source composites; mobile retains semantic text and uncropped images.

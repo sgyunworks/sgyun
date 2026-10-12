@@ -179,3 +179,11 @@ Browser verified VESA page 7 loads the actual 1779×1879 / 1775×1879 assets at 
 ## Effect volume — 2026-10-12
 
 Raised current portfolio ratchet and wire-pluck peak gains by 3x (+9.54 dB): 0.042→0.126 and 0.035→0.105. Legacy dial level retained. Tone/envelope and mute unchanged. Single wire voice worst-case summed partial peak remains below 0.251. Actual perceived loudness requires user listening on their device.
+
+## Source composition, favicon and films — 2026-10-12
+
+- Replaced favicon with outlined Poppins Regular S and a full-width underline. Export used a temporary Figma text node, removed in the same call; no persistent design changes.
+- Wishbone rear view 36:694 now uses original lossless pixels. Motion connector 36:677 uses multiply blending, matching the actual Figma fill (node opacity is 1).
+- VESA Prototype and CINDER pages 35–36 use full-resolution 3840×2160 source composites on desktop, preserving exact masks, exposure, background, stacking and typography. Live semantic content remains in DOM; <=700px retains readable text and intrinsic images. Tradeoff: desktop text is rasterized visually; source headers/page numbers are intentionally retained for exact fidelity.
+- Added Aviator T-T_7QIveWY and CINDER m0Xcpsa-vuI lazy no-cookie films before Next Project, with external links. Browser confirmed both player thumbnails, corrected source compositions and transparent connector. Mobile CINDER no horizontal overflow; favicon has refreshed content hash.
+- Build/type/lint and git diff checks passed. Local preview updated; production unchanged.
