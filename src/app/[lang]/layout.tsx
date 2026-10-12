@@ -32,6 +32,11 @@ export async function generateMetadata({
         en: `/en`,
       },
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${siteConfig.name} | Industrial · Metalcraft · AI Creative Design`,
+      description: siteConfig.description[validLang],
+    },
     openGraph: {
       title: `${siteConfig.name} | Industrial · Metalcraft · AI Creative Design`,
       description: siteConfig.description[validLang],

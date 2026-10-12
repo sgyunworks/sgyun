@@ -216,3 +216,6 @@ Production confirmed READY: https://sgyun.kr, deployment dpl_ERmTr5Hw5DERRPXa9nt
 
 ## Mobile caption association audit — 2026-10-13
 Reviewed all 29 source sections. Replaced coordinate-only mobile ordering for media-caption relationships with explicit groups on pages 5, 10, 11, 16, 26, 29, 31, 33, 35 and 39. Aviator assembly's two photographs stay together before their shared caption. CINDER car names/subtitles/descriptions remain grouped with the relevant view sheet. Mobile captions use a closer 12px image gap. Desktop absolute positioning and source geometry remain unchanged. Production build passed; live local browser verified VESA problem/production/prototype ordering and rendered both example captions directly under their images. User authorized production update.
+
+## Social sharing preview — 2026-10-13
+Replaced legacy dark Engineering Art Open Graph graphic with current white SGYUN underlined wordmark and wire motif, 1200×630 PNG. Bundled licensed Poppins Regular for deterministic rendering. Updated KO/EN descriptions and localized Twitter metadata. Build passed and generated OG/Twitter tags checked for both locales; image visually inspected. Social app-specific cache/display not directly tested.
