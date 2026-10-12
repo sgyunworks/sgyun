@@ -49,3 +49,4 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 
 
 - Review bilingual live text and restored individual media layouts before production release. Whole editorial pages must never be flattened into image assets.
+- CINDER cover now includes a browser CRT equivalent around native localized content; preserve this parent-frame effect when changing assets.

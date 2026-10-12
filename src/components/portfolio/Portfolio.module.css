@@ -58,3 +58,17 @@
 }
 @media(max-width:700px){.sourcePage .sourceDecoration{display:none}}
 @media(min-width:701px){.sourcePage h2.sourceText{white-space:pre}.sourceDecoration img{object-fit:cover}}
+
+/* Portfolio A frame 65:413: CRT screen v584. Keep editorial text live.
+   Source: mask 30, pitch 12/3840, scanlines 20, size 8/3840, aberration 47.
+   CSS/SVG equivalent; no rasterized editorial copy. */
+.coverContent { display: contents; }
+.crtContent { position:absolute; inset:0; filter:url(#cinder-crt); }
+.crtFilter { position:absolute; width:0; height:0; pointer-events:none; }
+.cinder { background:#050505; color:white; }
+.cinder .chapterLabel { color:#eee; }
+.crtScreen { position:absolute; inset:0; z-index:5; pointer-events:none; background: repeating-linear-gradient(90deg,rgba(255,0,0,.30) 0 calc(100% / 960),rgba(0,255,0,.30) calc(100% / 960) calc(100% / 480),rgba(0,0,255,.30) calc(100% / 480) calc(100% / 320)), repeating-linear-gradient(0deg,transparent 0 calc(100% / 540),rgba(0,0,0,.2) calc(100% / 540) calc(100% / 270)); mix-blend-mode:multiply; }
+.crtScreen::after { content:""; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23888' filter='url(%23n)' d='M0 0h160v160H0z'/%3E%3C/svg%3E"); opacity:.2; mix-blend-mode:soft-light; }
+@media(max-width:700px) { .crtContent { position:relative; width:100%; display:flex; flex-direction:column; } .cinder .coverCopy { color:white; } .crtScreen { background-size:960px 100%,100% 540px; } }
+@media(prefers-reduced-motion:no-preference) { .crtScreen::after { animation:crtStatic .16s steps(2,end) infinite; } }
+@keyframes crtStatic { 0% { background-position:0 0; opacity:.18; } 50% { background-position:37px 19px; opacity:.22; } 100% { background-position:13px 47px; opacity:.18; } }

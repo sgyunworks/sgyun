@@ -195,3 +195,7 @@ Supersedes the full-frame composite approach above. Removed all three flattened 
 All 45 Korean editorial text nodes across six projects now have English translations in portfolio-a-en.json; remaining nodes are already English. SourcePages receives locale and translates body text, captions, diagram labels, image descriptions and video links. Embedded software/UI screenshots remain documentary source imagery. Removed redundant English-only overview so section order matches Korean. Desktop uses actual text, with explicit heading line breaks; mobile retains reflow and full images.
 
 Verified build and translation coverage (zero missing Korean-node translations), plus browser English Build Process and Korean source pages. No deployment to production.
+
+## CINDER CRT cover — 2026-10-12
+
+Inspected live Figma frame 65:413: CRT screen shader v584 is applied to the parent frame, not the exported image 58:204. Its effect was omitted during layer reconstruction. Added an SVG chromatic split to the live image/text composition and CSS phosphor mask, scanlines and subtle animated static, with reduced-motion support. Uses source values (mask 30, pitch 12, scanlines 20, size 8, aberration 47) as visual guidance. This is a browser equivalent, not the proprietary shader runtime; shader source retrieval was unavailable. Both Works and detail use the shared cover. Text remains selectable and localized. Build passed and English cover visually checked locally.

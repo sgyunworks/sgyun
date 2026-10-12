@@ -11,6 +11,8 @@ export function ProjectCover({ project: p, locale, detail = false }: { project: 
   const ko = locale === "ko";
   const Heading = detail ? "h1" : "h2";
   return <section id={p.id} className={`${styles.cover} ${styles[p.id]}`} aria-label={p.title} data-portfolio-section={p.title}>
+    {p.id === "cinder" && <svg className={styles.crtFilter} aria-hidden="true"><defs><filter id="cinder-crt" x="-2%" y="-2%" width="104%" height="104%" colorInterpolationFilters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red"/><feOffset in="red" dx="2.35" result="redShift"/><feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" result="cyan"/><feOffset in="cyan" dx="-2.35" result="cyanShift"/><feBlend in="redShift" in2="cyanShift" mode="screen"/></filter></defs></svg>}
+    <div className={p.id === "cinder" ? styles.crtContent : styles.coverContent}>
     <div className={styles.coverArt}>
       <Image src={p.heroImage} alt={p.imageAlt[locale]} fill quality={95} sizes="100vw" priority={detail} />
     </div>
@@ -26,6 +28,8 @@ export function ProjectCover({ project: p, locale, detail = false }: { project: 
       {!detail && <Link className={styles.projectLink} href={`/${locale}/works/${p.slug}`}>{ko ? "작품 보기" : "View project"}<span aria-hidden="true">↗</span></Link>}
     </div>
     {p.id === "vesa" && <div className={styles.awardMarks}><Image src="/portfolio-a/vesa-awards.webp" alt="VESA design award marks" fill sizes="15vw" /></div>}
+    </div>
+    {p.id === "cinder" && <div className={styles.crtScreen} aria-hidden="true"/>}
   </section>;
 }
 
