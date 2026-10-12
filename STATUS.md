@@ -165,5 +165,13 @@ User found a pause between rebound and dial travel. Flight now overlaps recoil a
 - Restored 16 source SVG graphics and re-exported 15 small images/QR assets at 2x; raised detail image quality to 95 and used node-width responsive sizes.
 - Added VESA YouTube film 7zlyT0hP6_w after Prototype and before Next Project, with lazy no-cookie embed and external fallback.
 - Compared representative desktop renders for all six projects; checked mobile VESA intrinsic ratios and no horizontal overflow. Player thumbnail loaded successfully; full playback not certified. Build/type/lint passed.
-- Source limitation: VESA page 8 desk-arrangement illustrations are already pixelated in Figma. Higher-resolution original renders are still needed.
+- Superseded: the earlier conclusion that page 8 source renders were pixelated was incorrect; raw uploads were recovered in the following correction.
 - Local preview only; production deployment unchanged.
+
+## Raw image correction — 2026-10-12
+
+The previous fidelity audit missed a critical asset-pipeline error: node exports were clipped to parent frames and stretched back over full node bounds. VESA page 6 was distorted by 2.34x vertically. The original uploads are sharp; prior claims of inadequate source quality were incorrect.
+
+Recovered 12 raw fills across VESA, Wishbone and CINDER using download_assets rawImages. Applied original normalized crop transforms to source pixels, retained full uncropped fills for FILL nodes, saved lossless WebP with versioned paths, and bypassed Next image resizing for these restored assets. No AI enhancement or upscaling. Raw source dimensions/crop provenance are in FIGMA_RAW_IMAGE_RESTORATION.json. Two prototype photos now use original exposure, without reproducing Figma's exposure filter.
+
+Browser verified VESA page 7 loads the actual 1779×1879 / 1775×1879 assets at native proportions; page 6 restored full 2048×2899 portrait fill. Build/type/lint passed. Production unchanged.

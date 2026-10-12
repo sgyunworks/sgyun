@@ -150,7 +150,8 @@
         "h": 5053,
         "type": "image",
         "name": "humanholding2 복사 1",
-        "src": "/portfolio-a/node-36-303.webp"
+        "src": "/portfolio-a/raw-36-303.webp",
+        "rawSource": true
       },
       {
         "id": "36:342",
@@ -198,7 +199,8 @@
         "h": 1879,
         "type": "image",
         "name": "studio.9 1",
-        "src": "/portfolio-a/vesa-interface.webp"
+        "src": "/portfolio-a/raw-36-383.webp",
+        "rawSource": true
       },
       {
         "id": "36:381",
@@ -208,7 +210,8 @@
         "h": 1879,
         "type": "image",
         "name": "studio.6 1",
-        "src": "/portfolio-a/node-36-381.webp"
+        "src": "/portfolio-a/raw-36-381.webp",
+        "rawSource": true
       },
       {
         "id": "36:385",
@@ -341,7 +344,8 @@
         "h": 878,
         "type": "image",
         "name": "studio.2 2",
-        "src": "/portfolio-a/node-36-492.webp"
+        "src": "/portfolio-a/raw-36-492.webp",
+        "rawSource": true
       },
       {
         "id": "36:493",
@@ -351,7 +355,8 @@
         "h": 784,
         "type": "image",
         "name": "studio.4 2",
-        "src": "/portfolio-a/node-36-493.webp"
+        "src": "/portfolio-a/raw-36-493.webp",
+        "rawSource": true
       },
       {
         "id": "36:495",
@@ -390,7 +395,8 @@
         "h": 2676,
         "type": "image",
         "name": "studio.14 1",
-        "src": "/portfolio-a/vesa-exploded.webp"
+        "src": "/portfolio-a/raw-36-309.webp",
+        "rawSource": true
       }
     ],
     "background": {
@@ -687,7 +693,8 @@
         "h": 2382.192626953125,
         "type": "image",
         "name": "IMG_8385 2",
-        "src": "/portfolio-a/vesa-prototype.webp"
+        "src": "/portfolio-a/raw-36-450.webp",
+        "rawSource": true
       },
       {
         "id": "36:451",
@@ -697,7 +704,8 @@
         "h": 2380.751953125,
         "type": "image",
         "name": "IMG_8385 2",
-        "src": "/portfolio-a/node-36-451.webp"
+        "src": "/portfolio-a/raw-36-451.webp",
+        "rawSource": true
       },
       {
         "id": "36:457",
@@ -1545,7 +1553,8 @@
         "h": 2203,
         "type": "image",
         "name": "untitled.3 1",
-        "src": "/portfolio-a/node-36-688.webp"
+        "src": "/portfolio-a/raw-36-688.webp",
+        "rawSource": true
       },
       {
         "id": "36:727",
@@ -2721,7 +2730,8 @@
         "y": 612,
         "w": 1171,
         "h": 712,
-        "src": "/portfolio-a/node-80-606.webp"
+        "src": "/portfolio-a/raw-80-606.webp",
+        "rawSource": true
       },
       {
         "id": "80:608",
@@ -2741,7 +2751,8 @@
         "y": 1261.7216796875,
         "w": 1169.8988037109375,
         "h": 705.7462158203125,
-        "src": "/portfolio-a/node-80-609.webp"
+        "src": "/portfolio-a/raw-80-609.webp",
+        "rawSource": true
       }
     ],
     "background": {
@@ -3137,7 +3148,8 @@
         "h": 523,
         "type": "image",
         "name": "화면 캡처 2026-05-28 222523 1",
-        "src": "/portfolio-a/node-70-523.webp"
+        "src": "/portfolio-a/raw-70-523.webp",
+        "rawSource": true
       }
     ],
     "background": {

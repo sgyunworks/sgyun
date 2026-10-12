@@ -53,12 +53,14 @@
     {
       "name": "vesa-interface",
       "nodeId": "36:383",
-      "path": "/portfolio-a/vesa-interface.webp"
+      "path": "/portfolio-a/raw-36-383.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "vesa-exploded",
       "nodeId": "36:309",
-      "path": "/portfolio-a/vesa-exploded.webp"
+      "path": "/portfolio-a/raw-36-309.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "vesa-bending",
@@ -68,7 +70,8 @@
     {
       "name": "vesa-prototype",
       "nodeId": "36:450",
-      "path": "/portfolio-a/vesa-prototype.webp"
+      "path": "/portfolio-a/raw-36-450.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "vibey-controls",
@@ -163,12 +166,14 @@
     {
       "name": "node-36-303",
       "nodeId": "36:303",
-      "path": "/portfolio-a/node-36-303.webp"
+      "path": "/portfolio-a/raw-36-303.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "node-36-381",
       "nodeId": "36:381",
-      "path": "/portfolio-a/node-36-381.webp"
+      "path": "/portfolio-a/raw-36-381.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "node-36-483",
@@ -193,12 +198,14 @@
     {
       "name": "node-36-492",
       "nodeId": "36:492",
-      "path": "/portfolio-a/node-36-492.webp"
+      "path": "/portfolio-a/raw-36-492.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "node-36-493",
       "nodeId": "36:493",
-      "path": "/portfolio-a/node-36-493.webp"
+      "path": "/portfolio-a/raw-36-493.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "node-36-207",
@@ -218,7 +225,8 @@
     {
       "name": "node-36-451",
       "nodeId": "36:451",
-      "path": "/portfolio-a/node-36-451.webp"
+      "path": "/portfolio-a/raw-36-451.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "node-58-4",
@@ -308,7 +316,8 @@
     {
       "name": "node-36-688",
       "nodeId": "36:688",
-      "path": "/portfolio-a/node-36-688.webp"
+      "path": "/portfolio-a/raw-36-688.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "node-36-672",
@@ -488,7 +497,8 @@
     {
       "name": "node-80-606",
       "nodeId": "80:606",
-      "path": "/portfolio-a/node-80-606.webp"
+      "path": "/portfolio-a/raw-80-606.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "node-58-190",
@@ -508,7 +518,8 @@
     {
       "name": "node-70-523",
       "nodeId": "70:523",
-      "path": "/portfolio-a/node-70-523.webp"
+      "path": "/portfolio-a/raw-70-523.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "node-70-509",
@@ -523,7 +534,8 @@
     {
       "name": "node-80-609",
       "nodeId": "80:609",
-      "path": "/portfolio-a/node-80-609.webp"
+      "path": "/portfolio-a/raw-80-609.webp",
+      "source": "Original image fill, normalized Figma crop, lossless WebP; bypasses parent-clipped node export."
     },
     {
       "name": "cinder-web-top",

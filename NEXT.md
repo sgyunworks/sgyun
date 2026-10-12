@@ -44,4 +44,4 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 - Studio 인증을 랜딩 다이얼 비밀번호와 결합하지 않는다. `FIELD_00`은 게시 권한과 분리된 인터랙션 토이로만 유지한다.
 - `VAULT_01`의 calibration 저장값을 보안·권한 판정으로 사용하지 않는다. 발견 흐름을 위한 로컬 상태로만 취급한다.
 
-- Replace the two low-resolution desk-arrangement source illustrations on VESA page 8 when original renders are supplied.
+- VESA original uploads recovered; no replacement renders requested from the user.
