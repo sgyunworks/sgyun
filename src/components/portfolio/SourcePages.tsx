@@ -8,6 +8,20 @@ import styles from "./Portfolio.module.css";
 const videoLinks: Record<string,string>={"36:751":"https://www.instagram.com/p/DUNxuMTEiFl/","54:950":"https://www.instagram.com/reel/DWYtP7Lkudp/","80:616":"https://youtu.be/m0Xcpsa-vuI"};
 const ranges: Record<string,[number,number]>={vesa:[5,11],vibey:[13,16],wrgs:[19,22],wishbone:[24,27],aviator:[29,33],cinder:[35,39]};
 type SourceNode={opacity?:number;corner?:number;decorative?:boolean;fill?:string;blendMode?:CSSProperties["mixBlendMode"];rawSource?:boolean;id:string;type:string;x:number;y:number;w:number;h:number;text?:string;size?:number;font?:string;weight?:number;align?:string;src?:string;name?:string;color?:{r:number;g:number;b:number};letterSpacing?:{unit:string;value:number};paragraphSpacing?:number;lineHeight?:{unit:string;value?:number}};
+// Explicit source relationships: desktop coordinates cannot define mobile reading order.
+// Each group is rendered consecutively on mobile, keeping captions with their media.
+const mobileMediaGroups: Record<string, string[][]> = {
+ "5": [["36:323","36:320"],["36:327","36:322"]],
+ "10": [["36:408","16:92"],["36:207","16:94"],["36:403","16:96"]],
+ "11": [["36:448","36:446"],["36:449","36:437"]],
+ "16": [["61:243","62:321"],["61:242","62:320"]],
+ "26": [["36:751","36:752"]],
+ "29": [["51:883","52:897"],["51:882","52:898"]],
+ "31": [["54:950","54:949"]],
+ "33": [["36:839","36:840","54:940"],["36:869","54:941"]],
+ "35": [["70:427","73:24","73:25","73:26"],["70:439","73:30","73:31","73:32"],["70:433","73:36","73:37","73:38"]],
+ "39": [["80:616","80:614","80:615"]],
+};
 export function SourcePages({projectId,title,locale}:{projectId:string;title:string;locale:Locale}) {
  const range=ranges[projectId];if(!range)return null;
  return <div className={styles.sourcePages} lang={locale}>{pages.filter(p=>Number(p.page)>=range[0]&&Number(p.page)<=range[1]).map(page=>{
@@ -27,7 +41,15 @@ export function SourcePages({projectId,title,locale}:{projectId:string;title:str
   if((page.page==='15'||page.page==='16') && n.id in mobileSequence)return mobileSequence[n.id];
   return n.y;
  };
- const mobileOrder=[...nodes].sort((a,b)=>readingOrder(a)-readingOrder(b)||a.x-b.x);
+ const sortedNodes=[...nodes].sort((a,b)=>readingOrder(a)-readingOrder(b)||a.x-b.x);
+ const groups=mobileMediaGroups[page.page]??[];
+ const groupedIds=new Set(groups.flat());
+ const mobileOrder=sortedNodes.flatMap(node=>{
+  const group=groups.find(ids=>ids[0]===node.id);
+  if(group)return group.map(id=>nodes.find(n=>n.id===id)!).filter(Boolean);
+  return groupedIds.has(node.id)?[]:[node];
+ });
+ const captionIds=new Set(groups.flatMap(ids=>ids.slice(1)).filter(id=>nodes.find(n=>n.id===id)?.type==='text'));
  return <section key={page.id} id={`source-${page.page}`} className={`${styles.sourcePage} ${projectId==="cinder"?styles.darkSource:""} ${Number(page.page)===36?styles.configuratorPage:''}`} data-portfolio-section={heading} aria-label={heading} style={{backgroundColor:`rgb(${page.background.r*255} ${page.background.g*255} ${page.background.b*255})`,color:page.background.r<.5?"#f8f8f8":"#202020"}}>
    {page.page==='36' && <><div className={styles.webPreviewTop}><Image src="/portfolio-a/cinder-web-top.webp" alt={locale==='ko'?"CINDER 웹 랜딩 디자인 상단":"CINDER landing page — top"} fill quality={95} sizes="(max-width: 700px) 88vw, 25vw"/></div><div className={styles.webPreviewBottom}><Image src="/portfolio-a/cinder-web-bottom.webp" alt={locale==='ko'?"CINDER 웹 랜딩 디자인 하단":"CINDER landing page — bottom"} fill quality={95} sizes="(max-width: 700px) 88vw, 25vw"/></div></>}
    {nodes.map((node,i)=>{
@@ -43,7 +65,7 @@ export function SourcePages({projectId,title,locale}:{projectId:string;title:str
     const Tag=(node.size??0)>=64?'h2':'p';
     const sourceLineHeight=node.lineHeight?.unit==='PIXELS'?(node.lineHeight.value??0):(node.size??32)*(node.lineHeight?.unit==='PERCENT'?(node.lineHeight.value??155)/100:1.5);
     const singleLine=!translated?.includes('\n') && node.h<=sourceLineHeight*1.1;
-    return <Tag key={node.id} className={`${styles.sourceText} ${singleLine?styles.sourceSingleLine:""}`} style={{...pos,textAlign:node.align==='CENTER'?'center':node.align==='RIGHT'?'right':node.align==='JUSTIFIED'?'justify':'left',fontFamily:node.font==='Poppins'?'var(--font-poppins), "Pretendard Variable", sans-serif':node.font==='Noto Sans KR'?'var(--font-noto-sans-kr), sans-serif':'"Pretendard Variable", sans-serif',fontWeight:node.weight??400,color:node.color?`rgb(${node.color.r*255} ${node.color.g*255} ${node.color.b*255})`:undefined,letterSpacing:node.letterSpacing?.unit==='PERCENT'?`${node.letterSpacing.value/100}em`:node.letterSpacing?.unit==='PIXELS'?`${node.letterSpacing.value/38.4}cqw`:0,lineHeight:node.lineHeight?.unit==='PIXELS'?`${(node.lineHeight.value??40)/38.4}cqw`:node.lineHeight?.unit==='PERCENT'?(node.lineHeight.value??155)/100:'normal'}}>{translated}</Tag>;
+    return <Tag key={node.id} className={`${styles.sourceText} ${captionIds.has(node.id)?styles.sourceCaption:""} ${singleLine?styles.sourceSingleLine:""}`} style={{...pos,textAlign:node.align==='CENTER'?'center':node.align==='RIGHT'?'right':node.align==='JUSTIFIED'?'justify':'left',fontFamily:node.font==='Poppins'?'var(--font-poppins), "Pretendard Variable", sans-serif':node.font==='Noto Sans KR'?'var(--font-noto-sans-kr), sans-serif':'"Pretendard Variable", sans-serif',fontWeight:node.weight??400,color:node.color?`rgb(${node.color.r*255} ${node.color.g*255} ${node.color.b*255})`:undefined,letterSpacing:node.letterSpacing?.unit==='PERCENT'?`${node.letterSpacing.value/100}em`:node.letterSpacing?.unit==='PIXELS'?`${node.letterSpacing.value/38.4}cqw`:0,lineHeight:node.lineHeight?.unit==='PIXELS'?`${(node.lineHeight.value??40)/38.4}cqw`:node.lineHeight?.unit==='PERCENT'?(node.lineHeight.value??155)/100:'normal'}}>{translated}</Tag>;
    })}
  </section>;
  })}</div>;
