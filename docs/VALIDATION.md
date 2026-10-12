@@ -315,3 +315,6 @@ All 45 Korean editorial text nodes across six projects now have English translat
 Verified build and translation coverage (zero missing Korean-node translations), plus browser English Build Process and Korean source pages. No deployment to production.
 
 Final browser check: English CINDER live text contains zero Hangul editorial nodes, horizontal overflow 0 at 390px. English Assets, English Configurator, English VESA captions and Korean CINDER composition were visually inspected. Screenshot evidence is in ignored .local/cinder-assets-live-en.jpg. Existing embedded app screenshots are not translated.
+
+### Wishbone — 2026-10-12
+English fixed-column collision removed via localized stacked composition. Original/graded first frames inspected: neutral background approaches white while black shell, metal edges and contact shadows remain. Native video playback started successfully in browser; muted autoplay requested in follow-up; controls and playsInline enabled. Final section follows source pages and concept disclaimer. Build/typecheck passed.

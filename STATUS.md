@@ -199,3 +199,9 @@ Verified build and translation coverage (zero missing Korean-node translations),
 ## CINDER CRT cover — 2026-10-12
 
 Inspected live Figma frame 65:413: CRT screen shader v584 is applied to the parent frame, not the exported image 58:204. Its effect was omitted during layer reconstruction. Added an SVG chromatic split to the live image/text composition and CSS phosphor mask, scanlines and subtle animated static, with reduced-motion support. Uses source values (mask 30, pitch 12, scanlines 20, size 8, aberration 47) as visual guidance. This is a browser equivalent, not the proprietary shader runtime; shader source retrieval was unavailable. Both Works and detail use the shared cover. Text remains selectable and localized. Build passed and English cover visually checked locally.
+
+## Wishbone English cover and motion film — 2026-10-12
+- English cover now uses one stacked text block instead of three fixed Korean-sized columns. Revised tagline to “Automotive DNA, reimagined.” Korean cover unchanged.
+- Added user-supplied 2.mp4 at the end of Wishbone content, before Next Project, with muted autoplay, repeat playback, playsInline and native controls (user requested autoplay after initial review). Caption accurately identifies joint animation, not engineering simulation.
+- Original Downloads file retained. Web derivative is 1440×1802 H.264, faststart, CRF18. Highlight curve preserves black at 0–15%, lifts 80% to98%, keeping metal shading. Silent audio removed. Poster uses same grade.
+- Build passed; desktop cover and video playback checked; responsive player contains portrait footage without cropping.

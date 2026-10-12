@@ -72,3 +72,8 @@
 @media(max-width:700px) { .crtContent { position:relative; width:100%; display:flex; flex-direction:column; } .cinder .coverCopy { color:white; } .crtScreen { background-size:960px 100%,100% 540px; } }
 @media(prefers-reduced-motion:no-preference) { .crtScreen::after { animation:crtStatic .16s steps(2,end) infinite; } }
 @keyframes crtStatic { 0% { background-position:0 0; opacity:.18; } 50% { background-position:37px 19px; opacity:.22; } 100% { background-position:13px 47px; opacity:.18; } }
+
+/* English needs a single reading order rather than three Korean-sized columns. */
+@media(min-width:701px){.wishbone:lang(en) .coverCopy{display:block;left:46%;top:46%;width:47%;max-width:47%}.wishbone:lang(en) .coverCopy h1,.wishbone:lang(en) .coverCopy h2,.wishbone:lang(en) .coverCopy p,.wishbone:lang(en) .coverCopy>span,.wishbone:lang(en) .projectLink{position:static}.wishbone:lang(en) .coverCopy p{margin:22px 0 8px}.wishbone:lang(en) .coverCopy>span{max-width:38ch}.wishbone:lang(en) .projectLink{margin-top:26px}}
+.chairFilm video{display:block;width:min(100%,680px);height:auto;max-height:85svh;object-fit:contain;margin:32px auto 0;background:#fff}
+@media(min-width:701px){.wishbone:lang(en) .coverCopy>span{font-size:clamp(13px,.8333vw,22px)}}

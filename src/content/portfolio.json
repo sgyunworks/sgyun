@@ -599,7 +599,7 @@
       "category": "physical",
       "description": {
         "ko": "모빌리티의 DNA를 적용하다",
-        "en": "Applying the DNA of mobility."
+        "en": "Automotive DNA, reimagined."
       },
       "role": {
         "ko": "Rhino SubD · Fusion 조인트 · 모션 애니메이션",
@@ -609,7 +609,7 @@
       "heroAspectRatio": 1.7777777777777777,
       "imageAlt": {
         "ko": "더블 위시본 서스펜션 적용 의자",
-        "en": "A chair concept informed by double-wishbone suspension."
+        "en": "A chair inspired by double-wishbone suspension."
       },
       "imageFit": "contain",
       "imageTone": "light",
@@ -619,7 +619,7 @@
       },
       "detailSummary": {
         "ko": "더블 위시본 서스펜션 적용 의자",
-        "en": "A chair concept informed by double-wishbone suspension."
+        "en": "A chair inspired by double-wishbone suspension."
       },
       "detailChapters": [
         {
