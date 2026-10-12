@@ -154,3 +154,5 @@ The former dark Vault Instrument specification below is retained as historical c
 - Owner Studio는 공개 내비게이션에서 링크하지 않으며 비밀번호 세션, draft/published와 저장 결과를 명확히 표시한다.
 - 대표 미디어는 실패 시 동일한 프레임 안에서 `MEDIA_UNAVAILABLE` 상태와 의미 있는 설명을 제공한다.
 - 없는 기록은 빈 검은 화면이 아니라 404 설명과 인덱스·홈 복귀 경로를 제공한다.
+
+- Mobile image policy (2026-10-12): cover, detail and CINDER web-preview images flow at intrinsic aspect ratio and auto height. Remove slide-ratio and fixed-height cropping on mobile only; desktop Portfolio A composition unchanged.

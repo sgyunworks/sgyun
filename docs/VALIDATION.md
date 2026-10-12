@@ -1,3 +1,7 @@
+## Mobile uncropped imagery — 2026-10-12
+
+390×844 browser: all six Works cover images render as contain/relative at their intrinsic ratio; Wishbone full seat, back and feet visible. No horizontal overflow. CINDER detail: 35 image elements use contain/relative; no horizontal overflow. CSS changes scoped to max-width 700px, desktop rules unchanged. Production build and diff check passed. Screenshot: .local/mobile-uncropped.jpg.
+
 ## Central guidance and elastic feedback — 2026-10-12
 
 Browser confirmed no direct Works links remain on landing, guidance follows subtitle at desktop/mobile widths, and the slow pulse animation is active. Keyboard Y entry reached Works. Production build and diff check passed. Pitch envelope revised; physical audio quality remains user listening verification. Screenshot: .local/landing-guidance.jpg.

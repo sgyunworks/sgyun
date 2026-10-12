@@ -21,7 +21,7 @@ export function SourcePages({projectId,title}:{projectId:string;title:string}) {
  };
  const mobileOrder=[...nodes].sort((a,b)=>readingOrder(a)-readingOrder(b)||a.x-b.x);
  return <section key={page.id} id={`source-${page.page}`} className={`${styles.sourcePage} ${projectId==="cinder"?styles.darkSource:""} ${Number(page.page)===36?styles.configuratorPage:''}`} data-portfolio-section={heading} aria-label={heading} style={{backgroundColor:`rgb(${page.background.r*255} ${page.background.g*255} ${page.background.b*255})`,color:page.background.r<.5?"#f8f8f8":"#202020"}}>
-   {page.page==='36' && <><div className={styles.webPreviewTop}><Image src="/portfolio-a/cinder-web-top.webp" alt="CINDER 웹 랜딩 디자인 상단" fill sizes="25vw"/></div><div className={styles.webPreviewBottom}><Image src="/portfolio-a/cinder-web-bottom.webp" alt="CINDER 웹 랜딩 디자인 하단" fill sizes="25vw"/></div></>}
+   {page.page==='36' && <><div className={styles.webPreviewTop}><Image src="/portfolio-a/cinder-web-top.webp" alt="CINDER 웹 랜딩 디자인 상단" fill sizes="(max-width: 700px) 88vw, 25vw"/></div><div className={styles.webPreviewBottom}><Image src="/portfolio-a/cinder-web-bottom.webp" alt="CINDER 웹 랜딩 디자인 하단" fill sizes="(max-width: 700px) 88vw, 25vw"/></div></>}
    {nodes.map((node,i)=>{
     const pos:CSSProperties={'--source-x':`${node.x/38.4}%`,'--source-y':`${node.y/21.6}%`,'--source-w':`${node.w/38.4}%`,'--source-h':`${node.h/21.6}%`,'--source-font':`${(node.size??32)/38.4}cqw`,'--source-order':mobileOrder.findIndex(n=>n.id===node.id)} as CSSProperties;
     if(node.type==='image'){

@@ -30,3 +30,11 @@
 
 /* Use the original 2048px render; preserve the mirrored Figma composition. */
 .wishbone .coverArt img{transform:scaleX(-1);object-fit:cover}
+
+/* Mobile images own their height: never crop tall products into slide-shaped boxes. */
+@media(max-width:700px){
+ .cover .coverArt{aspect-ratio:auto;height:auto;flex-shrink:0}
+ .cover .coverArt img,.sourcePage .sourceImage img,.webPreviewTop img,.webPreviewBottom img{position:relative!important;inset:auto!important;display:block;width:100%!important;height:auto!important;object-fit:contain;object-position:center}
+ .sourcePage .sourceImage{aspect-ratio:auto!important;max-height:none;flex-shrink:0}
+ .webPreviewTop,.webPreviewBottom{height:auto;overflow:visible;flex-shrink:0}
+}
