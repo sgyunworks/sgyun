@@ -12,7 +12,7 @@ export function ProjectCover({ project: p, locale, detail = false }: { project: 
   const Heading = detail ? "h1" : "h2";
   return <section id={p.id} className={`${styles.cover} ${styles[p.id]}`} aria-label={p.title} data-portfolio-section={p.title}>
     <div className={styles.coverArt}>
-      <Image src={p.heroImage} alt={p.imageAlt[locale]} fill sizes="100vw" priority={detail} />
+      <Image src={p.heroImage} alt={p.imageAlt[locale]} fill quality={95} sizes="100vw" priority={detail} />
     </div>
     {p.id === "vibey" && <div className={styles.vibeyObject}><Image src="/portfolio-a/vibey-display.webp" alt="" fill sizes="15vw" /></div>}
     <span className={styles.chapterLabel}>{p.number} / {p.title}</span>
@@ -44,6 +44,7 @@ export function PortfolioDetail({ project: p, locale }: { project: ArchiveProjec
    <ProjectCover project={p} locale={locale} detail/>
    {locale === "en" && <section className={styles.story} id="overview" data-portfolio-section="Overview"><div><span className={styles.eyebrow}>{p.role.en}</span><h2>{p.detailSummary?.en}</h2></div><p>{p.detailIntro.en}</p></section>}
    <SourcePages projectId={p.id} title={p.title}/>
+   {p.id === "vesa" && <section className={styles.projectFilm} id="vesa-film" data-portfolio-section="VESA in motion" aria-labelledby="vesa-film-title"><header><h2 id="vesa-film-title">VESA in motion</h2><p>{locale==='ko'?'VESA Based Floating Speaker 소개 영상':'VESA Based Floating Speaker — product film'}</p></header><div className={styles.filmPlayer}><iframe src="https://www.youtube-nocookie.com/embed/7zlyT0hP6_w" title="VESA Based Floating Speaker — product film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen/></div><a href="https://www.youtube.com/watch?v=7zlyT0hP6_w" target="_blank" rel="noreferrer">{locale==='ko'?'YouTube에서 보기':'Watch on YouTube'} ↗</a></section>}
    {(p.id === "wishbone" || p.id === "wrgs") && <p className={styles.evidenceNote}>{p.id === "wishbone" ? (locale==="ko" ? "콘셉트 모델 · Rhino SubD → STEP → Fusion 조인트 및 모션 애니메이션. 실물 제작 및 구조 시뮬레이션은 진행하지 않았습니다." : "Concept model · Rhino SubD → STEP → Fusion joints and motion animation. No physical fabrication or structural simulation.") : p.role[locale]}</p>}
    <nav className={styles.nextProject} aria-label="Next project"><span>{locale === "ko" ? "다음 작품" : "Next project"}</span><Link href={`/${locale}/works/${next.slug}`}>{next.title}<span aria-hidden="true">↗</span></Link><Link href={`/${locale}/works`} className={styles.backLink}>{locale === "ko" ? "전체 작품" : "All works"}</Link></nav>
    <PortfolioDial locale={locale}/>

@@ -158,3 +158,12 @@ User found a pause between rebound and dial travel. Flight now overlaps recoil a
 - Mobile image policy (2026-10-12): cover, detail and CINDER web-preview images flow at intrinsic aspect ratio and auto height. Remove slide-ratio and fixed-height cropping on mobile only; desktop Portfolio A composition unchanged.
 
 - 2026-10-12 live Figma check: cover logo 16:4 is Poppins Regular 400, zero tracking, underline on S only. Corrected landing and navigation wordmark. Guidance now pulses opacity 1→0.12 over 1.6s with visible hold phases; 15px/500. Keyboard focus and reduced motion remain steady.
+
+## Detail fidelity and VESA film — 2026-10-12
+
+- Audited 29 Portfolio A detail frames across VESA, Vibey, WRGS, Wishbone, Aviator and CINDER. Restored source percentage line heights, letter spacing, Noto Sans KR, and single-line source labels.
+- Restored 16 source SVG graphics and re-exported 15 small images/QR assets at 2x; raised detail image quality to 95 and used node-width responsive sizes.
+- Added VESA YouTube film 7zlyT0hP6_w after Prototype and before Next Project, with lazy no-cookie embed and external fallback.
+- Compared representative desktop renders for all six projects; checked mobile VESA intrinsic ratios and no horizontal overflow. Player thumbnail loaded successfully; full playback not certified. Build/type/lint passed.
+- Source limitation: VESA page 8 desk-arrangement illustrations are already pixelated in Figma. Higher-resolution original renders are still needed.
+- Local preview only; production deployment unchanged.

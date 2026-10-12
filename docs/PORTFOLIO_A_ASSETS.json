@@ -333,7 +333,8 @@
     {
       "name": "node-36-751",
       "nodeId": "36:751",
-      "path": "/portfolio-a/node-36-751.webp"
+      "path": "/portfolio-a/node-36-751-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-51-883",
@@ -348,7 +349,8 @@
     {
       "name": "node-54-950",
       "nodeId": "54:950",
-      "path": "/portfolio-a/node-54-950.webp"
+      "path": "/portfolio-a/node-54-950-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-51-880",
@@ -368,7 +370,8 @@
     {
       "name": "node-80-616",
       "nodeId": "80:616",
-      "path": "/portfolio-a/node-80-616.webp"
+      "path": "/portfolio-a/node-80-616-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-499",
@@ -383,22 +386,26 @@
     {
       "name": "node-70-428",
       "nodeId": "70:428",
-      "path": "/portfolio-a/node-70-428.webp"
+      "path": "/portfolio-a/node-70-428-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-429",
       "nodeId": "70:429",
-      "path": "/portfolio-a/node-70-429.webp"
+      "path": "/portfolio-a/node-70-429-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-430",
       "nodeId": "70:430",
-      "path": "/portfolio-a/node-70-430.webp"
+      "path": "/portfolio-a/node-70-430-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-431",
       "nodeId": "70:431",
-      "path": "/portfolio-a/node-70-431.webp"
+      "path": "/portfolio-a/node-70-431-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-432",
@@ -413,22 +420,26 @@
     {
       "name": "node-70-441",
       "nodeId": "70:441",
-      "path": "/portfolio-a/node-70-441.webp"
+      "path": "/portfolio-a/node-70-441-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-442",
       "nodeId": "70:442",
-      "path": "/portfolio-a/node-70-442.webp"
+      "path": "/portfolio-a/node-70-442-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-443",
       "nodeId": "70:443",
-      "path": "/portfolio-a/node-70-443.webp"
+      "path": "/portfolio-a/node-70-443-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-444",
       "nodeId": "70:444",
-      "path": "/portfolio-a/node-70-444.webp"
+      "path": "/portfolio-a/node-70-444-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-434",
@@ -438,22 +449,26 @@
     {
       "name": "node-70-435",
       "nodeId": "70:435",
-      "path": "/portfolio-a/node-70-435.webp"
+      "path": "/portfolio-a/node-70-435-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-436",
       "nodeId": "70:436",
-      "path": "/portfolio-a/node-70-436.webp"
+      "path": "/portfolio-a/node-70-436-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-437",
       "nodeId": "70:437",
-      "path": "/portfolio-a/node-70-437.webp"
+      "path": "/portfolio-a/node-70-437-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-70-438",
       "nodeId": "70:438",
-      "path": "/portfolio-a/node-70-438.webp"
+      "path": "/portfolio-a/node-70-438-2x.webp",
+      "sourceNote": "Re-exported at 2x scale and encoded WebP quality 95 for high-density displays."
     },
     {
       "name": "node-58-189",
@@ -519,6 +534,86 @@
       "name": "cinder-web-bottom",
       "nodeId": "58:141",
       "path": "/portfolio-a/cinder-web-bottom.webp"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "36:418",
+      "path": "/portfolio-a/vector-36-418.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "36:419",
+      "path": "/portfolio-a/vector-36-419.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "36:420",
+      "path": "/portfolio-a/vector-36-420.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "36:422",
+      "path": "/portfolio-a/vector-36-422.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "36:487",
+      "path": "/portfolio-a/vector-36-487.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "36:488",
+      "path": "/portfolio-a/vector-36-488.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "36:495",
+      "path": "/portfolio-a/vector-36-495.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "36:496",
+      "path": "/portfolio-a/vector-36-496.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "36:606",
+      "path": "/portfolio-a/vector-36-606.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "36:677",
+      "path": "/portfolio-a/vector-36-677.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "36:727",
+      "path": "/portfolio-a/vector-36-727.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "73:73",
+      "path": "/portfolio-a/vector-73-73.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "73:76",
+      "path": "/portfolio-a/vector-73-76.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "73:77",
+      "path": "/portfolio-a/vector-73-77.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "73:80",
+      "path": "/portfolio-a/vector-73-80.svg"
+    },
+    {
+      "name": "source-vector",
+      "nodeId": "73:83",
+      "path": "/portfolio-a/vector-73-83.svg"
     }
   ]
 }

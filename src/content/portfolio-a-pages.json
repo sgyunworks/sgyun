@@ -1,1 +1,3354 @@
-[{"id": "36:314", "page": "5", "nodes": [{"id": "36:317", "x": 232, "y": 216, "w": 861, "h": 242, "type": "text", "text": "Limits from\nDesktop Speaker", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}, {"id": "36:319", "x": 2290, "y": 229, "w": 1310, "h": 150, "type": "text", "text": "현대의 데스크 환경은 모니터, 키보드, 충전기, 스마트폰 등 다양한 기기로 점점 복잡해지고 있습니다. 그러나 기존 데스크 스피커는 여전히 책상 위의 고정된 물체로 남아 공간을 차지하고, 사용자의 자세나 모니터 배치에 따라 최적의 청취 위치를 만들기 어렵습니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}, {"id": "36:320", "x": 920, "y": 1880, "w": 316, "h": 50, "type": "text", "text": "비좁은 기존 스피커 환경", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 400, "color": {"r": 0.3799999952316284, "g": 0.3799999952316284, "b": 0.3799999952316284}}, {"id": "36:322", "x": 2556, "y": 1880, "w": 412, "h": 50, "type": "text", "text": "선과 부피 때문에 힘들었던 청소", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 400, "color": {"r": 0.3799999952316284, "g": 0.3799999952316284, "b": 0.3799999952316284}}, {"id": "36:323", "x": 240, "y": 600, "w": 1676, "h": 1200, "type": "image", "name": "image 1", "src": "/portfolio-a/node-36-323.webp"}, {"id": "36:327", "x": 1924, "y": 600, "w": 1676, "h": 1200, "type": "image", "name": "image 2", "src": "/portfolio-a/node-36-327.webp"}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "36:336", "page": "6", "nodes": [{"id": "36:303", "x": 0, "y": -918, "w": 3569, "h": 5053, "type": "image", "name": "humanholding2 복사 1", "src": "/portfolio-a/node-36-303.webp"}, {"id": "36:342", "x": 2294, "y": 229, "w": 1310, "h": 100, "type": "text", "text": "VESA Based Floating Speaker는 스피커를 VESA 호환 모니터암에 결합해 공중에 배치함으로써 데스크 표면을 비우고, 높이·각도·거리를 유연하게 조절할 수 있도록 제안합니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "36:362", "page": "7", "nodes": [{"id": "36:383", "x": 1935, "y": 473, "w": 1779, "h": 1879, "type": "image", "name": "studio.9 1", "src": "/portfolio-a/vesa-interface.webp"}, {"id": "36:381", "x": 126, "y": 473, "w": 1775, "h": 1879, "type": "image", "name": "studio.6 1", "src": "/portfolio-a/node-36-381.webp"}, {"id": "36:385", "x": 2330, "y": 229, "w": 1274, "h": 100, "type": "text", "text": "중앙의 마그네틱 스마트폰 인터페이스는 충전, 재생 제어, 정보 확인을 하나의 전면 경험으로 통합하며, 스피커를단순한 주변기기가 아닌 정돈된 작업 환경을 구성하는 데스크 오브제로 확장합니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "36:478", "page": "8", "nodes": [{"id": "36:482", "x": 2603, "y": 229, "w": 1001, "h": 100, "type": "text", "text": "작업환경이 바뀌면, 스피커도 함께 움직입니다. 모니터암의 관절 구조를 통해 가로·세로 배치와 높이, 거리, 각도를 조절해 사용자의 청취축에 맞춥니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}, {"id": "36:483", "x": 3000, "y": 1200, "w": 600, "h": 720, "type": "image", "name": "humanholding2 복사 14", "src": "/portfolio-a/node-36-483.webp"}, {"id": "36:484", "x": 2400, "y": 1200, "w": 600, "h": 720, "type": "image", "name": "humanholding2 복사 16", "src": "/portfolio-a/node-36-484.webp"}, {"id": "36:485", "x": 2400, "y": 480, "w": 600, "h": 720, "type": "image", "name": "studio.2 4", "src": "/portfolio-a/node-36-485.webp"}, {"id": "36:486", "x": 3000, "y": 480, "w": 600, "h": 720, "type": "image", "name": "humanholding2 복사 3", "src": "/portfolio-a/node-36-486.webp"}, {"id": "36:492", "x": 170, "y": 1042, "w": 1973, "h": 878, "type": "image", "name": "studio.2 2", "src": "/portfolio-a/node-36-492.webp"}, {"id": "36:493", "x": 170, "y": 296, "w": 1973, "h": 784, "type": "image", "name": "studio.4 2", "src": "/portfolio-a/node-36-493.webp"}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "36:410", "page": "9", "nodes": [{"id": "36:309", "x": 975, "y": -222, "w": 1890, "h": 2676, "type": "image", "name": "studio.14 1", "src": "/portfolio-a/vesa-exploded.webp"}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "16:84", "page": "10", "nodes": [{"id": "16:88", "x": 232, "y": 216, "w": 2140, "h": 121, "type": "text", "text": "Fabrication & iteration", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}, {"id": "16:92", "x": 688, "y": 1880, "w": 214, "h": 50, "type": "text", "text": "알루미늄 열풀림", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 400, "color": {"r": 0.3799999952316284, "g": 0.3799999952316284, "b": 0.3799999952316284}}, {"id": "16:94", "x": 1735, "y": 1880, "w": 370, "h": 50, "type": "text", "text": "3D 프린트 몰드 제작 및 밴딩", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 400, "color": {"r": 0.3799999952316284, "g": 0.3799999952316284, "b": 0.3799999952316284}}, {"id": "16:96", "x": 2986, "y": 1880, "w": 118, "h": 50, "type": "text", "text": "어셈블리", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 400, "color": {"r": 0.3799999952316284, "g": 0.3799999952316284, "b": 0.3799999952316284}}, {"id": "36:207", "x": 1360, "y": 480, "w": 1120, "h": 1320, "type": "image", "name": "IMG_7742 1", "src": "/portfolio-a/node-36-207.webp"}, {"id": "36:408", "x": 240, "y": 480, "w": 1110, "h": 1320, "type": "image", "name": "IMG_7978 1", "src": "/portfolio-a/vesa-bending.webp"}, {"id": "16:90", "x": 2472, "y": 228, "w": 1150, "h": 100, "type": "text", "text": "밴딩을 위해 알루미늄 열풀림을 진행하고, 3D 프린트 몰드 제작 후 직접 프레스하여 작업을 완료 했습니다. 실제 공정에서 확인한 조건을 바탕으로 형태와 조립을 다듬었습니다.", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}, {"id": "36:403", "x": 2490, "y": 480, "w": 1110, "h": 1320, "type": "image", "name": "IMG_7739 3", "src": "/portfolio-a/node-36-403.webp"}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "36:431", "page": "11", "nodes": [{"id": "36:437", "x": 2513, "y": 1880, "w": 309, "h": 50, "type": "text", "text": "실제 제작된 프로토타입", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 400, "color": {"r": 0.3799999952316284, "g": 0.3799999952316284, "b": 0.3799999952316284}}, {"id": "36:402", "x": 236, "y": 476, "w": 1491, "h": 1328, "type": "image", "name": "IMG_7739 4", "src": "/portfolio-a/node-36-402.webp"}, {"id": "36:446", "x": 921, "y": 1880, "w": 118, "h": 50, "type": "text", "text": "어셈블리", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 400, "color": {"r": 0.3799999952316284, "g": 0.3799999952316284, "b": 0.3799999952316284}}, {"id": "36:450", "x": 1622, "y": 177, "w": 2091.3623046875, "h": 2382.192626953125, "type": "image", "name": "IMG_8385 2", "src": "/portfolio-a/vesa-prototype.webp"}, {"id": "36:451", "x": 1752.5, "y": 178.06640625, "w": 1785.5640869140625, "h": 2380.751953125, "type": "image", "name": "IMG_8385 2", "src": "/portfolio-a/node-36-451.webp"}, {"id": "36:457", "x": 232, "y": 216, "w": 2140, "h": 121, "type": "text", "text": "Prototype", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "60:234", "page": "13", "nodes": [{"id": "58:4", "x": 0, "y": 0, "w": 3840, "h": 2160, "type": "image", "name": "01_diagonal_launch 1", "src": "/portfolio-a/node-58-4.webp"}, {"id": "60:236", "x": 236, "y": 216, "w": 1001, "h": 121, "type": "text", "text": "Physical Interaction", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}, {"id": "60:237", "x": 2187, "y": 227, "w": 1413, "h": 100, "type": "text", "text": "조금 더 밝게, 조금 덜 거칠게, 더 가까이. 말로 설명하기 어려운 작은 차이를 다이얼과 슬라이더로 탐색합니다. 결과를 바라보면서 조작하고, 변화의 원인과 결과를 이해할 수 있도록 설계했습니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}], "background": {"r": 0.9647058844566345, "g": 0.9647058844566345, "b": 0.9647058844566345}}, {"id": "62:330", "page": "14", "nodes": [{"id": "59:214", "x": 0, "y": 0, "w": 3870, "h": 2160, "type": "image", "name": "hardware_09 1", "src": "/portfolio-a/vibey-controls.webp"}], "background": {"r": 0.9647058844566345, "g": 0.9647058844566345, "b": 0.9647058844566345}}, {"id": "59:223", "page": "15", "nodes": [{"id": "59:229", "x": 236, "y": 216, "w": 2140, "h": 121, "type": "text", "text": "Vibey: Imaginator", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 1, "g": 1, "b": 1}}, {"id": "59:230", "x": 2117, "y": 228, "w": 1485, "h": 100, "type": "text", "text": "Imaginator는 이미지 제작에 Vibey 시스템을 적용한 작동형 웹 프로토타입입니다. 실시간 3D 미리보기에서 구도 ·카메라·조명·표면과 효과를 조절합니다. 실시간으로 프리비즈를 만들고 AI이미지 렌더러로 이미지를 생성합니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 1, "g": 1, "b": 1}}, {"id": "61:253", "x": 240, "y": 480, "w": 2494, "h": 1440, "type": "image", "name": "스크린샷 2026-10-05 오후 4.23.33 1", "src": "/portfolio-a/vibey-imaginator.webp"}, {"id": "61:239", "x": 2717, "y": 992, "w": 885, "h": 511, "type": "image", "name": "스크린샷 2026-10-05 오후 4.19.36 1", "src": "/portfolio-a/node-61-239.webp"}, {"id": "61:247", "x": 2717, "y": 480, "w": 885, "h": 511, "type": "image", "name": "스크린샷 2026-10-05 오후 4.28.24 1", "src": "/portfolio-a/node-61-247.webp"}, {"id": "61:309", "x": 2726, "y": 1508, "w": 867, "h": 412, "type": "image", "name": "IMG_0215 1", "src": "/portfolio-a/node-61-309.webp"}], "background": {"r": 0.08627451211214066, "g": 0.09019608050584793, "b": 0.0941176488995552}}, {"id": "62:311", "page": "16", "nodes": [{"id": "61:242", "x": 240, "y": 1267, "w": 840, "h": 533, "type": "image", "name": "vibey-previs (3) 1", "src": "/portfolio-a/vibey-previs.webp"}, {"id": "61:243", "x": 1141, "y": 240, "w": 2459, "h": 1560, "type": "image", "name": "vibey-previs (3) 2", "src": "/portfolio-a/vibey-output.webp"}, {"id": "62:320", "x": 496, "y": 1880, "w": 328, "h": 50, "type": "text", "text": "Vibey로 설정한 프리비즈", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.9350000023841858, "g": 0.9350000023841858, "b": 0.9350000023841858}}, {"id": "62:321", "x": 2204, "y": 1870, "w": 344, "h": 50, "type": "text", "text": "AI렌더러 처리 완료 이미지", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.9350000023841858, "g": 0.9350000023841858, "b": 0.9350000023841858}}, {"id": "62:324", "x": 236, "y": 216, "w": 2140, "h": 121, "type": "text", "text": "Output", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 1, "g": 1, "b": 1}}], "background": {"r": 0.08627451211214066, "g": 0.09019608050584793, "b": 0.0941176488995552}}, {"id": "36:497", "page": "19", "nodes": [{"id": "36:529", "x": 0, "y": 0, "w": 3840, "h": 2160, "type": "image", "name": "KakaoTalk_20241211_025245124 1", "src": "/portfolio-a/node-36-529.webp"}, {"id": "36:633", "x": 2280, "y": 942, "w": 960, "h": 663, "type": "text", "text": "'제작의 혁신'이라는 키워드를 잡고, 팀은 이를 조인트와 패스너의 간소화로 재해석했습니다. 가구의 부품 결합 과정을 단순화하기 위해 단 하나의 ‘와이어 라쳇 기어’를 핵심 패스너로 고안했습니다. 와이어의 장력만으로 전체 파츠를 견고하게 고정하는 이 시스템은, 복잡한 조립을 직관적으로 단축시키는 동시에 모던한 조형미를 완성합니다.\n\n저는 WRG 시리즈에서 스툴을 맡아 제작을 진행했으며, 물리적 하중과 힘의 방향을 계산하여 구조적 안정성을 극대화했습니다. 수평 유지에 가장 효율적이고 안정적인 3개의 다리를 채택했으며, 지면을 향해 둔각으로 벌어지는 형태를 적용했습니다. 이는 하중이 가해질수록 상판과 다리의 짜맞춤 구조가 더욱 강하게 결속되도록 유도합니다. 와이어의 장력, 스틸판의 피로 변형을 방지하는 T자형 용접구조가 완벽하게 맞물려 텐션과 내구성을 동시에 충족시키는 구조입니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.07450980693101883, "g": 0.07450980693101883, "b": 0.07450980693101883}}, {"id": "36:635", "x": 2473, "y": 637, "w": 574, "h": 121, "type": "text", "text": "WRG Series", "size": 104, "align": "CENTER", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}, {"id": "36:637", "x": 2556, "y": 758, "w": 408, "h": 56, "type": "text", "text": "Wire Ratchet Gear Series", "size": 36, "align": "CENTER", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 400, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "36:570", "page": "20", "nodes": [{"id": "36:525", "x": 1920, "y": 0, "w": 1920, "h": 2160, "type": "image", "name": "DSC_9876 1", "src": "/portfolio-a/wrgs-front.webp"}, {"id": "36:528", "x": 0, "y": 1, "w": 1920, "h": 2159, "type": "image", "name": "DSC_9853 1", "src": "/portfolio-a/wrgs-top.webp"}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "36:538", "page": "21", "nodes": [{"id": "36:547", "x": 240, "y": 958, "w": 962, "h": 962, "type": "image", "name": "DSC_9890 2", "src": "/portfolio-a/node-36-547.webp"}, {"id": "36:548", "x": 1208, "y": 480, "w": 959, "h": 903, "type": "image", "name": "DSC_9900 3", "src": "/portfolio-a/node-36-548.webp"}, {"id": "36:549", "x": 239, "y": 480, "w": 963, "h": 472, "type": "image", "name": "DSC_9866 1", "src": "/portfolio-a/node-36-549.webp"}, {"id": "36:550", "x": 1208, "y": 1389, "w": 959, "h": 531, "type": "image", "name": "DSC_9889 1", "src": "/portfolio-a/node-36-550.webp"}, {"id": "36:551", "x": 236, "y": 216, "w": 2140, "h": 121, "type": "text", "text": "Joint & structure", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}, {"id": "36:553", "x": 2398, "y": 228, "w": 1204, "h": 100, "type": "text", "text": "와이어 라쳇 기어 패스너를 중심으로 스툴을 설계했습니다. 다리와 상판의 짜맞춤, 다리가 벌어지려는 방향, 와이어의 장력을 함께 고려하며 스케치와 모델링을 발전시켰습니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}, {"id": "36:555", "x": 2565, "y": 1200, "w": 1037, "h": 720, "type": "image", "name": "IMG_1134", "src": "/portfolio-a/node-36-555.webp"}, {"id": "36:556", "x": 2724, "y": 480, "w": 878, "h": 720, "type": "image", "name": "IMG_1133", "src": "/portfolio-a/node-36-556.webp"}], "background": {"r": 0.9647058844566345, "g": 0.9647058844566345, "b": 0.9647058844566345}}, {"id": "36:594", "page": "22", "nodes": [{"id": "36:600", "x": 236, "y": 216, "w": 1170, "h": 121, "type": "text", "text": "Crafting & Photo Shoot", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}, {"id": "36:609", "x": 240, "y": 480, "w": 810, "h": 1440, "type": "image", "name": "패스너 스테인리스", "src": "/portfolio-a/node-36-609.webp"}, {"id": "36:607", "x": 1060, "y": 480, "w": 833, "h": 1440, "type": "image", "name": "실물 제작과정 2", "src": "/portfolio-a/wrgs-making.webp"}, {"id": "36:608", "x": 1903, "y": 480, "w": 833, "h": 1440, "type": "image", "name": "실물 제작과정 1", "src": "/portfolio-a/node-36-608.webp"}, {"id": "36:612", "x": 2746, "y": 1205, "w": 854, "h": 715, "type": "image", "name": "DSC_9908 1", "src": "/portfolio-a/node-36-612.webp"}, {"id": "36:611", "x": 2746, "y": 480, "w": 854, "h": 715, "type": "image", "name": "DSC_9875 1", "src": "/portfolio-a/node-36-611.webp"}, {"id": "36:615", "x": 2129, "y": 226, "w": 1471, "h": 100, "type": "text", "text": "내식성·내구성과 용접 조건을 고려해 스테인리스를 선택하고 헤어라인으로 마감했습니다. 두께, 절곡, 용접 위치와 조립 단차를 제작 요청에 구체화했습니다. 이 경험은 이후 직접 용접을 배우고 작업하는 경험으로 이어졌습니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}], "background": {"r": 0.9647058844566345, "g": 0.9647058844566345, "b": 0.9647058844566345}}, {"id": "36:708", "page": "24", "nodes": [{"id": "36:656", "x": 2160, "y": 226, "w": 1445, "h": 306, "type": "text", "text": "가장 완벽한 승차감을 제공하는 자동차의 기술이 정적인 의자와 만난다면 어떨까? 'Double Wishbone Chair'는 고성능 차량의 서스펜션 시스템에서 영감을 받았습니다. 수천 킬로그램의 차체와 노면의 거친 충격을 제어하는 더블 위시본 서스펜션은 공학적 안정성을 의미합니다. 이 강력한 메커니즘을 가구 디자인에 접목하여, 의자가 단순한 휴식 도구를 넘어 '엔지니어링 아트'로 구현하고자 시도했습니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.07450980693101883, "g": 0.07450980693101883, "b": 0.07450980693101883}}, {"id": "36:716", "x": 232, "y": 216, "w": 589, "h": 242, "type": "text", "text": "Suspension\non Chair", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.07500000298023224, "g": 0.07500000298023224, "b": 0.07500000298023224}}, {"id": "36:703", "x": 1480, "y": 600, "w": 1055, "h": 1320, "type": "image", "name": "Double Wishbone Chair.6 1", "src": "/portfolio-a/wishbone-detail.webp"}, {"id": "36:705", "x": 2545, "y": 600, "w": 1055, "h": 1320, "type": "image", "name": "Double Wishbone Chair.8 1", "src": "/portfolio-a/node-36-705.webp"}, {"id": "36:698", "x": 232, "y": 600, "w": 1238, "h": 1320, "type": "image", "name": "double wishbone suspension 1", "src": "/portfolio-a/node-36-698.webp"}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "36:719", "page": "25", "nodes": [{"id": "36:694", "x": 1994, "y": -1, "w": 1750, "h": 2189, "type": "image", "name": "untitled.1 1", "src": "/portfolio-a/wishbone-front.webp"}, {"id": "36:688", "x": 70, "y": 120, "w": 1761, "h": 2203, "type": "image", "name": "untitled.3 1", "src": "/portfolio-a/node-36-688.webp"}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "36:742", "page": "26", "nodes": [{"id": "36:672", "x": 240, "y": 799.6669921875, "w": 840, "h": 1120, "type": "image", "name": "7", "src": "/portfolio-a/node-36-672.webp"}, {"id": "36:673", "x": 1920, "y": 799.6669921875, "w": 840, "h": 1120, "type": "image", "name": "5", "src": "/portfolio-a/node-36-673.webp"}, {"id": "36:674", "x": 1080, "y": 799.6669921875, "w": 840, "h": 1120, "type": "image", "name": "3", "src": "/portfolio-a/node-36-674.webp"}, {"id": "36:675", "x": 2760, "y": 799.6669921875, "w": 840, "h": 1120, "type": "image", "name": "1", "src": "/portfolio-a/node-36-675.webp"}, {"id": "36:751", "x": 1796, "y": 291, "w": 249, "h": 249, "type": "image", "name": "qr-code 1", "src": "/portfolio-a/node-36-751.webp"}, {"id": "36:752", "x": 1830, "y": 564, "w": 181, "h": 36, "type": "text", "text": "Motion Vid", "size": 36, "align": "CENTER", "font": "Pretendard", "lineHeight": {"unit": "PERCENT", "value": 100}, "weight": 600, "color": {"r": 0, "g": 0, "b": 0}}], "background": {"r": 1, "g": 1, "b": 1}}, {"id": "36:729", "page": "27", "nodes": [{"id": "36:736", "x": 1119, "y": 139, "w": 1603, "h": 1862, "type": "image", "name": "best2 2", "src": "/portfolio-a/wishbone-motion.webp"}, {"id": "36:754", "x": 2237, "y": 228, "w": 1363, "h": 100, "type": "text", "text": "Rhino SubD로 모델링한 형태를 STEP으로 Fusion에 가져와 조인트를 구성하고 모션 애니메이션을 제작했습니다. 컨셉 모델과 애니메이션을 통해 곡면 조형, 모델 전달, 조립 관계와 움직임의 표현을 보여줍니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.9350000023841858, "g": 0.9350000023841858, "b": 0.9350000023841858}}, {"id": "36:760", "x": 232, "y": 216, "w": 348, "h": 121, "type": "text", "text": "Motion", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.9350000023841858, "g": 0.9350000023841858, "b": 0.9350000023841858}}], "background": {"r": 0.0470588244497776, "g": 0.0470588244497776, "b": 0.0470588244497776}}, {"id": "52:894", "page": "29", "nodes": [{"id": "52:895", "x": 232, "y": 216, "w": 856, "h": 121, "type": "text", "text": "Sound Directivity", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.9019607901573181, "g": 0.9019607901573181, "b": 0.9019607901573181}}, {"id": "52:896", "x": 2115, "y": 229, "w": 1485, "h": 350, "type": "text", "text": "The Aviator는 날개의 움직임으로 스피커의 위치와 방향을 전환하는 키네틱 스피커입니다. 양쪽 날개 끝에 배치된  풀레인지 스피커는 접힌 상태에서 위쪽을 향하고, 펼쳐지면서 사용자를 향하도록 설계했습니다. 하나의 제품 안에서 공간을 채우는 방사형 음향과 사용자를 향하는 지향성 음향이라는 두 가지 사용 상황을 제안합니다.\n\n날개가 접힌 상태는 특정 청취 위치를 정하지 않고 공간 전반에 소리가 퍼지도록 의도한 구성입니다. 날개를 펼치면 두 스피커의 간격이 넓어지고 방사 방향이 사용자 쪽으로 지향되도록 전환됩니다. 이러한 형태 변화는 청취 방식의 전환을 눈으로 확인하게 하며, 사용자가 제품의 상태를 직관적으로 이해하도록 돕습니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 1, "g": 1, "b": 1}}, {"id": "52:897", "x": 684, "y": 1880, "w": 429, "h": 50, "type": "text", "text": "Folded Wings: 방사형 음향 모드", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.9350000023841858, "g": 0.9350000023841858, "b": 0.9350000023841858}}, {"id": "52:898", "x": 2485, "y": 1880, "w": 432, "h": 50, "type": "text", "text": "Spread Wings: 지향형 음향 모드", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.9350000023841858, "g": 0.9350000023841858, "b": 0.9350000023841858}}, {"id": "51:882", "x": 1440, "y": 574, "w": 2220, "h": 1249, "type": "image", "name": "top1 2", "src": "/portfolio-a/aviator-open.webp"}, {"id": "51:883", "x": 190, "y": 574, "w": 1130, "h": 1249, "type": "image", "name": "top2 2", "src": "/portfolio-a/node-51-883.webp"}], "background": {"r": 0, "g": 0, "b": 0}}, {"id": "54:912", "page": "30", "nodes": [{"id": "51:884", "x": 265, "y": 179, "w": 3309, "h": 1861, "type": "image", "name": "back 1", "src": "/portfolio-a/aviator-back.webp"}, {"id": "54:928", "x": 2160, "y": 228, "w": 1440, "h": 150, "type": "text", "text": "외형은 관절과 연결 부재, 와이어 등 움직임을 구성하는 구조를 드러내는 방식으로 정리했습니다. 각 부품의 연결 관계와 작동 과정이 제품의 형태를 이루며, 날개를 펼치는 동작에 기능적 의미를 부여합니다. The Aviator는 기계적 움직임과 청취 목적을 연결해, 소리를 어디로 향하게 할 것인지를 형태로 보여주는 스피커입니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 1, "g": 1, "b": 1}}], "background": {"r": 0, "g": 0, "b": 0}}, {"id": "54:922", "page": "31", "nodes": [{"id": "51:881", "x": 664, "y": 330, "w": 2512, "h": 1500, "type": "image", "name": "realside 1", "src": "/portfolio-a/node-51-881.webp"}, {"id": "54:949", "x": 1101, "y": 727, "w": 181, "h": 36, "type": "text", "text": "Motion Vid", "size": 36, "align": "CENTER", "font": "Pretendard", "lineHeight": {"unit": "PERCENT", "value": 100}, "weight": 600, "color": {"r": 0.817307710647583, "g": 0.817307710647583, "b": 0.817307710647583}}, {"id": "54:950", "x": 1080, "y": 480, "w": 223, "h": 223, "type": "image", "name": "adobe-express-qr-code 1", "src": "/portfolio-a/node-54-950.webp"}], "background": {"r": 0, "g": 0, "b": 0}}, {"id": "54:930", "page": "32", "nodes": [{"id": "51:880", "x": 480, "y": 81, "w": 2696, "h": 1920, "type": "image", "name": "quarterside 2", "src": "/portfolio-a/node-51-880.webp"}, {"id": "54:935", "x": 232, "y": 216, "w": 348, "h": 121, "type": "text", "text": "Motion", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.9350000023841858, "g": 0.9350000023841858, "b": 0.9350000023841858}}], "background": {"r": 0, "g": 0, "b": 0}}, {"id": "54:937", "page": "33", "nodes": [{"id": "54:938", "x": 232, "y": 216, "w": 1105, "h": 121, "type": "text", "text": "Prototype & Exhibition", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.9019607901573181, "g": 0.9019607901573181, "b": 0.9019607901573181}}, {"id": "54:940", "x": 1020, "y": 1880, "w": 118, "h": 50, "type": "text", "text": "어셈블리", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.9350000023841858, "g": 0.9350000023841858, "b": 0.9350000023841858}}, {"id": "54:941", "x": 2646, "y": 1880, "w": 235, "h": 50, "type": "text", "text": "SOSE* 2025 전시", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.9350000023841858, "g": 0.9350000023841858, "b": 0.9350000023841858}}, {"id": "36:839", "x": 245, "y": 480, "w": 1668, "h": 676, "type": "image", "name": "KakaoTalk_20260316_220730851_04 1", "src": "/portfolio-a/aviator-prototype.webp"}, {"id": "36:840", "x": 245, "y": 1170, "w": 1668, "h": 630, "type": "image", "name": "KakaoTalk_20260316_220730851_01 1", "src": "/portfolio-a/node-36-840.webp"}, {"id": "36:869", "x": 1928, "y": 476, "w": 1672, "h": 1324, "type": "image", "name": "image 5", "src": "/portfolio-a/node-36-869.webp"}, {"id": "54:947", "x": 2237, "y": 228, "w": 1363, "h": 50, "type": "text", "text": "SOSE* 2025 전시 모습 및 제작과정", "size": 32, "align": "RIGHT", "font": "Noto Sans KR", "lineHeight": {"unit": "PERCENT", "value": 154.99999523162842}, "weight": 300, "color": {"r": 0.9350000023841858, "g": 0.9350000023841858, "b": 0.9350000023841858}}], "background": {"r": 0, "g": 0, "b": 0}}, {"id": "73:16", "page": "35", "nodes": [{"id": "70:425", "x": 97, "y": -14, "w": 3840, "h": 2264, "type": "image", "name": "ㅠㅁ챃개ㅕㅜㅇ", "src": "/portfolio-a/node-70-425.webp"}, {"id": "73:19", "x": 240, "y": 235, "w": 1920, "h": 100, "type": "text", "text": "One platform.\nThree characters.", "size": 104, "align": "LEFT", "font": "Poppins", "weight": 300, "color": {"r": 0.9800000190734863, "g": 0.9800000190734863, "b": 0.9800000190734863}}, {"id": "73:20", "x": 2101, "y": 245, "w": 1499, "h": 150, "type": "text", "text": "내연기관의 소리·열·회전감을 트랙이라는 공간과 E-Fuel이라는 미래 조건 안에서 경험하게 하는 트랙카를 구상하고 컨피규레이터를 제작하는 작업을 진행했습니다. 차량은 스케치를 바탕으로 하나의 플랫폼 위에 서로 다른 세 가지 바디의 외형을 디자인했습니다. 실사화에서 ChatGPT Image2.0 & Nano Banana로 구체화를 진행했습니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "weight": 300, "color": {"r": 0.8399999737739563, "g": 0.8399999737739563, "b": 0.8399999737739563}}, {"id": "73:24", "x": 727, "y": 1707.5615234375, "w": 92, "h": 56, "type": "text", "text": "GT3", "size": 48, "align": "LEFT", "font": "Poppins", "weight": 400, "color": {"r": 0.9800000190734863, "g": 0.9800000190734863, "b": 0.9800000190734863}}, {"id": "73:25", "x": 640, "y": 1797.5615234375, "w": 266, "h": 53, "type": "text", "text": "정제된 트랙 실루엣", "size": 34, "align": "LEFT", "font": "Noto Sans KR", "weight": 500, "color": {"r": 0.9399999976158142, "g": 0.9399999976158142, "b": 0.9399999976158142}}, {"id": "73:26", "x": 343, "y": 1877.5615234375, "w": 860, "h": 50, "type": "text", "text": "낮고 넓은 차체와 에어로 디테일로 트랙카의 기본 자세를 만듭니다.", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "weight": 300, "color": {"r": 0.7300000190734863, "g": 0.7300000190734863, "b": 0.7300000190734863}}, {"id": "73:30", "x": 1824, "y": 1707.5615234375, "w": 193, "h": 56, "type": "text", "text": "Monster", "size": 48, "align": "LEFT", "font": "Poppins", "weight": 400, "color": {"r": 0.9800000190734863, "g": 0.9800000190734863, "b": 0.9800000190734863}}, {"id": "73:31", "x": 1772, "y": 1797.5615234375, "w": 297, "h": 53, "type": "text", "text": "공격적인 에어로 볼륨", "size": 34, "align": "LEFT", "font": "Noto Sans KR", "weight": 500, "color": {"r": 0.9399999976158142, "g": 0.9399999976158142, "b": 0.9399999976158142}}, {"id": "73:32", "x": 1461, "y": 1877.5615234375, "w": 919, "h": 50, "type": "text", "text": "강한 에어로 요소와 확장된 볼륨으로 극적인 트랙 캐릭터를 표현합니다.", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "weight": 300, "color": {"r": 0.7300000190734863, "g": 0.7300000190734863, "b": 0.7300000190734863}}, {"id": "73:36", "x": 3005, "y": 1707.5615234375, "w": 126, "h": 56, "type": "text", "text": "Retro", "size": 48, "align": "LEFT", "font": "Poppins", "weight": 400, "color": {"r": 0.9800000190734863, "g": 0.9800000190734863, "b": 0.9800000190734863}}, {"id": "73:37", "x": 2903, "y": 1797.5615234375, "w": 329, "h": 53, "type": "text", "text": "클래식한 비례의 재해석", "size": 34, "align": "LEFT", "font": "Noto Sans KR", "weight": 500, "color": {"r": 0.9399999976158142, "g": 0.9399999976158142, "b": 0.9399999976158142}}, {"id": "73:38", "x": 2689, "y": 1877.5615234375, "w": 757, "h": 50, "type": "text", "text": "클래식한 실루엣에 현대적인 휠과 트랙 자세를 결합합니다.", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "weight": 300, "color": {"r": 0.7300000190734863, "g": 0.7300000190734863, "b": 0.7300000190734863}}, {"id": "70:428", "x": 239.4560546875, "y": 1167.484375, "w": 533.3712158203125, "h": 218.83985900878906, "type": "image", "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 1", "src": "/portfolio-a/node-70-428.webp"}, {"id": "70:429", "x": 239.4560546875, "y": 1447.4921875, "w": 533.3712158203125, "h": 189.7518310546875, "type": "image", "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 3", "src": "/portfolio-a/node-70-429.webp"}, {"id": "70:430", "x": 794.8446044921875, "y": 1447.4921875, "w": 533.3712158203125, "h": 189.7518310546875, "type": "image", "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 4", "src": "/portfolio-a/node-70-430.webp"}, {"id": "70:431", "x": 794.84375, "y": 1167.484375, "w": 533.3712158203125, "h": 218.83985900878906, "type": "image", "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 2", "src": "/portfolio-a/node-70-431.webp"}, {"id": "70:432", "x": 239.4560546875, "y": 636.5615234375, "w": 1088.6846923828125, "h": 446.68255615234375, "type": "image", "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 5", "src": "/portfolio-a/node-70-432.webp"}, {"id": "70:440", "x": 1376.8828125, "y": 636.5615234375, "w": 1088.7623291015625, "h": 415.1161193847656, "type": "image", "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 16", "src": "/portfolio-a/node-70-440.webp"}, {"id": "70:441", "x": 1383.1337890625, "y": 1117.7373046875, "w": 538.2645263671875, "h": 260.70489501953125, "type": "image", "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 17", "src": "/portfolio-a/node-70-441.webp"}, {"id": "70:442", "x": 1932.546875, "y": 1117.7373046875, "w": 539.3519287109375, "h": 260.70489501953125, "type": "image", "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 18", "src": "/portfolio-a/node-70-442.webp"}, {"id": "70:443", "x": 1383.1337890625, "y": 1389.5869140625, "w": 538.1939697265625, "h": 247.14471435546875, "type": "image", "name": "ChatGPT Image 2026년 6월 8일 오전 09_38_30 1", "src": "/portfolio-a/node-70-443.webp"}, {"id": "70:444", "x": 1932.5687866210938, "y": 1389.5771484375, "w": 539.3296508789062, "h": 247.66622924804688, "type": "image", "name": "ChatGPT Image 2026년 6월 8일 오전 09_38_30 2", "src": "/portfolio-a/node-70-444.webp"}, {"id": "70:434", "x": 2512, "y": 635, "w": 1088.762451171875, "h": 446.6508483886719, "type": "image", "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 1", "src": "/portfolio-a/node-70-434.webp"}, {"id": "70:435", "x": 2512, "y": 1165.9228515625, "w": 532.8275146484375, "h": 218.83985900878906, "type": "image", "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 2", "src": "/portfolio-a/node-70-435.webp"}, {"id": "70:436", "x": 2512, "y": 1445.9326171875, "w": 532.8275146484375, "h": 189.7518310546875, "type": "image", "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 4", "src": "/portfolio-a/node-70-436.webp"}, {"id": "70:437", "x": 3067.9365234375, "y": 1445.9326171875, "w": 532.8275146484375, "h": 189.7518310546875, "type": "image", "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 5", "src": "/portfolio-a/node-70-437.webp"}, {"id": "70:438", "x": 3067.9365234375, "y": 1165.9228515625, "w": 532.8275146484375, "h": 218.83985900878906, "type": "image", "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 3", "src": "/portfolio-a/node-70-438.webp"}], "background": {"r": 0, "g": 0, "b": 0}}, {"id": "73:40", "page": "36", "nodes": [{"id": "70:604", "type": "image", "name": "스크린샷 2026-10-05 오후 7.21.10 1", "x": 2118, "y": 612, "w": 1168, "h": 709, "src": "/portfolio-a/cinder-configurator.webp"}, {"id": "80:606", "type": "image", "name": "스크린샷 2026-10-05 오후 7.24.13 1", "x": 3221, "y": 612, "w": 1171, "h": 712, "src": "/portfolio-a/node-80-606.webp"}, {"id": "80:608", "type": "image", "name": "스크린샷 2026-10-05 오후 7.25.53 1", "x": 2114, "y": 1262, "w": 1172, "h": 707, "src": "/portfolio-a/node-80-608.webp"}, {"id": "80:609", "type": "image", "name": "스크린샷 2026-10-05 오후 7.26.24 1", "x": 3221.421875, "y": 1261.7216796875, "w": 1169.8988037109375, "h": 705.7462158203125, "src": "/portfolio-a/node-80-609.webp"}, {"id": "73:43", "type": "text", "text": "CINDER Configurator\nChoose, Test, Drive", "size": 104, "font": "Poppins", "weight": 400, "align": "LEFT", "x": 240, "y": 235, "w": 1046, "h": 242, "color": {"r": 0.9800000190734863, "g": 0.9800000190734863, "b": 0.9800000190734863}}, {"id": "73:44", "type": "text", "text": "컨피규레이터는 바이브코딩을 통해 React기반 3D웹앱으로 제작을 했으며, 차체·엔진·휠·색상을 선택하면 완성차의 3D 모습과 주행 파라미터가 함께 바뀝니다. 선택한 차량을 풍동과 서킷에서 체험하고, 최종 명세와 빌드 코드로 정리합니다.", "size": 32, "font": "Poppins", "weight": 400, "align": "JUSTIFIED", "x": 2046, "y": 245, "w": 1554, "h": 100, "color": {"r": 0.8399999737739563, "g": 0.8399999737739563, "b": 0.8399999737739563}}], "background": {"r": 0, "g": 0, "b": 0}}, {"id": "73:58", "page": "37", "nodes": [{"id": "73:61", "x": 240, "y": 235, "w": 672, "h": 121, "type": "text", "text": "Build Process", "size": 104, "align": "LEFT", "font": "Poppins", "weight": 300, "color": {"r": 0.9800000190734863, "g": 0.9800000190734863, "b": 0.9800000190734863}}, {"id": "73:62", "x": 1876, "y": 245, "w": 1724, "h": 100, "type": "text", "text": "디자인한 차량을 웹에서 다룰 수 있는 3D 자산으로 제작하고, Codex와 Claude Code를 사용해 선택·상태·인터랙션을 구현했습니다. React의 공유 선택 데이터가 GLB 조립과 재질, 주행, 최종 명세를 연결합니다. ", "size": 32, "align": "LEFT", "font": "Noto Sans KR", "weight": 300, "color": {"r": 0.8399999737739563, "g": 0.8399999737739563, "b": 0.8399999737739563}}, {"id": "73:74", "x": 3158, "y": 1121, "w": 276, "h": 62, "type": "text", "text": "차량 빌드 데이터", "size": 40, "align": "CENTER", "font": "Noto Sans KR", "weight": 500, "color": {"r": 0.9700000286102295, "g": 0.9700000286102295, "b": 0.9700000286102295}}, {"id": "73:75", "x": 3158, "y": 1201, "w": 365, "h": 35, "type": "text", "text": "BuildContext · buildState", "size": 30, "align": "CENTER", "font": "Poppins", "weight": 400, "color": {"r": 0.7019608020782471, "g": 0.7019608020782471, "b": 0.7019608020782471}}, {"id": "73:78", "x": 3158, "y": 1369, "w": 259, "h": 59, "type": "text", "text": "GLB 조립 · 재질", "size": 38, "align": "LEFT", "font": "Noto Sans KR", "weight": 400, "color": {"r": 0.9607843160629272, "g": 0.9607843160629272, "b": 0.9607843160629272}}, {"id": "73:79", "x": 3158, "y": 1454, "w": 380, "h": 46, "type": "text", "text": "modelPath · 색상 · 표면 마감", "size": 30, "align": "LEFT", "font": "Noto Sans KR", "weight": 300, "color": {"r": 0.7200000286102295, "g": 0.7200000286102295, "b": 0.7200000286102295}}, {"id": "73:81", "x": 3158, "y": 1579, "w": 219, "h": 59, "type": "text", "text": "주행 파라미터", "size": 38, "align": "LEFT", "font": "Noto Sans KR", "weight": 400, "color": {"r": 0.9607843160629272, "g": 0.9607843160629272, "b": 0.9607843160629272}}, {"id": "73:82", "x": 3158, "y": 1664, "w": 404, "h": 46, "type": "text", "text": "엔진 · 차체 · 타이어의 선택 계수", "size": 30, "align": "LEFT", "font": "Noto Sans KR", "weight": 300, "color": {"r": 0.7200000286102295, "g": 0.7200000286102295, "b": 0.7200000286102295}}, {"id": "73:84", "x": 3158, "y": 1789, "w": 335, "h": 59, "type": "text", "text": "최종 명세 · 빌드 코드", "size": 38, "align": "LEFT", "font": "Noto Sans KR", "weight": 400, "color": {"r": 0.9607843160629272, "g": 0.9607843160629272, "b": 0.9607843160629272}}, {"id": "73:85", "x": 3158, "y": 1874, "w": 386, "h": 46, "type": "text", "text": "동일한 선택의 구성과 결과 저장", "size": 30, "align": "LEFT", "font": "Noto Sans KR", "weight": 300, "color": {"r": 0.7200000286102295, "g": 0.7200000286102295, "b": 0.7200000286102295}}, {"id": "58:188", "x": 285.1640625, "y": 521.5576171875, "w": 1321.7742919921875, "h": 829.6056518554688, "type": "image", "name": "스크린샷 2026-06-07 오후 11.47.37 1", "src": "/portfolio-a/cinder-code.webp"}, {"id": "58:189", "x": 229.75390625, "y": 1564.2294921875, "w": 737.0374145507812, "h": 411.3697204589844, "type": "image", "name": "스크린샷 2026-06-07 오후 11.49.23 1", "src": "/portfolio-a/node-58-189.webp"}, {"id": "58:190", "x": 598.23046875, "y": 1489.42578125, "w": 737.0374145507812, "h": 411.3697204589844, "type": "image", "name": "스크린샷 2026-06-07 오후 11.49.38 1", "src": "/portfolio-a/node-58-190.webp"}, {"id": "58:192", "x": 1063.671875, "y": 1398, "w": 737.0374145507812, "h": 411.3697204589844, "type": "image", "name": "스크린샷 2026-06-07 오후 11.49.56 1", "src": "/portfolio-a/node-58-192.webp"}, {"id": "70:502", "x": 1293.623046875, "y": 489.6962890625, "w": 1265.290771484375, "h": 764.3167114257812, "type": "image", "name": "스크린샷 2026-06-07 오후 11.52.41 1", "src": "/portfolio-a/node-70-502.webp"}, {"id": "70:503", "x": 1537, "y": 1117.2880859375, "w": 1462.9439697265625, "h": 883.7117919921875, "type": "image", "name": "스크린샷 2026-06-07 오후 11.51.31 1", "src": "/portfolio-a/node-70-503.webp"}, {"id": "70:523", "x": 2548, "y": 517, "w": 962, "h": 523, "type": "image", "name": "화면 캡처 2026-05-28 222523 1", "src": "/portfolio-a/node-70-523.webp"}], "background": {"r": 0, "g": 0, "b": 0}}, {"id": "70:561", "page": "38", "nodes": [{"id": "70:601", "x": 240, "y": 235, "w": 1049, "h": 121, "type": "text", "text": "Build Process: Assets", "size": 104, "align": "LEFT", "font": "Poppins", "weight": 300, "color": {"r": 0.9800000190734863, "g": 0.9800000190734863, "b": 0.9800000190734863}}, {"id": "70:524", "x": 240, "y": 480, "w": 1766, "h": 960, "type": "image", "name": "화면 캡처 2026-06-09 195941 1", "src": "/portfolio-a/node-70-524.webp"}, {"id": "70:512", "x": 480, "y": 1200, "w": 1406, "h": 764, "type": "image", "name": "화면 캡처 2026-05-20 210107 1", "src": "/portfolio-a/cinder-blender.webp"}, {"id": "70:509", "x": 1511, "y": 720, "w": 2089, "h": 1136, "type": "image", "name": "화면 캡처 2026-05-28 222123 1", "src": "/portfolio-a/node-70-509.webp"}, {"id": "80:611", "x": 2119, "y": 245, "w": 1481, "h": 355, "type": "text", "text": "완성한 모델은 웹 컨피규레이터에서 조합할 수 있는 구조로 정리했습니다. 섀시·엔진·차체·휠을 개별 에셋으로 구성하고, 부품의 배치 기준과 재질 정보를 포함한 GLB 형식으로 연결했습니다. 이를 바탕으로 사용자가 부품과 색상을 선택하면 차량의 모습이 바뀌고, 같은 구성이 풍동 시각화와 서킷 주행으로 이어지도록 구현했습니다. 컨셉설정부터 이미지 탐색, 3D 모델 보완, 영상 제작, 웹 적용까지 전체 과정을 직접 진행하며, 디자인한 차량을 보고 선택하고 체험할 수 있는 콘텐츠로 완성했습니다.", "size": 32, "align": "JUSTIFIED", "font": "Noto Sans KR", "weight": 300, "color": {"r": 0.8399999737739563, "g": 0.8399999737739563, "b": 0.8399999737739563}}], "background": {"r": 0, "g": 0, "b": 0}}, {"id": "70:595", "page": "39", "nodes": [{"id": "80:614", "x": 3405, "y": 449.1416015625, "w": 194.9984130859375, "h": 14.141221046447754, "type": "text", "text": "CINEMATIC VIDEO & WEB", "size": 12.652671813964844, "align": "CENTER", "font": "Orbitron", "lineHeight": {"unit": "AUTO"}, "weight": 400, "color": {"r": 0.9333333373069763, "g": 0.9411764740943909, "b": 0.9098039269447327}}, {"id": "80:615", "x": 3404, "y": 463, "w": 196, "h": 23, "type": "text", "text": "SCAN TO Watch", "size": 18.403106689453125, "align": "CENTER", "font": "Orbitron", "lineHeight": {"unit": "AUTO"}, "weight": 900, "color": {"r": 0.7921568751335144, "g": 0.6313725709915161, "b": 0.26274511218070984}}, {"id": "80:616", "x": 3405, "y": 240, "w": 195, "h": 195, "type": "image", "name": "adobe-express-qr-code 1", "src": "/portfolio-a/node-80-616.webp"}, {"id": "70:499", "x": 240, "y": 486, "w": 2550, "h": 1434, "type": "image", "name": "IMdD9izP6mgHA 1", "src": "/portfolio-a/node-70-499.webp"}, {"id": "80:618", "x": 240, "y": 235, "w": 818, "h": 121, "type": "text", "text": "Prototype Video", "size": 104, "align": "LEFT", "font": "Poppins", "lineHeight": {"unit": "PERCENT", "value": 115.99999666213989}, "weight": 300, "color": {"r": 0.9800000190734863, "g": 0.9800000190734863, "b": 0.9800000190734863}}], "background": {"r": 0, "g": 0, "b": 0}}]
+[
+  {
+    "id": "36:314",
+    "page": "5",
+    "nodes": [
+      {
+        "id": "36:317",
+        "x": 232,
+        "y": 216,
+        "w": 861,
+        "h": 242,
+        "type": "text",
+        "text": "Limits from\nDesktop Speaker",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:319",
+        "x": 2290,
+        "y": 229,
+        "w": 1310,
+        "h": 150,
+        "type": "text",
+        "text": "현대의 데스크 환경은 모니터, 키보드, 충전기, 스마트폰 등 다양한 기기로 점점 복잡해지고 있습니다. 그러나 기존 데스크 스피커는 여전히 책상 위의 고정된 물체로 남아 공간을 차지하고, 사용자의 자세나 모니터 배치에 따라 최적의 청취 위치를 만들기 어렵습니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:320",
+        "x": 920,
+        "y": 1880,
+        "w": 316,
+        "h": 50,
+        "type": "text",
+        "text": "비좁은 기존 스피커 환경",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 400,
+        "color": {
+          "r": 0.3799999952316284,
+          "g": 0.3799999952316284,
+          "b": 0.3799999952316284
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:322",
+        "x": 2556,
+        "y": 1880,
+        "w": 412,
+        "h": 50,
+        "type": "text",
+        "text": "선과 부피 때문에 힘들었던 청소",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 400,
+        "color": {
+          "r": 0.3799999952316284,
+          "g": 0.3799999952316284,
+          "b": 0.3799999952316284
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:323",
+        "x": 240,
+        "y": 600,
+        "w": 1676,
+        "h": 1200,
+        "type": "image",
+        "name": "image 1",
+        "src": "/portfolio-a/node-36-323.webp"
+      },
+      {
+        "id": "36:327",
+        "x": 1924,
+        "y": 600,
+        "w": 1676,
+        "h": 1200,
+        "type": "image",
+        "name": "image 2",
+        "src": "/portfolio-a/node-36-327.webp"
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "36:336",
+    "page": "6",
+    "nodes": [
+      {
+        "id": "36:303",
+        "x": 0,
+        "y": -918,
+        "w": 3569,
+        "h": 5053,
+        "type": "image",
+        "name": "humanholding2 복사 1",
+        "src": "/portfolio-a/node-36-303.webp"
+      },
+      {
+        "id": "36:342",
+        "x": 2294,
+        "y": 229,
+        "w": 1310,
+        "h": 100,
+        "type": "text",
+        "text": "VESA Based Floating Speaker는 스피커를 VESA 호환 모니터암에 결합해 공중에 배치함으로써 데스크 표면을 비우고, 높이·각도·거리를 유연하게 조절할 수 있도록 제안합니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "36:362",
+    "page": "7",
+    "nodes": [
+      {
+        "id": "36:383",
+        "x": 1935,
+        "y": 473,
+        "w": 1779,
+        "h": 1879,
+        "type": "image",
+        "name": "studio.9 1",
+        "src": "/portfolio-a/vesa-interface.webp"
+      },
+      {
+        "id": "36:381",
+        "x": 126,
+        "y": 473,
+        "w": 1775,
+        "h": 1879,
+        "type": "image",
+        "name": "studio.6 1",
+        "src": "/portfolio-a/node-36-381.webp"
+      },
+      {
+        "id": "36:385",
+        "x": 2330,
+        "y": 229,
+        "w": 1274,
+        "h": 100,
+        "type": "text",
+        "text": "중앙의 마그네틱 스마트폰 인터페이스는 충전, 재생 제어, 정보 확인을 하나의 전면 경험으로 통합하며, 스피커를단순한 주변기기가 아닌 정돈된 작업 환경을 구성하는 데스크 오브제로 확장합니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "36:478",
+    "page": "8",
+    "nodes": [
+      {
+        "id": "36:482",
+        "x": 2603,
+        "y": 229,
+        "w": 1001,
+        "h": 100,
+        "type": "text",
+        "text": "작업환경이 바뀌면, 스피커도 함께 움직입니다. 모니터암의 관절 구조를 통해 가로·세로 배치와 높이, 거리, 각도를 조절해 사용자의 청취축에 맞춥니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:483",
+        "x": 3000,
+        "y": 1200,
+        "w": 600,
+        "h": 720,
+        "type": "image",
+        "name": "humanholding2 복사 14",
+        "src": "/portfolio-a/node-36-483.webp"
+      },
+      {
+        "id": "36:484",
+        "x": 2400,
+        "y": 1200,
+        "w": 600,
+        "h": 720,
+        "type": "image",
+        "name": "humanholding2 복사 16",
+        "src": "/portfolio-a/node-36-484.webp"
+      },
+      {
+        "id": "36:485",
+        "x": 2400,
+        "y": 480,
+        "w": 600,
+        "h": 720,
+        "type": "image",
+        "name": "studio.2 4",
+        "src": "/portfolio-a/node-36-485.webp"
+      },
+      {
+        "id": "36:486",
+        "x": 3000,
+        "y": 480,
+        "w": 600,
+        "h": 720,
+        "type": "image",
+        "name": "humanholding2 복사 3",
+        "src": "/portfolio-a/node-36-486.webp"
+      },
+      {
+        "id": "36:487",
+        "type": "vector",
+        "x": 3000,
+        "y": 435,
+        "w": 2,
+        "h": 1552,
+        "src": "/portfolio-a/vector-36-487.svg"
+      },
+      {
+        "id": "36:488",
+        "type": "vector",
+        "x": 2325.5,
+        "y": 1200,
+        "w": 1344.5,
+        "h": 2,
+        "src": "/portfolio-a/vector-36-488.svg"
+      },
+      {
+        "id": "36:492",
+        "x": 170,
+        "y": 1042,
+        "w": 1973,
+        "h": 878,
+        "type": "image",
+        "name": "studio.2 2",
+        "src": "/portfolio-a/node-36-492.webp"
+      },
+      {
+        "id": "36:493",
+        "x": 170,
+        "y": 296,
+        "w": 1973,
+        "h": 784,
+        "type": "image",
+        "name": "studio.4 2",
+        "src": "/portfolio-a/node-36-493.webp"
+      },
+      {
+        "id": "36:495",
+        "type": "vector",
+        "x": 236,
+        "y": 973,
+        "w": 1977,
+        "h": 107,
+        "src": "/portfolio-a/vector-36-495.svg"
+      },
+      {
+        "id": "36:496",
+        "type": "vector",
+        "x": 236,
+        "y": 1824,
+        "w": 1977,
+        "h": 107,
+        "src": "/portfolio-a/vector-36-496.svg"
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "36:410",
+    "page": "9",
+    "nodes": [
+      {
+        "id": "36:309",
+        "x": 975,
+        "y": -222,
+        "w": 1890,
+        "h": 2676,
+        "type": "image",
+        "name": "studio.14 1",
+        "src": "/portfolio-a/vesa-exploded.webp"
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "16:84",
+    "page": "10",
+    "nodes": [
+      {
+        "id": "16:88",
+        "x": 232,
+        "y": 216,
+        "w": 2140,
+        "h": 121,
+        "type": "text",
+        "text": "Fabrication & iteration",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "16:92",
+        "x": 688,
+        "y": 1880,
+        "w": 214,
+        "h": 50,
+        "type": "text",
+        "text": "알루미늄 열풀림",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 400,
+        "color": {
+          "r": 0.3799999952316284,
+          "g": 0.3799999952316284,
+          "b": 0.3799999952316284
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "16:94",
+        "x": 1735,
+        "y": 1880,
+        "w": 370,
+        "h": 50,
+        "type": "text",
+        "text": "3D 프린트 몰드 제작 및 밴딩",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 400,
+        "color": {
+          "r": 0.3799999952316284,
+          "g": 0.3799999952316284,
+          "b": 0.3799999952316284
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "16:96",
+        "x": 2986,
+        "y": 1880,
+        "w": 118,
+        "h": 50,
+        "type": "text",
+        "text": "어셈블리",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 400,
+        "color": {
+          "r": 0.3799999952316284,
+          "g": 0.3799999952316284,
+          "b": 0.3799999952316284
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:207",
+        "x": 1360,
+        "y": 480,
+        "w": 1120,
+        "h": 1320,
+        "type": "image",
+        "name": "IMG_7742 1",
+        "src": "/portfolio-a/node-36-207.webp"
+      },
+      {
+        "id": "36:408",
+        "x": 240,
+        "y": 480,
+        "w": 1110,
+        "h": 1320,
+        "type": "image",
+        "name": "IMG_7978 1",
+        "src": "/portfolio-a/vesa-bending.webp"
+      },
+      {
+        "id": "16:90",
+        "x": 2472,
+        "y": 228,
+        "w": 1150,
+        "h": 100,
+        "type": "text",
+        "text": "밴딩을 위해 알루미늄 열풀림을 진행하고, 3D 프린트 몰드 제작 후 직접 프레스하여 작업을 완료 했습니다. 실제 공정에서 확인한 조건을 바탕으로 형태와 조립을 다듬었습니다.",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:403",
+        "x": 2490,
+        "y": 480,
+        "w": 1110,
+        "h": 1320,
+        "type": "image",
+        "name": "IMG_7739 3",
+        "src": "/portfolio-a/node-36-403.webp"
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "36:431",
+    "page": "11",
+    "nodes": [
+      {
+        "id": "36:437",
+        "x": 2513,
+        "y": 1880,
+        "w": 309,
+        "h": 50,
+        "type": "text",
+        "text": "실제 제작된 프로토타입",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 400,
+        "color": {
+          "r": 0.3799999952316284,
+          "g": 0.3799999952316284,
+          "b": 0.3799999952316284
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:402",
+        "x": 236,
+        "y": 476,
+        "w": 1491,
+        "h": 1328,
+        "type": "image",
+        "name": "IMG_7739 4",
+        "src": "/portfolio-a/node-36-402.webp"
+      },
+      {
+        "id": "36:418",
+        "type": "vector",
+        "x": 237,
+        "y": 1139,
+        "w": 1487,
+        "h": 2,
+        "src": "/portfolio-a/vector-36-418.svg"
+      },
+      {
+        "id": "36:419",
+        "type": "vector",
+        "x": 1362.390625,
+        "y": 475.68994140625,
+        "w": 2,
+        "h": 1365.3099365234375,
+        "src": "/portfolio-a/vector-36-419.svg"
+      },
+      {
+        "id": "36:422",
+        "type": "vector",
+        "x": 602,
+        "y": 475.68994140625,
+        "w": 2,
+        "h": 1325.8502197265625,
+        "src": "/portfolio-a/vector-36-422.svg"
+      },
+      {
+        "id": "36:420",
+        "type": "vector",
+        "x": 982,
+        "y": 475.68994140625,
+        "w": 2,
+        "h": 1365.3099365234375,
+        "src": "/portfolio-a/vector-36-420.svg"
+      },
+      {
+        "id": "36:446",
+        "x": 921,
+        "y": 1880,
+        "w": 118,
+        "h": 50,
+        "type": "text",
+        "text": "어셈블리",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 400,
+        "color": {
+          "r": 0.3799999952316284,
+          "g": 0.3799999952316284,
+          "b": 0.3799999952316284
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:450",
+        "x": 1622,
+        "y": 177,
+        "w": 2091.3623046875,
+        "h": 2382.192626953125,
+        "type": "image",
+        "name": "IMG_8385 2",
+        "src": "/portfolio-a/vesa-prototype.webp"
+      },
+      {
+        "id": "36:451",
+        "x": 1752.5,
+        "y": 178.06640625,
+        "w": 1785.5640869140625,
+        "h": 2380.751953125,
+        "type": "image",
+        "name": "IMG_8385 2",
+        "src": "/portfolio-a/node-36-451.webp"
+      },
+      {
+        "id": "36:457",
+        "x": 232,
+        "y": 216,
+        "w": 2140,
+        "h": 121,
+        "type": "text",
+        "text": "Prototype",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "60:234",
+    "page": "13",
+    "nodes": [
+      {
+        "id": "58:4",
+        "x": 0,
+        "y": 0,
+        "w": 3840,
+        "h": 2160,
+        "type": "image",
+        "name": "01_diagonal_launch 1",
+        "src": "/portfolio-a/node-58-4.webp"
+      },
+      {
+        "id": "60:236",
+        "x": 236,
+        "y": 216,
+        "w": 1001,
+        "h": 121,
+        "type": "text",
+        "text": "Physical Interaction",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "60:237",
+        "x": 2187,
+        "y": 227,
+        "w": 1413,
+        "h": 100,
+        "type": "text",
+        "text": "조금 더 밝게, 조금 덜 거칠게, 더 가까이. 말로 설명하기 어려운 작은 차이를 다이얼과 슬라이더로 탐색합니다. 결과를 바라보면서 조작하고, 변화의 원인과 결과를 이해할 수 있도록 설계했습니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 0.9647058844566345,
+      "g": 0.9647058844566345,
+      "b": 0.9647058844566345
+    }
+  },
+  {
+    "id": "62:330",
+    "page": "14",
+    "nodes": [
+      {
+        "id": "59:214",
+        "x": 0,
+        "y": 0,
+        "w": 3870,
+        "h": 2160,
+        "type": "image",
+        "name": "hardware_09 1",
+        "src": "/portfolio-a/vibey-controls.webp"
+      }
+    ],
+    "background": {
+      "r": 0.9647058844566345,
+      "g": 0.9647058844566345,
+      "b": 0.9647058844566345
+    }
+  },
+  {
+    "id": "59:223",
+    "page": "15",
+    "nodes": [
+      {
+        "id": "59:229",
+        "x": 236,
+        "y": 216,
+        "w": 2140,
+        "h": 121,
+        "type": "text",
+        "text": "Vibey: Imaginator",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "59:230",
+        "x": 2117,
+        "y": 228,
+        "w": 1485,
+        "h": 100,
+        "type": "text",
+        "text": "Imaginator는 이미지 제작에 Vibey 시스템을 적용한 작동형 웹 프로토타입입니다. 실시간 3D 미리보기에서 구도 ·카메라·조명·표면과 효과를 조절합니다. 실시간으로 프리비즈를 만들고 AI이미지 렌더러로 이미지를 생성합니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "61:253",
+        "x": 240,
+        "y": 480,
+        "w": 2494,
+        "h": 1440,
+        "type": "image",
+        "name": "스크린샷 2026-10-05 오후 4.23.33 1",
+        "src": "/portfolio-a/vibey-imaginator.webp"
+      },
+      {
+        "id": "61:239",
+        "x": 2717,
+        "y": 992,
+        "w": 885,
+        "h": 511,
+        "type": "image",
+        "name": "스크린샷 2026-10-05 오후 4.19.36 1",
+        "src": "/portfolio-a/node-61-239.webp"
+      },
+      {
+        "id": "61:247",
+        "x": 2717,
+        "y": 480,
+        "w": 885,
+        "h": 511,
+        "type": "image",
+        "name": "스크린샷 2026-10-05 오후 4.28.24 1",
+        "src": "/portfolio-a/node-61-247.webp"
+      },
+      {
+        "id": "61:309",
+        "x": 2726,
+        "y": 1508,
+        "w": 867,
+        "h": 412,
+        "type": "image",
+        "name": "IMG_0215 1",
+        "src": "/portfolio-a/node-61-309.webp"
+      }
+    ],
+    "background": {
+      "r": 0.08627451211214066,
+      "g": 0.09019608050584793,
+      "b": 0.0941176488995552
+    }
+  },
+  {
+    "id": "62:311",
+    "page": "16",
+    "nodes": [
+      {
+        "id": "61:242",
+        "x": 240,
+        "y": 1267,
+        "w": 840,
+        "h": 533,
+        "type": "image",
+        "name": "vibey-previs (3) 1",
+        "src": "/portfolio-a/vibey-previs.webp"
+      },
+      {
+        "id": "61:243",
+        "x": 1141,
+        "y": 240,
+        "w": 2459,
+        "h": 1560,
+        "type": "image",
+        "name": "vibey-previs (3) 2",
+        "src": "/portfolio-a/vibey-output.webp"
+      },
+      {
+        "id": "62:320",
+        "x": 496,
+        "y": 1880,
+        "w": 328,
+        "h": 50,
+        "type": "text",
+        "text": "Vibey로 설정한 프리비즈",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9350000023841858,
+          "g": 0.9350000023841858,
+          "b": 0.9350000023841858
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "62:321",
+        "x": 2204,
+        "y": 1870,
+        "w": 344,
+        "h": 50,
+        "type": "text",
+        "text": "AI렌더러 처리 완료 이미지",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9350000023841858,
+          "g": 0.9350000023841858,
+          "b": 0.9350000023841858
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "62:324",
+        "x": 236,
+        "y": 216,
+        "w": 2140,
+        "h": 121,
+        "type": "text",
+        "text": "Output",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 0.08627451211214066,
+      "g": 0.09019608050584793,
+      "b": 0.0941176488995552
+    }
+  },
+  {
+    "id": "36:497",
+    "page": "19",
+    "nodes": [
+      {
+        "id": "36:529",
+        "x": 0,
+        "y": 0,
+        "w": 3840,
+        "h": 2160,
+        "type": "image",
+        "name": "KakaoTalk_20241211_025245124 1",
+        "src": "/portfolio-a/node-36-529.webp"
+      },
+      {
+        "id": "36:633",
+        "x": 2280,
+        "y": 942,
+        "w": 960,
+        "h": 663,
+        "type": "text",
+        "text": "'제작의 혁신'이라는 키워드를 잡고, 팀은 이를 조인트와 패스너의 간소화로 재해석했습니다. 가구의 부품 결합 과정을 단순화하기 위해 단 하나의 ‘와이어 라쳇 기어’를 핵심 패스너로 고안했습니다. 와이어의 장력만으로 전체 파츠를 견고하게 고정하는 이 시스템은, 복잡한 조립을 직관적으로 단축시키는 동시에 모던한 조형미를 완성합니다.\n\n저는 WRG 시리즈에서 스툴을 맡아 제작을 진행했으며, 물리적 하중과 힘의 방향을 계산하여 구조적 안정성을 극대화했습니다. 수평 유지에 가장 효율적이고 안정적인 3개의 다리를 채택했으며, 지면을 향해 둔각으로 벌어지는 형태를 적용했습니다. 이는 하중이 가해질수록 상판과 다리의 짜맞춤 구조가 더욱 강하게 결속되도록 유도합니다. 와이어의 장력, 스틸판의 피로 변형을 방지하는 T자형 용접구조가 완벽하게 맞물려 텐션과 내구성을 동시에 충족시키는 구조입니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07450980693101883,
+          "g": 0.07450980693101883,
+          "b": 0.07450980693101883
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:635",
+        "x": 2473,
+        "y": 637,
+        "w": 574,
+        "h": 121,
+        "type": "text",
+        "text": "WRG Series",
+        "size": 104,
+        "align": "CENTER",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:637",
+        "x": 2556,
+        "y": 758,
+        "w": 408,
+        "h": 56,
+        "type": "text",
+        "text": "Wire Ratchet Gear Series",
+        "size": 36,
+        "align": "CENTER",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 400,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "36:570",
+    "page": "20",
+    "nodes": [
+      {
+        "id": "36:525",
+        "x": 1920,
+        "y": 0,
+        "w": 1920,
+        "h": 2160,
+        "type": "image",
+        "name": "DSC_9876 1",
+        "src": "/portfolio-a/wrgs-front.webp"
+      },
+      {
+        "id": "36:528",
+        "x": 0,
+        "y": 1,
+        "w": 1920,
+        "h": 2159,
+        "type": "image",
+        "name": "DSC_9853 1",
+        "src": "/portfolio-a/wrgs-top.webp"
+      },
+      {
+        "id": "36:606",
+        "type": "vector",
+        "x": 1411,
+        "y": 885.5,
+        "w": 18.5,
+        "h": 12.5,
+        "src": "/portfolio-a/vector-36-606.svg"
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "36:538",
+    "page": "21",
+    "nodes": [
+      {
+        "id": "36:547",
+        "x": 240,
+        "y": 958,
+        "w": 962,
+        "h": 962,
+        "type": "image",
+        "name": "DSC_9890 2",
+        "src": "/portfolio-a/node-36-547.webp"
+      },
+      {
+        "id": "36:548",
+        "x": 1208,
+        "y": 480,
+        "w": 959,
+        "h": 903,
+        "type": "image",
+        "name": "DSC_9900 3",
+        "src": "/portfolio-a/node-36-548.webp"
+      },
+      {
+        "id": "36:549",
+        "x": 239,
+        "y": 480,
+        "w": 963,
+        "h": 472,
+        "type": "image",
+        "name": "DSC_9866 1",
+        "src": "/portfolio-a/node-36-549.webp"
+      },
+      {
+        "id": "36:550",
+        "x": 1208,
+        "y": 1389,
+        "w": 959,
+        "h": 531,
+        "type": "image",
+        "name": "DSC_9889 1",
+        "src": "/portfolio-a/node-36-550.webp"
+      },
+      {
+        "id": "36:551",
+        "x": 236,
+        "y": 216,
+        "w": 2140,
+        "h": 121,
+        "type": "text",
+        "text": "Joint & structure",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:553",
+        "x": 2398,
+        "y": 228,
+        "w": 1204,
+        "h": 100,
+        "type": "text",
+        "text": "와이어 라쳇 기어 패스너를 중심으로 스툴을 설계했습니다. 다리와 상판의 짜맞춤, 다리가 벌어지려는 방향, 와이어의 장력을 함께 고려하며 스케치와 모델링을 발전시켰습니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:555",
+        "x": 2565,
+        "y": 1200,
+        "w": 1037,
+        "h": 720,
+        "type": "image",
+        "name": "IMG_1134",
+        "src": "/portfolio-a/node-36-555.webp"
+      },
+      {
+        "id": "36:556",
+        "x": 2724,
+        "y": 480,
+        "w": 878,
+        "h": 720,
+        "type": "image",
+        "name": "IMG_1133",
+        "src": "/portfolio-a/node-36-556.webp"
+      }
+    ],
+    "background": {
+      "r": 0.9647058844566345,
+      "g": 0.9647058844566345,
+      "b": 0.9647058844566345
+    }
+  },
+  {
+    "id": "36:594",
+    "page": "22",
+    "nodes": [
+      {
+        "id": "36:600",
+        "x": 236,
+        "y": 216,
+        "w": 1170,
+        "h": 121,
+        "type": "text",
+        "text": "Crafting & Photo Shoot",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:609",
+        "x": 240,
+        "y": 480,
+        "w": 810,
+        "h": 1440,
+        "type": "image",
+        "name": "패스너 스테인리스",
+        "src": "/portfolio-a/node-36-609.webp"
+      },
+      {
+        "id": "36:607",
+        "x": 1060,
+        "y": 480,
+        "w": 833,
+        "h": 1440,
+        "type": "image",
+        "name": "실물 제작과정 2",
+        "src": "/portfolio-a/wrgs-making.webp"
+      },
+      {
+        "id": "36:608",
+        "x": 1903,
+        "y": 480,
+        "w": 833,
+        "h": 1440,
+        "type": "image",
+        "name": "실물 제작과정 1",
+        "src": "/portfolio-a/node-36-608.webp"
+      },
+      {
+        "id": "36:612",
+        "x": 2746,
+        "y": 1205,
+        "w": 854,
+        "h": 715,
+        "type": "image",
+        "name": "DSC_9908 1",
+        "src": "/portfolio-a/node-36-612.webp"
+      },
+      {
+        "id": "36:611",
+        "x": 2746,
+        "y": 480,
+        "w": 854,
+        "h": 715,
+        "type": "image",
+        "name": "DSC_9875 1",
+        "src": "/portfolio-a/node-36-611.webp"
+      },
+      {
+        "id": "36:615",
+        "x": 2129,
+        "y": 226,
+        "w": 1471,
+        "h": 100,
+        "type": "text",
+        "text": "내식성·내구성과 용접 조건을 고려해 스테인리스를 선택하고 헤어라인으로 마감했습니다. 두께, 절곡, 용접 위치와 조립 단차를 제작 요청에 구체화했습니다. 이 경험은 이후 직접 용접을 배우고 작업하는 경험으로 이어졌습니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 0.9647058844566345,
+      "g": 0.9647058844566345,
+      "b": 0.9647058844566345
+    }
+  },
+  {
+    "id": "36:708",
+    "page": "24",
+    "nodes": [
+      {
+        "id": "36:656",
+        "x": 2160,
+        "y": 226,
+        "w": 1445,
+        "h": 306,
+        "type": "text",
+        "text": "가장 완벽한 승차감을 제공하는 자동차의 기술이 정적인 의자와 만난다면 어떨까? 'Double Wishbone Chair'는 고성능 차량의 서스펜션 시스템에서 영감을 받았습니다. 수천 킬로그램의 차체와 노면의 거친 충격을 제어하는 더블 위시본 서스펜션은 공학적 안정성을 의미합니다. 이 강력한 메커니즘을 가구 디자인에 접목하여, 의자가 단순한 휴식 도구를 넘어 '엔지니어링 아트'로 구현하고자 시도했습니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07450980693101883,
+          "g": 0.07450980693101883,
+          "b": 0.07450980693101883
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:716",
+        "x": 232,
+        "y": 216,
+        "w": 589,
+        "h": 242,
+        "type": "text",
+        "text": "Suspension\non Chair",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.07500000298023224,
+          "g": 0.07500000298023224,
+          "b": 0.07500000298023224
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:703",
+        "x": 1480,
+        "y": 600,
+        "w": 1055,
+        "h": 1320,
+        "type": "image",
+        "name": "Double Wishbone Chair.6 1",
+        "src": "/portfolio-a/wishbone-detail.webp"
+      },
+      {
+        "id": "36:705",
+        "x": 2545,
+        "y": 600,
+        "w": 1055,
+        "h": 1320,
+        "type": "image",
+        "name": "Double Wishbone Chair.8 1",
+        "src": "/portfolio-a/node-36-705.webp"
+      },
+      {
+        "id": "36:698",
+        "x": 232,
+        "y": 600,
+        "w": 1238,
+        "h": 1320,
+        "type": "image",
+        "name": "double wishbone suspension 1",
+        "src": "/portfolio-a/node-36-698.webp"
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "36:719",
+    "page": "25",
+    "nodes": [
+      {
+        "id": "36:694",
+        "x": 1994,
+        "y": -1,
+        "w": 1750,
+        "h": 2189,
+        "type": "image",
+        "name": "untitled.1 1",
+        "src": "/portfolio-a/wishbone-front.webp"
+      },
+      {
+        "id": "36:688",
+        "x": 70,
+        "y": 120,
+        "w": 1761,
+        "h": 2203,
+        "type": "image",
+        "name": "untitled.3 1",
+        "src": "/portfolio-a/node-36-688.webp"
+      },
+      {
+        "id": "36:727",
+        "type": "vector",
+        "x": 1920,
+        "y": 0,
+        "w": 2,
+        "h": 2160,
+        "src": "/portfolio-a/vector-36-727.svg"
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "36:742",
+    "page": "26",
+    "nodes": [
+      {
+        "id": "36:672",
+        "x": 240,
+        "y": 799.6669921875,
+        "w": 840,
+        "h": 1120,
+        "type": "image",
+        "name": "7",
+        "src": "/portfolio-a/node-36-672.webp"
+      },
+      {
+        "id": "36:673",
+        "x": 1920,
+        "y": 799.6669921875,
+        "w": 840,
+        "h": 1120,
+        "type": "image",
+        "name": "5",
+        "src": "/portfolio-a/node-36-673.webp"
+      },
+      {
+        "id": "36:674",
+        "x": 1080,
+        "y": 799.6669921875,
+        "w": 840,
+        "h": 1120,
+        "type": "image",
+        "name": "3",
+        "src": "/portfolio-a/node-36-674.webp"
+      },
+      {
+        "id": "36:675",
+        "x": 2760,
+        "y": 799.6669921875,
+        "w": 840,
+        "h": 1120,
+        "type": "image",
+        "name": "1",
+        "src": "/portfolio-a/node-36-675.webp"
+      },
+      {
+        "id": "36:677",
+        "type": "vector",
+        "x": 542.73046875,
+        "y": 1442.732421875,
+        "w": 2508.528076171875,
+        "h": 224.97723388671875,
+        "src": "/portfolio-a/vector-36-677.svg"
+      },
+      {
+        "id": "36:751",
+        "x": 1796,
+        "y": 291,
+        "w": 249,
+        "h": 249,
+        "type": "image",
+        "name": "qr-code 1",
+        "src": "/portfolio-a/node-36-751-2x.webp"
+      },
+      {
+        "id": "36:752",
+        "x": 1830,
+        "y": 564,
+        "w": 181,
+        "h": 36,
+        "type": "text",
+        "text": "Motion Vid",
+        "size": 36,
+        "align": "CENTER",
+        "font": "Pretendard",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 100
+        },
+        "weight": 600,
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "id": "36:729",
+    "page": "27",
+    "nodes": [
+      {
+        "id": "36:736",
+        "x": 1119,
+        "y": 139,
+        "w": 1603,
+        "h": 1862,
+        "type": "image",
+        "name": "best2 2",
+        "src": "/portfolio-a/wishbone-motion.webp"
+      },
+      {
+        "id": "36:754",
+        "x": 2237,
+        "y": 228,
+        "w": 1363,
+        "h": 100,
+        "type": "text",
+        "text": "Rhino SubD로 모델링한 형태를 STEP으로 Fusion에 가져와 조인트를 구성하고 모션 애니메이션을 제작했습니다. 컨셉 모델과 애니메이션을 통해 곡면 조형, 모델 전달, 조립 관계와 움직임의 표현을 보여줍니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9350000023841858,
+          "g": 0.9350000023841858,
+          "b": 0.9350000023841858
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:760",
+        "x": 232,
+        "y": 216,
+        "w": 348,
+        "h": 121,
+        "type": "text",
+        "text": "Motion",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9350000023841858,
+          "g": 0.9350000023841858,
+          "b": 0.9350000023841858
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 0.0470588244497776,
+      "g": 0.0470588244497776,
+      "b": 0.0470588244497776
+    }
+  },
+  {
+    "id": "52:894",
+    "page": "29",
+    "nodes": [
+      {
+        "id": "52:895",
+        "x": 232,
+        "y": 216,
+        "w": 856,
+        "h": 121,
+        "type": "text",
+        "text": "Sound Directivity",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9019607901573181,
+          "g": 0.9019607901573181,
+          "b": 0.9019607901573181
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "52:896",
+        "x": 2115,
+        "y": 229,
+        "w": 1485,
+        "h": 350,
+        "type": "text",
+        "text": "The Aviator는 날개의 움직임으로 스피커의 위치와 방향을 전환하는 키네틱 스피커입니다. 양쪽 날개 끝에 배치된  풀레인지 스피커는 접힌 상태에서 위쪽을 향하고, 펼쳐지면서 사용자를 향하도록 설계했습니다. 하나의 제품 안에서 공간을 채우는 방사형 음향과 사용자를 향하는 지향성 음향이라는 두 가지 사용 상황을 제안합니다.\n\n날개가 접힌 상태는 특정 청취 위치를 정하지 않고 공간 전반에 소리가 퍼지도록 의도한 구성입니다. 날개를 펼치면 두 스피커의 간격이 넓어지고 방사 방향이 사용자 쪽으로 지향되도록 전환됩니다. 이러한 형태 변화는 청취 방식의 전환을 눈으로 확인하게 하며, 사용자가 제품의 상태를 직관적으로 이해하도록 돕습니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "52:897",
+        "x": 684,
+        "y": 1880,
+        "w": 429,
+        "h": 50,
+        "type": "text",
+        "text": "Folded Wings: 방사형 음향 모드",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9350000023841858,
+          "g": 0.9350000023841858,
+          "b": 0.9350000023841858
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "52:898",
+        "x": 2485,
+        "y": 1880,
+        "w": 432,
+        "h": 50,
+        "type": "text",
+        "text": "Spread Wings: 지향형 음향 모드",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9350000023841858,
+          "g": 0.9350000023841858,
+          "b": 0.9350000023841858
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "51:882",
+        "x": 1440,
+        "y": 574,
+        "w": 2220,
+        "h": 1249,
+        "type": "image",
+        "name": "top1 2",
+        "src": "/portfolio-a/aviator-open.webp"
+      },
+      {
+        "id": "51:883",
+        "x": 190,
+        "y": 574,
+        "w": 1130,
+        "h": 1249,
+        "type": "image",
+        "name": "top2 2",
+        "src": "/portfolio-a/node-51-883.webp"
+      }
+    ],
+    "background": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  },
+  {
+    "id": "54:912",
+    "page": "30",
+    "nodes": [
+      {
+        "id": "51:884",
+        "x": 265,
+        "y": 179,
+        "w": 3309,
+        "h": 1861,
+        "type": "image",
+        "name": "back 1",
+        "src": "/portfolio-a/aviator-back.webp"
+      },
+      {
+        "id": "54:928",
+        "x": 2160,
+        "y": 228,
+        "w": 1440,
+        "h": 150,
+        "type": "text",
+        "text": "외형은 관절과 연결 부재, 와이어 등 움직임을 구성하는 구조를 드러내는 방식으로 정리했습니다. 각 부품의 연결 관계와 작동 과정이 제품의 형태를 이루며, 날개를 펼치는 동작에 기능적 의미를 부여합니다. The Aviator는 기계적 움직임과 청취 목적을 연결해, 소리를 어디로 향하게 할 것인지를 형태로 보여주는 스피커입니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  },
+  {
+    "id": "54:922",
+    "page": "31",
+    "nodes": [
+      {
+        "id": "51:881",
+        "x": 664,
+        "y": 330,
+        "w": 2512,
+        "h": 1500,
+        "type": "image",
+        "name": "realside 1",
+        "src": "/portfolio-a/node-51-881.webp"
+      },
+      {
+        "id": "54:949",
+        "x": 1101,
+        "y": 727,
+        "w": 181,
+        "h": 36,
+        "type": "text",
+        "text": "Motion Vid",
+        "size": 36,
+        "align": "CENTER",
+        "font": "Pretendard",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 100
+        },
+        "weight": 600,
+        "color": {
+          "r": 0.817307710647583,
+          "g": 0.817307710647583,
+          "b": 0.817307710647583
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "54:950",
+        "x": 1080,
+        "y": 480,
+        "w": 223,
+        "h": 223,
+        "type": "image",
+        "name": "adobe-express-qr-code 1",
+        "src": "/portfolio-a/node-54-950-2x.webp"
+      }
+    ],
+    "background": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  },
+  {
+    "id": "54:930",
+    "page": "32",
+    "nodes": [
+      {
+        "id": "51:880",
+        "x": 480,
+        "y": 81,
+        "w": 2696,
+        "h": 1920,
+        "type": "image",
+        "name": "quarterside 2",
+        "src": "/portfolio-a/node-51-880.webp"
+      },
+      {
+        "id": "54:935",
+        "x": 232,
+        "y": 216,
+        "w": 348,
+        "h": 121,
+        "type": "text",
+        "text": "Motion",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9350000023841858,
+          "g": 0.9350000023841858,
+          "b": 0.9350000023841858
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  },
+  {
+    "id": "54:937",
+    "page": "33",
+    "nodes": [
+      {
+        "id": "54:938",
+        "x": 232,
+        "y": 216,
+        "w": 1105,
+        "h": 121,
+        "type": "text",
+        "text": "Prototype & Exhibition",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9019607901573181,
+          "g": 0.9019607901573181,
+          "b": 0.9019607901573181
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "54:940",
+        "x": 1020,
+        "y": 1880,
+        "w": 118,
+        "h": 50,
+        "type": "text",
+        "text": "어셈블리",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9350000023841858,
+          "g": 0.9350000023841858,
+          "b": 0.9350000023841858
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "54:941",
+        "x": 2646,
+        "y": 1880,
+        "w": 235,
+        "h": 50,
+        "type": "text",
+        "text": "SOSE* 2025 전시",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9350000023841858,
+          "g": 0.9350000023841858,
+          "b": 0.9350000023841858
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "36:839",
+        "x": 245,
+        "y": 480,
+        "w": 1668,
+        "h": 676,
+        "type": "image",
+        "name": "KakaoTalk_20260316_220730851_04 1",
+        "src": "/portfolio-a/aviator-prototype.webp"
+      },
+      {
+        "id": "36:840",
+        "x": 245,
+        "y": 1170,
+        "w": 1668,
+        "h": 630,
+        "type": "image",
+        "name": "KakaoTalk_20260316_220730851_01 1",
+        "src": "/portfolio-a/node-36-840.webp"
+      },
+      {
+        "id": "36:869",
+        "x": 1928,
+        "y": 476,
+        "w": 1672,
+        "h": 1324,
+        "type": "image",
+        "name": "image 5",
+        "src": "/portfolio-a/node-36-869.webp"
+      },
+      {
+        "id": "54:947",
+        "x": 2237,
+        "y": 228,
+        "w": 1363,
+        "h": 50,
+        "type": "text",
+        "text": "SOSE* 2025 전시 모습 및 제작과정",
+        "size": 32,
+        "align": "RIGHT",
+        "font": "Noto Sans KR",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9350000023841858,
+          "g": 0.9350000023841858,
+          "b": 0.9350000023841858
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      }
+    ],
+    "background": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  },
+  {
+    "id": "73:16",
+    "page": "35",
+    "nodes": [
+      {
+        "id": "73:19",
+        "x": 240,
+        "y": 235,
+        "w": 1920,
+        "h": 100,
+        "type": "text",
+        "text": "One platform.\nThree characters.",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "weight": 300,
+        "color": {
+          "r": 0.9800000190734863,
+          "g": 0.9800000190734863,
+          "b": 0.9800000190734863
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:20",
+        "x": 2101,
+        "y": 245,
+        "w": 1499,
+        "h": 150,
+        "type": "text",
+        "text": "내연기관의 소리·열·회전감을 트랙이라는 공간과 E-Fuel이라는 미래 조건 안에서 경험하게 하는 트랙카를 구상하고 컨피규레이터를 제작하는 작업을 진행했습니다. 차량은 스케치를 바탕으로 하나의 플랫폼 위에 서로 다른 세 가지 바디의 외형을 디자인했습니다. 실사화에서 ChatGPT Image2.0 & Nano Banana로 구체화를 진행했습니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "weight": 300,
+        "color": {
+          "r": 0.8399999737739563,
+          "g": 0.8399999737739563,
+          "b": 0.8399999737739563
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:24",
+        "x": 727,
+        "y": 1707.5615234375,
+        "w": 92,
+        "h": 56,
+        "type": "text",
+        "text": "GT3",
+        "size": 48,
+        "align": "LEFT",
+        "font": "Poppins",
+        "weight": 400,
+        "color": {
+          "r": 0.9800000190734863,
+          "g": 0.9800000190734863,
+          "b": 0.9800000190734863
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:25",
+        "x": 640,
+        "y": 1797.5615234375,
+        "w": 266,
+        "h": 53,
+        "type": "text",
+        "text": "정제된 트랙 실루엣",
+        "size": 34,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 500,
+        "color": {
+          "r": 0.9399999976158142,
+          "g": 0.9399999976158142,
+          "b": 0.9399999976158142
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:26",
+        "x": 343,
+        "y": 1877.5615234375,
+        "w": 860,
+        "h": 50,
+        "type": "text",
+        "text": "낮고 넓은 차체와 에어로 디테일로 트랙카의 기본 자세를 만듭니다.",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 300,
+        "color": {
+          "r": 0.7300000190734863,
+          "g": 0.7300000190734863,
+          "b": 0.7300000190734863
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:30",
+        "x": 1824,
+        "y": 1707.5615234375,
+        "w": 193,
+        "h": 56,
+        "type": "text",
+        "text": "Monster",
+        "size": 48,
+        "align": "LEFT",
+        "font": "Poppins",
+        "weight": 400,
+        "color": {
+          "r": 0.9800000190734863,
+          "g": 0.9800000190734863,
+          "b": 0.9800000190734863
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:31",
+        "x": 1772,
+        "y": 1797.5615234375,
+        "w": 297,
+        "h": 53,
+        "type": "text",
+        "text": "공격적인 에어로 볼륨",
+        "size": 34,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 500,
+        "color": {
+          "r": 0.9399999976158142,
+          "g": 0.9399999976158142,
+          "b": 0.9399999976158142
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:32",
+        "x": 1461,
+        "y": 1877.5615234375,
+        "w": 919,
+        "h": 50,
+        "type": "text",
+        "text": "강한 에어로 요소와 확장된 볼륨으로 극적인 트랙 캐릭터를 표현합니다.",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 300,
+        "color": {
+          "r": 0.7300000190734863,
+          "g": 0.7300000190734863,
+          "b": 0.7300000190734863
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:36",
+        "x": 3005,
+        "y": 1707.5615234375,
+        "w": 126,
+        "h": 56,
+        "type": "text",
+        "text": "Retro",
+        "size": 48,
+        "align": "LEFT",
+        "font": "Poppins",
+        "weight": 400,
+        "color": {
+          "r": 0.9800000190734863,
+          "g": 0.9800000190734863,
+          "b": 0.9800000190734863
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:37",
+        "x": 2903,
+        "y": 1797.5615234375,
+        "w": 329,
+        "h": 53,
+        "type": "text",
+        "text": "클래식한 비례의 재해석",
+        "size": 34,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 500,
+        "color": {
+          "r": 0.9399999976158142,
+          "g": 0.9399999976158142,
+          "b": 0.9399999976158142
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:38",
+        "x": 2689,
+        "y": 1877.5615234375,
+        "w": 757,
+        "h": 50,
+        "type": "text",
+        "text": "클래식한 실루엣에 현대적인 휠과 트랙 자세를 결합합니다.",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 300,
+        "color": {
+          "r": 0.7300000190734863,
+          "g": 0.7300000190734863,
+          "b": 0.7300000190734863
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "70:425",
+        "x": 97,
+        "y": -14,
+        "w": 3840,
+        "h": 2264,
+        "type": "image",
+        "name": "ㅠㅁ챃개ㅕㅜㅇ",
+        "src": "/portfolio-a/node-70-425.webp"
+      },
+      {
+        "id": "70:428",
+        "x": 239.4560546875,
+        "y": 1167.484375,
+        "w": 533.3712158203125,
+        "h": 218.83985900878906,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 1",
+        "src": "/portfolio-a/node-70-428-2x.webp"
+      },
+      {
+        "id": "70:429",
+        "x": 239.4560546875,
+        "y": 1447.4921875,
+        "w": 533.3712158203125,
+        "h": 189.7518310546875,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 3",
+        "src": "/portfolio-a/node-70-429-2x.webp"
+      },
+      {
+        "id": "70:430",
+        "x": 794.8446044921875,
+        "y": 1447.4921875,
+        "w": 533.3712158203125,
+        "h": 189.7518310546875,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 4",
+        "src": "/portfolio-a/node-70-430-2x.webp"
+      },
+      {
+        "id": "70:431",
+        "x": 794.84375,
+        "y": 1167.484375,
+        "w": 533.3712158203125,
+        "h": 218.83985900878906,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 2",
+        "src": "/portfolio-a/node-70-431-2x.webp"
+      },
+      {
+        "id": "70:432",
+        "x": 239.4560546875,
+        "y": 636.5615234375,
+        "w": 1088.6846923828125,
+        "h": 446.68255615234375,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 5",
+        "src": "/portfolio-a/node-70-432.webp"
+      },
+      {
+        "id": "70:440",
+        "x": 1376.8828125,
+        "y": 636.5615234375,
+        "w": 1088.7623291015625,
+        "h": 415.1161193847656,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 16",
+        "src": "/portfolio-a/node-70-440.webp"
+      },
+      {
+        "id": "70:441",
+        "x": 1383.1337890625,
+        "y": 1117.7373046875,
+        "w": 538.2645263671875,
+        "h": 260.70489501953125,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 17",
+        "src": "/portfolio-a/node-70-441-2x.webp"
+      },
+      {
+        "id": "70:442",
+        "x": 1932.546875,
+        "y": 1117.7373046875,
+        "w": 539.3519287109375,
+        "h": 260.70489501953125,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 5월 20일 오후 04_53_21 18",
+        "src": "/portfolio-a/node-70-442-2x.webp"
+      },
+      {
+        "id": "70:443",
+        "x": 1383.1337890625,
+        "y": 1389.5869140625,
+        "w": 538.1939697265625,
+        "h": 247.14471435546875,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 6월 8일 오전 09_38_30 1",
+        "src": "/portfolio-a/node-70-443-2x.webp"
+      },
+      {
+        "id": "70:444",
+        "x": 1932.5687866210938,
+        "y": 1389.5771484375,
+        "w": 539.3296508789062,
+        "h": 247.66622924804688,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 6월 8일 오전 09_38_30 2",
+        "src": "/portfolio-a/node-70-444-2x.webp"
+      },
+      {
+        "id": "70:434",
+        "x": 2512,
+        "y": 635,
+        "w": 1088.762451171875,
+        "h": 446.6508483886719,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 1",
+        "src": "/portfolio-a/node-70-434.webp"
+      },
+      {
+        "id": "70:435",
+        "x": 2512,
+        "y": 1165.9228515625,
+        "w": 532.8275146484375,
+        "h": 218.83985900878906,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 2",
+        "src": "/portfolio-a/node-70-435-2x.webp"
+      },
+      {
+        "id": "70:436",
+        "x": 2512,
+        "y": 1445.9326171875,
+        "w": 532.8275146484375,
+        "h": 189.7518310546875,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 4",
+        "src": "/portfolio-a/node-70-436-2x.webp"
+      },
+      {
+        "id": "70:437",
+        "x": 3067.9365234375,
+        "y": 1445.9326171875,
+        "w": 532.8275146484375,
+        "h": 189.7518310546875,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 5",
+        "src": "/portfolio-a/node-70-437-2x.webp"
+      },
+      {
+        "id": "70:438",
+        "x": 3067.9365234375,
+        "y": 1165.9228515625,
+        "w": 532.8275146484375,
+        "h": 218.83985900878906,
+        "type": "image",
+        "name": "ChatGPT Image 2026년 6월 8일 오전 10_39_03 3",
+        "src": "/portfolio-a/node-70-438-2x.webp"
+      }
+    ],
+    "background": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  },
+  {
+    "id": "73:40",
+    "page": "36",
+    "nodes": [
+      {
+        "id": "73:43",
+        "type": "text",
+        "text": "CINDER Configurator\nChoose, Test, Drive",
+        "size": 104,
+        "font": "Poppins",
+        "weight": 300,
+        "align": "LEFT",
+        "x": 240,
+        "y": 235,
+        "w": 1046,
+        "h": 242,
+        "color": {
+          "r": 0.9800000190734863,
+          "g": 0.9800000190734863,
+          "b": 0.9800000190734863
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:44",
+        "type": "text",
+        "text": "컨피규레이터는 바이브코딩을 통해 React기반 3D웹앱으로 제작을 했으며, 차체·엔진·휠·색상을 선택하면 완성차의 3D 모습과 주행 파라미터가 함께 바뀝니다. 선택한 차량을 풍동과 서킷에서 체험하고, 최종 명세와 빌드 코드로 정리합니다.",
+        "size": 32,
+        "font": "Noto Sans KR",
+        "weight": 300,
+        "align": "JUSTIFIED",
+        "x": 2046,
+        "y": 245,
+        "w": 1554,
+        "h": 100,
+        "color": {
+          "r": 0.8399999737739563,
+          "g": 0.8399999737739563,
+          "b": 0.8399999737739563
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "70:604",
+        "type": "image",
+        "name": "스크린샷 2026-10-05 오후 7.21.10 1",
+        "x": 2118,
+        "y": 612,
+        "w": 1168,
+        "h": 709,
+        "src": "/portfolio-a/cinder-configurator.webp"
+      },
+      {
+        "id": "80:606",
+        "type": "image",
+        "name": "스크린샷 2026-10-05 오후 7.24.13 1",
+        "x": 3221,
+        "y": 612,
+        "w": 1171,
+        "h": 712,
+        "src": "/portfolio-a/node-80-606.webp"
+      },
+      {
+        "id": "80:608",
+        "type": "image",
+        "name": "스크린샷 2026-10-05 오후 7.25.53 1",
+        "x": 2114,
+        "y": 1262,
+        "w": 1172,
+        "h": 707,
+        "src": "/portfolio-a/node-80-608.webp"
+      },
+      {
+        "id": "80:609",
+        "type": "image",
+        "name": "스크린샷 2026-10-05 오후 7.26.24 1",
+        "x": 3221.421875,
+        "y": 1261.7216796875,
+        "w": 1169.8988037109375,
+        "h": 705.7462158203125,
+        "src": "/portfolio-a/node-80-609.webp"
+      }
+    ],
+    "background": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  },
+  {
+    "id": "73:58",
+    "page": "37",
+    "nodes": [
+      {
+        "id": "73:61",
+        "x": 240,
+        "y": 235,
+        "w": 672,
+        "h": 121,
+        "type": "text",
+        "text": "Build Process",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "weight": 300,
+        "color": {
+          "r": 0.9800000190734863,
+          "g": 0.9800000190734863,
+          "b": 0.9800000190734863
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:62",
+        "x": 1876,
+        "y": 245,
+        "w": 1724,
+        "h": 100,
+        "type": "text",
+        "text": "디자인한 차량을 웹에서 다룰 수 있는 3D 자산으로 제작하고, Codex와 Claude Code를 사용해 선택·상태·인터랙션을 구현했습니다. React의 공유 선택 데이터가 GLB 조립과 재질, 주행, 최종 명세를 연결합니다. ",
+        "size": 32,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 300,
+        "color": {
+          "r": 0.8399999737739563,
+          "g": 0.8399999737739563,
+          "b": 0.8399999737739563
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:76",
+        "type": "vector",
+        "x": 3068,
+        "y": 1276,
+        "w": 3,
+        "h": 551,
+        "src": "/portfolio-a/vector-73-76.svg"
+      },
+      {
+        "id": "73:73",
+        "type": "vector",
+        "x": 3068,
+        "y": 1089,
+        "w": 544,
+        "h": 190,
+        "src": "/portfolio-a/vector-73-73.svg"
+      },
+      {
+        "id": "73:74",
+        "x": 3158,
+        "y": 1121,
+        "w": 276,
+        "h": 62,
+        "type": "text",
+        "text": "차량 빌드 데이터",
+        "size": 40,
+        "align": "CENTER",
+        "font": "Noto Sans KR",
+        "weight": 500,
+        "color": {
+          "r": 0.9700000286102295,
+          "g": 0.9700000286102295,
+          "b": 0.9700000286102295
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:75",
+        "x": 3158,
+        "y": 1201,
+        "w": 365,
+        "h": 35,
+        "type": "text",
+        "text": "BuildContext · buildState",
+        "size": 30,
+        "align": "CENTER",
+        "font": "Poppins",
+        "weight": 400,
+        "color": {
+          "r": 0.7019608020782471,
+          "g": 0.7019608020782471,
+          "b": 0.7019608020782471
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:77",
+        "type": "vector",
+        "x": 3068,
+        "y": 1407,
+        "w": 64,
+        "h": 3,
+        "src": "/portfolio-a/vector-73-77.svg"
+      },
+      {
+        "id": "73:78",
+        "x": 3158,
+        "y": 1369,
+        "w": 259,
+        "h": 59,
+        "type": "text",
+        "text": "GLB 조립 · 재질",
+        "size": 38,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 400,
+        "color": {
+          "r": 0.9607843160629272,
+          "g": 0.9607843160629272,
+          "b": 0.9607843160629272
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:79",
+        "x": 3158,
+        "y": 1454,
+        "w": 380,
+        "h": 46,
+        "type": "text",
+        "text": "modelPath · 색상 · 표면 마감",
+        "size": 30,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 300,
+        "color": {
+          "r": 0.7200000286102295,
+          "g": 0.7200000286102295,
+          "b": 0.7200000286102295
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:80",
+        "type": "vector",
+        "x": 3068,
+        "y": 1617,
+        "w": 64,
+        "h": 3,
+        "src": "/portfolio-a/vector-73-80.svg"
+      },
+      {
+        "id": "73:81",
+        "x": 3158,
+        "y": 1579,
+        "w": 219,
+        "h": 59,
+        "type": "text",
+        "text": "주행 파라미터",
+        "size": 38,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 400,
+        "color": {
+          "r": 0.9607843160629272,
+          "g": 0.9607843160629272,
+          "b": 0.9607843160629272
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:82",
+        "x": 3158,
+        "y": 1664,
+        "w": 404,
+        "h": 46,
+        "type": "text",
+        "text": "엔진 · 차체 · 타이어의 선택 계수",
+        "size": 30,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 300,
+        "color": {
+          "r": 0.7200000286102295,
+          "g": 0.7200000286102295,
+          "b": 0.7200000286102295
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:83",
+        "type": "vector",
+        "x": 3068,
+        "y": 1827,
+        "w": 64,
+        "h": 3,
+        "src": "/portfolio-a/vector-73-83.svg"
+      },
+      {
+        "id": "73:84",
+        "x": 3158,
+        "y": 1789,
+        "w": 335,
+        "h": 59,
+        "type": "text",
+        "text": "최종 명세 · 빌드 코드",
+        "size": 38,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 400,
+        "color": {
+          "r": 0.9607843160629272,
+          "g": 0.9607843160629272,
+          "b": 0.9607843160629272
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "73:85",
+        "x": 3158,
+        "y": 1874,
+        "w": 386,
+        "h": 46,
+        "type": "text",
+        "text": "동일한 선택의 구성과 결과 저장",
+        "size": 30,
+        "align": "LEFT",
+        "font": "Noto Sans KR",
+        "weight": 300,
+        "color": {
+          "r": 0.7200000286102295,
+          "g": 0.7200000286102295,
+          "b": 0.7200000286102295
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "58:188",
+        "x": 285.1640625,
+        "y": 521.5576171875,
+        "w": 1321.7742919921875,
+        "h": 829.6056518554688,
+        "type": "image",
+        "name": "스크린샷 2026-06-07 오후 11.47.37 1",
+        "src": "/portfolio-a/cinder-code.webp"
+      },
+      {
+        "id": "58:189",
+        "x": 229.75390625,
+        "y": 1564.2294921875,
+        "w": 737.0374145507812,
+        "h": 411.3697204589844,
+        "type": "image",
+        "name": "스크린샷 2026-06-07 오후 11.49.23 1",
+        "src": "/portfolio-a/node-58-189.webp"
+      },
+      {
+        "id": "58:190",
+        "x": 598.23046875,
+        "y": 1489.42578125,
+        "w": 737.0374145507812,
+        "h": 411.3697204589844,
+        "type": "image",
+        "name": "스크린샷 2026-06-07 오후 11.49.38 1",
+        "src": "/portfolio-a/node-58-190.webp"
+      },
+      {
+        "id": "58:192",
+        "x": 1063.671875,
+        "y": 1398,
+        "w": 737.0374145507812,
+        "h": 411.3697204589844,
+        "type": "image",
+        "name": "스크린샷 2026-06-07 오후 11.49.56 1",
+        "src": "/portfolio-a/node-58-192.webp"
+      },
+      {
+        "id": "70:502",
+        "x": 1293.623046875,
+        "y": 489.6962890625,
+        "w": 1265.290771484375,
+        "h": 764.3167114257812,
+        "type": "image",
+        "name": "스크린샷 2026-06-07 오후 11.52.41 1",
+        "src": "/portfolio-a/node-70-502.webp"
+      },
+      {
+        "id": "70:503",
+        "x": 1537,
+        "y": 1117.2880859375,
+        "w": 1462.9439697265625,
+        "h": 883.7117919921875,
+        "type": "image",
+        "name": "스크린샷 2026-06-07 오후 11.51.31 1",
+        "src": "/portfolio-a/node-70-503.webp"
+      },
+      {
+        "id": "70:523",
+        "x": 2548,
+        "y": 517,
+        "w": 962,
+        "h": 523,
+        "type": "image",
+        "name": "화면 캡처 2026-05-28 222523 1",
+        "src": "/portfolio-a/node-70-523.webp"
+      }
+    ],
+    "background": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  },
+  {
+    "id": "70:561",
+    "page": "38",
+    "nodes": [
+      {
+        "id": "70:601",
+        "x": 240,
+        "y": 235,
+        "w": 1049,
+        "h": 121,
+        "type": "text",
+        "text": "Build Process: Assets",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "weight": 300,
+        "color": {
+          "r": 0.9800000190734863,
+          "g": 0.9800000190734863,
+          "b": 0.9800000190734863
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "80:611",
+        "x": 2119,
+        "y": 245,
+        "w": 1481,
+        "h": 355,
+        "type": "text",
+        "text": "완성한 모델은 웹 컨피규레이터에서 조합할 수 있는 구조로 정리했습니다. 섀시·엔진·차체·휠을 개별 에셋으로 구성하고, 부품의 배치 기준과 재질 정보를 포함한 GLB 형식으로 연결했습니다. 이를 바탕으로 사용자가 부품과 색상을 선택하면 차량의 모습이 바뀌고, 같은 구성이 풍동 시각화와 서킷 주행으로 이어지도록 구현했습니다. 컨셉설정부터 이미지 탐색, 3D 모델 보완, 영상 제작, 웹 적용까지 전체 과정을 직접 진행하며, 디자인한 차량을 보고 선택하고 체험할 수 있는 콘텐츠로 완성했습니다.",
+        "size": 32,
+        "align": "JUSTIFIED",
+        "font": "Noto Sans KR",
+        "weight": 300,
+        "color": {
+          "r": 0.8399999737739563,
+          "g": 0.8399999737739563,
+          "b": 0.8399999737739563
+        },
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 154.99999523162842
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "70:524",
+        "x": 240,
+        "y": 480,
+        "w": 1766,
+        "h": 960,
+        "type": "image",
+        "name": "화면 캡처 2026-06-09 195941 1",
+        "src": "/portfolio-a/node-70-524.webp"
+      },
+      {
+        "id": "70:512",
+        "x": 480,
+        "y": 1200,
+        "w": 1406,
+        "h": 764,
+        "type": "image",
+        "name": "화면 캡처 2026-05-20 210107 1",
+        "src": "/portfolio-a/cinder-blender.webp"
+      },
+      {
+        "id": "70:509",
+        "x": 1511,
+        "y": 720,
+        "w": 2089,
+        "h": 1136,
+        "type": "image",
+        "name": "화면 캡처 2026-05-28 222123 1",
+        "src": "/portfolio-a/node-70-509.webp"
+      }
+    ],
+    "background": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  },
+  {
+    "id": "70:595",
+    "page": "39",
+    "nodes": [
+      {
+        "id": "80:614",
+        "x": 3405,
+        "y": 449.1416015625,
+        "w": 194.9984130859375,
+        "h": 14.141221046447754,
+        "type": "text",
+        "text": "CINEMATIC VIDEO & WEB",
+        "size": 12.652671813964844,
+        "align": "CENTER",
+        "font": "Orbitron",
+        "lineHeight": {
+          "unit": "AUTO"
+        },
+        "weight": 400,
+        "color": {
+          "r": 0.9333333373069763,
+          "g": 0.9411764740943909,
+          "b": 0.9098039269447327
+        },
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 0.6958969235420227
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "80:615",
+        "x": 3404,
+        "y": 463,
+        "w": 196,
+        "h": 23,
+        "type": "text",
+        "text": "SCAN TO Watch",
+        "size": 18.403106689453125,
+        "align": "CENTER",
+        "font": "Orbitron",
+        "lineHeight": {
+          "unit": "AUTO"
+        },
+        "weight": 900,
+        "color": {
+          "r": 0.7921568751335144,
+          "g": 0.6313725709915161,
+          "b": 0.26274511218070984
+        },
+        "letterSpacing": {
+          "unit": "PIXELS",
+          "value": 1.0121707916259766
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "80:618",
+        "x": 240,
+        "y": 235,
+        "w": 818,
+        "h": 121,
+        "type": "text",
+        "text": "Prototype Video",
+        "size": 104,
+        "align": "LEFT",
+        "font": "Poppins",
+        "lineHeight": {
+          "unit": "PERCENT",
+          "value": 115.99999666213989
+        },
+        "weight": 300,
+        "color": {
+          "r": 0.9800000190734863,
+          "g": 0.9800000190734863,
+          "b": 0.9800000190734863
+        },
+        "letterSpacing": {
+          "unit": "PERCENT",
+          "value": 0
+        },
+        "paragraphSpacing": 0
+      },
+      {
+        "id": "80:616",
+        "x": 3405,
+        "y": 240,
+        "w": 195,
+        "h": 195,
+        "type": "image",
+        "name": "adobe-express-qr-code 1",
+        "src": "/portfolio-a/node-80-616-2x.webp"
+      },
+      {
+        "id": "70:499",
+        "x": 240,
+        "y": 486,
+        "w": 2550,
+        "h": 1434,
+        "type": "image",
+        "name": "IMdD9izP6mgHA 1",
+        "src": "/portfolio-a/node-70-499.webp"
+      }
+    ],
+    "background": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  }
+]
