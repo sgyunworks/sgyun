@@ -156,3 +156,5 @@ User found a pause between rebound and dial travel. Flight now overlaps recoil a
 - User removed the direct Works link from the landing; Y pointer and keyboard activation remain the entry actions.
 
 - Mobile image policy (2026-10-12): cover, detail and CINDER web-preview images flow at intrinsic aspect ratio and auto height. Remove slide-ratio and fixed-height cropping on mobile only; desktop Portfolio A composition unchanged.
+
+- 2026-10-12 live Figma check: cover logo 16:4 is Poppins Regular 400, zero tracking, underline on S only. Corrected landing and navigation wordmark. Guidance now pulses opacity 1→0.12 over 1.6s with visible hold phases; 15px/500. Keyboard focus and reduced motion remain steady.

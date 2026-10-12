@@ -1,3 +1,7 @@
+## Guidance visibility and source typography — 2026-10-12
+
+Read Figma Portfolio A text node 16:4 live: Poppins Regular, 32px at 3840 canvas, zero letter spacing, S underline only. Browser confirms Poppins family/400, S-only underline; pulse duration 1.6s, 15px/500. CSS opacity range 1 to .12; reduced-motion and keyboard-focus steady states retained. Production build and diff check passed. Screenshot: .local/landing-pulse-font.jpg.
+
 ## Mobile uncropped imagery — 2026-10-12
 
 390×844 browser: all six Works cover images render as contain/relative at their intrinsic ratio; Wishbone full seat, back and feet visible. No horizontal overflow. CINDER detail: 35 image elements use contain/relative; no horizontal overflow. CSS changes scoped to max-width 700px, desktop rules unchanged. Production build and diff check passed. Screenshot: .local/mobile-uncropped.jpg.

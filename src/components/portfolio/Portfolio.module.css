@@ -38,3 +38,5 @@
  .sourcePage .sourceImage{aspect-ratio:auto!important;max-height:none;flex-shrink:0}
  .webPreviewTop,.webPreviewBottom{height:auto;overflow:visible;flex-shrink:0}
 }
+
+.wordmark{font-family:var(--font-poppins),sans-serif;font-weight:400;letter-spacing:0}.wordmark u{text-decoration-thickness:1px;text-underline-offset:.1em}
