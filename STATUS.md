@@ -219,3 +219,6 @@ Reviewed all 29 source sections. Replaced coordinate-only mobile ordering for me
 
 ## Social sharing preview — 2026-10-13
 Replaced legacy dark Engineering Art Open Graph graphic with current white SGYUN underlined wordmark and wire motif, 1200×630 PNG. Bundled licensed Poppins Regular for deterministic rendering. Updated KO/EN descriptions and localized Twitter metadata. Build passed and generated OG/Twitter tags checked for both locales; image visually inspected. Social app-specific cache/display not directly tested.
+
+## Team White profile activity — 2026-10-13
+Added standalone Activities section on KO/EN profile using existing record typography. Team White cohort29, Korea Consumer Forum university branding society, Fall2025 (user-confirmed semester). Kept separate from employment, leadership and awards; no inferred personal achievements. Organizer notice source recorded in docs/RESEARCH.md. Build passed.

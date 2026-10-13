@@ -55,3 +55,4 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 - Production is live on sgyun.kr (088c329). Curate archived projects later; source archive branch/tag: archive/sgyun-before-portfolio-a-2026-10-13.
 - Mobile image captions are explicitly associated in mobileMediaGroups; new media/captions must extend these relationships, not rely on desktop y-coordinates.
 - Social sharing uses updated 1200×630 /opengraph-image. Actual Kakao/Instagram preview caches are external to deployment verification.
+- Team White29 profile record reflects participation only; add specific role/projects only when user supplies evidence.

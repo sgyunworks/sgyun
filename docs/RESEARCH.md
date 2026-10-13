@@ -82,3 +82,7 @@ MDN setPointerCapture (https://developer.mozilla.org/en-US/docs/Web/API/Element/
 
 - 확신도: 중간 이상. 20개 표본에서 동일한 정보 순서와 짧은 역할 표기가 반복됐지만, 개인 포트폴리오에는 업종·경력·작업 성격에 따른 예외가 있다.
 - 반증 조건: 실제 방문자 또는 의뢰 검토자가 SGYUN에서 역할·작품 분야·연락 방법을 즉시 파악하지 못하거나, 작품 상세 진입 전에 추가 설명을 요구하면 한 문장짜리 보조 설명을 재도입한다.
+
+## Team White profile record — verified 2026-10-13
+User confirms membership in cohort29 during second semester2025. Organizer-requested notice published by HUFS identifies Korea Consumer Forum as operator and Sep–Dec2025 as cohort29 education period. https://builder.hufs.ac.kr/user/boardList.action?boardId=115271510&boardSeq=203187847&command=view&page=9
+Profile wording: 팀화이트29기 / 한국소비자포럼 · 대학생 브랜딩 소사이어티 / 2025년2학기. Branding society description also supplied by user. No personal awards, completion certificate, project outcomes or leadership role inferred from program offerings.
