@@ -222,3 +222,5 @@ Replaced legacy dark Engineering Art Open Graph graphic with current white SGYUN
 
 ## Team White profile activity — 2026-10-13
 Added standalone Activities section on KO/EN profile using existing record typography. Team White cohort29, Korea Consumer Forum university branding society, Fall2025 (user-confirmed semester). Kept separate from employment, leadership and awards; no inferred personal achievements. Organizer notice source recorded in docs/RESEARCH.md. Build passed.
+
+- 팀화이트 소개에서 사용자 요청에 따라 대학생 / University를 제거했습니다.
