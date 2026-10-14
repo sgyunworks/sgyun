@@ -226,3 +226,5 @@ Added standalone Activities section on KO/EN profile using existing record typog
 - 팀화이트 소개에서 사용자 요청에 따라 대학생 / University를 제거했습니다.
 
 Y landing now launches opposite the drag fully outside the viewport and returns to the dial; production build passed.
+
+Y release now snaps immediately, exits in 160–240ms, returns in 580ms, and adds a short whoosh. Browser confirmed off-screen bounds and Works navigation.

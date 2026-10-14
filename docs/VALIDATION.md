@@ -320,3 +320,5 @@ Final browser check: English CINDER live text contains zero Hangul editorial nod
 English fixed-column collision removed via localized stacked composition. Original/graded first frames inspected: neutral background approaches white while black shell, metal edges and contact shadows remain. Native video playback started successfully in browser; muted autoplay requested in follow-up; controls and playsInline enabled. Final section follows source pages and concept disclaimer. Build/typecheck passed.
 
 2026-10-14: Production build passed. Browser desktop and mobile drags reached Works. Mobile DOM samples confirmed Y bounding box fully outside viewport (right < 0) before navigation. Sound preference and reduced-motion branch retained; physical-device/audio perception not verified.
+
+2026-10-14 snap revision: Build passed before final braking-curve refinement; development browser with final curve confirmed 37 off-screen samples and navigation to Works. Existing sound-off gate preserved. Physical speaker listening not verified.

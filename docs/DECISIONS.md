@@ -218,3 +218,5 @@ User found a pause between rebound and dial travel. Flight now overlaps recoil a
 
 ## Y off-screen return · 2026-10-14
 Preserve the Portfolio A landing. On a valid pull, launch Y opposite the drag beyond the viewport, continue the turn off screen, then sweep back and morph into the bottom-right dial. Keep localized guidance, sound preference, keyboard activation and reduced-motion direct navigation.
+
+2026-10-14 correction: User rejected the smooth launch. Release stored tension immediately (160–240ms outbound depending on pull), use a 580ms return with late braking, and layer a short filtered air rush over the wire pluck.

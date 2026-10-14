@@ -34,3 +34,16 @@ export function readPortfolioSound() {
 export function savePortfolioSound(on: boolean) {
   try { sessionStorage.setItem('portfolio-sound', on ? 'on' : 'off'); } catch { /* preference remains in memory */ }
 }
+
+// Short filtered air rush layered over the steel-wire pluck.
+export function wireWhoosh() {
+ const ctx=portfolioAudio();if(!ctx||ctx.state!=='running')return;
+ const duration=.24,buffer=ctx.createBuffer(1,Math.ceil(ctx.sampleRate*duration),ctx.sampleRate);
+ const data=buffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=Math.random()*2-1;
+ const source=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),gain=ctx.createGain(),now=ctx.currentTime;
+ source.buffer=buffer;filter.type='bandpass';filter.Q.value=.7;
+ filter.frequency.setValueAtTime(2800,now);filter.frequency.exponentialRampToValueAtTime(280,now+duration);
+ gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.16,now+.018);gain.gain.exponentialRampToValueAtTime(.0001,now+duration);
+ source.connect(filter).connect(gain).connect(ctx.destination);source.start(now);source.stop(now+duration);
+ source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();};
+}

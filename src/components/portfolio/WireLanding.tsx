@@ -2,7 +2,7 @@
 import {useRouter} from 'next/navigation';
 import {useEffect, useRef, useState, type PointerEvent} from 'react';
 import type {Locale} from '@/lib/i18n';
-import {portfolioAudio, readPortfolioSound, savePortfolioSound, wireTone} from '@/lib/portfolio-audio';
+import {portfolioAudio, readPortfolioSound, savePortfolioSound, wireTone, wireWhoosh} from '@/lib/portfolio-audio';
 import styles from './WireLanding.module.css';
 
 type Point = {x:number;y:number};
@@ -29,7 +29,7 @@ export function WireLanding({locale}:{locale:Locale}) {
  const release=(from:Point,continueToWorks:boolean)=>{
   cancelAnimationFrame(frame.current);busy.current=continueToWorks;
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){setPosition({x:0,y:0});setPhase('idle');if(continueToWorks)enter();return;}
-  if(soundRef.current&&continueToWorks)wireTone(Math.min(1.3,.65+Math.hypot(from.x,from.y)/140));
+  if(soundRef.current&&continueToWorks){wireTone(Math.min(1.3,.65+Math.hypot(from.x,from.y)/140));wireWhoosh();}
   setPhase('rebound');const start=performance.now();
   const animate=(now:number)=>{
    const elapsed=now-start;
@@ -47,16 +47,20 @@ export function WireLanding({locale}:{locale:Locale}) {
     const distance=Math.min(tx,ty);
     const outside={x:from.x+direction.x*distance,y:from.y+direction.y*distance};
     const target={x:vw-(mobile?45:65)-anchor.x,y:vh-(mobile?70:100)-anchor.y};
-    const launch=Math.min(1,elapsed/430),returnT=Math.min(1,Math.max(0,(elapsed-430)/1100));
-    setPhase('travel');setDeparture(Math.min(1,elapsed/240));
-    if(elapsed<430){
-     const acceleration=launch*launch;
+    const launchDuration=240-Math.min(80,length*.5);
+    const launch=Math.min(1,elapsed/launchDuration),returnT=Math.min(1,Math.max(0,(elapsed-launchDuration)/580));
+    setPhase('travel');setDeparture(Math.min(1,elapsed/140));
+    if(elapsed<launchDuration){
+     // Stored tension is released immediately, with no slow ease-in.
+     const acceleration=launch*(1.35-.35*launch);
      setPosition({x:from.x+(outside.x-from.x)*acceleration,y:from.y+(outside.y-from.y)*acceleration});
     }else{
      // Initial tangent continues outward, keeping the turn entirely off screen.
      const c1={x:outside.x+direction.x*distance*.6,y:outside.y+direction.y*distance*.6};
      const c2={x:target.x-Math.min(vw*.32,340),y:target.y-Math.min(vh*.42,380)};
-     const t=returnT,u=1-t;
+     // Brake only on approach; the incoming flight stays quick.
+     const brake=Math.max(0,(returnT-.7)/.3);
+     const t=returnT<.7?returnT:(.7+.3*(brake+brake*brake-brake*brake*brake)),u=1-t;
      setPosition({x:u*u*u*outside.x+3*u*u*t*c1.x+3*u*t*t*c2.x+t*t*t*target.x,y:u*u*u*outside.y+3*u*u*t*c1.y+3*u*t*t*c2.y+t*t*t*target.y});
     }
     const morph=Math.min(1,Math.max(0,(returnT-.58)/.42));
