@@ -58,3 +58,5 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 - Team White29 profile record reflects participation only; add specific role/projects only when user supplies evidence.
 
 - 팀화이트 표기는 한국소비자포럼 · 브랜딩 소사이어티를 유지합니다.
+
+Review the new off-screen Y return feel on the deployed homepage.

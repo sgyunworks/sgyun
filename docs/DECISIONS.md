@@ -215,3 +215,6 @@ User found a pause between rebound and dial travel. Flight now overlaps recoil a
 - User removed the direct Works link from the landing; Y pointer and keyboard activation remain the entry actions.
 
 - 2026-10-12 live Figma check: cover logo 16:4 is Poppins Regular 400, zero tracking, underline on S only. Corrected landing and navigation wordmark. Guidance now pulses opacity 1→0.12 over 1.6s with visible hold phases; 15px/500. Keyboard focus and reduced motion remain steady.
+
+## Y off-screen return · 2026-10-14
+Preserve the Portfolio A landing. On a valid pull, launch Y opposite the drag beyond the viewport, continue the turn off screen, then sweep back and morph into the bottom-right dial. Keep localized guidance, sound preference, keyboard activation and reduced-motion direct navigation.

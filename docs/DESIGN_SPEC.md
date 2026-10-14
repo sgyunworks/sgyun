@@ -156,3 +156,6 @@ The former dark Vault Instrument specification below is retained as historical c
 - 없는 기록은 빈 검은 화면이 아니라 404 설명과 인덱스·홈 복귀 경로를 제공한다.
 
 - Mobile image policy (2026-10-12): cover, detail and CINDER web-preview images flow at intrinsic aspect ratio and auto height. Remove slide-ratio and fixed-height cropping on mobile only; desktop Portfolio A composition unchanged.
+
+## Y off-screen return · 2026-10-14
+Preserve the Portfolio A landing. On a valid pull, launch Y opposite the drag beyond the viewport, continue the turn off screen, then sweep back and morph into the bottom-right dial. Keep localized guidance, sound preference, keyboard activation and reduced-motion direct navigation.
