@@ -228,3 +228,5 @@ Added standalone Activities section on KO/EN profile using existing record typog
 Y landing now launches opposite the drag fully outside the viewport and returns to the dial; production build passed.
 
 Y release now snaps immediately, exits in 160–240ms, returns in 580ms, and adds a short whoosh. Browser confirmed off-screen bounds and Works navigation.
+
+2026-10-27: Added KIDP staff generative AI video workshop instructor to Korean/English profile, based on supplied plan and user-confirmed teaching role.

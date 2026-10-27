@@ -62,3 +62,5 @@ VESA의 이번 상세 카피는 사용자가 제공한 Summary / Description 원
 Review the new off-screen Y return feel on the deployed homepage.
 
 User to review the sharper Y slingshot feel on production.
+
+Keep the KIDP workshop role as instructor; do not add attendee names or unconfirmed outcomes to public profile.
