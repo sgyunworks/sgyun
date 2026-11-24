@@ -776,6 +776,23 @@ export function DialArchive({ locale }: { locale: Locale }) {
               </ol>
             </section>
 
+            <section className={styles.evidenceGroup} aria-labelledby="exhibition-title">
+              <header>
+                <h3 id="exhibition-title">{locale === "ko" ? "전시" : "Exhibitions"}</h3>
+              </header>
+              <ol>
+                {portfolioProfile.exhibitions.map((item) => (
+                  <li key={`${item.year}-${item.title.en}-${item.detail.en}`}>
+                    <time>{item.year}</time>
+                    <span>
+                      <strong>{item.title[locale]}</strong>
+                      <small>{item.detail[locale]}</small>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
             <section className={styles.evidenceGroup} aria-labelledby="activity-title">
               <header>
                 <h3 id="activity-title">{locale === "ko" ? "활동" : "Activities"}</h3>

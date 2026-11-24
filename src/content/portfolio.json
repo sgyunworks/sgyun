@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-12",
+  "updatedAt": "2026-11-24",
   "profile": {
     "name": {
       "ko": "이석윤",
@@ -69,6 +69,21 @@
         "result": {
           "ko": "은상·중소벤처기업부 장관상",
           "en": "Silver Award · Minister of SMEs and Startups Award"
+        },
+        "note": {
+          "ko": "VESA Based Floating Speaker",
+          "en": "VESA Based Floating Speaker"
+        }
+      },
+      {
+        "year": "2026",
+        "title": {
+          "ko": "Spark Design Award",
+          "en": "Spark Design Award"
+        },
+        "result": {
+          "ko": "Finalist · 2차 심사 진행 중",
+          "en": "Finalist · Final round in review"
         },
         "note": {
           "ko": "VESA Based Floating Speaker",
@@ -148,6 +163,41 @@
         "note": {
           "ko": "Thisplay",
           "en": "Thisplay"
+        }
+      }
+    ],
+    "exhibitions": [
+      {
+        "year": "2026.12",
+        "title": {
+          "ko": "DDP NEXT DESIGN 내일을 여는 디자인전",
+          "en": "DDP NEXT DESIGN Exhibition 2026"
+        },
+        "detail": {
+          "ko": "Vibey & Vibey Deck · DDP 아트홀 1·2관",
+          "en": "Vibey & Vibey Deck · DDP Art Hall 1–2"
+        }
+      },
+      {
+        "year": "2026",
+        "title": {
+          "ko": "디자인코리아 2026",
+          "en": "Design Korea 2026"
+        },
+        "detail": {
+          "ko": "NODE 휴머노이드 로봇 디자인 · AI 디자인 프로세스 영상 — AI Builder·Designer (공식 크레딧)",
+          "en": "NODE humanoid robot design · AI design process film — AI Builder & Designer (official credit)"
+        }
+      },
+      {
+        "year": "2026",
+        "title": {
+          "ko": "디자인코리아 2026",
+          "en": "Design Korea 2026"
+        },
+        "detail": {
+          "ko": "VESA Based Floating Speaker 전시",
+          "en": "VESA Based Floating Speaker exhibited"
         }
       }
     ],

@@ -89,6 +89,11 @@ export type PortfolioProfile = {
     result: LocalizedText;
     note: LocalizedText;
   }>;
+  exhibitions: Array<{
+    year: string;
+    title: LocalizedText;
+    detail: LocalizedText;
+  }>;
   activities: Array<{
     year: string;
     title: LocalizedText;
