@@ -36,7 +36,7 @@ export function FloatingWorks({locale, works}:{locale:Locale; works:FloatingWork
     const el = desk.current;
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let W = 0, H = 0, raf = 0, last = performance.now();
+    let W = 0, H = 0, raf = 0, last = performance.now(), lastMode = "", lastScale = 1;
 
     // Float mode (wide screens): tall windows hold the two edges, landscape windows fill the middle (3 over 2).
     const LAND = [[0.29, 0.30], [0.5, 0.25], [0.71, 0.31], [0.38, 0.74], [0.62, 0.72], [0.5, 0.5], [0.3, 0.55]];
@@ -53,8 +53,19 @@ export function FloatingWorks({locale, works}:{locale:Locale; works:FloatingWork
       ctx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
       const bar = em.parentElement as HTMLElement;
       const dots = (em.offsetLeft || 64);
-      return Math.ceil(ctx.measureText(em.textContent ?? "").width + dots + parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + parseFloat(getComputedStyle(bar).paddingRight) + 4);
+      const title = Math.ceil(ctx.measureText(em.textContent ?? "").width + dots + parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + parseFloat(getComputedStyle(bar).paddingRight) + 4);
+      const prompt = nodes.current[i]?.querySelector<HTMLElement>("[data-prompt]");
+      let promptW = 0;
+      if (prompt) {
+        const ps = getComputedStyle(prompt);
+        ctx.font = `${ps.fontWeight} ${ps.fontSize} ${ps.fontFamily}`;
+        // text + two flex gaps + cursor + side padding
+        promptW = Math.ceil(ctx.measureText(prompt.textContent ?? "").width + parseFloat(ps.columnGap || "7") * 2 + 8 + parseFloat(ps.paddingLeft) + parseFloat(ps.paddingRight) + 6);
+      }
+      return Math.max(title, promptW);
     };
+    // Same-shaped windows share one width: the widest title among them decides it.
+    const groupNeed = (tall: boolean) => Math.max(0, ...works.map((w, i) => (w.ratio < 1) === tall ? titleNeed(i) : 0));
 
     const layout = () => {
       const r = el.getBoundingClientRect();
@@ -62,9 +73,7 @@ export function FloatingWorks({locale, works}:{locale:Locale; works:FloatingWork
       const first = !W || !bodies.current.length;
       const deskH = Math.max(540, r.bottom > 0 ? vh - (r.top + window.scrollY) : vh);
       const float = r.width >= 900 && deskH >= 540 && r.width / deskH >= 1.15;
-      const prevMode = el.dataset.mode;
-      el.dataset.mode = float ? "float" : "flow";
-      const reset = first || prevMode !== el.dataset.mode || (!float && Math.abs(r.width - W) > 1);
+      const widthChanged = Math.abs(r.width - W) > 1;
       const Wn = r.width;
       const cols = float ? 0 : Wn < 600 ? 1 : 2;
       const gutter = cols === 2 ? Math.max(24, Wn * 0.05) : 14;
@@ -74,7 +83,7 @@ export function FloatingWorks({locale, works}:{locale:Locale; works:FloatingWork
         let ww: number;
         if (float) {
           const area = Wn * deskH * AREA;
-          ww = Math.min(Math.max(Math.sqrt(area * w.ratio), 250), Wn * 0.3);
+          ww = Math.min(Math.max(Math.sqrt(area * (w.ratio < 1 ? w.ratio : 16 / 9)), 250), Wn * 0.3);
         } else if (cols === 1) ww = Wn * (w.ratio < 1 ? 0.6 : 0.78);
         else ww = colW * (w.ratio < 1 ? 0.78 : 1);
         return Math.min(Math.max(ww, titleNeed(i)), Wn - 24);
@@ -83,45 +92,100 @@ export function FloatingWorks({locale, works}:{locale:Locale; works:FloatingWork
       // 2) measured heights (title may wrap only when the screen is narrower than the title)
       const heights = works.map((_, i) => nodes.current[i]?.offsetHeight ?? 300);
       const sizes = widths.map((ww, i) => ({ww, hh: heights[i]}));
+      let floated = false;
       if (float) {
-        el.style.height = "";
-        const h = el.getBoundingClientRect().height;
+        const h = deskH;
         const sx = W ? Wn / W : 1, sy = H ? h / H : 1;
         H = h;
-        let li = 0, ti = 0;
-        works.forEach((w, i) => {
-          const {ww, hh} = sizes[i];
-          const [fx, fy] = w.ratio < 1 ? TALL[Math.min(ti++, TALL.length - 1)] : LAND[Math.min(li++, LAND.length - 1)];
-          const pad = 28, capH = 48;
-          const x = Math.min(Math.max(Wn * fx - ww / 2, pad), Wn - ww - pad);
-          const y = Math.max(capH, Math.min(H * fy - hh / 2 + 14, H - hh - 46));
-          const b = bodies.current[i];
-          if (reset || !b) place(i, x, y, sizes[i], true);
-          else { b.x *= sx; b.y *= sy; place(i, b.x, b.y, sizes[i], false); }
+        const keep = !first && !widthChanged && lastMode === "float" && bodies.current.length === works.length;
+        if (keep) {
+          floated = true; el.style.height = "";
+          works.forEach((_, i) => {
+            const ww = Math.max(groupNeed(works[i].ratio < 1), widths[i] * lastScale), n = nodes.current[i];
+            if (n) n.style.width = `${ww}px`;
+            const b = bodies.current[i]; b.x *= sx; b.y *= sy;
+            place(i, b.x, b.y, {ww, hh: n?.offsetHeight ?? sizes[i].hh}, false);
+          });
+        } else {
+          // Seed slots, then push overlapping windows (caption included) apart; shrink all if still crowded.
+          const pad = 22, capH = 46, sep = 18;
+          let scale = 1, fits = false, rects: {x: number; y: number; w: number; h: number}[] = [];
+          for (let attempt = 0; attempt < 8; attempt++) {
+            const nl = groupNeed(false), nt = groupNeed(true);
+            const ws = widths.map((ww, i) => Math.max(works[i].ratio < 1 ? nt : nl, ww * scale));
+            ws.forEach((ww, i) => { const n = nodes.current[i]; if (n) n.style.width = `${ww}px`; });
+            const hs = works.map((_, i) => nodes.current[i]?.offsetHeight ?? 300);
+            let li = 0, ti = 0;
+            rects = works.map((w, i) => {
+              const [fx, fy] = w.ratio < 1 ? TALL[Math.min(ti++, TALL.length - 1)] : LAND[Math.min(li++, LAND.length - 1)];
+              return {x: Wn * fx - ws[i] / 2, y: H * fy - hs[i] / 2 + 14, w: ws[i], h: hs[i] + capH};
+            });
+            const bound = (q: typeof rects[0]) => {
+              q.x = Math.min(Math.max(q.x, pad), Wn - q.w - pad);
+              q.y = Math.min(Math.max(q.y, 6), H - q.h - 40);
+            };
+            rects.forEach(bound);
+            let worst = 0;
+            for (let it = 0; it < 240; it++) {
+              worst = 0;
+              for (let i = 0; i < rects.length; i++) for (let j = i + 1; j < rects.length; j++) {
+                const A = rects[i], B = rects[j];
+                const ox = Math.min(A.x + A.w, B.x + B.w) - Math.max(A.x, B.x) + sep;
+                const oy = Math.min(A.y + A.h, B.y + B.h) - Math.max(A.y, B.y) + sep;
+                if (ox <= 0 || oy <= 0) continue;
+                worst = Math.max(worst, Math.min(ox, oy));
+                if (ox < oy) { const d = ox / 2 * (A.x + A.w / 2 < B.x + B.w / 2 ? -1 : 1); A.x += d; B.x -= d; }
+                else { const d = oy / 2 * (A.y + A.h / 2 < B.y + B.h / 2 ? -1 : 1); A.y += d; B.y -= d; }
+                bound(A); bound(B);
+              }
+              if (!worst) break;
+            }
+            sizes.forEach((sz, i) => { sz.ww = ws[i]; sz.hh = hs[i]; });
+            fits = worst <= sep;
+            if (fits || scale < 0.62) break;
+            scale *= 0.93;
+          }
+          if (fits) { floated = true; lastScale = scale; el.style.height = ""; works.forEach((_, i) => place(i, rects[i].x, rects[i].y + capH, sizes[i], true)); }
+        }
+      }
+      if (!floated) {
+        // Flow mode (phones, tablets, foldables, small laptops): scrolling columns; windows still drag and float.
+        const nl = groupNeed(false), nt = groupNeed(true);
+        const gutterFor = (c: number) => c === 1 ? 14 : Math.max(24, Wn * 0.045);
+        const colFor = (c: number) => c === 1 ? Wn : (Wn - gutterFor(c) * (c + 1)) / c;
+        let fcols = Wn < 600 ? 1 : Wn >= 1000 ? 3 : 2;
+        while (fcols > 1 && colFor(fcols) < nl) fcols--;
+        const fg = gutterFor(fcols), fcw = colFor(fcols);
+        const fw = works.map(w => {
+          const tall = w.ratio < 1;
+          const ww = fcols === 1 ? Wn * (tall ? 0.6 : 0.78) : fcw * (tall ? 0.78 : 1);
+          return Math.min(Math.max(ww, tall ? nt : nl), Wn - 24);
         });
-      } else {
-        // Flow mode (phones, tablets, foldables): a scrolling column layout; windows still drag and float.
+        fw.forEach((ww, i) => { const n = nodes.current[i]; if (n) n.style.width = `${ww}px`; });
+        const fs = fw.map((ww, i) => ({ww, hh: nodes.current[i]?.offsetHeight ?? 300}));
         const capSpace = Wn < 600 ? 52 : 58, gap = Wn < 600 ? 34 : 44, top = 64;
         const pos: {x: number; y: number}[] = [];
-        if (cols === 1) {
+        if (fcols === 1) {
           let y = top + capSpace;
-          sizes.forEach(({ww, hh}, i) => { pos.push({x: i % 2 ? Wn - ww - 14 : 14, y}); y += hh + gap + capSpace; });
+          fs.forEach(({ww, hh}, i) => { pos.push({x: i % 2 ? Wn - ww - 14 : 14, y}); y += hh + gap + capSpace; });
           H = y;
         } else {
-          const colY = [top + capSpace, top + capSpace + 70];
-          sizes.forEach(({ww, hh}, i) => {
-            const c = colY[0] <= colY[1] ? 0 : 1;
-            const x0 = gutter + c * (colW + gutter);
-            const x = x0 + (colW - ww) * (i % 3 === 1 ? 0.15 : i % 3 === 2 ? 0.85 : 0.5);
-            pos.push({x, y: colY[c]});
+          const colY = Array.from({length: fcols}, (_, c) => top + capSpace + (c % 2) * 70);
+          fs.forEach(({ww, hh}, i) => {
+            const c = colY.indexOf(Math.min(...colY));
+            const x0 = fg + c * (fcw + fg);
+            const x = x0 + Math.max(0, fcw - ww) * (i % 3 === 1 ? 0.15 : i % 3 === 2 ? 0.85 : 0.5);
+            pos.push({x: Math.min(x, Wn - ww - 12), y: colY[c]});
             colY[c] += hh + gap + capSpace;
           });
           H = Math.max(...colY);
         }
         H += 10;
         el.style.height = `${H}px`;
-        works.forEach((_, i) => place(i, pos[i].x, pos[i].y, sizes[i], reset));
+        works.forEach((_, i) => place(i, pos[i].x, pos[i].y, fs[i], first || lastMode !== "flow" || widthChanged));
       }
+      lastMode = floated ? "float" : "flow";
+      el.dataset.mode = lastMode;
       W = Wn;
     };
     const place = (i: number, x: number, y: number, s: {ww: number; hh: number}, reset: boolean) => {
@@ -231,7 +295,7 @@ export function FloatingWorks({locale, works}:{locale:Locale; works:FloatingWork
             <em>{w.title}</em>
           </span>
           {w.kind === "terminal" && (
-            <span className={styles.prompt} aria-hidden="true">
+            <span className={styles.prompt} data-prompt aria-hidden="true">
               <span>sgyun@node ~ %</span> ./simulate NODE<i/>
             </span>
           )}
