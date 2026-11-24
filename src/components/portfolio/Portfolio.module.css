@@ -79,3 +79,37 @@
 @media(min-width:701px){.wishbone:lang(en) .coverCopy>span{font-size:clamp(13px,.8333vw,22px)}}
 
 @media(max-width:700px){.sourcePage .sourceCaption{margin-top:-14px;font-size:14px;line-height:1.6!important}}
+
+/* Desk pages (Works, Profile, Contact): one continuous CAD grid behind the menu bar, content and footer */
+.site[data-desk]{background:transparent;isolation:isolate}
+/* the grid lives on its own fixed compositor layer: scrolling never repaints it */
+.site[data-desk]::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-color:#f3f3f1;background-image:radial-gradient(circle,rgba(0,0,0,.2) .8px,transparent 1.2px),linear-gradient(rgba(0,0,0,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.045) 1px,transparent 1px);background-size:22px 22px,110px 110px,110px 110px;background-position:11px 11px,0 0,0 0;will-change:transform;transform:translateZ(0)}
+.site[data-desk] :is(.nav,.footer){background:transparent}
+.deskCursor{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:0;transition:opacity .25s ease;contain:strict}
+.deskCursor[data-on]{opacity:1}
+.deskCursor i{position:absolute;left:0;top:0;background:rgba(0,0,0,.09);will-change:transform}
+.deskCursor i:first-child{width:100%;height:1px;transform:translate3d(0,var(--my,-10px),0)}
+.deskCursor i:nth-child(2){width:1px;height:100%;transform:translate3d(var(--mx,-10px),0,0)}
+.deskCursor span{position:absolute;left:0;top:0;transform:translate3d(calc(var(--mx,0px) + 12px),calc(var(--my,0px) + 10px),0);will-change:transform;font:500 10px/1 var(--font-geist-mono),ui-monospace,monospace;letter-spacing:.04em;color:#8d8d8d;white-space:pre}
+
+/* Builder cues in the menu bar */
+.navLeft{display:flex;align-items:baseline;gap:14px}
+.navRole{font:500 11px/1 var(--font-geist-mono),ui-monospace,monospace;letter-spacing:.02em;color:#7a7a7a}
+.navStatus{display:inline-flex;align-items:center;gap:6px;font:500 11px/1 var(--font-geist-mono),ui-monospace,monospace!important;color:#3a3a3a}
+.navStatus i{width:6px;height:6px;border-radius:50%;background:#28c840;box-shadow:0 0 0 3px rgba(40,200,64,.18);animation:livePulse 2.4s ease-in-out infinite}
+.navClock{font:500 11px/1 var(--font-geist-mono),ui-monospace,monospace;color:#8a8a8a;min-width:78px}
+@keyframes livePulse{50%{box-shadow:0 0 0 5px rgba(40,200,64,0)}}
+@media(max-width:900px){.navStatus,.navClock{display:none}}
+@media(max-width:700px){.navLeft{flex-direction:column;gap:3px}.navRole{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.navStatus i{animation:none}}
+
+.site:has([aria-label="Hidden arcade"]) .deskCursor{display:none}
+
+/* Mobile: pull the header Y to open the arcade */
+.yPull{display:inline-block;position:relative;transform-origin:50% 0;transition:transform .45s cubic-bezier(.2,1.6,.4,1)}
+.yPull[data-live]{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;animation:yHint 9s ease-in-out 3s infinite}
+.yPull[data-live]::after{content:"";position:absolute;left:50%;top:50%;width:56px;height:56px;transform:translate(-50%,-50%)}
+.yPull[data-held]{transition:none;animation:none}
+.yPull[data-ready]{color:#f05a1e}
+@keyframes yHint{0%,88%,100%{transform:none}91%{transform:translateY(3px) rotate(-6deg)}94%{transform:translateY(1px) rotate(5deg)}97%{transform:rotate(-2deg)}}
+@media(prefers-reduced-motion:reduce){.yPull[data-live]{animation:none}}

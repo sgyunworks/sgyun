@@ -1,0 +1,451 @@
+{
+  "version": 1,
+  "measurement": "tanks-measure.mjs: edge-bounded paper flood fill for object masks (shadows excluded), circle Hough on gradient for the hull turret ring, mask column profiles for turret cap/barrel, mask row/column spans for L-block, notebook and cable coil. All fractions reference the delivered trimmed WebP.",
+  "hulls": {
+    "orange": {
+      "width": 300,
+      "height": 160,
+      "body": {
+        "x": 0.02317,
+        "y": 0.00868,
+        "w": 0.95017,
+        "h": 0.89371
+      },
+      "ring": {
+        "cx": 0.49826,
+        "cy": 0.44911,
+        "r": 0.12445,
+        "rInner": 0.12445
+      }
+    },
+    "graphite": {
+      "width": 300,
+      "height": 170,
+      "body": {
+        "x": 0.03115,
+        "y": 0.01181,
+        "w": 0.94105,
+        "h": 0.91339
+      },
+      "ring": {
+        "cx": 0.49811,
+        "cy": 0.45252,
+        "r": 0.12325,
+        "rInner": 0.12325
+      }
+    },
+    "grey": {
+      "width": 300,
+      "height": 157,
+      "body": {
+        "x": 0.02712,
+        "y": 0.01078,
+        "w": 0.94463,
+        "h": 0.92457
+      },
+      "ring": {
+        "cx": 0.49356,
+        "cy": 0.44004,
+        "r": 0.12859,
+        "rInner": 0.12633
+      }
+    },
+    "yellow": {
+      "width": 300,
+      "height": 168,
+      "body": {
+        "x": 0.03656,
+        "y": 0.01895,
+        "w": 0.93278,
+        "h": 0.88
+      },
+      "ring": {
+        "cx": 0.50507,
+        "cy": 0.43907,
+        "r": 0.12925,
+        "rInner": 0.12689
+      }
+    }
+  },
+  "turrets": {
+    "orange": {
+      "width": 300,
+      "height": 211,
+      "cap": {
+        "cx": 0.32792,
+        "cy": 0.45912,
+        "r": 0.29985
+      },
+      "tip": {
+        "x": 0.97046,
+        "y": 0.44969
+      },
+      "barrelHalf": 0.0566
+    },
+    "graphite": {
+      "width": 300,
+      "height": 204,
+      "cap": {
+        "cx": 0.31689,
+        "cy": 0.47697,
+        "r": 0.30755
+      },
+      "tip": {
+        "x": 0.98057,
+        "y": 0.45724
+      },
+      "barrelHalf": 0.04825
+    },
+    "grey": {
+      "width": 300,
+      "height": 208,
+      "cap": {
+        "cx": 0.321,
+        "cy": 0.44978,
+        "r": 0.2889
+      },
+      "tip": {
+        "x": 0.96375,
+        "y": 0.44432
+      },
+      "barrelHalf": 0.06114
+    },
+    "yellow": {
+      "width": 300,
+      "height": 222,
+      "cap": {
+        "cx": 0.34385,
+        "cy": 0.46154,
+        "r": 0.31885
+      },
+      "tip": {
+        "x": 0.98,
+        "y": 0.44595
+      },
+      "barrelHalf": 0.05198
+    }
+  },
+  "obstacles": {
+    "block": {
+      "width": 360,
+      "height": 358,
+      "file": "tanks_obstacle_block.webp",
+      "shape": "rects",
+      "rects": [
+        {
+          "x": 0.02806,
+          "y": 0.01335,
+          "w": 0.94092,
+          "h": 0.95994
+        }
+      ]
+    },
+    "cube": {
+      "width": 254,
+      "height": 256,
+      "file": "tanks_obstacle_cube.webp",
+      "shape": "rects",
+      "rects": [
+        {
+          "x": 0.07635,
+          "y": 0.04613,
+          "w": 0.84544,
+          "h": 0.86347
+        }
+      ]
+    },
+    "device": {
+      "width": 400,
+      "height": 197,
+      "file": "tanks_obstacle_device.webp",
+      "shape": "rects",
+      "rects": [
+        {
+          "x": 0.03281,
+          "y": 0.0468,
+          "w": 0.9271,
+          "h": 0.85468
+        }
+      ]
+    },
+    "speaker": {
+      "width": 376,
+      "height": 380,
+      "file": "tanks_obstacle_speaker.webp",
+      "shape": "circle",
+      "circle": {
+        "cx": 0.49361,
+        "cy": 0.47851,
+        "r": 0.46616
+      }
+    },
+    "notebook": {
+      "width": 251,
+      "height": 400,
+      "file": "tanks_obstacle_notebook.webp",
+      "shape": "rects",
+      "rects": [
+        {
+          "x": 0.02824,
+          "y": 0.00418,
+          "w": 0.9402,
+          "h": 0.89457
+        }
+      ]
+    },
+    "lblock": {
+      "width": 400,
+      "height": 379,
+      "file": "tanks_obstacle_lblock.webp",
+      "shape": "rects",
+      "rects": [
+        {
+          "x": 0.03742,
+          "y": 0.03537,
+          "w": 0.92258,
+          "h": 0.42313
+        },
+        {
+          "x": 0.58194,
+          "y": 0.03537,
+          "w": 0.37806,
+          "h": 0.91701
+        }
+      ]
+    },
+    "cable": {
+      "width": 380,
+      "height": 370,
+      "file": "tanks_obstacle_cable.webp",
+      "shape": "circle",
+      "circle": {
+        "cx": 0.49478,
+        "cy": 0.5992,
+        "r": 0.44198
+      }
+    }
+  },
+  "shell": {
+    "width": 128,
+    "height": 59,
+    "body": {
+      "x": 0.04384,
+      "y": 0.0411,
+      "w": 0.91649,
+      "h": 0.83105
+    }
+  },
+  "puff": {
+    "width": 256,
+    "height": 256
+  },
+  "files": {
+    "tank_hull_orange": {
+      "file": "tanks_tank_hull_orange.webp",
+      "width": 300,
+      "height": 160,
+      "bytes": 7626
+    },
+    "tank_hull_graphite": {
+      "file": "tanks_tank_hull_graphite.webp",
+      "width": 300,
+      "height": 170,
+      "bytes": 9056
+    },
+    "tank_hull_grey": {
+      "file": "tanks_tank_hull_grey.webp",
+      "width": 300,
+      "height": 157,
+      "bytes": 8658
+    },
+    "tank_hull_yellow": {
+      "file": "tanks_tank_hull_yellow.webp",
+      "width": 300,
+      "height": 168,
+      "bytes": 10358
+    },
+    "tank_turret_orange": {
+      "file": "tanks_tank_turret_orange.webp",
+      "width": 300,
+      "height": 211,
+      "bytes": 10614
+    },
+    "tank_turret_graphite": {
+      "file": "tanks_tank_turret_graphite.webp",
+      "width": 300,
+      "height": 204,
+      "bytes": 8932
+    },
+    "tank_turret_grey": {
+      "file": "tanks_tank_turret_grey.webp",
+      "width": 300,
+      "height": 208,
+      "bytes": 9670
+    },
+    "tank_turret_yellow": {
+      "file": "tanks_tank_turret_yellow.webp",
+      "width": 300,
+      "height": 222,
+      "bytes": 10640
+    },
+    "tank_shell": {
+      "file": "tanks_tank_shell.webp",
+      "width": 128,
+      "height": 59,
+      "bytes": 2160
+    },
+    "fx_puff": {
+      "file": "tanks_fx_puff.webp",
+      "width": 256,
+      "height": 256,
+      "bytes": 60314
+    },
+    "obstacle_block": {
+      "file": "tanks_obstacle_block.webp",
+      "width": 360,
+      "height": 358,
+      "bytes": 13862
+    },
+    "obstacle_cube": {
+      "file": "tanks_obstacle_cube.webp",
+      "width": 254,
+      "height": 256,
+      "bytes": 8464
+    },
+    "obstacle_device": {
+      "file": "tanks_obstacle_device.webp",
+      "width": 400,
+      "height": 197,
+      "bytes": 10664
+    },
+    "obstacle_speaker": {
+      "file": "tanks_obstacle_speaker.webp",
+      "width": 376,
+      "height": 380,
+      "bytes": 34838
+    },
+    "obstacle_notebook": {
+      "file": "tanks_obstacle_notebook.webp",
+      "width": 251,
+      "height": 400,
+      "bytes": 9334
+    },
+    "obstacle_lblock": {
+      "file": "tanks_obstacle_lblock.webp",
+      "width": 400,
+      "height": 379,
+      "bytes": 13546
+    },
+    "obstacle_cable": {
+      "file": "tanks_obstacle_cable.webp",
+      "width": 380,
+      "height": 370,
+      "bytes": 33478
+    }
+  },
+  "totalBytes": 262214,
+  "sourceCrops": {
+    "tank_hull_orange": {
+      "x": 196,
+      "y": 423,
+      "w": 863,
+      "h": 461
+    },
+    "tank_hull_graphite": {
+      "x": 178,
+      "y": 402,
+      "w": 899,
+      "h": 508
+    },
+    "tank_hull_grey": {
+      "x": 185,
+      "y": 430,
+      "w": 885,
+      "h": 464
+    },
+    "tank_hull_yellow": {
+      "x": 198,
+      "y": 423,
+      "w": 848,
+      "h": 475
+    },
+    "tank_turret_orange": {
+      "x": 314,
+      "y": 412,
+      "w": 677,
+      "h": 477
+    },
+    "tank_turret_graphite": {
+      "x": 318,
+      "y": 416,
+      "w": 669,
+      "h": 456
+    },
+    "tank_turret_grey": {
+      "x": 299,
+      "y": 425,
+      "w": 662,
+      "h": 458
+    },
+    "tank_turret_yellow": {
+      "x": 320,
+      "y": 411,
+      "w": 650,
+      "h": 481
+    },
+    "tank_shell": {
+      "x": 386,
+      "y": 527,
+      "w": 479,
+      "h": 219
+    },
+    "fx_puff": {
+      "x": -4,
+      "y": -4,
+      "w": 1262,
+      "h": 1262
+    },
+    "obstacle_block": {
+      "x": 291,
+      "y": 315,
+      "w": 677,
+      "h": 674
+    },
+    "obstacle_cube": {
+      "x": 359,
+      "y": 374,
+      "w": 537,
+      "h": 542
+    },
+    "obstacle_device": {
+      "x": 220,
+      "y": 453,
+      "w": 823,
+      "h": 406
+    },
+    "obstacle_speaker": {
+      "x": 233,
+      "y": 244,
+      "w": 783,
+      "h": 791
+    },
+    "obstacle_notebook": {
+      "x": 328,
+      "y": 175,
+      "w": 602,
+      "h": 958
+    },
+    "obstacle_lblock": {
+      "x": 241,
+      "y": 282,
+      "w": 775,
+      "h": 735
+    },
+    "obstacle_cable": {
+      "x": 244,
+      "y": 270,
+      "w": 767,
+      "h": 746
+    }
+  }
+}

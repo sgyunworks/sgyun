@@ -1,0 +1,293 @@
+{
+  "version": 1,
+  "measurement": "sharp raw pixels: connected-component colour segmentation for LCD/tile seams/discs/goals; median luminance rail profiles; least-squares rounded-corner seam fit. Fractions reference trimmed delivered images. Disc radii exclude shadows.",
+  "table": {
+    "width": 2400,
+    "height": 1042,
+    "inner": {
+      "x": 0.0282895,
+      "y": 0.0227273,
+      "w": 0.9414474,
+      "h": 0.8787879
+    },
+    "goals": {
+      "left": {
+        "x": 0.0269737,
+        "w": 0.0105263,
+        "top": 0.3090909,
+        "bottom": 0.6166667
+      },
+      "right": {
+        "x": 0.9618421,
+        "w": 0.0105263,
+        "top": 0.3090909,
+        "bottom": 0.6166667
+      }
+    },
+    "cornerRadius": 0.0605263
+  },
+  "hub": {
+    "width": 1087,
+    "height": 1600,
+    "lcd": {
+      "x": 0.1494253,
+      "y": 0.1100703,
+      "w": 0.7022989,
+      "h": 0.1249024
+    },
+    "tiles": [
+      {
+        "id": "pinball",
+        "label": "PINBALL",
+        "x": 0.1103448,
+        "y": 0.2982045,
+        "w": 0.3689655,
+        "h": 0.2435597
+      },
+      {
+        "id": "airhockey",
+        "label": "AIR HOCKEY",
+        "x": 0.5229885,
+        "y": 0.2982045,
+        "w": 0.3689655,
+        "h": 0.2435597
+      },
+      {
+        "id": "carcrush",
+        "label": "CAR CRUSH",
+        "x": 0.1103448,
+        "y": 0.5659641,
+        "w": 0.3689655,
+        "h": 0.2490242
+      },
+      {
+        "id": "tanks",
+        "label": "TANKS",
+        "x": 0.5229885,
+        "y": 0.5659641,
+        "w": 0.3689655,
+        "h": 0.2490242
+      }
+    ]
+  },
+  "lcd": {
+    "width": 900,
+    "height": 402,
+    "screen": {
+      "x": 0.09,
+      "y": 0.2699681,
+      "w": 0.8214286,
+      "h": 0.5063898
+    }
+  },
+  "sprites": {
+    "orange": {
+      "width": 490,
+      "height": 512,
+      "cx": 0.5011274,
+      "cy": 0.4632829,
+      "radius": 0.4526494,
+      "radiusY": 0.4535637
+    },
+    "graphite": {
+      "width": 492,
+      "height": 512,
+      "cx": 0.4994131,
+      "cy": 0.4661781,
+      "radius": 0.4559859,
+      "radiusY": 0.457159
+    },
+    "puck": {
+      "width": 476,
+      "height": 512,
+      "cx": 0.5013228,
+      "cy": 0.4514145,
+      "radius": 0.457672,
+      "radiusY": 0.4464945
+    }
+  },
+  "pieces": {
+    "malletDiameter": 0.095,
+    "puckDiameter": 0.043
+  },
+  "sourceMeasurements": {
+    "tableShell": {
+      "x": 160,
+      "y": 142,
+      "w": 1455,
+      "h": 603
+    },
+    "hubShell": {
+      "x": 152,
+      "y": 146,
+      "w": 780,
+      "h": 1154
+    },
+    "lcdShell": {
+      "x": 219,
+      "y": 174,
+      "w": 1325,
+      "h": 544
+    },
+    "inner": {
+      "left": 171,
+      "right": 1602,
+      "top": 153,
+      "bottom": 733
+    },
+    "cornerRadius": 92,
+    "cornerFitRmsPixels": 0.5671849,
+    "goals": [
+      {
+        "x": 169,
+        "y": 342,
+        "w": 16,
+        "h": 203,
+        "count": 3168
+      },
+      {
+        "x": 1590,
+        "y": 342,
+        "w": 16,
+        "h": 203,
+        "count": 3180
+      }
+    ],
+    "hubScreen": {
+      "x": 236,
+      "y": 274,
+      "w": 611,
+      "h": 160,
+      "count": 96263
+    },
+    "tiles": [
+      {
+        "x": 202,
+        "y": 515,
+        "w": 321,
+        "h": 312,
+        "count": 9726
+      },
+      {
+        "x": 561,
+        "y": 515,
+        "w": 321,
+        "h": 312,
+        "count": 10820
+      },
+      {
+        "x": 202,
+        "y": 858,
+        "w": 321,
+        "h": 319,
+        "count": 48067
+      },
+      {
+        "x": 561,
+        "y": 858,
+        "w": 321,
+        "h": 319,
+        "count": 38547
+      }
+    ],
+    "lcdScreen": {
+      "x": 312,
+      "y": 335,
+      "w": 1150,
+      "h": 317,
+      "count": 357188
+    },
+    "assets": {
+      "ah_table": {
+        "width": 2400,
+        "height": 1042,
+        "sourceWidth": 1774,
+        "sourceHeight": 887,
+        "crop": {
+          "x": 128,
+          "y": 138,
+          "w": 1520,
+          "h": 660
+        }
+      },
+      "hub_console": {
+        "width": 1087,
+        "height": 1600,
+        "sourceWidth": 1086,
+        "sourceHeight": 1448,
+        "crop": {
+          "x": 106,
+          "y": 133,
+          "w": 870,
+          "h": 1281
+        }
+      },
+      "lcd_panel": {
+        "width": 900,
+        "height": 402,
+        "sourceWidth": 1774,
+        "sourceHeight": 887,
+        "crop": {
+          "x": 186,
+          "y": 166,
+          "w": 1400,
+          "h": 626
+        }
+      },
+      "ah_mallet_orange": {
+        "width": 490,
+        "height": 512,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "crop": {
+          "x": 175,
+          "y": 199,
+          "w": 887,
+          "h": 926
+        },
+        "disc": {
+          "cx": 619.5,
+          "cy": 628,
+          "radius": 401.5,
+          "radiusY": 420
+        }
+      },
+      "ah_mallet_graphite": {
+        "width": 492,
+        "height": 512,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "crop": {
+          "x": 199,
+          "y": 214,
+          "w": 852,
+          "h": 887
+        },
+        "disc": {
+          "cx": 624.5,
+          "cy": 627.5,
+          "radius": 388.5,
+          "radiusY": 405.5
+        }
+      },
+      "ah_puck": {
+        "width": 476,
+        "height": 512,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "crop": {
+          "x": 247,
+          "y": 265,
+          "w": 756,
+          "h": 813
+        },
+        "disc": {
+          "cx": 626,
+          "cy": 632,
+          "radius": 346,
+          "radiusY": 363
+        }
+      }
+    }
+  }
+}

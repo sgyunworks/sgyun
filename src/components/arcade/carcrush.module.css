@@ -1,0 +1,92 @@
+/* CAR CRUSH — copies the arcade look (arcade.module.css) and adds the damage bar + result card. */
+.root {
+  --cc-ink: #2e332b;
+  --cc-muted: #66645f;
+  --cc-orange: #f05a1e;
+  --cc-shell: #ecebe6;
+  font-family: var(--font-arcade), ui-monospace, monospace;
+  color: var(--cc-ink);
+}
+.root :is(p, span, strong, small, button, div) { font-family: var(--font-arcade), ui-monospace, monospace; }
+.textButton {
+  min-height: 44px;
+  padding: 8px 13px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--cc-muted);
+  font-size: 13px;
+  letter-spacing: .04em;
+  cursor: pointer;
+}
+.textButton:hover { color: var(--cc-ink); background: #3b332309; }
+.stage:focus-visible { outline: none; }
+.root button:focus-visible { outline: 2px solid var(--cc-orange); outline-offset: 4px; }
+.back { position: absolute; left: 28px; top: var(--nav-bottom, 72px); z-index: 3; }
+.loading { position: absolute; inset: 0; display: grid; place-items: center; font-size: 15px; }
+.failure { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+.stage { position: absolute; display: block; cursor: crosshair; touch-action: none; }
+
+/* HUD: LCD timer module + slim damage bar, laid out in world units by the component. */
+.hud { position: absolute; display: flex; align-items: center; pointer-events: none; z-index: 2; }
+.lcd { position: relative; flex: none; container-type: inline-size; }
+.asset { display: block; width: 100%; height: 100%; pointer-events: none; user-select: none; }
+.lcdGlass {
+  position: absolute;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 23cqw; font-weight: 500; line-height: 1; letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+  color: #23271f;
+  text-shadow: 1px 2px 1px #333b2820;
+}
+.lcdGlass[data-low="true"] { color: #8a2a0c; }
+.meter { position: relative; flex: none; }
+/* Moulded off-white bezel, recessed grey track, orange fill — as in the concept. */
+.bezel {
+  position: absolute; inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(#f6f5f1, #e4e2dc);
+  box-shadow: 0 1px 0 #ffffff inset, 0 -1px 1px #b9b4ab55 inset, 0 3px 6px #5a4f4022, 0 1px 1px #5a4f4033;
+}
+.track {
+  position: absolute; inset: 22% 2.6%;
+  border-radius: 999px;
+  background: linear-gradient(#c9c6c0, #d9d7d2 60%, #e1dfda);
+  box-shadow: 0 2px 3px #5d554a40 inset, 0 0 0 1px #9f998f26 inset;
+  overflow: hidden;
+}
+.fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(#f77a3c, #e9561a 55%, #d84d14);
+  box-shadow: 0 1px 0 #ffb48a99 inset, 0 -1px 1px #9e360c55 inset;
+  transition: width 120ms ease-out;
+}
+.meterLabels {
+  position: absolute; left: 3%; right: 3%; top: 100%; margin-top: 6px;
+  display: flex; justify-content: space-between;
+  font-size: 11px; letter-spacing: .08em; color: var(--cc-muted);
+}
+.combo { color: var(--cc-orange); font-weight: 600; }
+
+.status { position: absolute; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none; font-size: 46px; font-weight: 500; line-height: 1.2; z-index: 2; }
+
+.card {
+  position: absolute; left: 50%; transform: translateX(-50%); z-index: 4;
+  min-width: 300px; padding: 26px 30px 22px;
+  border-radius: 18px;
+  background: linear-gradient(#f7f6f2, #ebe9e3);
+  box-shadow: 0 1px 0 #ffffff inset, 0 18px 40px #3e352a2e, 0 2px 6px #3e352a22;
+  text-align: center;
+}
+.cardTitle { margin: 0 0 4px; font-size: 26px; font-weight: 600; letter-spacing: .04em; }
+.cardSub { margin: 0 0 16px; font-size: 13px; color: var(--cc-orange); letter-spacing: .06em; }
+.stats { display: grid; grid-template-columns: auto auto; gap: 7px 28px; margin: 0 auto 20px; width: max-content; font-size: 13px; text-align: left; }
+.stats span:nth-child(odd) { color: var(--cc-muted); letter-spacing: .06em; }
+.stats span:nth-child(even) { text-align: right; font-variant-numeric: tabular-nums; }
+.newBest { color: var(--cc-orange); }
+.actions { display: flex; justify-content: center; gap: 10px; }
+.primary { min-height: 44px; padding: 10px 22px; border: 1px solid #b4ada4; border-radius: 8px; background: #f0eeea; color: var(--cc-ink); font-size: 14px; cursor: pointer; }
+.primary:hover { background: #fff; }
+.hint { position: absolute; bottom: 35px; left: 50%; transform: translateX(-50%); margin: 0; font-size: 12px; color: var(--cc-muted); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .fill { transition: none; } }

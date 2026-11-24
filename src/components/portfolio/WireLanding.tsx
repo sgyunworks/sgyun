@@ -82,11 +82,22 @@ export function WireLanding({locale}:{locale:Locale}) {
   const limit=Math.min(180,window.innerWidth*.3),elastic=(v:number)=>limit*Math.tanh(v/limit);
   d.position={x:elastic(e.clientX-d.start.x),y:elastic(e.clientY-d.start.y)};setPosition(d.position);
  };
- const up=(e:PointerEvent<HTMLButtonElement>,cancel=false)=>{
+ const up=(e:PointerEvent<HTMLButtonElement>)=>{
   const d=drag.current;if(!d||d.id!==e.pointerId)return;drag.current=null;
   if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);
-  release(d.position,!cancel&&Math.hypot(d.position.x,d.position.y)>24);
+  // A browser cancel or lost capture (text drag, gesture, focus change) is treated as a release, not a reset.
+  release(d.position,Math.hypot(d.position.x,d.position.y)>24);
  };
+ // Fallback: if capture is lost mid-pull, keep following the pointer on the window until it is released.
+ useEffect(()=>{
+  const mv=(e:globalThis.PointerEvent)=>{const d=drag.current;if(!d||d.id!==e.pointerId||letter.current?.hasPointerCapture(e.pointerId))return;
+   const limit=Math.min(180,window.innerWidth*.3),elastic=(v:number)=>limit*Math.tanh(v/limit);
+   d.position={x:elastic(e.clientX-d.start.x),y:elastic(e.clientY-d.start.y)};setPosition(d.position);};
+  const end=(e:globalThis.PointerEvent)=>{const d=drag.current;if(!d||d.id!==e.pointerId)return;drag.current=null;release(d.position,Math.hypot(d.position.x,d.position.y)>24);};
+  window.addEventListener('pointermove',mv);window.addEventListener('pointerup',end);window.addEventListener('pointercancel',end);
+  return()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',end);window.removeEventListener('pointercancel',end);};
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ },[anchor]);
  const rotation=position.x*.1*(1-travel)+travel*300;
  const x=anchor.x+position.x,y=anchor.y+position.y;
  const attach=(dx:number,dy:number)=>{const r=rotation*Math.PI/180;return {x:x+dx*Math.cos(r)-dy*Math.sin(r),y:y+dx*Math.sin(r)+dy*Math.cos(r)};};
@@ -97,7 +108,7 @@ export function WireLanding({locale}:{locale:Locale}) {
   <span className={styles.corner}><u>S</u>GYUN</span>
   <svg className={styles.wires} width="100%" height="100%" aria-hidden="true" style={{opacity:1-departure}}><defs><linearGradient id="steel-wire" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2={anchor.vw} y2={anchor.vh}><stop stopColor="#a4a7a9"/><stop offset=".46" stopColor="#d1d3d4"/><stop offset=".7" stopColor="#8e9294"/><stop offset="1" stopColor="#b9bdbe"/></linearGradient></defs>{anchor.w>0&&paths.map((d,i)=><path key={i} d={d} stroke="url(#steel-wire)" strokeWidth=".7" fill="none"/>)}</svg>
   <div className={styles.copy}>
-   <h1 aria-label="SGYUN"><span style={{opacity:1-departure}} aria-hidden="true"><u>S</u>G</span><button ref={letter} className={styles.letter} onPointerDown={down} onPointerMove={move} onPointerUp={e=>up(e)} onPointerCancel={e=>up(e,true)} onLostPointerCapture={e=>{if(drag.current)up(e,true);}} onClick={e=>{if(e.detail===0&&!busy.current){if(sound)portfolioAudio();release({x:70,y:45},true);}}} aria-label={ko?'Y를 튕겨 작품으로 이동':'Pluck Y to enter Works'} aria-describedby="wire-instruction" aria-disabled={busy.current} style={{transform:`translate(${position.x}px,${position.y}px) rotate(${rotation}deg) scale(${1-travel*.65})`,opacity:1-travel}}>Y</button><span aria-hidden="true" style={{opacity:1-departure}}>UN</span></h1>
+   <h1 aria-label="SGYUN"><span style={{opacity:1-departure}} aria-hidden="true"><u>S</u>G</span><button ref={letter} className={styles.letter} onPointerDown={down} onPointerMove={move} onPointerUp={e=>up(e)} draggable={false} onDragStart={e=>e.preventDefault()} onClick={e=>{if(e.detail===0&&!busy.current){if(sound)portfolioAudio();release({x:70,y:45},true);}}} aria-label={ko?'Y를 튕겨 작품으로 이동':'Pluck Y to enter Works'} aria-describedby="wire-instruction" aria-disabled={busy.current} style={{transform:`translate(${position.x}px,${position.y}px) rotate(${rotation}deg) scale(${1-travel*.65})`,opacity:1-travel}}>Y</button><span aria-hidden="true" style={{opacity:1-departure}}>UN</span></h1>
    <div className={styles.subtitle} style={{opacity:1-departure}}><p>PORTFOLIO 2026</p><p>Industrial · Metalcraft · AI Creative Design</p></div>
   <div className={styles.guidance} style={{opacity:1-departure}}><p id="wire-instruction">{phase==='dragging'?(ko?'놓으면, 다음으로':'Release to continue'):(ko?'Y를 드래그해 튕겨서 계속':'Drag and release Y to continue')}</p></div>
   </div>

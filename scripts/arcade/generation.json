@@ -1,0 +1,63 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "references": [
+    "_incoming_arcade/concepts_a1/01_hub.png",
+    "_incoming_arcade/concepts_a1/03_airhockey.png",
+    "_incoming_arcade/concepts_a1/ref1_icons.jpg",
+    "_incoming_arcade/concepts_a1/ref2_walkman.jpg",
+    "_incoming_arcade/concepts_a1/ref3_braun.jpg"
+  ],
+  "assets": [
+    {
+      "name": "hub_console",
+      "source": "/Users/sgyun/.codex/generated_images/01a20edd-f2e2-7931-90a2-4398757ad09c/exec-2ed69ef7-3138-4bb2-a23e-d930cfd64105.png",
+      "raw": "_incoming_arcade/stage1_raw/hub_console.png",
+      "delivered": "public/arcade/hub_console.webp",
+      "generations": 2
+    },
+    {
+      "name": "ah_table",
+      "source": "/Users/sgyun/.codex/generated_images/01a20edd-f2e2-7931-90a2-4398757ad09c/exec-6ab71e70-1c8a-4056-beb9-1df8f40fc713.png",
+      "raw": "_incoming_arcade/stage1_raw/ah_table.png",
+      "delivered": "public/arcade/ah_table.webp",
+      "generations": 1
+    },
+    {
+      "name": "ah_mallet_orange",
+      "source": "/Users/sgyun/.codex/generated_images/01a20edd-f2e2-7931-90a2-4398757ad09c/exec-dbcfaa6f-35f0-4c8f-a0e0-c39afabd16a3.png",
+      "raw": "_incoming_arcade/stage1_raw/ah_mallet_orange.png",
+      "delivered": "public/arcade/ah_mallet_orange.webp",
+      "generations": 1
+    },
+    {
+      "name": "ah_mallet_graphite",
+      "source": "/Users/sgyun/.codex/generated_images/01a20edd-f2e2-7931-90a2-4398757ad09c/exec-e8231efd-6274-4d5f-bd75-dfffe82085bd.png",
+      "raw": "_incoming_arcade/stage1_raw/ah_mallet_graphite.png",
+      "delivered": "public/arcade/ah_mallet_graphite.webp",
+      "generations": 1
+    },
+    {
+      "name": "ah_puck",
+      "source": "/Users/sgyun/.codex/generated_images/01a20edd-f2e2-7931-90a2-4398757ad09c/exec-3ed04893-1a0b-4cc9-94d4-0d70a7b0cadf.png",
+      "raw": "_incoming_arcade/stage1_raw/ah_puck.png",
+      "delivered": "public/arcade/ah_puck.webp",
+      "generations": 1
+    },
+    {
+      "name": "lcd_panel",
+      "source": "/Users/sgyun/.codex/generated_images/01a20edd-f2e2-7931-90a2-4398757ad09c/exec-a39a32d5-7aca-49fa-abd2-2bfd9db95539.png",
+      "raw": "_incoming_arcade/stage1_raw/lcd_panel.png",
+      "delivered": "public/arcade/lcd_panel.webp",
+      "generations": 1
+    }
+  ],
+  "sharedSpecification": "Strict overhead orthographic Braun matte soft-touch plastic product render. Single soft overhead light; soft wide contact shadow. Centered object with generous empty margin on perfectly flat uniform #E9E6E1, no grid, texture, vignette, gradient or unrequested text. Original attached concepts are references; generated images are never used as inputs.",
+  "subjects": {
+    "hub_console": "Off-white tall rounded console, blank shallow grey-green LCD, orange status dot, four recessed tile icons in a 2x2 grid with PINBALL / AIR HOCKEY / CAR CRUSH / TANKS grey labels. Orange flipper with metal ball; orange mallet with graphite puck; cream sports car with orange stripes; cream tank with graphite tracks. Retry required every icon to be strictly overhead and the LCD shallow.",
+    "ah_table": "Empty landscape table, width:height about 2:1, very thin rail about 1.5% of width, tiny punched air holes, thin orange vertical centre line, warm grey centre circle and goal half circles, dark left/right goal slots spanning middle 36% of playing height. No scoreboard/mallet/puck/motion. Table occupies 85% of image width. Requested 2400px or larger.",
+    "ah_mallet_orange": "One orange circular base with domed centred handle; base:handle diameter ratio 2:1. Strict overhead, base occupies 65% of square width. Soft orange bounce light beneath.",
+    "ah_mallet_graphite": "One graphite charcoal mallet, same circular base and centred domed handle proportions, strict overhead, base occupies 65% of square width.",
+    "ah_puck": "One graphite low circular puck with slight bevel and small centred orange dot, dot diameter 18% of puck diameter. Puck occupies 60% square width. No visible side walls, motion blur or streaks.",
+    "lcd_panel": "One off-white landscape Braun clock LCD module, shallow slender bezel and fine seam. Module width:height 2:1, blank grey-green screen about 80% width and 55% height, extra top bezel margin for later labels. No text, numbers, segments, branding, buttons or extra objects; module occupies 78% image width."
+  }
+}

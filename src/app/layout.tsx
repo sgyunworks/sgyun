@@ -3,6 +3,7 @@ import { Geist_Mono, Poppins, Noto_Sans_KR } from "next/font/google";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
+import { SiteGuard } from "@/components/SiteGuard";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -11,7 +12,7 @@ const poppins = Poppins({
   display: "swap",
 });
 
-const notoSansKR = Noto_Sans_KR({subsets:["latin"],weight:["300","400","500","700"],variable:"--font-noto-sans-kr",display:"swap"});
+const notoSansKR = Noto_Sans_KR({subsets:["latin"],weight:["300","400","500","700"],variable:"--font-noto-sans-kr",display:"swap",preload:false});
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function RootLayout({
   return (
     <html lang="ko" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={`${poppins.variable} ${geistMono.variable} ${notoSansKR.variable}`}>
+        <SiteGuard/>
         {children}
       </body>
     </html>

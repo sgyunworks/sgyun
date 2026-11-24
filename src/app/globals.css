@@ -709,3 +709,6 @@ select {
 
 /* Portfolio A uses an opt-in white shell; legacy interaction routes keep their theme. */
 html:has([class*="Portfolio_site"]){color-scheme:light;background:white}body:has([class*="Portfolio_site"]){background:white}body:has([class*="Portfolio_site"])::before{display:none}
+
+/* Copy deterrent: no dragging or long-press saving of media */
+img,video{-webkit-user-drag:none;-webkit-touch-callout:none}

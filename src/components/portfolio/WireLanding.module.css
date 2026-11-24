@@ -12,3 +12,5 @@
 @media(prefers-reduced-motion:reduce){.guidance p{animation:none;opacity:1;color:#202020}}
 
 .corner u{text-decoration-thickness:1px;text-underline-offset:.1em}
+
+.landing h1,.letter{-webkit-user-select:none;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none}

@@ -1,0 +1,76 @@
+/* TANKS — copied from the arcade look (arcade.module.css), English-only UI in the arcade mono font. */
+.root { --arc-ink: #2e332b; --arc-muted: #66645f; --arc-orange: #f56519; font-family: var(--font-arcade), ui-monospace, monospace; color: var(--arc-ink); }
+.root button:focus-visible { outline: 2px solid var(--arc-orange); outline-offset: 4px; }
+.arena:focus, .arena:focus-visible { outline: none; } /* the arena border is the play area; the canvas is auto-focused */
+.asset { display: block; width: 100%; height: 100%; pointer-events: none; user-select: none; }
+.textButton {
+  min-height: 44px; padding: 8px 13px; border: 0; border-radius: 6px; background: transparent; color: var(--arc-muted);
+  font-family: var(--font-arcade), ui-monospace, monospace; font-size: 13px; letter-spacing: .04em; cursor: pointer;
+}
+.textButton:hover { color: var(--arc-ink); background: #3b332309; }
+.back { position: absolute; left: 28px; top: var(--nav-bottom, 72px); z-index: 2; }
+.loading { position: absolute; inset: 0; display: grid; place-items: center; font: 15px var(--font-arcade), ui-monospace, monospace; }
+.failure { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+.lcd { position: absolute; container-type: inline-size; pointer-events: none; }
+.lcdGlass {
+  position: absolute; display: flex; flex-direction: column; justify-content: center; gap: 6%;
+  padding: 0 6%; box-sizing: border-box; color: #2b3226;
+  font: 500 7.8cqw/1 var(--font-arcade), ui-monospace, monospace; letter-spacing: -.02em; text-shadow: 1px 2px 1px #333b2820;
+}
+.lcdRow { display: flex; justify-content: space-between; align-items: center; white-space: nowrap; }
+.lcdGlass[data-blink="true"] .lcdRow:first-child { opacity: .28; }
+.pips { display: flex; gap: 3cqw; align-items: center; }
+.pip { width: 3.8cqw; height: 3.8cqw; border: .6cqw solid currentColor; box-sizing: border-box; }
+.pip[data-alive="true"] { background: currentColor; }
+.pipLabel { font-size: 4.6cqw; letter-spacing: .02em; opacity: .8; }
+.arena {
+  position: absolute; display: block; touch-action: none; outline-offset: 6px;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cg fill='none' stroke='%23f3f3f1' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M13 2v6M13 18v6M2 13h6M18 13h6'/%3E%3C/g%3E%3Cg fill='none' stroke='%232e332b' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M13 2v6M13 18v6M2 13h6M18 13h6'/%3E%3Ccircle cx='13' cy='13' r='1.4' fill='%23f56519' stroke='none'/%3E%3C/g%3E%3C/svg%3E") 13 13, crosshair;
+}
+.status {
+  position: absolute; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none;
+  font: 500 42px/1.2 var(--font-arcade), ui-monospace, monospace; letter-spacing: .02em; color: var(--arc-ink);
+  text-shadow: 0 1px 0 #f3f3f1, 0 0 14px #f3f3f1;
+}
+.status small { display: block; margin-top: 8px; font-size: 13px; letter-spacing: .06em; color: var(--arc-muted); }
+.restart {
+  display: block; pointer-events: auto; margin: 18px auto 0; border: 1px solid #b4ada4; background: #f0eeea; color: var(--arc-ink);
+  border-radius: 6px; padding: 11px 22px; font: 14px var(--font-arcade), ui-monospace, monospace; letter-spacing: .04em; cursor: pointer;
+}
+.restart:hover { background: #e9e6e1; }
+.hint { position: absolute; bottom: 35px; left: 50%; transform: translateX(-50%); margin: 0; font-size: 12px; letter-spacing: .03em; color: var(--arc-muted); white-space: nowrap; }
+.legend { position: absolute; bottom: 58px; left: 50%; transform: translateX(-50%); margin: 0; font-size: 12px; letter-spacing: .03em; color: var(--arc-muted); white-space: nowrap; pointer-events: none; }
+
+/* ---- Touch (shown only in touch mode) ---- */
+.root[data-touch] {
+  position: absolute; inset: 0; touch-action: none; overscroll-behavior: none; user-select: none; -webkit-user-select: none;
+  -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent;
+}
+.root[data-touch] .legend { bottom: 1px; font-size: 11px; line-height: 14px; }
+@media (orientation: portrait) { .root[data-touch] .legend { bottom: calc(141px + env(safe-area-inset-bottom)); } } /* between arena and controls */
+.root[data-touch] .status { font-size: 34px; }
+.root[data-touch] .status small { font-size: 12px; }
+/* Braun-style analog stick: off-white matte ring, graphite knob. */
+.stick {
+  position: absolute; left: 6px; bottom: calc(6px + env(safe-area-inset-bottom)); width: 148px; height: 148px;
+  display: grid; place-items: center; touch-action: none;
+}
+.stickRing {
+  position: relative; width: 120px; height: 120px; border-radius: 50%; box-sizing: border-box;
+  background: radial-gradient(circle at 50% 42%, #f4f3ef 0%, #e9e7e2 62%, #dedbd5 100%);
+  border: 1px solid #cfcbc4; box-shadow: inset 0 1px 0 #fff, 0 2px 5px rgba(46, 51, 43, .16);
+  display: grid; place-items: center; pointer-events: none;
+}
+.stickRing::before { content: ""; position: absolute; inset: 22px; border-radius: 50%; border: 1px solid #d3cfc8; box-shadow: inset 0 1px 2px rgba(46, 51, 43, .08); }
+.stickKnob {
+  width: 52px; height: 52px; border-radius: 50%; will-change: transform;
+  background: radial-gradient(circle at 42% 36%, #55585a 0%, #3a3c3d 55%, #2b2d2e 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(255, 255, 255, .14);
+}
+.fire {
+  position: absolute; right: 22px; bottom: calc(26px + env(safe-area-inset-bottom)); width: 88px; height: 88px; border-radius: 50%;
+  border: 0; padding: 0; background: radial-gradient(circle at 46% 38%, #ff7a33 0%, #f56519 60%, #df5410 100%); color: #fff8f0;
+  font: 600 14px var(--font-arcade), ui-monospace, monospace; letter-spacing: .1em; touch-action: none; cursor: pointer;
+  box-shadow: 0 3px 6px rgba(120, 50, 10, .25), inset 0 1px 0 rgba(255, 255, 255, .25);
+}
+.fire:active { transform: scale(.95); background: #df5410; }

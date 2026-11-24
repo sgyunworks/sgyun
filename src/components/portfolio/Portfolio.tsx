@@ -44,6 +44,35 @@ async function imageRatio(src: string) {
  return m.width && m.height ? m.width / m.height : 16 / 9;
 }
 
+// Works with film get a small QuickTime-style player window docked to their main window.
+const CLIPS: Record<string, {ratio: number; film?: string}> = {
+ vesa: {ratio: 4 / 3, film: "#vesa-film"},
+ vibey: {ratio: 4 / 3, film: "#vibey-film"},
+ wishbone: {ratio: 0.8, film: "#wishbone-film"},
+ aviator: {ratio: 16 / 9, film: "#aviator-film"},
+ cinder: {ratio: 16 / 9, film: "#cinder-film"},
+ node: {ratio: 512 / 292},
+};
+// Hierarchy: tier 1 windows are the largest and most central, tier 3 the smallest.
+const TIERS: Record<string, 1 | 2 | 3> = {vesa: 1, node: 1, vibey: 2, wishbone: 2, aviator: 2, wrgs: 2, "vesa-floating-speaker": 2, cinder: 3, recopick: 3, "v-cado": 3};
+const ORDER = ["vesa", "node", "vibey", "wishbone", "aviator", "wrgs", "vesa-floating-speaker", "cinder", "recopick", "v-cado"];
+
+// What was actually built for each work (shown as a build tag under the caption).
+const TAGS: Record<string, string> = {
+ vesa: "Fusion · Metal forming · Prototype",
+ node: "Blender · Three.js · Claude Code",
+ vibey: "Hardware · Interaction · AI dev",
+ wishbone: "Rhino SubD · Fusion · Motion",
+ aviator: "Mechanism · Fabrication · Prototype",
+ wrgs: "Fusion · Stainless fabrication",
+ cinder: "AI design · 3D assets · Web dev",
+};
+
+const clipFor = (id: string, href: string, title: string, ko: boolean) => {
+ const c = CLIPS[id];
+ return c && {src: `/clips/${id}.mp4`, poster: `/clips/${id}.jpg`, ratio: c.ratio, href: href + (c.film ?? ""), label: ko ? "영상" : "Film"};
+};
+
 async function floatingWorks(locale: Locale): Promise<FloatingWork[]> {
  const ko = locale === "ko";
  const ratios = await Promise.all(archiveProjects.map(p => imageRatio(p.heroImage)));
@@ -51,14 +80,16 @@ async function floatingWorks(locale: Locale): Promise<FloatingWork[]> {
   id: p.id, number: p.number, title: p.title, caption: p.description[locale],
   href: `/${locale}/works/${p.slug}`, image: p.heroImage, alt: p.imageAlt[locale],
   ratio: pageRatio(ratios[i]), kind: "window",
+  clip: clipFor(p.id, `/${locale}/works/${p.slug}`, p.title, ko), tier: TIERS[p.id] ?? 3, tags: TAGS[p.id],
  }));
  works.push({
   id: "node", number: String(works.length + 1).padStart(2, "0"), title: "NODE",
   caption: ko ? "디자인코리아 2026 · 휴머노이드 로봇과 웹 시뮬레이터" : "Design Korea 2026 · Humanoid robot & web simulator",
   href: "/node", image: "/node/teaser.webp", alt: ko ? "NODE 휴머노이드 로봇 티저 이미지" : "NODE humanoid robot teaser",
-  ratio: 3 / 4, kind: "terminal",
+  ratio: 3 / 4, kind: "terminal", clip: clipFor("node", "/node", "NODE", ko), tier: 1, tags: TAGS.node,
  });
- return works;
+ const rank = (id: string) => { const k = ORDER.indexOf(id); return k < 0 ? ORDER.length : k; };
+ return works.sort((a, b) => a.tier - b.tier || rank(a.id) - rank(b.id)).map((w, i) => ({...w, number: String(i + 1).padStart(2, "0")}));
 }
 
 export async function PortfolioHome({ locale, indexOnly = false }: { locale: Locale; indexOnly?: boolean }) {
@@ -67,7 +98,7 @@ export async function PortfolioHome({ locale, indexOnly = false }: { locale: Loc
 }
 
 export function PortfolioDetail({ project: p, locale }: { project: ArchiveProject; locale: Locale }) {
- const film:Record<string,string>={vesa:"7zlyT0hP6_w",aviator:"T-T_7QIveWY",cinder:"m0Xcpsa-vuI"};
+ const film:Record<string,string>={vesa:"iA8PQY1UCSY",vibey:"gopHsANR9yg",aviator:"T-T_7QIveWY",cinder:"m0Xcpsa-vuI"};
  const next = archiveProjects[(archiveProjects.findIndex(x=>x.id===p.id)+1)%archiveProjects.length];
  return <article className={styles.portfolio}>
    <ProjectCover project={p} locale={locale} detail/>
@@ -85,7 +116,7 @@ export function PortfolioProfile({locale}:{locale:Locale}) {
  return <div className={styles.profile}>
   <header><h1>Profile</h1><span>Seokyun Lee</span></header>
   <div className={styles.profileGrid}>
-   <aside><Image className={styles.portrait} src="/portfolio-a/portrait.webp" alt="Seokyun Lee" width={478} height={603}/><h2>Seokyun Lee</h2><p>{p.title[locale]}</p><p>Seoul, Republic of Korea</p><a href="mailto:pio1075@naver.com">pio1075@naver.com</a><h3>{ko?"학력":"Education"}</h3>{p.education.map(x=><p key={x.en}>{x[locale]}</p>)}<h3>Skills</h3><p>Metal Welding<br/>Concept Development and Design<br/>3D Modeling & Visualization<br/>Physical Prototyping<br/>AI-assisted Coding & Development</p></aside>
+   <aside><Image className={styles.portrait} src="/portfolio-a/portrait.webp" alt="Seokyun Lee" width={478} height={603} priority/><h2>Seokyun Lee</h2><p>{p.title[locale]}</p><p>Seoul, Republic of Korea</p><a href="mailto:pio1075@naver.com">pio1075@naver.com</a><h3>{ko?"학력":"Education"}</h3>{p.education.map(x=><p key={x.en}>{x[locale]}</p>)}<h3>Skills</h3><p>Metal Welding<br/>Concept Development and Design<br/>3D Modeling & Visualization<br/>Physical Prototyping<br/>AI-assisted Coding & Development</p></aside>
    <div><section><h2>{ko?"경력·강의":"Experience & teaching"}</h2>{p.activities.slice(0,4).map(x=><div className={styles.record} key={x.title.en+ x.year}><time>{x.year}</time><div><h3>{x.title[locale]}</h3><p>{x.detail[locale]}</p></div></div>)}</section><section><h2>{ko?"리더십·전시 운영":"Leadership & exhibitions"}</h2>{p.activities.slice(4,9).map(x=><div className={styles.record} key={x.title.en+ x.year}><time>{x.year}</time><div><h3>{x.title[locale]}</h3><p>{x.detail[locale]}</p></div></div>)}</section><section><h2>{ko?"전시 참여":"Exhibitions"}</h2>{p.exhibitions.map(x=><div className={styles.record} key={x.title.en+x.detail.en}><time>{x.year}</time><div><h3>{x.title[locale]}</h3><p>{x.detail[locale]}</p>{x.href&&<a className={styles.recordLink} href={x.href} target="_blank" rel="noreferrer">{ko?"NODE 시뮬레이터 보기 ↗":"Open NODE simulator ↗"}</a>}</div></div>)}</section></div>
    <div><section><h2>{ko?"수상·선정":"Awards & recognition"}</h2>{p.recognitions.map(x=><div className={styles.record} key={x.title.en+ x.year}><time>{x.year}</time><div><h3>{x.title[locale]}</h3><p>{x.result[locale]}</p><small>{x.note[locale]}</small></div></div>)}</section><section><h2>{ko?"창업 프로그램":"Startup program"}</h2>{p.activities.slice(9,10).map(x=><div className={styles.record} key={x.title.en+ x.year}><time>{x.year}</time><div><h3>{x.title[locale]}</h3><p>{x.detail[locale]}</p></div></div>)}</section><section><h2>{ko?"대외활동":"Activities"}</h2>{p.activities.slice(10).map(x=><div className={styles.record} key={x.title.en+ x.year}><time>{ko?x.year:"Fall 2025"}</time><div><h3>{x.title[locale]}</h3><p>{x.detail[locale]}</p></div></div>)}</section></div>
   </div>
