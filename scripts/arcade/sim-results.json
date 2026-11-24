@@ -3,8 +3,8 @@
     "seeds": 20,
     "substepsPerSeed": 200000,
     "totalSubsteps": 4000000,
-    "leftGoals": 557,
-    "rightGoals": 638,
+    "leftGoals": 540,
+    "rightGoals": 670,
     "worstOverlapWorldUnits": 0,
     "worstOverlapDeliveredPixels": 0
   },
@@ -13,34 +13,34 @@
     {
       "difficulty": "easy",
       "games": 60,
-      "wins": 55,
-      "losses": 5,
+      "wins": 52,
+      "losses": 8,
       "stalled": 0,
-      "playerWinRate": "91.7%",
-      "youGoals": 411,
-      "aiGoals": 232
+      "playerWinRate": "86.7%",
+      "youGoals": 286,
+      "aiGoals": 159
     },
     {
       "difficulty": "normal",
       "games": 60,
-      "wins": 40,
-      "losses": 20,
+      "wins": 41,
+      "losses": 19,
       "stalled": 0,
-      "playerWinRate": "66.7%",
-      "youGoals": 371,
-      "aiGoals": 289
+      "playerWinRate": "68.3%",
+      "youGoals": 261,
+      "aiGoals": 193
     },
     {
       "difficulty": "hard",
       "games": 60,
-      "wins": 1,
-      "losses": 59,
+      "wins": 3,
+      "losses": 57,
       "stalled": 0,
-      "playerWinRate": "1.7%",
-      "youGoals": 159,
-      "aiGoals": 419
+      "playerWinRate": "5.0%",
+      "youGoals": 114,
+      "aiGoals": 295
     }
   ],
-  "seconds": 7.16,
+  "seconds": 6.48,
   "caveat": "Scripted player benchmark, not a human playtest or browser frame-rate measurement."
 }

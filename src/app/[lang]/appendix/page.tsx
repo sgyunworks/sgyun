@@ -69,6 +69,8 @@ export async function generateMetadata({
       locale === "ko"
         ? "SGYUN 포트폴리오의 보류·보조 기록을 위한 예약 공간."
         : "Reserved space for held and supporting SGYUN portfolio records.",
+    // Placeholder with no records yet: keep it out of search results until it has content.
+    robots: { index: false, follow: true },
     alternates: {
       canonical: `/${locale}/appendix`,
       languages: { ko: "/ko/appendix", en: "/en/appendix" },

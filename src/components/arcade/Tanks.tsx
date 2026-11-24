@@ -5,14 +5,15 @@ import art from "./art.json";
 import tanksArt from "./tanks.art.json";
 import { BARREL_STRETCH, COLOURS, HULL_LENGTH, PLAYER, SHELL_LENGTH, SHELL_SPEED, STAGES, STEP, WORLD_H, WORLD_W, createGame, geometryFromArt, lineClear, pivot, pivotX, pivotY, queueFire, setPlayerInput, setTouchAssist, step, type Colour, type Game, type TanksArt } from "./tanksPhysics";
 import styles from "./tanks.module.css";
+import { sfx } from "./sfx";
 
 const ART = tanksArt as unknown as TanksArt;
 const geometry = geometryFromArt(ART);
 const LCD_WIDTH = 290;
 type Sprite = { canvas: HTMLCanvasElement; ax: number; ay: number };
 /** left/top/width/height = the canvas element's unrotated CSS box; cx/cy = arena centre on screen. */
-type View = { left: number; top: number; width: number; height: number; lcdTop: number; nav: number; rotated: boolean; cx: number; cy: number; lcdLeft: number; lcdWidth: number };
-type Hud = { stage: number; alive: boolean[]; message: string; sub: string; phase: string; blink: boolean };
+type View = { left: number; top: number; width: number; height: number; lcdTop: number; nav: number; rotated: boolean; cx: number; cy: number; lcdLeft: number; lcdWidth: number; statusY: number };
+type Hud = { stage: number; alive: boolean[]; message: string; sub: string; phase: string; blink: boolean; score: number[]; round: number };
 const MATCHUP = ["1:1", "1:1:1", "1:1:1:1"];
 const fractionRect = (r: { x: number; y: number; w: number; h: number }): CSSProperties => ({ left: `${r.x * 100}%`, top: `${r.y * 100}%`, width: `${r.w * 100}%`, height: `${r.h * 100}%` });
 const MOVE_KEYS = new Set(["KeyW", "KeyA", "KeyS", "KeyD", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]);
@@ -20,6 +21,12 @@ const MOVE_KEYS = new Set(["KeyW", "KeyA", "KeyS", "KeyD", "ArrowUp", "ArrowDown
 const RICOCHET = "#ffb21a";
 // Touch layout: control band under a rotated (portrait) arena, side gutters in landscape.
 const CTRL_BAND = 156, CTRL_SIDE = 156, GUTTER = 16, STICK_DEAD = .14, TAP_HOLD = .9;
+/** Touch: transient text (countdown, round results, retry) lives in its own band between the LCD
+ *  row and the arena, so it never covers tanks or obstacles. */
+const STATUS_BAND = 46;
+/** Soft drop shadows, drawn separately so they stay screen-down-right whatever the hull angle or
+ *  view rotation (world units): offset right / down, blur radius, opacity. */
+const SHADOW_R = 2.6, SHADOW_D = 4.4, SHADOW_BLUR = 3.2, SHADOW_ALPHA = .34, TURRET_SHADOW = .55;
 const wrapA = (a: number) => { while (a > Math.PI) a -= Math.PI * 2; while (a < -Math.PI) a += Math.PI * 2; return a; };
 type TouchApi = { stickDown: (e: PointerEvent, el: HTMLElement) => void; stickMove: (e: PointerEvent) => void; stickUp: (e: PointerEvent) => void; fire: () => void };
 
@@ -32,8 +39,8 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
   const knob = useRef<HTMLDivElement>(null);
   const touchApi = useRef<TouchApi>({ stickDown() {}, stickMove() {}, stickUp() {}, fire() {} });
   const [touch, setTouch] = useState(false);
-  const [view, setView] = useState<View>({ left: 0, top: 270, width: 0, height: 0, lcdTop: 120, nav: 72, rotated: false, cx: 0, cy: 270, lcdLeft: 0, lcdWidth: LCD_WIDTH });
-  const [hud, setHud] = useState<Hud>({ stage: 0, alive: [true, true], message: "3", sub: "", phase: "countdown", blink: false });
+  const [view, setView] = useState<View>({ left: 0, top: 270, width: 0, height: 0, lcdTop: 120, nav: 72, rotated: false, cx: 0, cy: 270, lcdLeft: 0, lcdWidth: LCD_WIDTH, statusY: 270 });
+  const [hud, setHud] = useState<Hud>({ stage: 0, alive: [true, true], message: "3", sub: "", phase: "countdown", blink: false, score: [0, 0], round: 0 });
   const [failed, setFailed] = useState(false);
   const [ready, setReady] = useState(false);
   const [paused, setPaused] = useState(false);
@@ -50,9 +57,14 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
     let disposed = false, raf = 0, previous = 0, nextFrame = 0, accumulator = 0, scale = 1, bounds = { left: 0, top: 0, width: 1, height: 1 };
     let loaded = false, hidden = document.hidden, manualPause = false;
     let images: Record<string, HTMLImageElement> = {};
-    const hulls = {} as Record<Colour, Sprite>, turrets = {} as Record<Colour, Sprite>;
+    const hulls = {} as Record<Colour, Sprite>, turrets = {} as Record<Colour, Sprite>, hullShadows = {} as Record<Colour, Sprite>, turretShadows = {} as Record<Colour, Sprite>;
     let shell: Sprite, ricoShell: Sprite, ricoHalo: HTMLCanvasElement, ricoTrail: HTMLCanvasElement, puff: HTMLCanvasElement, staticLayer: HTMLCanvasElement, tracks: HTMLCanvasElement, trackCtx: CanvasRenderingContext2D, glow: HTMLCanvasElement, streak: HTMLCanvasElement;
-    let layoutStage = -1, fadeClock = 0;
+    let layoutStage = -1, layoutRound = -1, fadeClock = 0, shadowX = SHADOW_R, shadowY = SHADOW_D;
+    // Sound: event counters already voiced (diffed against Game.stats each frame), last phase.
+    let heardShots = 0, heardPlayerShots = 0, heardBounces = 0, heardBursts = 0, heardKills = 0, heardPhase = "", unlocked = false;
+    const unlockSound = () => { if (!unlocked) { unlocked = true; sfx.unlock(); } };
+    // Nothing sounds before the first user gesture (browsers would refuse the audio context anyway).
+    const play = (name: Parameters<typeof sfx.play>[0], intensity?: number) => { if (unlocked) sfx.play(name, intensity); };
     let lastRevision = -1, lastMessage = "", lastBlink = false, lastPhase = "";
     const lastOdo = new Float64Array(4), wasAlive = [true, true, true, true];
     const keys = new Set<string>();
@@ -69,13 +81,16 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
     const coarse = window.matchMedia("(pointer: coarse)");
     let touchMode = coarse.matches, stickId = -1, stickCX = 0, stickCY = 0, stickR = 1, stickX = 0, stickY = 0, stickMag = 0, reversing = false;
     let tapX = 0, tapY = 0, tapHold = 0, unlock: (() => void) | null = null;
-    const fresh = (stage: number) => { game.current = createGame(geometry, stage, (Date.now() & 0xffffffff) >>> 0); setTouchAssist(game.current, touchMode); layoutStage = -1; lastRevision = -1; previous = 0; accumulator = 0; };
+    const fresh = (stage: number) => {
+      game.current = createGame(geometry, stage, (Date.now() & 0xffffffff) >>> 0); setTouchAssist(game.current, touchMode); layoutStage = -1; lastRevision = -1; previous = 0; accumulator = 0;
+      heardShots = heardPlayerShots = heardBounces = heardBursts = heardKills = 0; heardPhase = "";
+    };
     fresh(0);
     action.current = () => {
       const s = game.current; if (!s) return;
       if (s.phase === "lost" && s.timer <= 0) fresh(s.stage);
       else if (s.phase === "complete") fresh(0);
-      element.focus({ preventScroll: true });
+      unlockSound(); element.focus({ preventScroll: true });
     };
     function offscreen(w: number, h: number) { const c = document.createElement("canvas"); c.width = Math.max(1, Math.round(w)); c.height = Math.max(1, Math.round(h)); return c; }
     /** Pre-scale an image so that `worldWidth` world units of the full image map to canvas pixels. */
@@ -92,6 +107,37 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
       g.drawImage(img, sx, 0, img.naturalWidth - sx, img.naturalHeight, split * w - .5, 0, (1 - split) * w * BARREL_STRETCH + .5, h);
       return { canvas: c, ax: ax * w, ay: ay * h };
     }
+    /** Soft drop shadow of a sprite: its silhouette box-blurred (3 passes ≈ Gaussian) into an
+     *  offscreen canvas. Built on resize / stage change only, never in the animation loop. */
+    function shadowOf(src: HTMLCanvasElement, ax: number, ay: number, blur: number, alpha: number): Sprite {
+      const r = Math.max(1, Math.round(blur * scale)), pad = r * 3 + 2;
+      const c = offscreen(src.width + pad * 2, src.height + pad * 2), g = c.getContext("2d", { willReadFrequently: true })!;
+      g.drawImage(src, pad, pad);
+      const img = g.getImageData(0, 0, c.width, c.height), d = img.data, w = c.width, h = c.height, n = 2 * r + 1;
+      const a = new Float32Array(w * h), b = new Float32Array(w * h);
+      for (let i = 0; i < w * h; i++) a[i] = d[i * 4 + 3];
+      for (let pass = 0; pass < 3; pass++) {
+        for (let y = 0; y < h; y++) {
+          const row = y * w; let sum = 0;
+          for (let x = -r; x <= r; x++) sum += a[row + Math.min(w - 1, Math.max(0, x))];
+          for (let x = 0; x < w; x++) { b[row + x] = sum / n; sum += a[row + Math.min(w - 1, x + r + 1)] - a[row + Math.max(0, x - r)]; }
+        }
+        for (let x = 0; x < w; x++) {
+          let sum = 0;
+          for (let y = -r; y <= r; y++) sum += b[Math.min(h - 1, Math.max(0, y)) * w + x];
+          for (let y = 0; y < h; y++) { a[y * w + x] = sum / n; sum += b[Math.min(h - 1, y + r + 1) * w + x] - b[Math.max(0, y - r) * w + x]; }
+        }
+      }
+      for (let i = 0; i < w * h; i++) { d[i * 4] = 38; d[i * 4 + 1] = 33; d[i * 4 + 2] = 27; d[i * 4 + 3] = a[i] * alpha; }
+      g.putImageData(img, 0, 0);
+      return { canvas: c, ax: ax + pad, ay: ay + pad };
+    }
+    function clearTracks() {
+      const s = game.current!;
+      trackCtx.setTransform(1, 0, 0, 1, 0, 0); trackCtx.clearRect(0, 0, tracks.width, tracks.height);
+      for (let i = 0; i < 4; i++) { lastOdo[i] = 0; wasAlive[i] = true; }
+      layoutRound = s.round;
+    }
     function buildStatic() {
       const s = game.current!;
       staticLayer = offscreen(element!.width, element!.height);
@@ -100,14 +146,21 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
       g.strokeStyle = "rgba(46, 51, 43, 0.22)"; g.lineWidth = Math.max(1, scale * 1.2);
       const inset = g.lineWidth / 2, r = 14 * scale;
       g.beginPath(); g.roundRect(inset, inset, staticLayer.width - inset * 2, staticLayer.height - inset * 2, r); g.stroke();
-      for (const o of s.obstacles) {
+      // Obstacles: soft shadows first (screen-down-right, same as the tanks'), then the objects.
+      for (let pass = 0; pass < 2; pass++) for (const o of s.obstacles) {
         const img = images[`obstacle_${o.name}`], w = o.w * scale, h = o.h * scale;
-        g.setTransform(o.flip ? -1 : 1, 0, 0, 1, o.x * scale, o.y * scale);
-        g.drawImage(img, -w / 2, -h / 2, w, h);
+        if (pass === 0) {
+          const art = offscreen(w, h); art.getContext("2d")!.drawImage(img, 0, 0, art.width, art.height);
+          const sh = shadowOf(art, w / 2, h / 2, SHADOW_BLUR * 1.25, SHADOW_ALPHA);
+          g.setTransform(o.flip ? -1 : 1, 0, 0, 1, (o.x + shadowX * 1.15) * scale, (o.y + shadowY * 1.15) * scale);
+          g.drawImage(sh.canvas, -sh.ax, -sh.ay);
+        } else {
+          g.setTransform(o.flip ? -1 : 1, 0, 0, 1, o.x * scale, o.y * scale);
+          g.drawImage(img, -w / 2, -h / 2, w, h);
+        }
       }
       g.setTransform(1, 0, 0, 1, 0, 0);
-      trackCtx.setTransform(1, 0, 0, 1, 0, 0); trackCtx.clearRect(0, 0, tracks.width, tracks.height);
-      for (let i = 0; i < 4; i++) { lastOdo[i] = 0; wasAlive[i] = true; }
+      clearTracks();
       layoutStage = s.stage;
     }
     function resize() {
@@ -120,14 +173,16 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
         height = width * WORLD_H / WORLD_W;
         bounds = { left: (window.innerWidth - width) / 2, top: top + Math.max(0, bottom - top - height) / 2, width, height };
         turnedView = false; centreX = bounds.left + width / 2; centreY = bounds.top + height / 2;
-        setView({ ...bounds, lcdTop: Math.max(nav + 2, bounds.top - lcdHeight - 10), nav, rotated: turnedView, cx: centreX, cy: centreY, lcdLeft: bounds.left, lcdWidth: LCD_WIDTH });
+        // Transient text sits in the strip right of the LCD, above the arena (never over the arena).
+        const lcdTop = Math.max(nav + 2, bounds.top - lcdHeight - 10);
+        setView({ ...bounds, lcdTop, nav, rotated: turnedView, cx: centreX, cy: centreY, lcdLeft: bounds.left, lcdWidth: LCD_WIDTH, statusY: lcdTop + lcdHeight / 2 });
       } else {
         // Touch: back button + compact LCD on one row, arena below, controls at the bottom (portrait)
         // or in the side gutters (landscape). Portrait screens rotate the view when that is larger.
         const iw = window.innerWidth, ih = window.innerHeight, portrait = ih > iw;
         const nav = Math.max(0, document.querySelector("nav")?.getBoundingClientRect().bottom ?? 0);
         const lcdWidth = Math.max(140, Math.min(portrait ? 190 : 220, iw - 2 * GUTTER - 120)), lcdHeight = lcdWidth * art.lcd.height / art.lcd.width;
-        const lcdTop = nav + 6, top = lcdTop + lcdHeight + 10;
+        const lcdTop = nav + 6, bandTop = lcdTop + lcdHeight + 2, top = bandTop + STATUS_BAND + 4;
         const availW = iw - 2 * GUTTER - (portrait ? 0 : 2 * CTRL_SIDE), availH = Math.max(60, ih - top - (portrait ? CTRL_BAND : GUTTER));
         const normal = Math.max(1, Math.min(availW, availH * WORLD_W / WORLD_H, 1700));
         const turned = portrait ? Math.max(1, Math.min(availH, (iw - 2 * GUTTER) * WORLD_W / WORLD_H)) : 0;
@@ -136,9 +191,12 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
         const boxW = turnedView ? height : width, boxH = turnedView ? width : height;
         centreX = iw / 2; centreY = top + Math.max(0, availH - boxH) / 2 + boxH / 2;
         bounds = { left: centreX - width / 2, top: centreY - height / 2, width, height };
-        setView({ ...bounds, lcdTop, nav, rotated: turnedView, cx: centreX, cy: centreY, lcdLeft: iw - GUTTER - lcdWidth, lcdWidth });
+        setView({ ...bounds, lcdTop, nav, rotated: turnedView, cx: centreX, cy: centreY, lcdLeft: iw - GUTTER - lcdWidth, lcdWidth, statusY: centreY - boxH / 2 - STATUS_BAND / 2 - 2 }); // band hugs the arena's top edge
         stickRelease();
       }
+      // Screen-down-right in world units: the portrait view shows the canvas rotated -90°, where
+      // screen down = world -x and screen right = world +y.
+      shadowX = turnedView ? -SHADOW_D : SHADOW_R; shadowY = turnedView ? SHADOW_R : SHADOW_D;
       const dpr = Math.min(2, window.devicePixelRatio || 1);
       element!.width = Math.round(width * dpr); element!.height = Math.round(height * dpr);
       scale = element!.width / WORLD_W;
@@ -148,6 +206,8 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
         const h = ART.hulls[c], t = ART.turrets[c];
         hulls[c] = sprite(images[`tank_hull_${c}`], HULL_LENGTH / h.body.w, h.body.x + h.body.w / 2, h.body.y + h.body.h / 2);
         turrets[c] = turretSprite(images[`tank_turret_${c}`], geometry.capR / t.cap.r, t.cap.cx, t.cap.cy, t.cap.cx + t.cap.r);
+        hullShadows[c] = shadowOf(hulls[c].canvas, hulls[c].ax, hulls[c].ay, SHADOW_BLUR, SHADOW_ALPHA);
+        turretShadows[c] = shadowOf(turrets[c].canvas, turrets[c].ax, turrets[c].ay, SHADOW_BLUR * .7, SHADOW_ALPHA * .8);
       }
       shell = sprite(images.tank_shell, SHELL_LENGTH / ART.shell.body.w, ART.shell.body.x + ART.shell.body.w / 2, ART.shell.body.y + ART.shell.body.h / 2);
       // Ricochet shell: the same raster shell tinted signal yellow-orange (cached, no filters),
@@ -200,7 +260,7 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
     touchApi.current = {
       stickDown(e, el) {
         if (stickId !== -1) return;
-        setTouchMode(true);
+        setTouchMode(true); unlockSound();
         const ring = el.firstElementChild as HTMLElement, r = ring.getBoundingClientRect();
         stickId = e.pointerId; stickCX = r.left + r.width / 2; stickCY = r.top + r.height / 2; stickR = r.width * .28;
         el.setPointerCapture(e.pointerId); stickUpdate(e);
@@ -208,7 +268,7 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
       stickMove(e) { if (e.pointerId === stickId) stickUpdate(e); },
       stickUp(e) { if (e.pointerId === stickId) stickRelease(); },
       fire() {
-        setTouchMode(true);
+        setTouchMode(true); unlockSound();
         const s = game.current; if (!s) return;
         if (s.phase === "play") queueFire(s); else action.current();
       },
@@ -221,14 +281,14 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
     const pointerdown = (e: PointerEvent) => {
       if (e.pointerType === "touch" || (e.pointerType === "pen" && touchMode)) {
         // Tap on the arena: aim the turret at that point and fire (or continue/retry between rounds).
-        e.preventDefault(); setTouchMode(true);
+        e.preventDefault(); setTouchMode(true); unlockSound();
         const s = game.current; if (!s) return;
         toWorld(e.clientX, e.clientY); tapX = worldX; tapY = worldY; tapHold = TAP_HOLD;
         if (s.phase === "play") queueFire(s); else action.current();
         return;
       }
       if (e.button !== 0) return;
-      pointerX = e.clientX; pointerY = e.clientY;
+      unlockSound(); pointerX = e.clientX; pointerY = e.clientY;
       const s = game.current; if (!s) return;
       element.focus({ preventScroll: true });
       if (s.phase === "play") queueFire(s); else action.current();
@@ -236,6 +296,7 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
     const keydown = (e: KeyboardEvent) => {
       if (isUi(e.target) || e.metaKey || e.ctrlKey || e.altKey) return;
       const s = game.current; if (!s) return;
+      unlockSound();
       if (MOVE_KEYS.has(e.code)) { e.preventDefault(); keys.add(e.code); return; }
       if (e.code === "Space" || e.code === "Enter") { e.preventDefault(); if (e.repeat) return; if (s.phase === "play" && e.code === "Space") queueFire(s); else action.current(); return; }
       if (e.code === "KeyP") { manualPause = !manualPause; setPaused(manualPause || hidden); previous = 0; accumulator = 0; keys.clear(); }
@@ -328,16 +389,34 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
         }
       }
       if (layoutStage !== s.stage) buildStatic();
+      else if (layoutRound !== s.round) clearTracks(); // fresh floor for every round
+      // Sound effects for this frame's simulation events (each voiced once; sfx also rate-limits).
+      const st = s.stats;
+      if (st.playerShots > heardPlayerShots) play("fire");
+      if (st.shots - st.playerShots > heardShots - heardPlayerShots) play("fire", .6);
+      if (st.bounces > heardBounces) play("ricochet");
+      if (st.bursts > heardBursts) play("hit", .5);
+      if (st.kills > heardKills) play("boom");
+      heardShots = st.shots; heardPlayerShots = st.playerShots; heardBounces = st.bounces; heardBursts = st.bursts; heardKills = st.kills;
+      if (s.phase !== heardPhase) {
+        if (s.phase === "won" || (s.phase === "round" && s.roundWinner === 0)) play("win");
+        else if (s.phase === "lost" || (s.phase === "round" && s.roundWinner === 1)) play("lose");
+        heardPhase = s.phase;
+      }
       stampTracks(s, dt);
       ctx!.setTransform(1, 0, 0, 1, 0, 0);
       ctx!.clearRect(0, 0, element!.width, element!.height);
       ctx!.drawImage(tracks, 0, 0);
       ctx!.drawImage(staticLayer, 0, 0);
       if (me.alive) { ctx!.globalAlpha = .9; ctx!.drawImage(glow, me.x * scale - glow.width / 2, me.y * scale - glow.height / 2); ctx!.globalAlpha = 1; }
+      // Shadows rotate with their sprite's shape but are offset in screen space (down-right):
+      // hull shadows on the floor, then hulls, then turret shadows (cast on the hull), then turrets.
+      for (const k of s.tanks) if (k.alive) { const h = hullShadows[k.colour]; rotated(ctx!, h.canvas, h.ax, h.ay, k.x + shadowX, k.y + shadowY, k.a); }
       for (const k of s.tanks) if (k.alive) rotated(ctx!, hulls[k.colour].canvas, hulls[k.colour].ax, hulls[k.colour].ay, k.x, k.y, k.a);
-      for (const k of s.tanks) if (k.alive) {
+      for (let pass = 0; pass < 2; pass++) for (const k of s.tanks) if (k.alive) {
         const c = Math.cos(k.a), sn = Math.sin(k.a), px = k.x + geometry.pivotX * c - geometry.pivotY * sn, py = k.y + geometry.pivotX * sn + geometry.pivotY * c;
-        rotated(ctx!, turrets[k.colour].canvas, turrets[k.colour].ax, turrets[k.colour].ay, px, py, k.turret);
+        if (pass === 0) { const t = turretShadows[k.colour]; rotated(ctx!, t.canvas, t.ax, t.ay, px + shadowX * TURRET_SHADOW, py + shadowY * TURRET_SHADOW, k.turret); }
+        else rotated(ctx!, turrets[k.colour].canvas, turrets[k.colour].ax, turrets[k.colour].ay, px, py, k.turret);
       }
       for (const sh of s.shells) if (sh.active) {
         const a = Math.atan2(sh.dy, sh.dx);
@@ -362,14 +441,19 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
         ctx!.drawImage(puff, -size / 2, -size / 2, size, size);
       }
       ctx!.globalAlpha = 1; ctx!.setTransform(1, 0, 0, 1, 0, 0);
-      const playTime = s.elapsed - 3;
-      const message = s.phase === "countdown" ? (s.timer > 2 ? "3" : s.timer > 1 ? "2" : "1") : s.phase === "play" && playTime < .6 ? "GO" : s.phase === "won" ? "STAGE CLEAR" : s.phase === "lost" ? "DESTROYED" : s.phase === "complete" ? "ALL CLEAR" : "";
+      const playTime = s.elapsed - s.playStart;
+      const message = s.phase === "countdown" ? String(Math.max(1, Math.ceil(s.timer))) : s.phase === "play" && playTime < .6 ? "GO"
+        : s.phase === "round" ? `ROUND ${s.round + 1} · ${s.roundWinner === 0 ? "YOU" : "CPU"}` : s.phase === "won" ? "STAGE CLEAR" : s.phase === "lost" ? "DESTROYED" : s.phase === "complete" ? "ALL CLEAR" : "";
       const blink = (s.phase === "won" || s.phase === "lost") && Math.floor(s.elapsed * 5) % 2 === 0;
       const phaseKey: string = s.phase === "lost" && s.timer <= 0 ? "lost-ready" : s.phase;
       if (s.revision !== lastRevision || message !== lastMessage || blink !== lastBlink || phaseKey !== lastPhase) {
+        if (message !== lastMessage) { if (message === "GO") play("go"); else if (s.phase === "countdown") play("count"); }
         lastRevision = s.revision; lastMessage = message; lastBlink = blink; lastPhase = phaseKey;
-        const sub = s.phase === "countdown" ? (touchMode ? "Stick drives · tap to fire" : "Aim and drive — fire on GO") : s.phase === "won" && s.stage < STAGES.length - 1 ? `Stage ${s.stage + 2} — ${MATCHUP[s.stage + 1]}` : s.phase === "complete" ? "Three stages cleared" : "";
-        setHud({ stage: s.stage, alive: s.tanks.map(k => k.alive), message, sub, phase: lastPhase, blink });
+        const score = `YOU ${s.score[0]} – ${s.score[1]} CPU`;
+        const sub = s.phase === "countdown" ? (s.round === 0 ? (touchMode ? "Stick drives · tap to fire" : "Best of 3 rounds — aim, drive, fire on GO") : `Round ${s.round + 1} · ${score}`)
+          : s.phase === "round" ? score : s.phase === "won" && s.stage < STAGES.length - 1 ? `${score} · next: stage ${s.stage + 2}, ${MATCHUP[s.stage + 1]}`
+          : s.phase === "won" || s.phase === "lost" ? score : s.phase === "complete" ? "Three stages cleared" : "";
+        setHud({ stage: s.stage, alive: s.tanks.map(k => k.alive), message, sub, phase: lastPhase, blink, score: [s.score[0], s.score[1]], round: s.round });
       }
     }
     if (touchMode) { setTouch(true); setTouchAssist(game.current!, true); lockPage(); }
@@ -394,23 +478,25 @@ export default function Tanks({ onBack }: { ko: boolean; onBack: () => void }) {
 
   const showButton = hud.phase === "lost-ready" || hud.phase === "complete";
   return <div ref={root} className={styles.root} data-touch={touch || undefined} style={{ "--nav-bottom": `${view.nav}px` } as CSSProperties}>
-    <button className={`${styles.textButton} ${styles.back}`} style={touch ? { left: 4, top: view.lcdTop } : undefined} onClick={onBack}>← ARCADE</button>
+    <button className={`${styles.textButton} ${styles.back}`} style={touch ? { left: GUTTER - 6, top: view.lcdTop + view.lcdWidth * art.lcd.height / art.lcd.width / 2, transform: "translateY(-50%)" } : undefined} onClick={onBack}>← ARCADE</button>
     {failed ? <div className={styles.failure} role="alert"><p>Game images could not be loaded.</p><button className={styles.textButton} onClick={onBack}>Back to arcade</button></div> : <>
       <div className={styles.lcd} style={{ left: view.lcdLeft, top: view.lcdTop, width: view.lcdWidth }}>
         <div style={{ position: "relative", aspectRatio: `${art.lcd.width}/${art.lcd.height}` }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className={styles.asset} src="/arcade/lcd_panel.webp" width={art.lcd.width} height={art.lcd.height} alt="" draggable={false} />
-          <div className={styles.lcdGlass} style={fractionRect(art.lcd.screen)} data-blink={hud.blink} role="status" aria-label={`Stage ${hud.stage + 1}, ${MATCHUP[hud.stage]}, ${hud.alive.filter(Boolean).length} tanks left`}>
-            <div className={styles.lcdRow}><span>STAGE {hud.stage + 1}</span><span>{MATCHUP[hud.stage]}</span></div>
-            <div className={styles.lcdRow}><span className={styles.pipLabel}>{hud.alive[0] ? "YOU" : "---"}</span><span className={styles.pips}>{hud.alive.map((a, i) => <span key={i} className={styles.pip} data-alive={a} />)}</span></div>
+          <div className={styles.lcdGlass} style={fractionRect(art.lcd.screen)} data-blink={hud.blink} role="status" aria-label={`Stage ${hud.stage + 1}, ${MATCHUP[hud.stage]}, round ${hud.round + 1}, rounds won ${hud.score[0]} to ${hud.score[1]}, ${hud.alive.filter(Boolean).length} tanks left`}>
+            <div className={styles.lcdRow}><span>STAGE {hud.stage + 1}</span><span className={styles.pips}>{hud.alive.map((a, i) => <span key={i} className={styles.pip} data-alive={a} />)}</span></div>
+            <div className={styles.lcdRow}>
+              <span className={styles.rounds}><span className={styles.pipLabel}>YOU</span>{[0, 1].map(i => <span key={i} className={styles.roundPip} data-won={hud.score[0] > i} />)}</span>
+              <span className={styles.rounds}>{[1, 0].map(i => <span key={i} className={styles.roundPip} data-won={hud.score[1] > i} />)}<span className={styles.pipLabel}>CPU</span></span>
+            </div>
           </div>
         </div>
       </div>
       <canvas ref={canvas} className={styles.arena} style={{ left: view.left, top: view.top, width: view.width, height: view.height, transform: view.rotated ? "rotate(-90deg)" : undefined }} tabIndex={0} role="application" aria-label={touch ? "Tanks. The joystick drives, tap the arena to aim and fire, the fire button shoots at the nearest enemy." : "Tanks. W A S D or arrow keys drive, the pointer aims the turret, click or Space fires, P pauses, Escape returns to the arcade."} />
       {!ready && <div className={styles.loading} role="status">LOADING…</div>}
-      {(hud.message || paused) && ready && <div className={styles.status} style={{ top: view.cy }} role="status" aria-live="polite">
-        {paused ? "PAUSED" : hud.message}
-        {!paused && hud.sub && <small>{hud.sub}</small>}
+      {(hud.message || paused) && ready && <div className={styles.status} style={{ top: view.statusY }} role="status" aria-live="polite">
+        <div className={styles.statusText}>{paused ? "PAUSED" : hud.message}{!paused && hud.sub && <small>{hud.sub}</small>}</div>
         {!paused && showButton && <button className={styles.restart} onClick={() => action.current()}>{hud.phase === "complete" ? "Play again" : "Retry stage"}</button>}
       </div>}
       {hud.stage > 0 && <p className={styles.legend}><span style={{ color: RICOCHET }}>◆</span> bouncing shell</p>}

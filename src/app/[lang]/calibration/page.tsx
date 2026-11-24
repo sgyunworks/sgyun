@@ -3,8 +3,9 @@ import { CalibrationToy } from "@/components/calibration/CalibrationToy";
 import type { Locale } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "FIELD_00 | SGYUN",
+  title: { absolute: "FIELD_00 | SGYUN" },
   description: "A vault dial calibration field by SGYUN.",
+  robots: { index: false, follow: true },
 };
 
 export default async function CalibrationPage({

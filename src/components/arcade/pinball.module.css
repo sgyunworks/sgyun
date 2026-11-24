@@ -25,10 +25,11 @@
 .knob[data-dragging="true"] { cursor: grabbing; }
 /* score in the table's own LCD window */
 .lcd { position: absolute; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none; color: var(--pb-lcd-ink); }
-.digits { position: relative; font: 500 7.6cqw/1 var(--font-arcade), ui-monospace, monospace; font-style: oblique 6deg; letter-spacing: .04em; font-variant-numeric: tabular-nums; text-shadow: 1px 2px 1px #333b2826; }
-.ghost { position: absolute; inset: 0; opacity: .085; }
+/* seven-segment score (vector) */
+.seg { height: 60%; width: auto; overflow: visible; }
+.segOn { fill: var(--pb-lcd-ink); opacity: .9; }
+.segOff { fill: var(--pb-lcd-ink); opacity: .075; }
 .lcdText { font: 500 4.6cqw/1 var(--font-arcade), ui-monospace, monospace; letter-spacing: .06em; text-shadow: 1px 2px 1px #333b2826; white-space: nowrap; }
-.lcd[data-blink="true"] .lcdText { opacity: .3; }
 /* side LCD module */
 .side { position: absolute; width: 220px; container-type: inline-size; pointer-events: none; }
 .sidePanel { position: relative; }
@@ -55,12 +56,15 @@
 .loading { position: absolute; inset: 0; display: grid; place-items: center; font-size: 15px; pointer-events: none; }
 .failure { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
 .launch {
-  position: absolute; bottom: 16px; width: 112px; height: 50px; border: 1px solid #b4ada4; border-radius: 10px;
-  background: #f0eeea; color: var(--pb-ink); font: 500 13px var(--font-arcade), ui-monospace, monospace; letter-spacing: .06em;
+  flex: none; border: 1px solid #b4ada4; border-radius: 10px;
+  background: #f0eeea; color: var(--pb-ink); font: 500 12px/1 var(--font-arcade), ui-monospace, monospace; letter-spacing: .14em;
   touch-action: none; cursor: pointer; box-shadow: inset 0 -2px 0 #d8d3cb;
 }
 .launch:active { transform: translateY(1px); box-shadow: inset 0 2px 5px #4f3b2922; }
 .launch:focus-visible { outline: 2px solid var(--pb-orange); outline-offset: 3px; }
-.hintCompact { position: absolute; bottom: 22px; margin: 0; font-size: 10px; line-height: 1.35; letter-spacing: .02em; color: var(--pb-muted); pointer-events: none; }
-.root[data-compact="true"] .saver { margin-top: 6px; font-size: 10px; }
-.root[data-compact="true"] .back { min-height: 40px; padding: 6px 10px; }
+/* phone bottom row: hint (left) + LAUNCH (right), both on the 16 px gutters */
+.controls { position: absolute; bottom: max(16px, env(safe-area-inset-bottom)); display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.hintCompact { margin: 0; display: flex; flex-direction: column; gap: 5px; font-size: 10px; line-height: 1.2; letter-spacing: .08em; color: var(--pb-muted); pointer-events: none; white-space: nowrap; }
+.hintCompact b { font-weight: 500; color: var(--pb-ink); margin-right: .25em; }
+.root[data-compact="true"] .saver { margin-top: 8px; justify-content: flex-end; font-size: 10px; letter-spacing: .1em; }
+.root[data-compact="true"] .back { left: 8px; min-height: 40px; padding: 6px 8px; font-size: 12px; letter-spacing: .08em; }

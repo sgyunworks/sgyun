@@ -4,139 +4,139 @@
   "hulls": {
     "orange": {
       "width": 300,
-      "height": 160,
+      "height": 152,
       "body": {
-        "x": 0.02317,
-        "y": 0.00868,
-        "w": 0.95017,
-        "h": 0.89371
+        "x": 0.00483,
+        "y": 0.00955,
+        "w": 0.99034,
+        "h": 0.98091
       },
       "ring": {
-        "cx": 0.49826,
-        "cy": 0.44911,
-        "r": 0.12445,
-        "rInner": 0.12445
+        "cx": 0.5,
+        "cy": 0.49313,
+        "r": 0.12947,
+        "rInner": 0.12947
       }
     },
     "graphite": {
       "width": 300,
-      "height": 170,
+      "height": 162,
       "body": {
-        "x": 0.03115,
-        "y": 0.01181,
-        "w": 0.94105,
-        "h": 0.91339
+        "x": 0.00468,
+        "y": 0.0087,
+        "w": 0.99063,
+        "h": 0.98478
       },
       "ring": {
-        "cx": 0.49811,
-        "cy": 0.45252,
-        "r": 0.12325,
-        "rInner": 0.12325
+        "cx": 0.49625,
+        "cy": 0.49622,
+        "r": 0.13185,
+        "rInner": 0.12951
       }
     },
     "grey": {
       "width": 300,
-      "height": 157,
+      "height": 151,
       "body": {
-        "x": 0.02712,
-        "y": 0.01078,
-        "w": 0.94463,
-        "h": 0.92457
+        "x": 0.00474,
+        "y": 0.00941,
+        "w": 0.99051,
+        "h": 0.98353
       },
       "ring": {
-        "cx": 0.49356,
-        "cy": 0.44004,
-        "r": 0.12859,
-        "rInner": 0.12633
+        "cx": 0.49407,
+        "cy": 0.47896,
+        "r": 0.13476,
+        "rInner": 0.13238
       }
     },
     "yellow": {
       "width": 300,
-      "height": 168,
+      "height": 157,
       "body": {
-        "x": 0.03656,
-        "y": 0.01895,
-        "w": 0.93278,
-        "h": 0.88
+        "x": 0.00501,
+        "y": 0.00957,
+        "w": 0.98997,
+        "h": 0.98086
       },
       "ring": {
-        "cx": 0.50507,
-        "cy": 0.43907,
-        "r": 0.12925,
-        "rInner": 0.12689
+        "cx": 0.50251,
+        "cy": 0.48852,
+        "r": 0.13534,
+        "rInner": 0.13534
       }
     }
   },
   "turrets": {
     "orange": {
       "width": 300,
-      "height": 211,
+      "height": 195,
       "cap": {
-        "cx": 0.32792,
-        "cy": 0.45912,
-        "r": 0.29985
+        "cx": 0.32368,
+        "cy": 0.49887,
+        "r": 0.31699
       },
       "tip": {
-        "x": 0.97046,
-        "y": 0.44969
+        "x": 0.99215,
+        "y": 0.49887
       },
-      "barrelHalf": 0.0566
+      "barrelHalf": 0.06061
     },
     "graphite": {
       "width": 300,
-      "height": 204,
+      "height": 192,
       "cap": {
-        "cx": 0.31689,
-        "cy": 0.47697,
-        "r": 0.30755
+        "cx": 0.31903,
+        "cy": 0.49925,
+        "r": 0.31187
       },
       "tip": {
-        "x": 0.98057,
-        "y": 0.45724
+        "x": 0.9923,
+        "y": 0.49925
       },
-      "barrelHalf": 0.04825
+      "barrelHalf": 0.05347
     },
     "grey": {
       "width": 300,
-      "height": 208,
+      "height": 190,
       "cap": {
-        "cx": 0.321,
-        "cy": 0.44978,
-        "r": 0.2889
+        "cx": 0.31511,
+        "cy": 0.49938,
+        "r": 0.3083
       },
       "tip": {
-        "x": 0.96375,
-        "y": 0.44432
+        "x": 0.99192,
+        "y": 0.49938
       },
-      "barrelHalf": 0.06114
+      "barrelHalf": 0.0657
     },
     "yellow": {
       "width": 300,
-      "height": 222,
+      "height": 204,
       "cap": {
-        "cx": 0.34385,
-        "cy": 0.46154,
-        "r": 0.31885
+        "cx": 0.33936,
+        "cy": 0.49936,
+        "r": 0.3326
       },
       "tip": {
-        "x": 0.98,
-        "y": 0.44595
+        "x": 0.99194,
+        "y": 0.49936
       },
-      "barrelHalf": 0.05198
+      "barrelHalf": 0.06097
     }
   },
   "obstacles": {
     "block": {
       "width": 360,
-      "height": 358,
+      "height": 355,
       "file": "tanks_obstacle_block.webp",
       "shape": "rects",
       "rects": [
         {
-          "x": 0.02806,
-          "y": 0.01335,
-          "w": 0.94092,
-          "h": 0.95994
+          "x": 0.00794,
+          "y": 0.00644,
+          "w": 0.97619,
+          "h": 0.98712
         }
       ]
     },
@@ -147,92 +147,92 @@
       "shape": "rects",
       "rects": [
         {
-          "x": 0.07635,
-          "y": 0.04613,
-          "w": 0.84544,
-          "h": 0.86347
+          "x": 0.00866,
+          "y": 0.01073,
+          "w": 0.98052,
+          "h": 0.98069
         }
       ]
     },
     "device": {
       "width": 400,
-      "height": 197,
+      "height": 177,
       "file": "tanks_obstacle_device.webp",
       "shape": "rects",
       "rects": [
         {
-          "x": 0.03281,
-          "y": 0.0468,
-          "w": 0.9271,
-          "h": 0.85468
+          "x": 0.0065,
+          "y": 0.01176,
+          "w": 0.9857,
+          "h": 0.97353
         }
       ]
     },
     "speaker": {
-      "width": 376,
+      "width": 373,
       "height": 380,
       "file": "tanks_obstacle_speaker.webp",
       "shape": "circle",
       "circle": {
-        "cx": 0.49361,
-        "cy": 0.47851,
-        "r": 0.46616
+        "cx": 0.5,
+        "cy": 0.5,
+        "r": 0.49897
       }
     },
     "notebook": {
-      "width": 251,
+      "width": 243,
       "height": 400,
       "file": "tanks_obstacle_notebook.webp",
       "shape": "rects",
       "rects": [
         {
-          "x": 0.02824,
-          "y": 0.00418,
-          "w": 0.9402,
-          "h": 0.89457
+          "x": 0.00712,
+          "y": 0.00431,
+          "w": 0.98577,
+          "h": 0.89428
         }
       ]
     },
     "lblock": {
       "width": 400,
-      "height": 379,
+      "height": 368,
       "file": "tanks_obstacle_lblock.webp",
       "shape": "rects",
       "rects": [
         {
-          "x": 0.03742,
-          "y": 0.03537,
-          "w": 0.92258,
-          "h": 0.42313
+          "x": 0.00556,
+          "y": 0.00605,
+          "w": 0.98887,
+          "h": 0.44327
         },
         {
-          "x": 0.58194,
-          "y": 0.03537,
-          "w": 0.37806,
-          "h": 0.91701
+          "x": 0.59249,
+          "y": 0.00605,
+          "w": 0.40195,
+          "h": 0.98941
         }
       ]
     },
     "cable": {
       "width": 380,
-      "height": 370,
+      "height": 374,
       "file": "tanks_obstacle_cable.webp",
       "shape": "circle",
       "circle": {
-        "cx": 0.49478,
-        "cy": 0.5992,
-        "r": 0.44198
+        "cx": 0.49389,
+        "cy": 0.61379,
+        "r": 0.4606
       }
     }
   },
   "shell": {
     "width": 128,
-    "height": 59,
+    "height": 54,
     "body": {
-      "x": 0.04384,
-      "y": 0.0411,
-      "w": 0.91649,
-      "h": 0.83105
+      "x": 0.00905,
+      "y": 0.02162,
+      "w": 0.9819,
+      "h": 0.95676
     }
   },
   "puff": {
@@ -243,56 +243,56 @@
     "tank_hull_orange": {
       "file": "tanks_tank_hull_orange.webp",
       "width": 300,
-      "height": 160,
-      "bytes": 7626
+      "height": 152,
+      "bytes": 5728
     },
     "tank_hull_graphite": {
       "file": "tanks_tank_hull_graphite.webp",
       "width": 300,
-      "height": 170,
-      "bytes": 9056
+      "height": 162,
+      "bytes": 6640
     },
     "tank_hull_grey": {
       "file": "tanks_tank_hull_grey.webp",
       "width": 300,
-      "height": 157,
-      "bytes": 8658
+      "height": 151,
+      "bytes": 6210
     },
     "tank_hull_yellow": {
       "file": "tanks_tank_hull_yellow.webp",
       "width": 300,
-      "height": 168,
-      "bytes": 10358
+      "height": 157,
+      "bytes": 7736
     },
     "tank_turret_orange": {
       "file": "tanks_tank_turret_orange.webp",
       "width": 300,
-      "height": 211,
-      "bytes": 10614
+      "height": 195,
+      "bytes": 6356
     },
     "tank_turret_graphite": {
       "file": "tanks_tank_turret_graphite.webp",
       "width": 300,
-      "height": 204,
-      "bytes": 8932
+      "height": 192,
+      "bytes": 5478
     },
     "tank_turret_grey": {
       "file": "tanks_tank_turret_grey.webp",
       "width": 300,
-      "height": 208,
-      "bytes": 9670
+      "height": 190,
+      "bytes": 5322
     },
     "tank_turret_yellow": {
       "file": "tanks_tank_turret_yellow.webp",
       "width": 300,
-      "height": 222,
-      "bytes": 10640
+      "height": 204,
+      "bytes": 6458
     },
     "tank_shell": {
       "file": "tanks_tank_shell.webp",
       "width": 128,
-      "height": 59,
-      "bytes": 2160
+      "height": 54,
+      "bytes": 1322
     },
     "fx_puff": {
       "file": "tanks_fx_puff.webp",
@@ -303,101 +303,101 @@
     "obstacle_block": {
       "file": "tanks_obstacle_block.webp",
       "width": 360,
-      "height": 358,
-      "bytes": 13862
+      "height": 355,
+      "bytes": 5458
     },
     "obstacle_cube": {
       "file": "tanks_obstacle_cube.webp",
       "width": 254,
       "height": 256,
-      "bytes": 8464
+      "bytes": 2774
     },
     "obstacle_device": {
       "file": "tanks_obstacle_device.webp",
       "width": 400,
-      "height": 197,
-      "bytes": 10664
+      "height": 177,
+      "bytes": 4766
     },
     "obstacle_speaker": {
       "file": "tanks_obstacle_speaker.webp",
-      "width": 376,
+      "width": 373,
       "height": 380,
-      "bytes": 34838
+      "bytes": 30656
     },
     "obstacle_notebook": {
       "file": "tanks_obstacle_notebook.webp",
-      "width": 251,
+      "width": 243,
       "height": 400,
-      "bytes": 9334
+      "bytes": 4576
     },
     "obstacle_lblock": {
       "file": "tanks_obstacle_lblock.webp",
       "width": 400,
-      "height": 379,
-      "bytes": 13546
+      "height": 368,
+      "bytes": 4010
     },
     "obstacle_cable": {
       "file": "tanks_obstacle_cable.webp",
       "width": 380,
-      "height": 370,
-      "bytes": 33478
+      "height": 374,
+      "bytes": 23168
     }
   },
-  "totalBytes": 262214,
+  "totalBytes": 186972,
   "sourceCrops": {
     "tank_hull_orange": {
-      "x": 196,
+      "x": 212,
       "y": 423,
-      "w": 863,
-      "h": 461
+      "w": 828,
+      "h": 419
     },
     "tank_hull_graphite": {
-      "x": 178,
-      "y": 402,
-      "w": 899,
-      "h": 508
+      "x": 202,
+      "y": 404,
+      "w": 854,
+      "h": 460
     },
     "tank_hull_grey": {
-      "x": 185,
-      "y": 430,
-      "w": 885,
-      "h": 464
+      "x": 205,
+      "y": 431,
+      "w": 843,
+      "h": 425
     },
     "tank_hull_yellow": {
-      "x": 198,
-      "y": 423,
-      "w": 848,
-      "h": 475
+      "x": 225,
+      "y": 428,
+      "w": 798,
+      "h": 418
     },
     "tank_turret_orange": {
-      "x": 314,
-      "y": 412,
-      "w": 677,
-      "h": 477
+      "x": 339,
+      "y": 419,
+      "w": 637,
+      "h": 413
     },
     "tank_turret_graphite": {
-      "x": 318,
-      "y": 416,
-      "w": 669,
-      "h": 456
+      "x": 330,
+      "y": 418,
+      "w": 649,
+      "h": 415
     },
     "tank_turret_grey": {
-      "x": 299,
-      "y": 425,
-      "w": 662,
-      "h": 458
+      "x": 323,
+      "y": 431,
+      "w": 619,
+      "h": 392
     },
     "tank_turret_yellow": {
-      "x": 320,
-      "y": 411,
-      "w": 650,
-      "h": 481
+      "x": 342,
+      "y": 416,
+      "w": 620,
+      "h": 422
     },
     "tank_shell": {
-      "x": 386,
-      "y": 527,
-      "w": 479,
-      "h": 219
+      "x": 403,
+      "y": 532,
+      "w": 442,
+      "h": 185
     },
     "fx_puff": {
       "x": -4,
@@ -406,46 +406,46 @@
       "h": 1262
     },
     "obstacle_block": {
-      "x": 291,
-      "y": 315,
-      "w": 677,
-      "h": 674
+      "x": 314,
+      "y": 321,
+      "w": 630,
+      "h": 621
     },
     "obstacle_cube": {
-      "x": 359,
-      "y": 374,
-      "w": 537,
-      "h": 542
+      "x": 396,
+      "y": 395,
+      "w": 462,
+      "h": 466
     },
     "obstacle_device": {
-      "x": 220,
-      "y": 453,
-      "w": 823,
-      "h": 406
+      "x": 243,
+      "y": 468,
+      "w": 769,
+      "h": 340
     },
     "obstacle_speaker": {
-      "x": 233,
-      "y": 244,
-      "w": 783,
-      "h": 791
+      "x": 255,
+      "y": 249,
+      "w": 727,
+      "h": 740
     },
     "obstacle_notebook": {
-      "x": 328,
+      "x": 341,
       "y": 175,
-      "w": 602,
-      "h": 958
+      "w": 562,
+      "h": 927
     },
     "obstacle_lblock": {
-      "x": 241,
-      "y": 282,
-      "w": 775,
-      "h": 735
+      "x": 266,
+      "y": 304,
+      "w": 719,
+      "h": 661
     },
     "obstacle_cable": {
-      "x": 244,
-      "y": 270,
-      "w": 767,
-      "h": 746
+      "x": 260,
+      "y": 272,
+      "w": 736,
+      "h": 725
     }
   }
 }

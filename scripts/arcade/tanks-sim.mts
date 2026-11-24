@@ -2,11 +2,11 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 // @ts-ignore Node's built-in type stripping resolves the source extension directly.
-import { AVERAGE_PLAYER, STAGES, STEP, WORLD_H, WORLD_W, createGame, geometryFromArt, pointBlocked, queueFire, setPlayerInput, setTouchAssist, staticOverlap, step, tankOverlap, type Game, type AiParams } from "../../src/components/arcade/tanksPhysics.ts";
+import { AVERAGE_PLAYER, ROUNDS_TO_WIN, STAGES, STEP, WORLD_H, WORLD_W, createGame, geometryFromArt, pointBlocked, queueFire, setPlayerInput, setTouchAssist, staticOverlap, step, tankOverlap, type Game, type AiParams } from "../../src/components/arcade/tanksPhysics.ts";
 
 const art = JSON.parse(readFileSync(new URL("../../src/components/arcade/tanks.art.json", import.meta.url), "utf8"));
 const g = geometryFromArt(art);
-const SEEDS = Number(process.argv[2] ?? 120), LIMIT = 150;
+const SEEDS = Number(process.argv[2] ?? 200), LIMIT = 150;
 console.log("geometry", { hx: +g.hx.toFixed(2), hy: +g.hy.toFixed(2), pivot: [+g.pivotX.toFixed(2), +g.pivotY.toFixed(2)], capR: +g.capR.toFixed(2), muzzle: +g.muzzle.toFixed(2), shellR: +g.shellR.toFixed(2) });
 
 const bounceSeen = { n: 0 };
@@ -46,15 +46,36 @@ for (let st = 0; st < STAGES.length; st++) {
     for (const c of o.circles) assert([c.cx - c.r, WORLD_W - c.cx - c.r, c.cy - c.r, WORLD_H - c.cy - c.r].every(okGap), `stage ${st + 1} ${o.name} leaves a trap gap at a wall`);
   }
 }
+/** One full stage (best of three rounds). Round invariants are asserted on every transition. */
+let roundChecks = 0;
 function run(stage: number, seed: number, scripted: AiParams, touch = false) {
   const s = createGame(g, stage, seed * 7919 + stage, scripted);
   if (touch) setTouchAssist(s, true);
-  const n = Math.round(LIMIT / STEP);
+  const n = Math.round(LIMIT * ROUNDS_TO_WIN * 2 / STEP), combat: number[] = [];
+  let prev = s.phase, prevRound = s.round, timedOut = false;
   for (let i = 0; i < n; i++) {
-    step(s); verify(s, `stage=${stage + 1} seed=${seed} t=${s.elapsed.toFixed(3)}`);
+    step(s); const ctx = `stage=${stage + 1} seed=${seed} round=${s.round + 1} t=${s.elapsed.toFixed(3)}`; verify(s, ctx);
+    if (s.phase !== prev) {
+      roundChecks++;
+      if (prev === "play") { // a round just ended
+        combat.push(s.elapsed - s.playStart);
+        assert(s.score[0] + s.score[1] === s.round + 1, `score ${s.score} does not match round ${s.round + 1} ${ctx}`);
+        assert(s.score[0] <= ROUNDS_TO_WIN && s.score[1] <= ROUNDS_TO_WIN, `score over ${ROUNDS_TO_WIN} ${ctx}`);
+        const decided = Math.max(...s.score) === ROUNDS_TO_WIN;
+        assert(decided ? s.phase === (s.score[0] === ROUNDS_TO_WIN ? "won" : "lost") : s.phase === "round", `wrong phase ${s.phase} for score ${s.score} ${ctx}`);
+        assert(s.roundWinner === (s.tanks[0].alive ? 0 : 1), `round winner ${s.roundWinner} ${ctx}`);
+      } else if (prev === "round") { // next round started: clean reset
+        assert(s.phase === "countdown" && s.round === prevRound + 1, `round did not advance ${ctx}`);
+        assert(s.tanks.every((k, j) => k.alive && k.x === STAGES[stage].spawns[j].x && k.y === STAGES[stage].spawns[j].y && k.shells === 0), `tanks not reset ${ctx}`);
+        assert(s.shells.every(sh => !sh.active), `shells left over ${ctx}`);
+      } else assert(prev === "countdown" && s.phase === "play", `unexpected transition ${prev}→${s.phase} ${ctx}`);
+      prev = s.phase; prevRound = s.round;
+    }
+    if (s.phase === "play" && s.elapsed - s.playStart > LIMIT) { timedOut = true; break; }
     if (s.phase === "won" || s.phase === "lost") break;
   }
-  return { s, result: s.phase === "won" ? "win" : s.phase === "lost" ? "loss" : "timeout" };
+  assert(timedOut || s.round + 1 >= ROUNDS_TO_WIN && s.round + 1 <= ROUNDS_TO_WIN * 2 - 1, `stage took ${s.round + 1} rounds`);
+  return { s, combat, result: timedOut ? "timeout" : s.phase === "won" ? "win" : s.phase === "lost" ? "loss" : "timeout" };
 }
 // Fuzz: a human-controlled tank with random keys, random aim and spam-clicking, against live AIs,
 // plus point-blank fire while pressed into walls/obstacles (shell must bounce, never tunnel).
@@ -84,16 +105,19 @@ for (let st = 0; st < STAGES.length; st++) {
 const start = performance.now(), table: Record<string, unknown>[] = [];
 for (let stage = 0; stage < STAGES.length; stage++) {
   for (const [label, params, touch] of [["AI vs AI", STAGES[stage].ai, false], ["average player vs AI", AVERAGE_PLAYER, false], ["touch player vs touch-eased AI", TOUCH_PLAYER, true]] as const) {
-    let win = 0, loss = 0, timeout = 0, time = 0, shots = 0, bounces = 0, clashes = 0;
+    let win = 0, loss = 0, timeout = 0, time = 0, shots = 0, bounces = 0, clashes = 0, rounds = 0, roundWins = 0, combatTime = 0, threeRounders = 0;
     const seeds = label === "AI vs AI" ? Math.ceil(SEEDS / 3) : SEEDS;
     for (let seed = 1; seed <= seeds; seed++) {
-      const { s, result } = run(stage, seed, params, touch);
+      const { s, result, combat } = run(stage, seed, params, touch);
       if (result === "win") win++; else if (result === "loss") loss++; else timeout++;
       time += s.elapsed; shots += s.stats.shots; bounces += s.stats.bounces; clashes += s.stats.clashes;
+      rounds += combat.length; roundWins += s.score[0]; combatTime += combat.reduce((a, b) => a + b, 0); if (combat.length === 3) threeRounders++;
     }
-    table.push({ stage: stage + 1, matchup: label, games: seeds, slot0WinRate: `${(win / seeds * 100).toFixed(1)}%`, losses: loss, timeouts: timeout, avgSeconds: +(time / seeds).toFixed(1), shotsPerGame: +(shots / seeds).toFixed(1), bouncesPerGame: +(bounces / seeds).toFixed(1), clashes });
+    table.push({ stage: stage + 1, matchup: label, stages: seeds, stageWin: `${(win / seeds * 100).toFixed(1)}%`, roundWin: `${(roundWins / rounds * 100).toFixed(1)}%`, timeouts: timeout, rounds: +(rounds / seeds).toFixed(2), went3: `${(threeRounders / seeds * 100).toFixed(0)}%`, combatPerRound: +(combatTime / rounds).toFixed(1), stageSeconds: +(time / seeds).toFixed(1), shotsPerStage: +(shots / seeds).toFixed(1), bounces: +(bounces / seeds).toFixed(1) });
   }
 }
 console.table(table);
-console.log({ ricochetBounceSamples: bounceSeen.n, invariantChecks: checks, worstStaticOverlap: +worstStatic.toFixed(4), worstTankOverlap: +worstTank.toFixed(4), seconds: +((performance.now() - start) / 1000).toFixed(1) });
-console.log("targets for the average player: ≈75% / 50% / 35%");
+console.log({ ricochetBounceSamples: bounceSeen.n, invariantChecks: checks, roundTransitionsChecked: roundChecks, worstStaticOverlap: +worstStatic.toFixed(4), worstTankOverlap: +worstTank.toFixed(4), seconds: +((performance.now() - start) / 1000).toFixed(1) });
+console.log("targets for the average player (STAGE = best of 3 rounds): ≈75% / 50% / 35%");
+const avg = table.filter(r => r.matchup === "average player vs AI").map(r => parseFloat(r.stageWin as string));
+console.log("average player stage win rates:", avg.map(v => v + "%").join(" / "));

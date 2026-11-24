@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import art from "./art.json";
-import { createGame, geometryFromArt, step, STEP, type Difficulty, type Game, type Body } from "./airHockeyPhysics";
+import { createGame, geometryFromArt, step, STEP, WIN_SCORE, type Difficulty, type Game, type Body } from "./airHockeyPhysics";
 import styles from "./arcade.module.css";
+import { sfx } from "./sfx";
 
 const geometry = geometryFromArt(art);
 type Sprite = { canvas: HTMLCanvasElement; cx: number; cy: number };
@@ -34,6 +35,7 @@ export default function AirHockey({ ko, onBack }: { ko: boolean; onBack: () => v
     if (!element) return;
     const ctx = element.getContext("2d", { alpha: true });
     if (!ctx) { setFailed(true); return; }
+    let fxHit = 0, fxWall = 0;
     let disposed = false, raf = 0, previous = 0, nextFrame = 0, accumulator = 0, scale = 1, bounds = { left: 0, top: 0, width: 1, height: 1 };
     // rotated: portrait view of the unchanged landscape world. Screen (sx, sy) = (y, W - x) * scale,
     // i.e. the player's (left) goal is at the bottom and the AI's at the top.
@@ -128,7 +130,7 @@ export default function AirHockey({ ko, onBack }: { ko: boolean; onBack: () => v
     // Touch: the first finger that lands in the player's half grabs the mallet and drives it 1:1
     // (same spring as the mouse), lifted by TOUCH_LIFT so the finger does not hide it. Other fingers are ignored.
     function touch(event: PointerEvent, s: Game) {
-      if (event.type === "pointerdown") {
+      if (event.type === "pointerdown") { sfx.unlock();
         if (touchId !== -1) return;
         const v = (event.clientY - bounds.top) / bounds.height, u = (event.clientX - bounds.left) / bounds.width;
         const fingerX = rotated ? (1 - v) * geometry.width : u * geometry.width;
@@ -194,8 +196,18 @@ export default function AirHockey({ ko, onBack }: { ko: boolean; onBack: () => v
         ctx!.globalAlpha = 1;
       }
       draw(orange, s.player); draw(graphite, s.ai); draw(puck, s.puck);
-      const message = s.phase === "countdown" ? (s.timer > 2 ? "3" : s.timer > 1 ? "2" : "1") : s.phase === "play" && s.timer > 0 ? "GO" : s.phase === "goal" ? (ko ? "골!" : "GOAL") : s.phase === "over" ? (s.you === 7 ? (ko ? "승리!" : "YOU WIN") : (ko ? "AI 승리" : "AI WINS")) : "";
+      const message = s.phase === "countdown" ? (s.timer > 2 ? "3" : s.timer > 1 ? "2" : "1") : s.phase === "play" && s.timer > 0 ? "GO" : s.phase === "goal" ? "GOAL" : s.phase === "over" ? (s.you === WIN_SCORE ? "YOU WIN" : "AI WINS") : "";
       const blink = (s.phase === "goal" || s.phase === "over" && s.timer > 0) && Math.floor(s.timer * 6) % 2 === 0;
+      // sounds: read the physics event counters (no work when nothing happened)
+      if (s.fx.hit !== fxHit) { fxHit = s.fx.hit; sfx.play("puck", s.fx.hitPow); }
+      if (s.fx.wall !== fxWall) { fxWall = s.fx.wall; sfx.play("wall", s.fx.wallPow); }
+      if (message !== lastMessage && message) {
+        if (message === "3" || message === "2" || message === "1") sfx.play("count");
+        else if (message === "GO") sfx.play("go");
+        else if (message === "GOAL") sfx.play(s.goalSide === 1 ? "goal" : "concede");
+        else if (message === "YOU WIN") sfx.play("win");
+        else if (message === "AI WINS") sfx.play("lose");
+      }
       if (revision !== s.revision || message !== lastMessage || blink !== lastBlink) {
         revision = s.revision; lastMessage = message; lastBlink = blink;
         setHud({ you: s.you, ai: s.computer, message, phase: s.phase, blink });
@@ -247,7 +259,7 @@ export default function AirHockey({ ko, onBack }: { ko: boolean; onBack: () => v
       <canvas ref={canvas} className={styles.rink} style={{ left: view.left, top: view.top, width: view.width, height: view.height }} tabIndex={0} role="application" aria-label={compact ? "Air hockey. Drag a finger in your half of the table to move the orange mallet." : ko ? "에어하키. 마우스 또는 방향키로 이동, 스페이스로 일시 정지, Esc로 돌아가기." : "Air hockey. Move with pointer or arrow keys. Space pauses. Escape returns to arcade."} />
       {!ready && <div className={styles.loading} role="status">{ko ? "불러오는 중…" : "LOADING…"}</div>}
       {(hud.message || paused) && ready && <div className={compact ? `${styles.playStatus} ${styles.compactStatus}` : styles.playStatus} style={{ top: view.top + view.height / 2 }} role="status" aria-live="polite">{paused ? (ko ? "일시 정지" : "PAUSED") : hud.message}{hud.phase === "over" && <button className={styles.restart} onClick={restart}>{ko ? "다시 플레이" : "Play again"}</button>}</div>}
-      <p className={compact ? styles.srOnly : styles.hint} aria-live="polite">{compact ? `${hud.you} : ${hud.ai} · First to 7 · Drag to move` : ko ? `${hud.you} : ${hud.ai} · 7점 먼저 · 마우스 / 방향키 · 스페이스 일시 정지` : `${hud.you} : ${hud.ai} · First to 7 · Pointer / arrow keys · Space to pause`}</p>
+      <p className={compact ? styles.srOnly : styles.hint} aria-live="polite">{compact ? `${hud.you} : ${hud.ai} · First to 5 · Drag to move` : ko ? `${hud.you} : ${hud.ai} · 7점 먼저 · 마우스 / 방향키 · 스페이스 일시 정지` : `${hud.you} : ${hud.ai} · First to 5 · Pointer / arrow keys · Space to pause`}</p>
     </>}
   </div>;
 }

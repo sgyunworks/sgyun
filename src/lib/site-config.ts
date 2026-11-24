@@ -5,7 +5,7 @@ export const siteConfig = {
     en: "Seokyun Lee",
   },
   alias: "SGYUN",
-  email: "pio1075@naver.com",
+  email: "pio31241075@gmail.com",
   instagram: {
     handle: "@sgyunworks",
     url: "https://www.instagram.com/sgyunworks/",
@@ -13,8 +13,8 @@ export const siteConfig = {
   domain: "sgyun.kr",
   url: "https://sgyun.kr",
   description: {
-    ko: "이석윤의 산업디자인·금속공예·AI 크리에이티브 포트폴리오. 소재와 구조를 탐구하고, 아이디어를 실물과 작동하는 경험으로 구현합니다.",
-    en: "Industrial design, metalcraft and AI creative work by Seokyun Lee. Exploring materials and structures, bringing ideas into physical products and working experiences.",
+    ko: "빌더·산업디자이너 이석윤의 포트폴리오. 소재와 구조를 탐구하고, 아이디어를 실물과 작동하는 경험으로 구현합니다.",
+    en: "Portfolio of Seokyun Lee, builder and industrial designer. Exploring materials and structures, bringing ideas into physical products and working experiences.",
   },
   skills: [
     "Rhino",

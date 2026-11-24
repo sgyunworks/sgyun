@@ -4,6 +4,7 @@ import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import { SiteGuard } from "@/components/SiteGuard";
+import { OG_DEFAULT } from "@/lib/seo";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,24 +21,41 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+// Search-console ownership tags: set these env vars in Vercel (Production) and redeploy; unset ones render nothing.
+const verificationOther: Record<string, string> = {};
+if (process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION) verificationOther["naver-site-verification"] = process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION;
+if (process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION) verificationOther["msvalidate.01"] = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Industrial · Metalcraft · AI Creative Design`,
-    template: `%s | ${siteConfig.name}`,
+    default: `${siteConfig.fullName.ko} SGYUN | Builder • Industrial Designer`,
+    template: `%s | ${siteConfig.fullName.ko} SGYUN`,
   },
   description: siteConfig.description.ko,
+  applicationName: "SGYUN",
+  authors: [{ name: `${siteConfig.fullName.ko} (${siteConfig.fullName.en})`, url: siteConfig.url }],
+  creator: siteConfig.fullName.en,
+  publisher: siteConfig.fullName.en,
+  formatDetection: { email: false, telephone: false, address: false },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    other: verificationOther,
+  },
   openGraph: {
-    title: `${siteConfig.name} | Industrial · Metalcraft · AI Creative Design`,
+    title: `${siteConfig.fullName.ko} SGYUN | Builder • Industrial Designer`,
     description: siteConfig.description.ko,
     url: siteConfig.url,
     siteName: siteConfig.name,
+    locale: "ko_KR",
     type: "website",
+    images: [OG_DEFAULT],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Industrial · Metalcraft · AI Creative Design`,
+    title: `${siteConfig.fullName.ko} SGYUN | Builder • Industrial Designer`,
     description: siteConfig.description.ko,
+    images: [OG_DEFAULT.url],
   },
 };
 

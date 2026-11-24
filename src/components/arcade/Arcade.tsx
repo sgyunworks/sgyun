@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import art from "./art.json";
 import styles from "./arcade.module.css";
+import { sfx } from "./sfx";
 import { JetBrains_Mono } from "next/font/google";
 
 // Arcade UI is English-only and set in JetBrains Mono (exposed to every game as --font-arcade).
@@ -34,6 +35,8 @@ const rectStyle = (r: { x: number; y: number; w: number; h: number }): CSSProper
 export function Arcade({ onExit }: { ko?: boolean; onExit: () => void }) {
   const [screen, setScreen] = useState<Screen>("hub");
   const [soon, setSoon] = useState("");
+  const [sound, setSound] = useState(true);
+  useEffect(() => { setSound(sfx.enabled); return sfx.subscribe(setSound); }, []);
   const root = useRef<HTMLDivElement>(null);
   const soonTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
@@ -76,9 +79,13 @@ export function Arcade({ onExit }: { ko?: boolean; onExit: () => void }) {
         <div className={styles.hubLcd} style={rectStyle(art.hub.lcd)} role="status" aria-live="polite">
           {soon ? <><span className={styles.soonName}>{soon}</span><span className={styles.soon}>COMING SOON</span></> : <span>ARCADE</span>}
         </div>
-        {art.hub.tiles.map(tile => <button key={tile.id} data-game={tile.id} className={styles.tile} style={{ ...rectStyle(tile), backgroundImage: 'url("/arcade/hub_console.webp")', backgroundSize: `${100 / tile.w}% ${100 / tile.h}%`, backgroundPosition: `${tile.x / (1 - tile.w) * 100}% ${tile.y / (1 - tile.h) * 100}%` }} aria-label={READY[tile.id] ? tile.label : `${tile.label} · coming soon`} onClick={() => { const next = READY[tile.id]; if (next) setScreen(next); else comingSoon(tile.label); }} />)}
+        {art.hub.tiles.map(tile => <button key={tile.id} data-game={tile.id} className={styles.tile} style={{ ...rectStyle(tile), backgroundImage: 'url("/arcade/hub_console.webp")', backgroundSize: `${100 / tile.w}% ${100 / tile.h}%`, backgroundPosition: `${tile.x / (1 - tile.w) * 100}% ${tile.y / (1 - tile.h) * 100}%` }} aria-label={READY[tile.id] ? tile.label : `${tile.label} · coming soon`} onClick={() => { sfx.unlock(); sfx.play("tap"); const next = READY[tile.id]; if (next) setScreen(next); else comingSoon(tile.label); }} />)}
       </div>
-      <button className={`${styles.textButton} ${styles.restore}`} onClick={onExit}>× Close</button>
+      <div className={styles.hubBar}>
+        <button className={styles.textButton} onClick={() => sfx.setEnabled(!sound)} aria-pressed={sound}>{sound ? "♪ Sound on" : "♪ Sound off"}</button>
+        <span className={styles.hubDot} aria-hidden="true" />
+        <button className={styles.textButton} onClick={onExit}>× Close</button>
+      </div>
     </>}
   </div>;
 }

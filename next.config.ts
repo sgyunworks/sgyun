@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  // parallel local servers (agents) can use their own build folder: NEXT_DIST_DIR=.next-xyz
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   async redirects() {
     return ["/ko/node", "/en/node"].map((source) => ({ source, destination: "/node", permanent: false }));
   },

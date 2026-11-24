@@ -3,6 +3,10 @@ export const STEP = 1 / 240;
 export const WORLD_W = 1200, WORLD_H = 645;
 export const TANK_SPEED = 125, TANK_TURN = 2.6, SHELL_SPEED = 330, FIRE_COOLDOWN = .6, MAX_SHELLS = 3;
 export const COUNTDOWN = 3;
+/** Each stage is a best of three rounds: first to ROUNDS_TO_WIN round wins clears (or loses) it.
+ *  After a round the result shows for ROUND_PAUSE s, then the tanks reset to their spawns and a
+ *  shorter ROUND_COUNTDOWN runs (the obstacles stay). */
+export const ROUNDS_TO_WIN = 2, ROUND_PAUSE = 1.7, ROUND_COUNTDOWN = 2;
 export const COLOURS = ["orange", "graphite", "grey", "yellow"] as const;
 export type Colour = typeof COLOURS[number];
 export type ObstacleName = "block" | "cube" | "device" | "speaker" | "notebook" | "lblock" | "cable";
@@ -52,22 +56,24 @@ export type AiParams = {
   dodge: number; dodgeReaction: number; bank: boolean; cover: boolean; speed: number; preferDist: number; playerBias: number;
 };
 const S = (name: ObstacleName, x: number, y: number, w: number, flip = false): Placement => ({ name, x, y, w, flip });
-/** Hand-designed layouts. Stage 1 is point-symmetric, 2 mirror-symmetric, 3 four-corner symmetric-ish. */
+/** Hand-designed layouts. AI params are tuned (tanks-sim.mts) so the scripted average player clears
+ *  each best-of-three stage ≈75% / 50% / 35% of the time (per round ≈69% / 49% / 41%).
+ *  Stage 1 is point-symmetric, 2 mirror-symmetric, 3 four-corner symmetric-ish. */
 export const STAGES: StageDef[] = [
   {
-    obstacles: [S("block", 398, 195, 112), S("block", 802, 450, 112), S("device", 600, 102, 142), S("device", 600, 543, 142), S("speaker", 600, 322, 122), S("cube", 225, 352, 63), S("cube", 975, 292, 63)],
+    obstacles: [S("block", 397.9, 191.6, 104.2), S("block", 801.9, 446.6, 104.2), S("device", 599.3, 98.9, 132.7), S("device", 599.3, 539.9, 132.7), S("speaker", 599.1, 318.8, 113.3), S("cube", 224.9, 350, 54.2), S("cube", 974.9, 290, 54.2)],
     spawns: [{ x: 112, y: 540, a: 0 }, { x: 1088, y: 105, a: Math.PI }], ricochet: [],
-    ai: { reaction: .6, aimError: .09, lead: .3, turretRate: 1.5, fireGap: 1.5, maxShells: 1, dodge: .12, dodgeReaction: .6, bank: false, cover: false, speed: .7, preferDist: 390, playerBias: 1 },
+    ai: { reaction: .36, aimError: .058, lead: .3, turretRate: 1.5, fireGap: 1.15, maxShells: 1, dodge: .22, dodgeReaction: .6, bank: false, cover: false, speed: .7, preferDist: 390, playerBias: 1 },
   },
   {
-    obstacles: [S("notebook", 600, 322, 103), S("lblock", 352, 188, 150, true), S("lblock", 848, 188, 150), S("block", 352, 480, 106), S("block", 848, 480, 106), S("cable", 600, 118, 112), S("device", 600, 580, 139), S("cube", 225, 322, 59), S("cube", 975, 322, 59)],
+    obstacles: [S("notebook", 598.8, 319.3, 96.2), S("lblock", 352.6, 185.1, 139.2, true), S("lblock", 847.4, 185.1, 139.2), S("block", 351.9, 476.8, 98.6), S("block", 847.9, 476.8, 98.6), S("cable", 600.1, 116.8, 107.5), S("device", 599.3, 578.5, 129.9), S("cube", 224.9, 320.1, 50.8), S("cube", 974.9, 320.1, 50.8)],
     spawns: [{ x: 105, y: 555, a: 0 }, { x: 1095, y: 555, a: Math.PI }, { x: 1095, y: 90, a: Math.PI }], ricochet: [2], // grey
-    ai: { reaction: .62, aimError: .09, lead: .4, turretRate: 2.2, fireGap: 1.05, maxShells: 2, dodge: .3, dodgeReaction: .42, bank: false, cover: true, speed: .8, preferDist: 360, playerBias: .5 },
+    ai: { reaction: .55, aimError: .08, lead: .4, turretRate: 2.2, fireGap: 1.05, maxShells: 2, dodge: .3, dodgeReaction: .42, bank: false, cover: true, speed: .8, preferDist: 360, playerBias: .5 },
   },
   {
-    obstacles: [S("speaker", 600, 322, 118), S("lblock", 338, 188, 142, true), S("lblock", 862, 188, 142), S("notebook", 338, 458, 91), S("notebook", 862, 458, 91), S("block", 600, 116, 99), S("device", 600, 543, 133), S("cube", 70, 322, 76), S("cube", 1130, 322, 76)],
+    obstacles: [S("speaker", 599.1, 318.9, 109.6), S("lblock", 338.5, 185.3, 131.7, true), S("lblock", 861.5, 185.3, 131.7), S("notebook", 336.9, 455.7, 85), S("notebook", 860.9, 455.7, 85), S("block", 599.9, 113, 92.1), S("device", 599.4, 540.1, 124.3), S("cube", 69.9, 319.6, 65.4), S("cube", 1129.9, 319.6, 65.4)],
     spawns: [{ x: 105, y: 559, a: 0 }, { x: 1095, y: 86, a: Math.PI }, { x: 105, y: 86, a: 0 }, { x: 1095, y: 559, a: Math.PI }], ricochet: [2, 3], // grey, yellow
-    ai: { reaction: .65, aimError: .18, lead: .6, turretRate: 2.2, fireGap: 1.2, maxShells: 2, dodge: .35, dodgeReaction: .34, bank: true, cover: true, speed: .88, preferDist: 338, playerBias: 1.3 },
+    ai: { reaction: .67, aimError: .19, lead: .6, turretRate: 2.2, fireGap: 1.2, maxShells: 2, dodge: .35, dodgeReaction: .34, bank: true, cover: true, speed: .88, preferDist: 338, playerBias: 1.3 },
   },
 ];
 /** Touch assist: aiming by tap / auto-aim button is harder than a mouse, so on touch input the
@@ -112,12 +118,18 @@ export type Tank = {
 };
 export type Shell = { active: boolean; ricochet: boolean; uid: number; x: number; y: number; dx: number; dy: number; owner: number; bounces: number; armed: boolean; travel: number };
 export type Fx = { active: boolean; x: number; y: number; t: number; dur: number; size: number; rot: number };
-export type Phase = "countdown" | "play" | "won" | "lost" | "complete";
+/** "round" = a round just ended (stage still undecided); "won"/"lost" = the stage is decided. */
+export type Phase = "countdown" | "play" | "round" | "won" | "lost" | "complete";
 export type Game = {
   g: Geometry; stage: number; obstacles: Obstacle[]; tanks: Tank[]; shells: Shell[]; fx: Fx[]; phase: Phase; timer: number; elapsed: number;
   random: number; revision: number; uid: number; fireQueued: number; free: Uint8Array; queue: Int16Array;
-  /** Counters for the sim: bounces, shell-shell annihilations, kills. */
-  stats: { shots: number; bounces: number; clashes: number; kills: number };
+  /** Round state: index of the current round (0-based), round wins [player, opponents], winner of
+   *  the last finished round (0 player, 1 opponents, -1 none yet), and when the current round's play began. */
+  round: number; score: [number, number]; roundWinner: number; playStart: number;
+  /** Event counters (sim statistics; the UI diffs them per frame to trigger sound effects):
+   *  all shots, player shots, ricochet bounces, normal shells bursting on a wall/obstacle,
+   *  shell-shell annihilations, tanks destroyed. */
+  stats: { shots: number; playerShots: number; bounces: number; bursts: number; clashes: number; kills: number };
 };
 const SHELL_POOL = 16, FX_POOL = 24, CELL = 20, GW = Math.ceil(WORLD_W / CELL), GH = Math.ceil(WORLD_H / CELL), NAV_CLEAR = 30;
 export const PLAYER = 0;
@@ -126,6 +138,23 @@ function rand(s: Game) { s.random = (Math.imul(s.random, 1664525) + 1013904223) 
 const wrap = (a: number) => { while (a > Math.PI) a -= Math.PI * 2; while (a < -Math.PI) a += Math.PI * 2; return a; };
 const clamp = (v: number, lo: number, hi: number) => v < lo ? lo : v > hi ? hi : v;
 
+function resetBrain(b: Brain) {
+  b.target = -1; b.seen = 0; b.clock = 0; b.replan = 0; b.goalX = 0; b.goalY = 0; b.hasGoal = false; b.noise = 0; b.lastFire = -9; b.cover = 0;
+  b.bankAngle = NaN; b.bankClock = 0; b.stuck = 0; b.reverse = 0; b.dodgeX = 0; b.dodgeY = 0; b.dodgeT = 0; b.dirX = 0; b.dirY = 0; b.aim = 0; b.ideal = 0;
+  b.shellUid.fill(-1); b.shellSeen.fill(0); b.shellDodge.fill(0);
+}
+/** Next round: same stage and obstacles, every tank back on its spawn, no shells, short countdown. */
+function startRound(s: Game) {
+  const def = STAGES[s.stage];
+  s.round++; s.phase = "countdown"; s.timer = ROUND_COUNTDOWN; s.fireQueued = 0; s.revision++;
+  for (const sh of s.shells) sh.active = false;
+  for (const k of s.tanks) {
+    const sp = def.spawns[k.id];
+    k.x = k.px = sp.x; k.y = k.py = sp.y; k.a = k.pa = sp.a; k.turret = sp.a; k.alive = true; k.vx = 0; k.vy = 0;
+    k.throttle = 0; k.turn = 0; k.cooldown = 0; k.shells = 0; k.odometer = 0; k.killedBy = -1; k.diedAt = 0;
+    if (k.brain) { resetBrain(k.brain); k.brain.lastX = k.x; k.brain.lastY = k.y; k.brain.clock = rand(s) * .1; k.brain.noise = gauss(s) * k.brain.p.aimError; }
+  }
+}
 function makeBrain(p: AiParams): Brain {
   return { p, target: -1, seen: 0, clock: 0, replan: 0, goalX: 0, goalY: 0, hasGoal: false, noise: 0, lastFire: -9, cover: 0, bankAngle: NaN, bankClock: 0, stuck: 0, lastX: 0, lastY: 0, reverse: 0, dodgeX: 0, dodgeY: 0, dodgeT: 0, dirX: 0, dirY: 0, aim: 0, ideal: 0, field: new Int16Array(GW * GH), shellUid: new Int32Array(SHELL_POOL).fill(-1), shellSeen: new Float32Array(SHELL_POOL), shellDodge: new Uint8Array(SHELL_POOL) };
 }
@@ -133,7 +162,7 @@ function makeBrain(p: AiParams): Brain {
 export function createGame(g: Geometry, stage: number, seed = 1, scripted: AiParams | null = null): Game {
   const def = STAGES[stage], obstacles = buildObstacles(g, def.obstacles);
   const tanks: Tank[] = def.spawns.map((sp, i) => ({ id: i, colour: COLOURS[i], x: sp.x, y: sp.y, a: sp.a, turret: sp.a, alive: true, ricochet: i !== PLAYER && def.ricochet.includes(i), vx: 0, vy: 0, px: sp.x, py: sp.y, pa: sp.a, throttle: 0, turn: 0, aimX: sp.x + Math.cos(sp.a) * 200, aimY: sp.y, cooldown: 0, shells: 0, odometer: 0, killedBy: -1, diedAt: 0, brain: i === PLAYER ? (scripted ? makeBrain(scripted) : null) : makeBrain(def.ai) }));
-  const s: Game = { g, stage, obstacles, tanks, shells: Array.from({ length: SHELL_POOL }, () => ({ active: false, ricochet: false, uid: 0, x: 0, y: 0, dx: 1, dy: 0, owner: 0, bounces: 0, armed: false, travel: 0 })), fx: Array.from({ length: FX_POOL }, () => ({ active: false, x: 0, y: 0, t: 0, dur: 1, size: 1, rot: 0 })), phase: "countdown", timer: COUNTDOWN, elapsed: 0, random: (seed >>> 0) || 1, revision: 0, uid: 1, fireQueued: 0, free: new Uint8Array(GW * GH), queue: new Int16Array(GW * GH), stats: { shots: 0, bounces: 0, clashes: 0, kills: 0 } };
+  const s: Game = { g, stage, obstacles, tanks, shells: Array.from({ length: SHELL_POOL }, () => ({ active: false, ricochet: false, uid: 0, x: 0, y: 0, dx: 1, dy: 0, owner: 0, bounces: 0, armed: false, travel: 0 })), fx: Array.from({ length: FX_POOL }, () => ({ active: false, x: 0, y: 0, t: 0, dur: 1, size: 1, rot: 0 })), phase: "countdown", timer: COUNTDOWN, elapsed: 0, random: (seed >>> 0) || 1, revision: 0, uid: 1, fireQueued: 0, free: new Uint8Array(GW * GH), queue: new Int16Array(GW * GH), round: 0, score: [0, 0], roundWinner: -1, playStart: COUNTDOWN, stats: { shots: 0, playerShots: 0, bounces: 0, bursts: 0, clashes: 0, kills: 0 } };
   // Navigation grid: a cell is free when a disc of NAV_CLEAR around its centre touches nothing.
   for (let gy = 0; gy < GH; gy++) for (let gx = 0; gx < GW; gx++) {
     const x = (gx + .5) * CELL, y = (gy + .5) * CELL;
@@ -305,7 +334,7 @@ function fire(s: Game, k: Tank): boolean {
   pivot(s, k);
   sh.active = true; sh.uid = s.uid++; sh.x = pivotX; sh.y = pivotY; sh.dx = Math.cos(k.turret); sh.dy = Math.sin(k.turret);
   sh.owner = k.id; sh.ricochet = k.ricochet; sh.bounces = 0; sh.armed = false; sh.travel = 0;
-  k.cooldown = FIRE_COOLDOWN; k.shells++; s.stats.shots++;
+  k.cooldown = FIRE_COOLDOWN; k.shells++; s.stats.shots++; if (k.id === PLAYER) s.stats.playerShots++;
   // The shell starts at the turret pivot (never inside an obstacle) and is swept to the muzzle
   // in the same step, so a barrel poking through a wall still bounces off the wall correctly.
   moveShell(s, sh, s.g.muzzle);
@@ -326,7 +355,7 @@ function moveShell(s: Game, sh: Shell, distance: number) {
       kill(s, sh); return;
     }
     // Normal shells burst on their first wall/obstacle hit; ricochet shells bounce exactly once.
-    if (!sh.ricochet || sh.bounces >= 1) { puff(s, sh.x, sh.y, sh.ricochet ? 34 : 26, .3); kill(s, sh); return; }
+    if (!sh.ricochet || sh.bounces >= 1) { puff(s, sh.x, sh.y, sh.ricochet ? 34 : 26, .3); if (!sh.ricochet) s.stats.bursts++; kill(s, sh); return; }
     sh.bounces++; s.stats.bounces++;
     const dot = sh.dx * hit.nx + sh.dy * hit.ny; sh.dx -= 2 * dot * hit.nx; sh.dy -= 2 * dot * hit.ny;
     const n = Math.hypot(sh.dx, sh.dy); sh.dx /= n; sh.dy /= n;
@@ -473,7 +502,7 @@ function tryAiFire(s: Game, k: Tank, b: Brain) {
   if (s.phase !== "play" || b.target < 0 || s.elapsed - b.lastFire < b.p.fireGap) return;
   if (Math.abs(wrap(b.aim - k.turret)) > .05) return;
   const bank = b.bankAngle === b.bankAngle;
-  if (bank ? s.elapsed - COUNTDOWN < b.p.reaction + .4 : b.seen < b.p.reaction) return;
+  if (bank ? s.elapsed - s.playStart < b.p.reaction + .4 : b.seen < b.p.reaction) return;
   // The pilot judges the shot by its intended line; the turret carries its aim error.
   const who = predictShot(s, k, b.ideal);
   if (who < 0 || who === k.id || predictShot(s, k, k.turret) === k.id) return; // never a shot back into itself
@@ -488,8 +517,9 @@ export function setPlayerInput(s: Game, throttle: number, turn: number, aimX: nu
 export function queueFire(s: Game) { if (s.phase === "play") s.fireQueued = .15; }
 export function step(s: Game, dt = STEP) {
   s.elapsed += dt;
-  if (s.phase === "countdown") { s.timer -= dt; if (s.timer <= 0) { s.phase = "play"; s.timer = 0; s.revision++; } }
+  if (s.phase === "countdown") { s.timer -= dt; if (s.timer <= 0) { s.phase = "play"; s.timer = 0; s.playStart = s.elapsed; s.revision++; } }
   else if (s.phase === "won" || s.phase === "lost") s.timer = Math.max(0, s.timer - dt);
+  else if (s.phase === "round") { s.timer -= dt; if (s.timer <= 0) { startRound(s); return; } }
   for (const e of s.fx) if (e.active) { e.t += dt; if (e.t >= e.dur) e.active = false; }
   if (s.phase === "complete") return;
   // AI thinks at 30 Hz; steering and turret run every step.
@@ -522,7 +552,7 @@ export function step(s: Game, dt = STEP) {
     k.vx += (vx - k.vx) * .1; k.vy += (vy - k.vy) * .1; // smoothed, for AI lead only
     k.odometer += Math.hypot(k.x - k.px, k.y - k.py);
   }
-  if (s.phase === "play" || s.phase === "won" || s.phase === "lost") {
+  if (s.phase === "play" || s.phase === "round" || s.phase === "won" || s.phase === "lost") {
     for (const sh of s.shells) if (sh.active) moveShell(s, sh, SHELL_SPEED * dt);
     for (let i = 0; i < s.shells.length; i++) {
       const a = s.shells[i]; if (!a.active) continue;
@@ -535,8 +565,12 @@ export function step(s: Game, dt = STEP) {
   if (s.phase === "play") {
     const player = s.tanks[PLAYER];
     let others = 0; for (const k of s.tanks) if (k.alive && k.id !== PLAYER) others++;
-    if (!player.alive) { s.phase = "lost"; s.timer = 1.2; s.revision++; }
-    else if (others === 0) { s.phase = "won"; s.timer = 2.2; s.revision++; }
+    if (!player.alive || others === 0) {
+      const w = player.alive ? 0 : 1; s.roundWinner = w; s.score[w]++; s.revision++;
+      if (s.score[w] < ROUNDS_TO_WIN) { s.phase = "round"; s.timer = ROUND_PAUSE; }
+      else if (w === 0) { s.phase = "won"; s.timer = 2.4; }
+      else { s.phase = "lost"; s.timer = 1.4; }
+    }
   }
 }
 export function aliveCount(s: Game) { let n = 0; for (const k of s.tanks) if (k.alive) n++; return n; }

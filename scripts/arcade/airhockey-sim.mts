@@ -104,7 +104,7 @@ for (const difficulty of ["easy", "normal", "hard"] as Difficulty[]) {
       step(s);
     }
     youGoals += s.you; aiGoals += s.computer;
-    if (s.phase !== "over") { stalled++; if (stalled <= 2) console.log("Timed-out match", difficulty, seed, { puck: s.puck, player: s.player, ai: s.ai, you: s.you, computer: s.computer }); } else if (s.you === 7) wins++; else losses++;
+    if (s.phase !== "over") { stalled++; if (stalled <= 2) console.log("Timed-out match", difficulty, seed, { puck: s.puck, player: s.player, ai: s.ai, you: s.you, computer: s.computer }); } else if (s.you === 5) wins++; else losses++;
   }
   matches.push({ difficulty, games: 60, wins, losses, stalled, playerWinRate: roundPercent(wins / Math.max(1, wins + losses)), youGoals, aiGoals });
 }

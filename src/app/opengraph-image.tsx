@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "SGYUN Portfolio — Industrial · Metalcraft · AI Creative Design";
+export const alt = "SGYUN — Builder • Industrial Designer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -17,8 +17,7 @@ export default async function OpenGraphImage() {
         <path d="M430 0 L597 260 M790 0 L626 260 M612 330 L612 630" fill="none" stroke="#b6b9bb" strokeWidth="1"/>
       </svg>
       <img src={`data:image/png;base64,${logo.toString("base64")}`} width="450" height="170" alt="" style={{marginTop:15}}/>
-      <div style={{display:"flex",marginTop:24,fontSize:20,background:"white"}}>PORTFOLIO 2026</div>
-      <div style={{display:"flex",fontSize:23,marginTop:5,background:"white"}}>Industrial · Metalcraft · AI Creative Design</div>
+      <div style={{display:"flex",marginTop:24,fontSize:23,background:"white"}}>Builder • Industrial Designer</div>
       <div style={{position:"absolute",bottom:34,right:46,fontSize:17,color:"#666"}}>sgyun.kr</div>
     </div>,
     {...size,fonts:[{name:"Poppins",data:font,weight:400,style:"normal"}]}

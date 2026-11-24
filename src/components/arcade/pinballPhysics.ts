@@ -18,12 +18,17 @@ export const STEP = 1 / 240;
 export const FLOOR = 1, PLATE = 2, SLOT = 4;
 const G = 2350;                 // table-plane gravity (units/s²)
 const MAX_SPEED = 5200;
-const FLIP_UP = .06, FLIP_DOWN = .085;
+const FLIP_UP = .045, FLIP_DOWN = .08;
 const REST_DEG = 27, UP_DEG = -30;
 const E_WALL = .4, E_WIRE = .5, E_POST = .6, E_FLIP = .28, E_SLING = .5;
 const BUMPER_KICK = 1050, SLING_KICK = 900;
 export const LAUNCH_MIN = 2450, LAUNCH_MAX = 3450;
-const SAVER_TIME = 5, STUCK_TIME = 3;
+const SAVER_TIME = 5;
+export const STUCK_TIME = 3, STUCK_RADIUS = 28;
+export const POPS = 16, POP_LIFE = .75, POP_X2 = -2;
+/** Sound events raised by the simulation; the renderer reads s.events after stepping and clears them. */
+export const EV_BUMPER = 0, EV_SLING = 1, EV_LIGHT = 2, EV_LAUNCH = 3, EV_DRAIN = 4, EV_COMBO = 5, EV_OVER = 6, EV_WALL = 7, EV_COUNT = 8;
+const WALL_SOUND_SPEED = 1000;
 export const BALLS = 3;
 
 type Pt = [number, number];
@@ -206,7 +211,11 @@ export type Game = {
   laneInside: boolean[]; targetInside: boolean[];
   inputLeft: boolean; inputRight: boolean;
   plungerHeld: boolean; pull: number; dragPull: number; dragging: boolean; fireFrom: number;
-  still: number; nudges: number; message: string; messageTimer: number;
+  still: number; anchorX: number; anchorY: number; nudges: number; message: string; messageTimer: number;
+  /** score pop ring buffer (renderer reads it; age counts up to POP_LIFE). value POP_X2 = "x2". */
+  popX: Float64Array; popY: Float64Array; popValue: Int32Array; popAge: Float64Array; popHead: number;
+  /** sound events (intensity 0..1, 0 = none) indexed by EV_* */
+  events: Float64Array;
   random: number; revision: number; elapsed: number; ballTime: number;
   lastPenetration: number; maxMicroSteps: number; drains: number; combos: number;
 };
@@ -224,7 +233,8 @@ export function createGame(g: Geometry, seed = 1): Game {
     laneInside: g.laneLights.map(() => false), targetInside: g.targetLights.map(() => false),
     inputLeft: false, inputRight: false,
     plungerHeld: false, pull: 0, dragPull: 0, dragging: false, fireFrom: 0,
-    still: 0, nudges: 0, message: "", messageTimer: 0,
+    still: 0, anchorX: 0, anchorY: 0, nudges: 0, message: "", messageTimer: 0,
+    popX: new Float64Array(POPS), popY: new Float64Array(POPS), popValue: new Int32Array(POPS), popAge: new Float64Array(POPS).fill(POP_LIFE), popHead: 0, events: new Float64Array(EV_COUNT),
     random: seed >>> 0, revision: 0, elapsed: 0, ballTime: 0, lastPenetration: 0, maxMicroSteps: 0, drains: 0, combos: 0,
   };
   serve(s);
@@ -235,10 +245,14 @@ function serve(s: Game) {
   const b = s.ball, g = s.g;
   b.x = g.plunger.x; b.y = plungerTip(s) - g.ballR; b.vx = 0; b.vy = 0; b.layer = SLOT; b.active = true;
   s.phase = "ready"; s.launched = false; s.saver = 0; s.saverArmed = !s.saveUsed; s.still = 0; s.ballTime = 0;
-  s.lanes.fill(false); s.combo = false; s.revision++;
+  s.lanes.fill(false); s.combo = false; s.anchorX = b.x; s.anchorY = b.y; s.revision++;
 }
 function say(s: Game, text: string, time = 1.6) { s.message = text; s.messageTimer = time; s.revision++; }
 function addScore(s: Game, points: number) { s.score += points; s.revision++; }
+function ev(s: Game, i: number, v = 1) { if (v > s.events[i]) s.events[i] = v; }
+function pop(s: Game, x: number, y: number, value: number) {
+  const i = s.popHead; s.popX[i] = x; s.popY[i] = y; s.popValue[i] = value; s.popAge[i] = 0; s.popHead = (i + 1) % POPS;
+}
 
 /** Rotate flippers toward their targets; returns nothing, sets omega for this step. */
 function flipperTargets(s: Game, dt: number) {
@@ -262,13 +276,14 @@ function collideSeg(s: Game, seg: Seg) {
   b.x = qx + ex * R; b.y = qy + ey * R;
   const vn = b.vx * ex + b.vy * ey;
   if (vn < 0) {
+    if (-vn > WALL_SOUND_SPEED && seg.kind !== SLING) ev(s, EV_WALL, Math.min(1, -vn / 3000));
     b.vx -= (1 + seg.e) * vn * ex; b.vy -= (1 + seg.e) * vn * ey;
     // light rolling friction on the tangent
     const tx = -ey, ty = ex, vt = b.vx * tx + b.vy * ty;
     b.vx -= vt * .02 * tx; b.vy -= vt * .02 * ty;
     if (seg.kind === SLING && -vn > 140 && s.slingCool[seg.index] <= 0) {
       b.vx += ex * SLING_KICK; b.vy += ey * SLING_KICK;
-      s.slingFlash[seg.index] = .12; s.slingCool[seg.index] = .08; addScore(s, 10);
+      s.slingFlash[seg.index] = .18; s.slingCool[seg.index] = .08; addScore(s, 10); ev(s, EV_SLING);
     }
   }
 }
@@ -279,11 +294,15 @@ function collideCircle(s: Game, c: Circle) {
   if (d < 1e-9) { ex = 0; ey = -1; } else { ex /= d; ey /= d; }
   b.x = c.x + ex * R; b.y = c.y + ey * R;
   const vn = b.vx * ex + b.vy * ey;
+  if (vn < 0 && c.kind !== BUMPER && -vn > WALL_SOUND_SPEED) ev(s, EV_WALL, Math.min(1, -vn / 3000));
   if (vn < 0) { const e = c.kind === BUMPER ? .3 : E_POST; b.vx -= (1 + e) * vn * ex; b.vy -= (1 + e) * vn * ey; }
   if (c.kind === BUMPER && s.bumperCool[c.index] <= 0) {
-    b.vx += ex * BUMPER_KICK; b.vy += ey * BUMPER_KICK;
-    s.bumperLit[c.index] = .15; s.bumperCool[c.index] = .05;
-    addScore(s, s.combo ? 200 : 100);
+    // a few degrees of scatter so a ball can never bounce forever exactly on a bumper's crown
+    const j = (rand(s) - .5) * .12, cj = Math.cos(j), sj = Math.sin(j);
+    b.vx += (ex * cj - ey * sj) * BUMPER_KICK; b.vy += (ex * sj + ey * cj) * BUMPER_KICK;
+    s.bumperLit[c.index] = .26; s.bumperCool[c.index] = .05;
+    const points = s.combo ? 200 : 100;
+    addScore(s, points); pop(s, c.x, c.y - c.r * .35, points); ev(s, EV_BUMPER);
   }
 }
 /** Ball vs tapered capsule flipper at its current angle. Returns signed surface distance. */
@@ -329,7 +348,10 @@ function rollovers(s: Game) {
     const inside = Math.hypot(b.x - l.x, b.y - l.y) < l.r + g.ballR * .55;
     // Lane lamps light only when the ball is shot UP the lane (the orbit drop rolls down it).
     if (inside && !s.laneInside[i]) {
-      if (!s.lanes[i] && b.vy < 0) { s.lanes[i] = true; addScore(s, 250); if (s.lanes.every(Boolean) && !s.combo) { s.combo = true; s.combos++; say(s, "BUMPERS x2"); } }
+      if (!s.lanes[i] && b.vy < 0) {
+        s.lanes[i] = true; addScore(s, 250); pop(s, l.x + 34, l.y, 250); ev(s, EV_LIGHT);
+        if (s.lanes.every(Boolean) && !s.combo) { s.combo = true; s.combos++; ev(s, EV_COMBO); s.bumperLit.fill(.5); say(s, "BUMPERS x2"); g.bumpers.forEach(bp => pop(s, bp.x, bp.y - bp.r * .35, POP_X2)); }
+      }
       else addScore(s, 50);
     }
     s.laneInside[i] = inside;
@@ -337,8 +359,9 @@ function rollovers(s: Game) {
   g.targetLights.forEach((l, i) => {
     const inside = Math.hypot(b.x - l.x, b.y - l.y) < l.r + g.ballR * .55;
     if (inside && !s.targetInside[i]) {
-      s.targets[i] = !s.targets[i]; addScore(s, 100);
-      if (s.targets.every(Boolean)) { addScore(s, 1000); s.targets.fill(false); say(s, "TARGETS +1000"); }
+      s.targets[i] = !s.targets[i]; addScore(s, 100); if (s.targets[i]) ev(s, EV_LIGHT);
+      if (s.targets.every(Boolean)) { addScore(s, 1000); ev(s, EV_COMBO); pop(s, l.x, l.y - 30, 1000); s.targets.fill(false); say(s, "TARGETS +1000"); }
+      else pop(s, l.x, l.y - 30, 100);
     }
     s.targetInside[i] = inside;
   });
@@ -348,8 +371,8 @@ function drain(s: Game) {
   s.drains++;
   s.ball.active = false;
   if (s.saver > 0) { say(s, "BALL SAVED", 1.4); s.phase = "drained"; s.timer = .9; s.saveUsed = true; return; }
-  if (s.ballNumber >= BALLS) { s.phase = "over"; s.timer = 1; say(s, "GAME OVER", 9999); return; }
-  s.ballNumber++; s.saveUsed = false; s.phase = "drained"; s.timer = 1.2; s.revision++;
+  if (s.ballNumber >= BALLS) { ev(s, EV_OVER); s.phase = "over"; s.timer = 1; say(s, "GAME OVER", 9999); return; }
+  ev(s, EV_DRAIN); s.ballNumber++; s.saveUsed = false; s.phase = "drained"; s.timer = 1.2; s.revision++;
 }
 
 export function step(s: Game, dt = STEP) {
@@ -358,6 +381,7 @@ export function step(s: Game, dt = STEP) {
   flipperTargets(s, dt);
   for (let i = 0; i < s.bumperLit.length; i++) { s.bumperLit[i] = Math.max(0, s.bumperLit[i] - dt); s.bumperCool[i] = Math.max(0, s.bumperCool[i] - dt); }
   for (let i = 0; i < 2; i++) { s.slingFlash[i] = Math.max(0, s.slingFlash[i] - dt); s.slingCool[i] = Math.max(0, s.slingCool[i] - dt); }
+  for (let i = 0; i < POPS; i++) if (s.popAge[i] < POP_LIFE) s.popAge[i] += dt;
   if (s.messageTimer > 0) { s.messageTimer -= dt; if (s.messageTimer <= 0) { s.message = ""; s.revision++; } }
 
   // Plunger: hold to pull (keyboard ramps, drag maps directly); release fires.
@@ -365,7 +389,7 @@ export function step(s: Game, dt = STEP) {
   if (s.plungerHeld) { s.pull = s.dragging ? s.dragPull : Math.min(1, s.pull + dt / .9); s.fireFrom = s.pull; }
   else if (s.fireFrom > 0) {
     // the released rod strikes the ball anywhere within its travel
-    if (b.active && b.layer === SLOT && b.y + g.ballR >= g.plunger.restTip - 8) b.vy = -(LAUNCH_MIN + (LAUNCH_MAX - LAUNCH_MIN) * s.fireFrom);
+    if (b.active && b.layer === SLOT && b.y + g.ballR >= g.plunger.restTip - 8) { b.vy = -(LAUNCH_MIN + (LAUNCH_MAX - LAUNCH_MIN) * s.fireFrom); ev(s, EV_LAUNCH, Math.max(.05, s.fireFrom)); }
     s.fireFrom = 0;
   }
   if (!s.plungerHeld) s.pull = Math.max(0, s.pull - dt / .045);
@@ -410,18 +434,34 @@ export function step(s: Game, dt = STEP) {
   if (s.saver > 0) { const before = s.saver; s.saver = Math.max(0, s.saver - dt); if (before > 0 && s.saver === 0) s.revision++; }
   if (s.launched) s.ballTime += dt;
 
-  // Anti-stuck: a ball resting above the flippers for 3 s gets a nudge.
-  const nearHeldFlipper = g.flippers.some((f, i) => s.flippers[i].held && Math.hypot(b.x - f.px, b.y - f.py) < f.L + g.ballR + 20);
-  if (b.layer !== SLOT && Math.hypot(b.vx, b.vy) < 35 && !(b.layer === FLOOR && b.y > g.pivotY - 45) && !nearHeldFlipper) {
-    s.still += dt;
-    if (s.still > STUCK_TIME) { b.vx = (rand(s) < .5 ? -1 : 1) * (220 + 220 * rand(s)); b.vy = -650 - 250 * rand(s); s.still = 0; s.nudges++; say(s, "NUDGE", .8); }
-  } else s.still = 0;
+  antiStuck(s, dt);
 
   if (b.layer === FLOOR && b.y > g.drainY) drain(s);
+}
+/**
+ * Anti-stuck: a ball that stays within STUCK_RADIUS of one spot for STUCK_TIME (resting on a
+ * guide crook, balanced on a post, bouncing on top of a bumper, parked on the plate) gets a
+ * nudge up and toward the open middle of the table. A ball cradled on a held flipper and a
+ * ball waiting on the plunger are left alone.
+ */
+function antiStuck(s: Game, dt: number) {
+  const b = s.ball, g = s.g;
+  let exempt = b.layer === SLOT;
+  for (let i = 0; i < g.flippers.length && !exempt; i++) {
+    const f = g.flippers[i];
+    if (s.flippers[i].held && Math.hypot(b.x - f.px, b.y - f.py) < f.L + g.ballR + 20) exempt = true;
+  }
+  if (exempt || Math.hypot(b.x - s.anchorX, b.y - s.anchorY) > STUCK_RADIUS) { s.anchorX = b.x; s.anchorY = b.y; s.still = 0; return; }
+  s.still += dt;
+  if (s.still <= STUCK_TIME) return;
+  const toMiddle = b.x < g.midX ? 1 : -1;
+  b.vx = toMiddle * (260 + 200 * rand(s)); b.vy = -700 - 250 * rand(s);
+  s.still = 0; s.anchorX = b.x; s.anchorY = b.y; s.nudges++; say(s, "NUDGE", .8);
 }
 function advanceFlippers(s: Game, dt: number) { for (const f of s.flippers) f.angle += f.omega * dt; }
 
 export function restart(s: Game) {
   s.score = 0; s.ballNumber = 1; s.saveUsed = false; s.targets.fill(false); s.message = ""; s.messageTimer = 0; s.drains = 0; s.nudges = 0;
+  s.popAge.fill(POP_LIFE); s.events.fill(0); s.bumperLit.fill(0); s.slingFlash.fill(0); s.inputLeft = s.inputRight = false; s.plungerHeld = false; s.pull = 0; s.fireFrom = 0;
   serve(s);
 }

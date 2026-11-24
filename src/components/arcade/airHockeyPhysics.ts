@@ -9,13 +9,14 @@ export function geometryFromArt(a: ArtGeometry): Geometry {
   const b = a.table.inner;
   return { width: 1000, height: h, left: b.x * 1000, right: (b.x + b.w) * 1000, top: b.y * h, bottom: (b.y + b.h) * h, goalLeftTop: a.table.goals.left.top * h, goalLeftBottom: a.table.goals.left.bottom * h, goalRightTop: a.table.goals.right.top * h, goalRightBottom: a.table.goals.right.bottom * h, corner: a.table.cornerRadius * 1000, malletRadius: a.pieces.malletDiameter * 500, puckRadius: a.pieces.puckDiameter * 500 };
 }
-export type Game = { g: Geometry; player: Body; ai: Body; puck: Body; targetX: number; targetY: number; aiX: number; aiY: number; aiClock: number; aiMode: number; aim: number; difficulty: Difficulty; random: number; you: number; computer: number; phase: "countdown" | "play" | "goal" | "over"; timer: number; elapsed: number; conceded: number; goalSide: number; revision: number; aiEnabled: boolean };
+export const WIN_SCORE = 5;
+export type Game = { fx: { hit: number; hitPow: number; wall: number; wallPow: number }; g: Geometry; player: Body; ai: Body; puck: Body; targetX: number; targetY: number; aiX: number; aiY: number; aiClock: number; aiMode: number; aim: number; difficulty: Difficulty; random: number; you: number; computer: number; phase: "countdown" | "play" | "goal" | "over"; timer: number; elapsed: number; conceded: number; goalSide: number; revision: number; aiEnabled: boolean };
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
 function random(s: Game) { s.random = (Math.imul(s.random, 1664525) + 1013904223) >>> 0; return s.random / 4294967296; }
 const settings = { easy: { delay: .26, error: 260, speed: 350, omega: 12 }, normal: { delay: .2, error: 190, speed: 470, omega: 14 }, hard: { delay: .095, error: 145, speed: 720, omega: 20 } };
 export function createGame(g: Geometry, difficulty: Difficulty = "normal", seed = 1): Game {
   const cy = (g.top + g.bottom) / 2, mid = (g.left + g.right) / 2;
-  return { g, player: { x: g.left + (mid - g.left) * .35, y: cy, vx: 0, vy: 0, r: g.malletRadius }, ai: { x: g.right - (g.right - mid) * .35, y: cy, vx: 0, vy: 0, r: g.malletRadius }, puck: { x: g.left + (mid - g.left) * .63, y: cy, vx: 0, vy: 0, r: g.puckRadius }, targetX: g.left + (mid - g.left) * .35, targetY: cy, aiX: g.right - 100, aiY: cy, aiClock: 0, aiMode: 0, aim: 0, difficulty, random: seed >>> 0, you: 0, computer: 0, phase: "countdown", timer: 3, elapsed: 0, conceded: 0, goalSide: 0, revision: 0, aiEnabled: true };
+  return { fx: { hit: 0, hitPow: 0, wall: 0, wallPow: 0 }, g, player: { x: g.left + (mid - g.left) * .35, y: cy, vx: 0, vy: 0, r: g.malletRadius }, ai: { x: g.right - (g.right - mid) * .35, y: cy, vx: 0, vy: 0, r: g.malletRadius }, puck: { x: g.left + (mid - g.left) * .63, y: cy, vx: 0, vy: 0, r: g.puckRadius }, targetX: g.left + (mid - g.left) * .35, targetY: cy, aiX: g.right - 100, aiY: cy, aiClock: 0, aiMode: 0, aim: 0, difficulty, random: seed >>> 0, you: 0, computer: 0, phase: "countdown", timer: 3, elapsed: 0, conceded: 0, goalSide: 0, revision: 0, aiEnabled: true };
 }
 function cap(b: Body, max: number) { const speed = Math.hypot(b.vx, b.vy); if (speed > max) { b.vx *= max / speed; b.vy *= max / speed; } }
 /** Exact critically damped spring solution, followed by a bounded displacement. */
@@ -46,12 +47,13 @@ export function insideMouth(s: Game, left: boolean) {
   const { g, puck: p } = s;
   return p.y >= (left ? g.goalLeftTop : g.goalRightTop) + p.r && p.y <= (left ? g.goalLeftBottom : g.goalRightBottom) - p.r;
 }
+function wallFx(s: Game, v: number) { const a = Math.abs(v); if (a > 160) { s.fx.wall++; s.fx.wallPow = Math.min(1, a / 1600); } }
 function rails(s: Game) {
   const { puck: p, g } = s;
-  if (p.y < g.top + p.r) { p.y = g.top + p.r; p.vy = Math.abs(p.vy) * .9; }
-  if (p.y > g.bottom - p.r) { p.y = g.bottom - p.r; p.vy = -Math.abs(p.vy) * .9; }
-  if (!insideMouth(s, true) && p.x < g.left + p.r) { p.x = g.left + p.r; p.vx = Math.abs(p.vx) * .9; }
-  if (!insideMouth(s, false) && p.x > g.right - p.r) { p.x = g.right - p.r; p.vx = -Math.abs(p.vx) * .9; }
+  if (p.y < g.top + p.r) { p.y = g.top + p.r; wallFx(s, p.vy); p.vy = Math.abs(p.vy) * .9; }
+  if (p.y > g.bottom - p.r) { p.y = g.bottom - p.r; wallFx(s, p.vy); p.vy = -Math.abs(p.vy) * .9; }
+  if (!insideMouth(s, true) && p.x < g.left + p.r) { p.x = g.left + p.r; wallFx(s, p.vx); p.vx = Math.abs(p.vx) * .9; }
+  if (!insideMouth(s, false) && p.x > g.right - p.r) { p.x = g.right - p.r; wallFx(s, p.vx); p.vx = -Math.abs(p.vx) * .9; }
   roundedCorner(p, g, true);
 }
 function collide(s: Game, b: Body, isPlayer: boolean, active: boolean) {
@@ -62,7 +64,7 @@ function collide(s: Game, b: Body, isPlayer: boolean, active: boolean) {
   const nx = dx / d, ny = dy / d;
   if (active) {
     const rel = (p.vx - b.vx) * nx + (p.vy - b.vy) * ny;
-    if (rel < 0) { p.vx -= 1.92 * rel * nx; p.vy -= 1.92 * rel * ny; }
+    if (rel < 0) { p.vx -= 1.92 * rel * nx; p.vy -= 1.92 * rel * ny; s.fx.hit++; s.fx.hitPow = Math.min(1, -rel / 1400); }
     p.x = b.x + nx * rr; p.y = b.y + ny * rr;
     rails(s);
   }
@@ -106,7 +108,7 @@ function score(s: Game, left: boolean) {
   if (left) s.computer++; else s.you++;
   s.conceded = left ? 0 : 1; s.goalSide = left ? -1 : 1;
   s.puck.vx = 0; s.puck.vy = 0; s.timer = 1;
-  s.phase = s.you === 7 || s.computer === 7 ? "over" : "goal"; s.revision++;
+  s.phase = s.you === WIN_SCORE || s.computer === WIN_SCORE ? "over" : "goal"; s.revision++;
 }
 export function step(s: Game, dt = STEP) {
   s.elapsed += dt;
