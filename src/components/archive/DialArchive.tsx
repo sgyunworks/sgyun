@@ -787,6 +787,11 @@ export function DialArchive({ locale }: { locale: Locale }) {
                     <span>
                       <strong>{item.title[locale]}</strong>
                       <small>{item.detail[locale]}</small>
+                      {item.href ? (
+                        <a href={item.href} target="_blank" rel="noreferrer">
+                          {locale === "ko" ? "NODE 시뮬레이터 보기 ↗" : "Open NODE simulator ↗"}
+                        </a>
+                      ) : null}
                     </span>
                   </li>
                 ))}

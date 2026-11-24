@@ -93,6 +93,7 @@ export type PortfolioProfile = {
     year: string;
     title: LocalizedText;
     detail: LocalizedText;
+    href?: string;
   }>;
   activities: Array<{
     year: string;
