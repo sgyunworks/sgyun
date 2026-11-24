@@ -1,3 +1,4 @@
+import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
@@ -5,6 +6,7 @@ import { archiveProjects, portfolioProfile, type ArchiveProject } from "@/lib/ar
 import { WireLanding } from "./WireLanding";
 import { SourcePages } from "./SourcePages";
 import { PortfolioDial } from "./PortfolioDial";
+import { FloatingWorks, type FloatingWork } from "./FloatingWorks";
 import styles from "./Portfolio.module.css";
 
 export function ProjectCover({ project: p, locale, detail = false }: { project: ArchiveProject; locale: Locale; detail?: boolean }) {
@@ -33,13 +35,35 @@ export function ProjectCover({ project: p, locale, detail = false }: { project: 
   </section>;
 }
 
-export function PortfolioHome({ locale, indexOnly = false }: { locale: Locale; indexOnly?: boolean }) {
+// Window aspect: keep the portfolio's page formats (16:9 or A4), NODE keeps its photo ratio.
+const pageRatio = (r: number) => r > 1.6 ? 16 / 9 : r >= 1 ? 297 / 210 : 210 / 297;
+
+async function imageRatio(src: string) {
+ const { default: sharp } = await import("sharp");
+ const m = await sharp(path.join(process.cwd(), "public", src)).metadata();
+ return m.width && m.height ? m.width / m.height : 16 / 9;
+}
+
+async function floatingWorks(locale: Locale): Promise<FloatingWork[]> {
+ const ko = locale === "ko";
+ const ratios = await Promise.all(archiveProjects.map(p => imageRatio(p.heroImage)));
+ const works: FloatingWork[] = archiveProjects.map((p, i) => ({
+  id: p.id, number: p.number, title: p.title, caption: p.description[locale],
+  href: `/${locale}/works/${p.slug}`, image: p.heroImage, alt: p.imageAlt[locale],
+  ratio: pageRatio(ratios[i]), kind: "window",
+ }));
+ works.push({
+  id: "node", number: String(works.length + 1).padStart(2, "0"), title: "NODE",
+  caption: ko ? "디자인코리아 2026 · 휴머노이드 로봇과 웹 시뮬레이터" : "Design Korea 2026 · Humanoid robot & web simulator",
+  href: "/node", image: "/node/teaser.webp", alt: ko ? "NODE 휴머노이드 로봇 티저 이미지" : "NODE humanoid robot teaser",
+  ratio: 3 / 4, kind: "terminal",
+ });
+ return works;
+}
+
+export async function PortfolioHome({ locale, indexOnly = false }: { locale: Locale; indexOnly?: boolean }) {
  if (!indexOnly) return <WireLanding locale={locale}/>;
- return <div className={`${styles.portfolio} ${styles.worksEntry}`}>
-   <section className={styles.contents} id="selected">{indexOnly?<h1>Selected Works</h1>:<h2>Selected Works</h2>}<ol>{archiveProjects.map(p=><li key={p.id}><a href={`#${p.id}`}><span>{p.number}</span><strong>{p.title}</strong><span aria-hidden="true">↘</span></a></li>)}</ol></section>
-   {archiveProjects.map(p=><ProjectCover key={p.id} project={p} locale={locale}/>)}
-   <PortfolioDial locale={locale}/>
- </div>;
+ return <FloatingWorks locale={locale} works={await floatingWorks(locale)}/>;
 }
 
 export function PortfolioDetail({ project: p, locale }: { project: ArchiveProject; locale: Locale }) {
